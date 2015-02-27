@@ -1,0 +1,69 @@
+backend:
+    page:
+        h1_show: Страница
+        h1_list: Список страниц
+        h1_edit: Редактирование страницы
+        h1_create: Создание страницы
+        back_to_list: Назад к списку страниц
+        empty_list: Нет страниц
+        title: Заголовок
+        metatitle: Мета-заголовок
+        metadescription: Мета-описание
+        metakeywords: Ключевые слова
+        text: Текст страницы
+        position: Позиция в меню
+        parent: Родитель
+        not_found: Страница не существует
+    partners:
+        h1_show: Партнер
+        h1_list: Список партнеров
+        h1_edit: Редактирование партнера
+        h1_create: Создание партнера
+        back_to_list: Назад к списку партнеров
+        empty_list: Нет партнеров
+        name: Название
+        img: Изображение партнера
+        position: Порядковый номер
+        link: URL Ссылка
+        not_found: Партнер не существует
+    slider:
+        h1_show: Слайдер
+        h1_list: Список слайдеров
+        h1_edit: Редактирование слайдера
+        h1_create: Создание слайдера
+        back_to_list: Назад к списку слайдеров
+        empty_list: Нет слайдеров
+        date: Дата
+        img: Изображение слайдера
+        text: Текст слайдера
+        not_found: Слайдер не существует
+    news:
+        h1_show: Новость
+        h1_list: Список новостей
+        h1_edit: Редактирование новости
+        h1_create: Создание новости
+        back_to_list: Назад к списку новостей
+        empty_list: Нет новостей
+        title: Заголовок новости
+        metatitle: Мета-заголовок
+        metadescription: Мета-описание
+        metakeywords: Ключевые слова
+        type: Тип новости
+        date: Дата
+        img: Изображение новости
+        text: Текст новости
+        not_found: Новость не существует
+        type_choice:
+            events: событие
+            interviews: интервью
+            opinion: мнение
+    actions: Действия
+    show: показать
+    edit: редактировать
+    update: сохранить
+    create: создать
+    delete: удалить
+
+frontend:
+    partners:
+        title: Партнеры

@@ -1,0 +1,91 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/style.css') }}">
+    <link href="{{ asset('bundles/sitemain/frontend/css/jflow.style.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <div class="wrap">
+        <div class="reklama" id="box" style="display: block;">
+            РЕКЛАМА
+            <a href="#" onclick="openbox('box'); return false"></a>
+        </div>
+        <div class="header">
+            <div class="header-block">
+                <div class="logo">
+                    <a href="{{ path('frontend_homepage') }}">
+                        <img src="{{ asset('bundles/sitemain/frontend/images/logo.jpg') }}" alt="">
+                    </a>
+                </div>
+                <div class="main-menu">
+                    {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:mainMenu') }}
+                </div>
+                <div class="header-right-block">
+                    <div class="search">
+                        <form>
+                            <input type="text" placeholder="поиск по сайту">
+                        </form>
+                    </div>
+                    <div class="soc-icons">
+                        <ul>
+                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/twitter.jpg') }}" alt=""></a></li>
+                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/vk.jpg') }}" alt=""></a></li>
+                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/facebook.jpg') }}" alt=""></a></li>
+                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/wife.jpg') }}" alt=""></a></li>
+                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/od.jpg') }}" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% if children is defined %}
+                {% if children|length > 0 %}
+                    <div class="bottom-header">
+                        <div class="bottom-header-block">
+                            {% set subMenu = knp_menu_get('SiteMainBundle:FrontendMenuBuilder:subMenu', [], {'children': children} ) %}
+                            {{ knp_menu_render(subMenu) }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="wrap_footer">
+        {{ render(url('frontend_partners_index')) }}
+        <div class="footer">
+            <div class="footer-block-left">
+                <p>2001—2014 © Professional Football Club CSKA Moscow.</p>
+                <p>Official Member of the European Club Association (ECA)</p>
+            </div>
+            <div class="footer-block-right">
+                сайт создан командой олега митина
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/sitemain/frontend/js/jquery-1.10.2.min.js') }}"></script>
+    <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/jquery.placeholder.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/placeholder.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/jflow.plus.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/script.js') }}" type="text/javascript"></script>
+    <script>
+        $(function() {
+            $( "#tabs,#tabs2,#tabs3" ).tabs({
+                collapsible: true
+            });
+        });
+        function openbox(id){
+            display = document.getElementById(id).style.display;
+            if(display=='none'){
+                document.getElementById(id).style.display='block';
+            }else{
+                document.getElementById(id).style.display='none';
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,10 @@
+frontend_homepage:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Frontend/Main:index" }
+
+frontend_partners:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/partners.yml"
+    prefix: /partners
+
+frontend_page:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"

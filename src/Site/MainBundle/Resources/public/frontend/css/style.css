@@ -1,0 +1,710 @@
+html, body{
+    height: 100%;
+    margin: 0;
+    background: #ececec;
+}
+@font-face{
+    font-family: Calibri-Bold;
+    src: url("fonts/Calibri/Calibri.eot");
+    src: url("fonts/Calibri/Calibri.eot?#iefix")format("embedded-opentype"),
+    url("fonts/Calibri/Calibri.woff") format("woff"),
+    url("fonts/Calibri/calibri.ttf") format("truetype");
+    font-style: bold;
+    font-weight: bold;
+}
+/* font-family: "OpenSansBold"; */
+@font-face {
+    font-family: Calibri-Regular;
+    src: url("fonts/Calibri/Calibri.eot");
+    src: url("fonts/Calibri/Calibri.eot?#iefix")format("embedded-opentype"),
+    url("fonts/Calibri/Calibri.woff") format("woff"),
+    url("fonts/Calibri/calibri.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.header{
+    min-width: 120px;
+    width: 1200px;
+    position: relative;
+    overflow: hidden;
+    margin: 0px auto 0 auto;
+    padding-top: 15px;
+}
+.header-block{
+    width: 1165px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.logo{
+    float: left;
+}
+.main-menu{
+    float: left;
+    margin: 68px 0 0 0;
+}
+.main-menu ul{
+    overflow: hidden;
+}
+.main-menu ul li{
+    float: left;
+    margin: 0 0 0 35px;
+}
+.main-menu ul li a{
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.header-right-block{
+    width: 185px;
+    float: right;
+    margin: 15px 5px 0 0;
+}
+.search input[type="text"]{
+    width: 165px;
+    padding: 5px 10px;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    border: 0;
+    border-bottom: 1px solid #bababa;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+input[type="text"]::-webkit-input-placeholder {
+    color: #000;
+} 
+input[type="text"]::-moz-placeholder {
+    color: #000;
+}
+input[type="text"]::-o-input-placeholder {
+    color: #000;
+} 
+input[type="text"]::-ms-placeholder {
+    color: #000;
+}
+input[type="text"]::placeholder {
+    color: #000;
+}
+input:focus{
+    outline: 0;
+}
+.soc-icons ul{
+    overflow: hidden;
+    margin: 18px 0 0 5px;
+}
+.soc-icons ul li{
+    float: left;
+    margin: 0 0 0 5px;
+}
+.bottom-header{
+    width: 100%;
+    height: 52px;
+    background: #ec1b24;
+}
+.bottom-header-block{
+    width: 1165px;
+    margin: 0 auto;
+}
+.bottom-header-block ul{
+    overflow: hidden;
+    margin: 0 0 0 223px;
+}
+.bottom-header-block ul li{
+    float: left;
+    margin: 0 35px 0 0;
+}
+.bottom-header-block ul li a{
+    display: block;
+    line-height: 52px;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+}
+.date{
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    position: absolute;
+    bottom: 5px;
+}
+.date-block{
+    width: 1165px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.date-block ul{
+    overflow: hidden;
+    text-align: center;
+}
+.date-block ul li, .date-block ul li span{
+    display: inline-block;
+    line-height: 50px;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    overflow: hidden;
+}
+.date-block ul li a{
+    display: block;
+    line-height: 50px;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    text-decoration: none;
+    float: left;
+}
+.date-block ul li span{
+    display: block;
+    float: left;
+    padding: 0 20px;
+}
+.date-block ul li:hover a{
+    color: #f00;
+}
+.content{
+    width: 1165px;
+    margin: 0 auto;
+    padding: 0px 17px;
+}
+.content-left-block{
+    width: 715px;
+    float: left;
+}
+.content-right-block{
+    width: 440px;
+    float: right;
+}
+.clear{
+    clear: both;
+}
+.slide{
+    min-width: 120px;
+    width: 1200px;
+    margin: 0 auto;
+}
+.content-slide{
+    overflow: hidden;
+}
+.content-slide .content-slide-block:first-child{
+    width: 100%;
+    height: 480px;
+    position: relative;
+}
+.content-slide .content-slide-block:last-child{
+    margin: 8px 0 0 0;
+}
+.content-slide .content-slide-block .content-slide-block-title{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    background: rgba(0,0,0,0.4);
+    -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000);
+    zoom: 1;
+}
+.content-slide .content-slide-block:first-child .content-slide-block-title{
+    padding: 20px;
+    margin: 0;
+}
+.content-slide .content-slide-block:first-child .content-slide-block-title a{
+    font-size: 16px;
+}
+.content-slide .content-slide-block .content-slide-block-title a{
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+   
+}
+.content-slide .content-slide-block{
+    width: 231px;
+    height: 155px;
+    float: left;
+    position: relative;
+    margin: 8px 11px 0 0;
+    overflow: hidden;
+}
+.main-tab ul{
+    overflow: hidden;
+}
+.main-tab ul li{
+    width: 33.33%;
+    display: block;
+    float: left;
+}
+.main-tab ul li a{
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 16px;
+    color: #888888;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 0 1px 10px;
+    border-bottom: 1px solid #c3c3c3;
+}
+.main-tab ul li.ui-state-active a{
+    color: #000;
+    padding: 0 0 0 10px;
+    border-bottom: 2px solid #ff0000;
+}
+ul li:focus, ul li a:focus{
+    outline: 0;
+}
+.tab-articl{
+    width: 100%;
+    height: 185px;
+    overflow: hidden;
+    position: relative;
+    margin: 35px 0 0 0;
+    border-bottom: 1px solid #c2c2c2;
+}
+.tab-articl-img{
+    width: 230px;
+    overflow: hidden;
+    float: left;
+}
+.tab-articl-description{
+    width: 470px;
+    float: right;
+}
+.tab-articl-title{
+    display: block;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 18px;
+    color: #f00;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.tab-articl-text{
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+    margin: 25px 0 0 0;
+    text-transform: uppercase;
+}
+.tab-articl:last-child{
+    border-bottom: 0;
+}
+.main-moment{
+    text-align: center;
+    width: 100%;
+    width: 1200px;
+    margin: 0px auto;
+    height: 490px;
+    background: url(../images/main-moment.jpg) top center no-repeat;
+    padding-bottom: 344px;
+}
+.main-moment iframe{
+    margin: 35px auto 0 auto;
+}
+.main-moment-title{
+    font-family: Calibri-Regular;
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 40px 0 0 0;
+    text-shadow: 2px 2px 5px #000;
+}
+.partners-block{
+    width: 1165px;
+    margin: 0 auto;
+    padding: 0px 17px;
+}
+.partners-block-title{
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+    text-transform: uppercase;
+    padding: 10px;
+    border-bottom: 1px solid #d1d1d1;
+}
+.partners-block ul li{
+    display: inline-block;
+    height: 255px;
+    width: 20%;
+    text-align: center;
+    vertical-align: top;
+    line-height: 255px;
+}
+.partners-block ul li a{
+    display: inline-block;
+    vertical-align: middle;
+}
+.partners-block ul li a img{
+    vertical-align: middle;
+    border: 0;
+    max-width: 100%;
+}
+.partners-block ul{
+    border-bottom: 1px solid #d1d1d1;
+}
+.footer{
+    width: 1165px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 6px 17px 6px 17px;
+}
+.footer-block-left, .footer-block-right{
+    float: left;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 14px;
+    color: #000;
+    text-transform: uppercase;
+}
+.footer-block-left p{
+    margin: 0;
+}
+.footer-block-right{
+    float: right;
+    padding: 10px 0 0 0;
+}
+.right-block-title{
+    width: 425px;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    text-transform: uppercase;
+    padding: 12px 10px 8px 10px;
+    border-bottom: 2px solid #f00;
+}
+.main-tab2 ul li{
+    width: 50%;
+}
+.chempionat{
+    overflow: hidden;
+}
+.chempionat .chempionat-tr{
+    overflow: hidden;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+.chempionat .chempionat-tr:first-child{
+    color: #7b7b7b;
+}
+.chempionat .chempionat-tr .chempionat-td{
+    float: left;
+}
+.chempionat .chempionat-tr .chempionat-td-1{
+    width: 55px;
+    padding: 0 0 0 10px;
+}
+.chempionat .chempionat-tr .chempionat-td-2{
+    width: 250px;
+}
+.chempionat .chempionat-tr .chempionat-td-3{
+    width: 40px;
+}
+.chempionat .chempionat-tr .chempionat-td-4{
+    width: 40px;
+}
+.right-block{
+    margin: 0 0 20px 0;
+}
+.calendar{
+    position: relative;
+    width: 100%;
+    height: 350px;
+}
+.calendar a{
+    display: block;
+    position: absolute;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 30px;
+    color: #000;
+    text-decoration: none;
+}
+.calendar a span{
+    display: none;
+}
+.calendar a.twelve{
+    top: 20px;
+    right: 220px;
+}
+.calendar a.thridteen{
+    top: 55px;
+    right: 170px;
+}
+.calendar a.fourteen{
+    top: 95px;
+    right: 135px;
+}
+.calendar a.fiveteen{
+    top: 130px;
+    right: 95px;
+}
+.calendar a.sixteen{
+    top: 180px;
+    right: 95px;
+}
+.calendar a.seventeen{
+    top: 220px;
+    right: 135px;
+}
+.calendar a.eightteen{
+    top: 260px;
+    right: 170px;
+}
+.calendar a.nineteen{
+    top: 300px;
+    right: 220px;
+}
+.calendar a.twenty{
+    top: 260px;
+    right: 265px;
+}
+.calendar a.twenty-one{
+    top: 220px;
+    right: 310px;
+    font-size: 28px;
+}
+.calendar a.twenty-two{
+    top: 180px;
+    right: 355px;
+    font-size: 26px;
+}
+.calendar a.twenty-three{
+    top: 140px;
+    right: 345px;
+    font-size: 24px;
+}
+.calendar a.twenty-four{
+    top: 100px;
+    right: 315px;
+    font-size: 22px;
+}
+.calendar a.twenty-fife{
+    top: 90px;
+    right: 270px;
+    font-size: 20px;
+}
+.calendar a.twenty-six{
+    top: 110px;
+    right: 230px;
+    font-size: 19px;
+}
+.calendar a.twenty-seven{
+    top: 140px;
+    right: 210px;
+    font-size: 19px;
+}
+.calendar a.twenty-eight{
+    top: 175px;
+    right: 215px;
+    font-size: 18px;
+}
+.calendar a.twenty-nine{
+    top: 200px;
+    right: 250px;
+    font-size: 18px;
+}
+.calendar a.theirdty{
+    top: 180px;
+    right: 290px;
+    font-size: 17px;
+}
+.calendar a.theirdty-one{
+    top: 150px;
+    right: 265px;
+    font-size: 17px;
+}
+.calendar a:hover span{
+    display: block;
+    color: #fff;
+    position: absolute;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    background: #000;
+    width: 200px;
+    min-height: 50px;
+    border-radius: 3px;
+    z-index: 1;
+    padding: 10px 15px;
+}
+.kybki{
+    text-align: center;
+    overflow: hidden;
+}
+.kybki a{
+    display: inline-block;
+}
+img, a{
+    border: 0;
+}
+#daily-events-calendar{
+    width: 240px;
+    height: 250px;
+    position: relative;
+    font-family: Arial;
+    margin: 30px auto 0 auto;
+}
+#daily-events-calendar div{
+    position: absolute;
+    min-width: 17px;
+    text-align: center;
+}
+#daily-events-calendar div a{
+    text-decoration: none;
+    color: #000;
+}
+#daily-events-calendar div:hover a{
+    text-decoration: underline;
+}
+#daily-events-calendar div span{
+    display: none;
+    font-family: Arial;
+    font-size: 12px;
+    color: #fff;
+    background: #000;
+    width: 160px;
+    padding: 10px;
+    z-index: 1;
+    text-align: left;
+    margin: 0 0 0 -80px;
+}
+#daily-events-calendar div:hover span{
+    display: block;
+    position: absolute;
+}
+.the-end-main-main{
+    position: relative;
+    z-index: 200;
+    width: 1165px;
+    margin: -480px auto 0 auto;
+}
+.the-end-main{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    z-index: 100000;
+    width: 200px;
+}
+.the-end{
+    width: 180px;
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.the-end-title{
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 14px;
+    color: #000;
+    text-transform: uppercase;
+    padding: 5px;
+    border-bottom: 1px solid #000;
+}
+.the-end:first-child .the-end-title{
+    color: #f00;
+}
+.the-end-date{
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 12px;
+    color: #000;
+    text-transform: uppercase;
+    padding: 5px;
+}
+.the-end-last-block{
+    overflow: hidden;
+}
+.the-end-last-block-1{
+    width: 33.33%;
+    float: left;
+}
+.the-end-last-block-2{
+    width: 33.33%;
+    text-align: center;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 30px;
+    color: #000;
+    text-transform: uppercase;
+    float: left;
+    margin: 10px 0 0 0;
+}
+.the-end-last-block-3{
+    width: 33.33%;
+    float: right;
+}
+.the-end-last-block-title{
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+}
+.margin-right-0{
+    margin-right: 0 !important;
+}
+.reklama{
+    display: block;
+    min-width: 120px;
+    width: 1200px;
+    background: #7b7b7b;
+    text-align: center;
+    font-family: Calibri-Regular;
+    font-size: 30px;
+    color: #fff;
+    padding: 30px 0;
+    position: relative;
+    margin: 0px auto 0px auto;
+}
+.reklama a{
+    display: block;
+    width: 17px;
+    height: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url(../images/close.jpg) no-repeat;
+}
+
+.wrap{
+    height: auto;
+    min-height: 100%;
+    width: 1199px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.wrap_content{
+    padding-bottom: 344px;
+}
+
+.wrap_footer{
+    margin-top: -344px;
+    clear: both;
+}

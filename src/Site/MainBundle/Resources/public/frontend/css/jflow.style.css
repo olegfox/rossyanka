@@ -1,0 +1,78 @@
+/* 
+
+jFlow Plus Demo CSS 
+
+Description: Demonstation CSS for jFlow Plus
+Creator: Devin Walker
+Date: July 29, 2010
+
+
+*/
+
+#container {
+	width: 100%;
+	height: 480px;
+	position: relative;
+	margin: 0 auto;
+}
+
+.slide-block img{
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+}
+.slide-block span{
+    display: block;
+    position: absolute;
+    bottom: 55px;
+    width: 100%;
+    height: 85px;
+	background: rgba(0,0,0,0.15);
+    -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#26000000,endColorstr=#26000000);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#26000000,endColorstr=#26000000);
+    zoom: 1;
+}
+.slide-block p{
+    display: block;
+    width: 1165px;
+	color: #fff;	
+	margin: 0 auto;
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 15px 0 0 0;
+}
+
+
+.jFlowNext div {
+	background:url("../images/arrows.png") no-repeat scroll 0 -35px transparent;
+	height:130px;
+	position:absolute;
+	top:110px;
+	right: -50px;
+	width:50px;
+	cursor:pointer;
+}
+
+.jFlowPrev div {
+	background:url("../images/arrows.png") no-repeat scroll -84px -35px transparent;
+	height:130px;
+	position:absolute;
+	top:110px;
+	left: -50px;
+	width:50px;
+	cursor:pointer;
+}
+
+.jFlowPrev div:hover {
+	background-position: -84px -235px;
+}
+
+.jFlowNext div:hover {
+	background-position: 0px -235px;
+}
+.jFlowPrev, .jFlowNext{
+    display: none !important;
+}

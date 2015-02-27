@@ -1,0 +1,13 @@
+{% macro listTab(news) %}
+    {% for n in news %}
+        <div class="tab-articl">
+            <div class="tab-articl-img">
+                <img src="{{ image(n.webPath).zoomCrop(230, 155) }}" alt="{{ n.title }}" width="230px" height="155px">
+            </div>
+            <div class="tab-articl-description">
+                <a href="#" class="tab-articl-title">{{ n.date|date('d MMMM Y') }}</a>
+                <div class="tab-articl-text">{{ n.title }}</div>
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}

@@ -1,0 +1,558 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
+
+{% block title %}{{ page.title }}{% endblock %}
+{% block meta_description %}{{ page.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ page.metaKeywords }}{% endblock %}
+
+{% block content %}
+    <div class="slide">
+        <div id="container">
+            <div id="mySlides">
+                <div id="slide1" class="slide-block">
+                    <img src="{{ asset('bundles/sitemain/frontend/images/slide1.jpg') }}" alt="Slide 1 jFlow Plus" />
+                <span>
+                    <p>
+                        22 марта 1950 года<br>
+                        фк «Россиянка» стал чемпионом европы, обыграв<br>
+                        ФК «Манчестер-Юнайтед» со счетом 4:5
+                    </p>
+                </span>
+                </div>
+                <div id="slide2" class="slide-block">
+                    <img src="{{ asset('bundles/sitemain/frontend/images/slide2.jpg') }}" alt="Slide 2 jFlow Plus" />
+                    <span><p>We Know you enjoy this plugin... it's not too hard to implement, right? </p></span>
+                </div>
+                <div id="slide3" class="slide-block">
+                    <img src="{{ asset('bundles/sitemain/frontend/images/slide3.jpg') }}" alt="Slide 3 jFlow Plus" />
+                <span>
+                    <p>You've completed quiet the journey! All the way from slide 1 to slide 3... congratulations!</p></span>
+                </div>
+            </div>
+
+            <div id="myController">
+                <span class="jFlowControl"></span>
+                <span class="jFlowControl"></span>
+                <span class="jFlowControl"></span>
+            </div>
+            <span class="jFlowPrev"><div></div></span>
+            <span class="jFlowNext"><div></div></span>
+            <div class="the-end-main-main">
+                <div class="the-end-main">
+                    <div class="the-end">
+                        <div class="the-end-title">предстоящий матч</div>
+                        <div class="the-end-date">13 февраля 2015 в 20:00</div>
+                        <div class="the-end-last-block">
+                            <div class="the-end-last-block-1">
+                                <img src="{{ asset('bundles/sitemain/frontend/images/end1.jpg') }}" alt="">
+                                <div class="the-end-last-block-title">Динамо</div>
+                            </div>
+                            <div class="the-end-last-block-2">
+                                8 : 7
+                            </div>
+                            <div class="the-end-last-block-3">
+                                <img src="{{ asset('bundles/sitemain/frontend/images/end2.jpg') }}" alt="">
+                                <div class="the-end-last-block-title">Литекс</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="the-end">
+                        <div class="the-end-title">Прошедший матч</div>
+                        <div class="the-end-date">13 февраля 2015</div>
+                        <div class="the-end-last-block">
+                            <div class="the-end-last-block-1">
+                                <img src="{{ asset('bundles/sitemain/frontend/images/end1.jpg') }}" alt="">
+                                <div class="the-end-last-block-title">Динамо</div>
+                            </div>
+                            <div class="the-end-last-block-2">
+                                8 : 7
+                            </div>
+                            <div class="the-end-last-block-3">
+                                <img src="{{ asset('bundles/sitemain/frontend/images/end2.jpg') }}" alt="">
+                                <div class="the-end-last-block-title">Литекс</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="date">
+                <div class="date-block">
+                    <ul>
+                        <li>
+                            <a href="">1937</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1938</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1940</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1945</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1947</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1950 </a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1937</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1938</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1940</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1945</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1947</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1950</a>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            <a href="">1937 </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+    <div class="content-left-block">
+        <div class="content-slide">
+            <div class="content-slide-block">
+                <img src="{{ asset('bundles/sitemain/frontend/images/news/1.jpg') }}" alt="">
+                <div class="content-slide-block-title">
+                    <a href="">12 января 2015 года<br>
+                        ФК «Россиянка» одержал победу с разгромным счетом<br>
+                        над фк «Динамо»</a>
+                </div>
+            </div>
+            <div class="content-slide-block">
+                <img src="{{ asset('bundles/sitemain/frontend/images/news/1.jpg') }}" alt="">
+                <div class="content-slide-block-title">
+                    <a href="">12 января 2015 года<br>
+                        ФК «Россиянка» одержал победу с разгромным счетом<br>
+                        над фк «Динамо»</a>
+                </div>
+            </div>
+            <div class="content-slide-block">
+                <img src="{{ asset('bundles/sitemain/frontend/images/news/1.jpg') }}" alt="">
+                <div class="content-slide-block-title">
+                    <a href="">12 января 2015 года<br>
+                        ФК «Россиянка» одержал победу с разгромным счетом<br>
+                        над фк «Динамо»</a>
+                </div>
+            </div>
+            <div class="content-slide-block margin-right-0">
+                <img src="{{ asset('bundles/sitemain/frontend/images/news/1.jpg') }}" alt="">
+                <div class="content-slide-block-title">
+                    <a href="">12 января 2015 года<br>
+                        ФК «Россиянка» одержал победу с разгромным счетом<br>
+                        над фк «Динамо»</a>
+                </div>
+            </div>
+        </div>
+        <div id="tabs" class="main-tab">
+            <ul>
+                <li><a href="#tabs-1">события</a></li>
+                <li><a href="#tabs-2">интервью</a></li>
+                <li><a href="#tabs-3">мнения</a></li>
+            </ul>
+            {% for n in news %}
+                <div id="tabs-{{ loop.index }}">
+                    {{ listTab(n) }}
+                </div>
+            {% endfor %}
+            {#<div id="tabs-1">#}
+                {#<div class="tab-articl">#}
+                    {#<div class="tab-articl-img">#}
+                        {#<img src="{{ asset('bundles/sitemain/frontend/images/news/2.jpg') }}" alt="">#}
+                    {#</div>#}
+                    {#<div class="tab-articl-description">#}
+                        {#<a href="#" class="tab-articl-title">12 января 2015 года</a>#}
+                        {#<div class="tab-articl-text">ФК «Россиянка» одержал победу с разгромным#}
+                            {#счетом над фк «Динамо»</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="tab-articl">#}
+                    {#<div class="tab-articl-img">#}
+                        {#<img src="{{ asset('bundles/sitemain/frontend/images/news/2.jpg') }}" alt="">#}
+                    {#</div>#}
+                    {#<div class="tab-articl-description">#}
+                        {#<a href="#" class="tab-articl-title">12 января 2015 года</a>#}
+                        {#<div class="tab-articl-text">ФК «Россиянка» одержал победу с разгромным#}
+                            {#счетом над фк «Динамо»</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="tab-articl">#}
+                    {#<div class="tab-articl-img">#}
+                        {#<img src="{{ asset('bundles/sitemain/frontend/images/news/2.jpg') }}" alt="">#}
+                    {#</div>#}
+                    {#<div class="tab-articl-description">#}
+                        {#<a href="#" class="tab-articl-title">12 января 2015 года</a>#}
+                        {#<div class="tab-articl-text">ФК «Россиянка» одержал победу с разгромным#}
+                            {#счетом над фк «Динамо»</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="tab-articl">#}
+                    {#<div class="tab-articl-img">#}
+                        {#<img src="{{ asset('bundles/sitemain/frontend/images/news/2.jpg') }}" alt="">#}
+                    {#</div>#}
+                    {#<div class="tab-articl-description">#}
+                        {#<a href="#" class="tab-articl-title">12 января 2015 года</a>#}
+                        {#<div class="tab-articl-text">ФК «Россиянка» одержал победу с разгромным#}
+                            {#счетом над фк «Динамо»</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+            {#<div id="tabs-2">#}
+                {#<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>#}
+            {#</div>#}
+            {#<div id="tabs-3">#}
+                {#<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>#}
+                {#<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>#}
+            {#</div>#}
+        </div>
+    </div>
+    <div class="content-right-block">
+    <div class="right-block">
+        <div class="right-block-title">календарь предстоящих событий</div>
+
+        <div id="daily-events-calendar">
+            <div style="font-size:28px; left:84px; top:0px;">
+
+                <a href="/afisha" class="" rel="/afisha/tooltip/2015-02-20" style="color:#7452b9; width:38px; height:39px; background-position:-80px 0;line-height:39px;">20</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:27px; left:149px; top:25px;">
+
+                <a href="/afisha/index/2015-02-21" class="" rel="/afisha/tooltip/2015-02-21" style="width:37px; height:37px; background-position:-146px -25px;line-height:37px;">21</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:26px; left:186px; top:80px;">
+
+                <a href="/afisha/index/2015-02-22" class="" rel="/afisha/tooltip/2015-02-22" style="width:38px; height:37px; background-position:-179px -80px;line-height:37px;">22</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:25px; left:185px; top:143px;">
+
+                <a href="/afisha/index/2015-02-23" class="" rel="/afisha/tooltip/2015-02-23" style="width:36px; height:36px; background-position:-178px -142px;line-height:36px;">23</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:24px; left:151px; top:192px;">
+
+                <a href="/afisha/index/2015-02-24" class="" rel="/afisha/tooltip/2015-02-24" style="width:34px; height:34px; background-position:-146px -185px;line-height:34px;">24</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:23px; left:98px; top:211px;">
+
+                <a href="/afisha/index/2015-02-25" class="" rel="/afisha/tooltip/2015-02-25" style="width:33px; height:33px; background-position:-92px -202px;line-height:33px;">25</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:22px; left:46px; top:198px;">
+
+                <a href="/afisha/index/2015-02-26" class="" rel="/afisha/tooltip/2015-02-26" style="width:33px; height:32px; background-position:-39px -191px;line-height:32px;">26</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:21px; left:14px; top:160px;">
+
+                <a href="/afisha/index/2015-02-27" class="" rel="/afisha/tooltip/2015-02-27" style="width:31px; height:31px; background-position:-6px -153px;line-height:31px;">27</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:20px; left:9px; top:113px;">
+
+                <a href="/afisha/index/2015-02-28" class="" rel="/afisha/tooltip/2015-02-28" style="width:31px; height:30px; background-position:0 -111px;line-height:30px;">28</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:19px; left:30px; top:75px;">
+
+                <a href="/afisha/index/2015-03-01" class="" rel="/afisha/tooltip/2015-03-01" style="width:29px; height:29px; background-position:-23px -75px;line-height:29px;">1</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:18px; left:66px; top:57px;">
+
+                <a href="/afisha/index/2015-03-02" class="" rel="/afisha/tooltip/2015-03-02" style="width:28px; height:28px; background-position:-62px -59px;line-height:28px;">2</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:17px; left:103px; top:63px;">
+
+                <a href="/afisha/index/2015-03-03" class="" rel="/afisha/tooltip/2015-03-03" style="width:27px; height:26px; background-position:-98px -66px;line-height:26px;">3</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:16px; left:127px; top:87px;">
+
+                <a href="/afisha/index/2015-03-04" class="" rel="/afisha/tooltip/2015-03-04" style="width:26px; height:25px; background-position:-125px -90px;line-height:25px;">4</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:15px; left:133px; top:117px;">
+
+                <a href="/afisha/index/2015-03-05" class="" rel="/afisha/tooltip/2015-03-05" style="width:24px; height:25px; background-position:-128px -122px;line-height:25px;">5</a>
+                <span>Информация</span>
+            </div>
+
+            <div style="font-size:14px; left:121px; top:142px;">
+
+                <a href="/afisha/index/2015-03-06" class="" rel="/afisha/tooltip/2015-03-06" style="width:23px; height:23px; background-position:-105px -145px;line-height:23px;">6</a>
+                <span>Информация</span>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+    <div class="right-block">
+        <div class="right-block-title">награды и кубки</div>
+        <div class="kybki">
+            <a href="">
+                <img src="{{ asset('bundles/sitemain/frontend/images/e1.jpg') }}" alt="">
+            </a>
+            <a href="">
+                <img src="{{ asset('bundles/sitemain/frontend/images/s2.jpg') }}" alt="">
+            </a>
+            <a href="">
+                <img src="{{ asset('bundles/sitemain/frontend/images/s3.jpg') }}" alt="">
+            </a>
+            <a href="">
+                <img src="{{ asset('bundles/sitemain/frontend/images/s4.jpg') }}" alt="">
+            </a>
+        </div>
+    </div>
+    <div class="right-block">
+        <div id="tabs2" class="main-tab main-tab2">
+            <ul>
+                <li><a href="#tabs2">чемпионат россии</a></li>
+                <li><a href="#tabs3">чемпионат европы</a></li>
+            </ul>
+            <div id="tabs2">
+                <div class="chempionat">
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">М</div>
+                        <div class="chempionat-td chempionat-td-2">Команда</div>
+                        <div class="chempionat-td chempionat-td-3">И</div>
+                        <div class="chempionat-td chempionat-td-4">О</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">Зенит</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">Зенит</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">Зенит</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">Зенит</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">Зенит</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                </div>
+            </div>
+            <div id="tabs3">
+                <div class="chempionat">
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">М</div>
+                        <div class="chempionat-td chempionat-td-2">Команда</div>
+                        <div class="chempionat-td chempionat-td-3">И</div>
+                        <div class="chempionat-td chempionat-td-4">О</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">ЦСКА</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">ЦСКА</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">ЦСКА</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">ЦСКА</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">ЦСКА</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-block">
+        <div id="tabs3" class="main-tab main-tab2">
+            <ul>
+                <li><a href="#tabs2">основной состав </a></li>
+                <li><a href="#tabs3">молодежная сборная</a></li>
+            </ul>
+            <div id="tabs2">
+                <div class="chempionat">
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">М</div>
+                        <div class="chempionat-td chempionat-td-2">Команда</div>
+                        <div class="chempionat-td chempionat-td-3">И</div>
+                        <div class="chempionat-td chempionat-td-4">О</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">Зенит</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">Зенит</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">Зенит</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">Зенит</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">Зенит</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                </div>
+            </div>
+            <div id="tabs3">
+                <div class="chempionat">
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">М</div>
+                        <div class="chempionat-td chempionat-td-2">Команда</div>
+                        <div class="chempionat-td chempionat-td-3">И</div>
+                        <div class="chempionat-td chempionat-td-4">О</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">ЦСКА</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">ЦСКА</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">ЦСКА</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">ЦСКА</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                    <div class="chempionat-tr">
+                        <div class="chempionat-td chempionat-td-1">1</div>
+                        <div class="chempionat-td chempionat-td-2">ЦСКА</div>
+                        <div class="chempionat-td chempionat-td-3">17</div>
+                        <div class="chempionat-td chempionat-td-4">41</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="clear"></div>
+    </div>
+    <div class="main-moment">
+        <div class="main-moment-title">главный моменты игры с фк «Динамо»</div>
+        <iframe width="595" height="355" src="https://www.youtube.com/embed/8vxD4Hk8XHA" frameborder="0" allowfullscreen></iframe>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script language="javascript">
+        $(document).ready(function(){
+            $("#myController").jFlow({
+                controller: ".jFlowControl", // must be class, use . sign
+                slideWrapper : "#jFlowSlider", // must be id, use # sign
+                slides: "#mySlides",  // the div where all your sliding divs are nested in
+                selectedWrapper: "jFlowSelected",  // just pure text, no sign
+                width: "100%",  // this is the width for the content-slider
+                height: "480px",  // this is the height for the content-slider
+                duration: 400,  // time in miliseconds to transition one slide
+                prev: ".jFlowPrev", // must be class, use . sign
+                next: ".jFlowNext", // must be class, use . sign
+                auto: true
+            });
+        });
+    </script>
+{% endblock %}
