@@ -16,9 +16,9 @@ class SliderType extends AbstractType
     {
         $builder
             ->add('date', null, array(
-                'required' => false,
+                'required' => true,
                 'label' => 'backend.slider.date',
-                'data' => new \DateTime("now")
+                'years' => range(1900, date('Y'))
             ))
             ->add('file', 'file', array(
                 'required' => false,

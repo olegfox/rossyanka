@@ -14,6 +14,11 @@ backend:
         position: Позиция в меню
         parent: Родитель
         not_found: Страница не существует
+        validation:
+            title: Вы не ввели заголовок!
+            position: Вы не ввели позицию!
+            position_integer: Вы некорректно ввели позицию!
+            position_min: Позициия не может быть меньше нуля!
     partners:
         h1_show: Партнер
         h1_list: Список партнеров
@@ -26,6 +31,13 @@ backend:
         position: Порядковый номер
         link: URL Ссылка
         not_found: Партнер не существует
+        validation:
+            name: Вы не ввели название!
+            position: Вы не ввели порядковый номер!
+            position_integer: Вы некорректно ввели порядковый номер!
+            position_min: Порядковый номер не может быть меньше нуля!
+            link: Вы не ввели ссылку!
+            link_not_valid: Вы ввели некорректную ссылку (http:// обязательно)!
     slider:
         h1_show: Слайдер
         h1_list: Список слайдеров
@@ -37,6 +49,8 @@ backend:
         img: Изображение слайдера
         text: Текст слайдера
         not_found: Слайдер не существует
+        validation:
+            date: Вы не ввели дату!
     news:
         h1_show: Новость
         h1_list: Список новостей
@@ -57,6 +71,10 @@ backend:
             events: событие
             interviews: интервью
             opinion: мнение
+        validation:
+            title: Вы не ввели заголовок!
+            date: Вы не ввели дату!
+            type: Вы не выбрали тип новости!
     actions: Действия
     show: показать
     edit: редактировать

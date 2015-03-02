@@ -10,32 +10,18 @@
     <div class="slide">
         <div id="container">
             <div id="mySlides">
-                <div id="slide1" class="slide-block">
-                    <img src="{{ asset('bundles/sitemain/frontend/images/slide1.jpg') }}" alt="Slide 1 jFlow Plus" />
-                <span>
-                    <p>
-                        22 марта 1950 года<br>
-                        фк «Россиянка» стал чемпионом европы, обыграв<br>
-                        ФК «Манчестер-Юнайтед» со счетом 4:5
-                    </p>
-                </span>
-                </div>
-                <div id="slide2" class="slide-block">
-                    <img src="{{ asset('bundles/sitemain/frontend/images/slide2.jpg') }}" alt="Slide 2 jFlow Plus" />
-                    <span><p>We Know you enjoy this plugin... it's not too hard to implement, right? </p></span>
-                </div>
-                <div id="slide3" class="slide-block">
-                    <img src="{{ asset('bundles/sitemain/frontend/images/slide3.jpg') }}" alt="Slide 3 jFlow Plus" />
-                <span>
-                    <p>You've completed quiet the journey! All the way from slide 1 to slide 3... congratulations!</p></span>
-                </div>
+                {% for s in sliders %}
+                    <div id="slide{{ loop.index }}" class="slide-block">
+                        <img src="{{ s.img ? image(s.webPath).zoomCrop(1200, 480) : 'http://placehold.it/1200x480' }}" alt="Slide 1 jFlow Plus" />
+                        <span>
+                            <p>
+                                {{ s.text|nl2br }}
+                            </p>
+                        </span>
+                    </div>
+                {% endfor %}
             </div>
 
-            <div id="myController">
-                <span class="jFlowControl"></span>
-                <span class="jFlowControl"></span>
-                <span class="jFlowControl"></span>
-            </div>
             <span class="jFlowPrev"><div></div></span>
             <span class="jFlowNext"><div></div></span>
             <div class="the-end-main-main">
@@ -76,60 +62,17 @@
                     </div>
                 </div>
             </div>
-            <div class="date">
+            <div id="myController" class="date">
                 <div class="date-block">
                     <ul>
-                        <li>
-                            <a href="">1937</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1938</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1940</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1945</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1947</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1950 </a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1937</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1938</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1940</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1945</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1947</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1950</a>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            <a href="">1937 </a>
-                        </li>
+                        {% for s in sliders %}
+                            <li class="jFlowControl">
+                                <div class="year">{{ s.date|date('Y') }}</div>
+                                {% if loop.last == false %}
+                                    <span>/</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -182,55 +125,6 @@
                     {{ listTab(n) }}
                 </div>
             {% endfor %}
-            {#<div id="tabs-1">#}
-                {#<div class="tab-articl">#}
-                    {#<div class="tab-articl-img">#}
-                        {#<img src="{{ asset('bundles/sitemain/frontend/images/news/2.jpg') }}" alt="">#}
-                    {#</div>#}
-                    {#<div class="tab-articl-description">#}
-                        {#<a href="#" class="tab-articl-title">12 января 2015 года</a>#}
-                        {#<div class="tab-articl-text">ФК «Россиянка» одержал победу с разгромным#}
-                            {#счетом над фк «Динамо»</div>#}
-                    {#</div>#}
-                {#</div>#}
-                {#<div class="tab-articl">#}
-                    {#<div class="tab-articl-img">#}
-                        {#<img src="{{ asset('bundles/sitemain/frontend/images/news/2.jpg') }}" alt="">#}
-                    {#</div>#}
-                    {#<div class="tab-articl-description">#}
-                        {#<a href="#" class="tab-articl-title">12 января 2015 года</a>#}
-                        {#<div class="tab-articl-text">ФК «Россиянка» одержал победу с разгромным#}
-                            {#счетом над фк «Динамо»</div>#}
-                    {#</div>#}
-                {#</div>#}
-                {#<div class="tab-articl">#}
-                    {#<div class="tab-articl-img">#}
-                        {#<img src="{{ asset('bundles/sitemain/frontend/images/news/2.jpg') }}" alt="">#}
-                    {#</div>#}
-                    {#<div class="tab-articl-description">#}
-                        {#<a href="#" class="tab-articl-title">12 января 2015 года</a>#}
-                        {#<div class="tab-articl-text">ФК «Россиянка» одержал победу с разгромным#}
-                            {#счетом над фк «Динамо»</div>#}
-                    {#</div>#}
-                {#</div>#}
-                {#<div class="tab-articl">#}
-                    {#<div class="tab-articl-img">#}
-                        {#<img src="{{ asset('bundles/sitemain/frontend/images/news/2.jpg') }}" alt="">#}
-                    {#</div>#}
-                    {#<div class="tab-articl-description">#}
-                        {#<a href="#" class="tab-articl-title">12 января 2015 года</a>#}
-                        {#<div class="tab-articl-text">ФК «Россиянка» одержал победу с разгромным#}
-                            {#счетом над фк «Динамо»</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-            {#<div id="tabs-2">#}
-                {#<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>#}
-            {#</div>#}
-            {#<div id="tabs-3">#}
-                {#<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>#}
-                {#<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>#}
-            {#</div>#}
         </div>
     </div>
     <div class="content-right-block">

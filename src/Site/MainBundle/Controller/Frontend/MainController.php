@@ -10,6 +10,7 @@ class MainController extends Controller
     {
         $repository_news = $this->getDoctrine()->getRepository('SiteMainBundle:News');
         $repository_page = $this->getDoctrine()->getRepository('SiteMainBundle:Page');
+        $repository_slider = $this->getDoctrine()->getRepository('SiteMainBundle:Slider');
 
         $page = $repository_page->findOneBySlug('glavnaia');
         $news = $repository_news->findAll();
@@ -26,9 +27,12 @@ class MainController extends Controller
             }
         }
 
+        $sliders = $repository_slider->findAll();
+
         return $this->render('SiteMainBundle:Frontend/Main:index.html.twig', array(
             'news' => $newsArray,
-            'page' => $page
+            'page' => $page,
+            'sliders' => $sliders
         ));
     }
 }

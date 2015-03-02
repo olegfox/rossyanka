@@ -28,6 +28,7 @@ class PageType extends AbstractType
                 )
             ))
             ->add('title', 'text', array(
+                'required' => true,
                 'label' => 'backend.page.title'
             ))
             ->add('metaTitle', 'text', array(

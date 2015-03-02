@@ -1,0 +1,59 @@
+# src/Site/Bundle/MainBundle/Resources/config/validation.yml
+Site\MainBundle\Entity\News:
+    properties:
+        title:
+            - NotBlank:
+                message: "backend.news.validation.title"
+            - Length:
+                max: 100
+        date:
+            - NotBlank:
+                message: "backend.news.validation.date"
+        type:
+            - NotBlank:
+                message: "backend.news.validation.type"
+
+Site\MainBundle\Entity\Page:
+    properties:
+        title:
+            - NotBlank:
+                message: "backend.page.validation.title"
+            - Length:
+                max: 100
+        position:
+            - Type:
+                type: integer
+                message: "backend.page.validation.position_integer"
+            - GreaterThan:
+                value: 0
+                message: "backend.page.validation.position_min"
+            - NotBlank:
+                message: "backend.news.validation.position"
+
+Site\MainBundle\Entity\Partners:
+    properties:
+        position:
+            - Type:
+                type: integer
+                message: "backend.partners.validation.position_integer"
+            - GreaterThan:
+                value: 0
+                message: "backend.partners.validation.position_min"
+            - NotBlank:
+                message: "backend.partners.validation.position"
+        name:
+            - NotBlank:
+                message: "backend.partners.validation.name"
+            - Length:
+                max: 100
+        link:
+            - NotBlank:
+                message: "backend.partners.validation.link"
+            - Url:
+                message: "backend.partners.validation.link_not_valid"
+
+Site\MainBundle\Entity\Slider:
+    properties:
+        date:
+            - NotBlank:
+                message: "backend.slider.validation.date"

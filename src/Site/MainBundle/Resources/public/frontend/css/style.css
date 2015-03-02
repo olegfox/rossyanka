@@ -157,7 +157,7 @@ input:focus{
     color: #000;
     overflow: hidden;
 }
-.date-block ul li a{
+.date-block ul li div.year{
     display: block;
     line-height: 50px;
     font-family: Calibri-Regular;
@@ -166,13 +166,16 @@ input:focus{
     color: #000;
     text-decoration: none;
     float: left;
+    cursor: pointer;
 }
 .date-block ul li span{
     display: block;
     float: left;
     padding: 0 20px;
 }
-.date-block ul li:hover a{
+.date-block ul li:hover div.year,
+.date-block ul li.jFlowSelected div.year
+{
     color: #f00;
 }
 .content{
