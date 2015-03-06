@@ -8,12 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Site\MainBundle\Entity\Slider
+ * Site\MainBundle\Entity\Team
  *
- * @ORM\Table(name="slider")
- * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\SliderRepository")
+ * @ORM\Table(name="team")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\TeamRepository")
  */
-class Slider
+class Team
 {
     /**
      * @ORM\Id
@@ -23,14 +23,23 @@ class Slider
     private $id;
 
     /**
-     * @ORM\Column(type="date", nullable=false)
+     * Название команды
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
-    private $date;
+    private $name;
 
     /**
+     * Герб команды
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $img;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Event", inversedBy="teams")
+     **/
+    private $event;
 
     /**
      * @Assert\File()
@@ -38,9 +47,9 @@ class Slider
     private $file;
 
     /**
-     * @ORM\Column(type="string", length=500,  nullable=true)
-     */
-    private $text;
+     * @ORM\ManyToMany(targetEntity="Player", inversedBy="teams")
+     **/
+    private $players;
 
     public function getAbsolutePath()
     {
@@ -63,7 +72,7 @@ class Slider
 
     protected function getUploadDir()
     {
-        return 'uploads/partners';
+        return 'uploads/team';
     }
 
     /**
@@ -122,33 +131,33 @@ class Slider
     }
 
     /**
-     * Set date
+     * Set name
      *
-     * @param \DateTime $date
-     * @return Slider
+     * @param string $name
+     * @return Team
      */
-    public function setDate($date)
+    public function setName($name)
     {
-        $this->date = $date;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get name
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getDate()
+    public function getName()
     {
-        return $this->date;
+        return $this->name;
     }
 
     /**
      * Set img
      *
      * @param string $img
-     * @return Slider
+     * @return Team
      */
     public function setImg($img)
     {
@@ -166,27 +175,49 @@ class Slider
     {
         return $this->img;
     }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set text
+     * Add players
      *
-     * @param string $text
-     * @return Slider
+     * @param \Site\MainBundle\Entity\Player $players
+     * @return Team
      */
-    public function setText($text)
+    public function addPlayer(\Site\MainBundle\Entity\Player $players)
     {
-        $this->text = $text;
+        $this->players[] = $players;
 
         return $this;
     }
 
     /**
-     * Get text
+     * Remove players
      *
-     * @return string 
+     * @param \Site\MainBundle\Entity\Player $players
      */
-    public function getText()
+    public function removePlayer(\Site\MainBundle\Entity\Player $players)
     {
-        return $this->text;
+        $this->players->removeElement($players);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+
+    public function __toString(){
+        return $this->name;
     }
 }

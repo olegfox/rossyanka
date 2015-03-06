@@ -1,7 +1,7 @@
 {% extends 'SiteMainBundle:Backend:layout.html.twig' %}
 
 {% block content -%}
-    <h1>{{ 'backend.page.h1_edit'|trans({}, 'menu') }}</h1>
+    <h1>{{ 'backend.player.h1_edit'|trans({}, 'menu') }}</h1>
 
     {{ form(delete_form) }}
 
@@ -9,8 +9,8 @@
 
     <ul class="record_actions nav nav-pills">
         <li>
-            <a href="{{ path('backend_page_index') }}">
-                {{ 'backend.page.back_to_list'|trans({}, 'menu') }}
+            <a href="{{ path('backend_player_index') }}">
+                {{ 'backend.player.back_to_list'|trans({}, 'menu') }}
             </a>
         </li>
     </ul>

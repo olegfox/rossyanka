@@ -3,7 +3,7 @@
 {% block content -%}
     <h1>{{ 'backend.partners.h1_create'|trans({}, 'menu') }}</h1>
 
-    {{ form(form, { 'style': 'horizontal' }) }}
+    {{ form(form, { 'style': 'horizontal', attr: {novalidate: 'novalidate'} }) }}
 
     <ul class="record_actions nav nav-pills">
         <li>

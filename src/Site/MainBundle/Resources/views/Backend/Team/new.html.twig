@@ -1,14 +1,14 @@
 {% extends 'SiteMainBundle:Backend:layout.html.twig' %}
 
 {% block content -%}
-    <h1>{{ 'backend.slider.h1_create'|trans({}, 'menu') }}</h1>
+    <h1>{{ 'backend.team.h1_create'|trans({}, 'menu') }}</h1>
 
     {{ form(form, { 'style': 'horizontal', attr: {novalidate: 'novalidate'} }) }}
 
     <ul class="record_actions nav nav-pills">
         <li>
-            <a href="{{ path('backend_slider_index') }}">
-                {{ 'backend.slider.back_to_list'|trans({}, 'menu') }}
+            <a href="{{ path('backend_team_index') }}">
+                {{ 'backend.team.back_to_list'|trans({}, 'menu') }}
             </a>
         </li>
     </ul>

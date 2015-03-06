@@ -1,0 +1,30 @@
+backend_team_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Team:index" }
+
+backend_team_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Team:show" }
+
+backend_team_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Team:new" }
+
+backend_team_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Team:create" }
+    methods:  POST
+
+backend_team_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Team:edit" }
+
+backend_team_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Team:update" }
+    methods:  [POST, PUT]
+
+backend_team_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Team:delete" }
+    methods:  [POST, DELETE]

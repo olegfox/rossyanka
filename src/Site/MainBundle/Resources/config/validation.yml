@@ -37,7 +37,7 @@ Site\MainBundle\Entity\Partners:
                 type: integer
                 message: "backend.partners.validation.position_integer"
             - GreaterThan:
-                value: 0
+                value: -1
                 message: "backend.partners.validation.position_min"
             - NotBlank:
                 message: "backend.partners.validation.position"
@@ -57,3 +57,39 @@ Site\MainBundle\Entity\Slider:
         date:
             - NotBlank:
                 message: "backend.slider.validation.date"
+
+
+Site\MainBundle\Entity\Event:
+    properties:
+        name:
+            - NotBlank:
+                message: "backend.event.validation.name"
+        datetime:
+            - NotBlank:
+                message: "backend.event.validation.datetime"
+        numberGoals:
+            - Type:
+                type: integer
+                message: "backend.event.validation.number_goals_integer"
+            - GreaterThan:
+                value: -1
+                message: "backend.event.validation.number_goals_min"
+        numberYellowCards:
+            - Type:
+                type: integer
+                message: "backend.event.validation.number_yellow_cards_integer"
+            - GreaterThan:
+                value: -1
+                message: "backend.event.validation.number_yellow_cards_min"
+
+Site\MainBundle\Entity\Team:
+    properties:
+        name:
+            - NotBlank:
+                message: "backend.team.validation.name"
+
+Site\MainBundle\Entity\Player:
+    properties:
+        firstname:
+            - NotBlank:
+                message: "backend.player.validation.firstname"

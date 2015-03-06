@@ -1,0 +1,50 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.event.h1_show'|trans({}, 'menu') }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.event.name'|trans({}, 'menu') }}</th>
+            <td>{{ entity.getNameText()|trans({}, 'menu') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.event.datetime'|trans({}, 'menu') }}</th>
+            <td>{{ entity.datetime|date('d.m.Y H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.event.score'|trans({}, 'menu') }}</th>
+            <td>{{ entity.score }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.event.number_goals'|trans({}, 'menu') }}</th>
+            <td>{{ entity.numberGoals }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.event.number_yellow_cards'|trans({}, 'menu') }}</th>
+            <td>{{ entity.numberYellowCards }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_event_index') }}">
+                {{ 'backend.event.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_event_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_event_new') }}">
+                {{ 'backend.create'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

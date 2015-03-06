@@ -1,0 +1,50 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.player.h1_show'|trans({}, 'menu') }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.player.firstname'|trans({}, 'menu') }}</th>
+            <td>{{ entity.firstname }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.secondname'|trans({}, 'menu') }}</th>
+            <td>{{ entity.secondname }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.img'|trans({}, 'menu') }}</th>
+            <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ entity.firstname }}" width="150px"/></a></td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.birthday'|trans({}, 'menu') }}</th>
+            <td>{{ entity.birthday|date('d.m.Y') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.status'|trans({}, 'menu') }}</th>
+            <td>{{ entity.getStatusText()|trans({}, 'menu') }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_player_index') }}">
+                {{ 'backend.player.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_player_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_player_new') }}">
+                {{ 'backend.create'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+backend_player_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Player:index" }
+
+backend_player_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Player:show" }
+
+backend_player_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Player:new" }
+
+backend_player_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Player:create" }
+    methods:  POST
+
+backend_player_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Player:edit" }
+
+backend_player_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Player:update" }
+    methods:  [POST, PUT]
+
+backend_player_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Player:delete" }
+    methods:  [POST, DELETE]

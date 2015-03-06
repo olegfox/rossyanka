@@ -75,6 +75,65 @@ backend:
             title: Вы не ввели заголовок!
             date: Вы не ввели дату!
             type: Вы не выбрали тип новости!
+    event:
+        h1_show: Событие
+        h1_list: Список событий
+        h1_edit: Редактирование события
+        h1_create: Создание события
+        back_to_list: Назад к списку событий
+        empty_list: Нет событий
+        name: Турнир
+        datetime: Дата и время
+        score: Счет
+        number_goals: Количество голов
+        number_yellow_cards: Количество жёлтых карточек
+        teams: Команды
+        not_found: Событие не существует
+        name_choice:
+            championship: чемпионат
+            cup: кубок
+            europa_league: лига европы
+            youth_championship: молодежное первенство
+        validation:
+            name: Вы не выбрали турнир!
+            datetime: Вы не ввели дату и время!
+            number_goals_integer: Вы некорректно ввели количество голов!
+            number_goals_min: Количество голов не может быть меньше нуля!
+            number_yellow_cards_integer: Вы некорректно ввели количество жёлтых карточек!
+            number_yellow_cards_min: Количество жёлтых карточек не может быть меньше нуля!
+    team:
+        h1_show: Команда
+        h1_list: Список команд
+        h1_edit: Редактирование команды
+        h1_create: Создание команды
+        back_to_list: Назад к списку команд
+        empty_list: Нет команд
+        name: Название команды
+        img: Герб команды
+        event: Команды
+        players: Игроки
+        not_found: Команды не существует
+        validation:
+            name: Вы не выбрали название команды!
+    player:
+        h1_show: Игрок
+        h1_list: Список игроков
+        h1_edit: Редактирование игрока
+        h1_create: Создание игрока
+        back_to_list: Назад к списку игроков
+        empty_list: Нет игроков
+        firstname: Имя
+        secondname: Фамилия
+        img: Фото
+        birthday: День рождения
+        status: Статус
+        not_found: Игрока не существует
+        status_choice:
+            main: основной
+            yorth: молодёжн.
+            archive: архив
+        validation:
+            firstname: Вы не ввели имя!
     actions: Действия
     show: показать
     edit: редактировать

@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Page
  *
  * @ORM\Table(name="Page", indexes={@ORM\Index(name="fk_Page_Page_idx", columns={"parent"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\PageRepository")
  */
 class Page
 {
@@ -80,7 +80,7 @@ class Page
 
     /**
      * @var integer
-     *
+     * @Gedmo\SortablePosition
      * @ORM\Column(name="position", type="integer", nullable=true)
      */
     private $position = 0;
@@ -283,5 +283,45 @@ class Page
     public function getSlug()
     {
         return $this->slug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add children
+     *
+     * @param \Site\MainBundle\Entity\Page $children
+     * @return Page
+     */
+    public function addChild(\Site\MainBundle\Entity\Page $children)
+    {
+        $this->children[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \Site\MainBundle\Entity\Page $children
+     */
+    public function removeChild(\Site\MainBundle\Entity\Page $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
     }
 }

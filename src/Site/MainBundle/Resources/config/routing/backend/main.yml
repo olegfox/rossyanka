@@ -17,3 +17,15 @@ backend_slider:
 backend_news:
     resource: "@SiteMainBundle/Resources/config/routing/backend/news.yml"
     prefix: /news
+
+backend_event:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/event.yml"
+    prefix: /event
+
+backend_team:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/team.yml"
+    prefix: /team
+
+backend_player:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/player.yml"
+    prefix: /player

@@ -5,7 +5,7 @@
 
     {{ form(delete_form) }}
 
-    {{ form(edit_form, { 'style': 'horizontal' }) }}
+    {{ form(edit_form, { 'style': 'horizontal', attr: {novalidate: 'novalidate'} }) }}
 
     <ul class="record_actions nav nav-pills">
         <li>

@@ -1,0 +1,30 @@
+backend_event_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Event:index" }
+
+backend_event_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Event:show" }
+
+backend_event_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Event:new" }
+
+backend_event_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Event:create" }
+    methods:  POST
+
+backend_event_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Event:edit" }
+
+backend_event_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Event:update" }
+    methods:  [POST, PUT]
+
+backend_event_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Event:delete" }
+    methods:  [POST, DELETE]

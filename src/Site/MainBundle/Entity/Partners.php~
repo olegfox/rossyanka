@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * Site\MainBundle\Entity\Partners
  *
  * @ORM\Table(name="partners")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\PartnersRepository")
  */
 class Partners
 {
@@ -23,7 +23,7 @@ class Partners
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=false)
      */
     private $name;
 
@@ -44,7 +44,7 @@ class Partners
     private $position = 0;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", nullable=false)
      */
     private $link;
 
@@ -64,12 +64,12 @@ class Partners
 
     protected function getUploadRootDir()
     {
-        return __DIR__.'/../../../../../uploads/'.$this->getUploadDir();
+        return __DIR__.'/../../../../../'.$this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
-        return 'partners';
+        return 'uploads/partners';
     }
 
     /**
@@ -80,6 +80,8 @@ class Partners
     public function setFile(UploadedFile $file = null)
     {
         $this->file = $file;
+
+        $this->upload();
     }
 
     /**
@@ -99,7 +101,9 @@ class Partners
         }
 
         if (isset($this->img)) {
-            unlink($this->getUploadDir().'/'.$this->img);
+            if(file_exists($this->getUploadDir().'/'.$this->img)){
+                unlink($this->getUploadDir().'/'.$this->img);
+            }
             $this->img = null;
         }
 
@@ -113,4 +117,106 @@ class Partners
         $this->file = null;
     }
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Partners
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set img
+     *
+     * @param string $img
+     * @return Partners
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * Get img
+     *
+     * @return string 
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Partners
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     * @return Partners
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string 
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
 }
