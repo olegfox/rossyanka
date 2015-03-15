@@ -272,6 +272,24 @@ class News
         }
     }
 
+    public function getTypeUrl()
+    {
+        switch($this->type){
+            case 0: {
+                return 'events';
+            }break;
+            case 1: {
+                return 'interviews';
+            }break;
+            case 2: {
+                return 'opinion';
+            }break;
+            default: {
+                return 'events';
+            }break;
+        }
+    }
+
     /**
      * Set metaTitle
      *

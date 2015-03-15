@@ -93,3 +93,26 @@ Site\MainBundle\Entity\Player:
         firstname:
             - NotBlank:
                 message: "backend.player.validation.firstname"
+            - Length:
+                max: 50
+        secondname:
+            - Length:
+                max: 50
+        birthPlace:
+            - Length:
+                max: 100
+        nationality:
+            - Length:
+                max: 50
+        amplua:
+            - Length:
+                max: 50
+        height:
+            - Length:
+                max: 50
+        weight:
+            - Length:
+                max: 50
+        firstCoach:
+            - Length:
+                max: 50

@@ -1,0 +1,15 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
+
+{% block title %}{{ 'frontend.news.title'|trans({}, 'menu') }} | {{ ('frontend.news.type.'~app.request.get('type'))|trans({}, 'menu') }}{% endblock %}
+
+{% block content %}
+    <div class="wrap_content">
+        <div class="content">
+            <div class="news_list">
+                {{ listTab(news) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

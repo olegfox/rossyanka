@@ -15,7 +15,7 @@
             <div class="header-block">
                 <div class="logo">
                     <a href="{{ path('frontend_homepage') }}">
-                        <img src="{{ asset('bundles/sitemain/frontend/images/logo.jpg') }}" alt="">
+                        <img src="{{ asset('bundles/sitemain/frontend/images/logo.png') }}" alt="">
                     </a>
                 </div>
                 <div class="main-menu">
@@ -29,25 +29,28 @@
                     </div>
                     <div class="soc-icons">
                         <ul>
-                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/twitter.jpg') }}" alt=""></a></li>
-                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/vk.jpg') }}" alt=""></a></li>
-                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/facebook.jpg') }}" alt=""></a></li>
-                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/wife.jpg') }}" alt=""></a></li>
-                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/od.jpg') }}" alt=""></a></li>
+                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/twitter.png') }}" alt=""></a></li>
+                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/vk.png') }}" alt=""></a></li>
+                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/facebook.png') }}" alt=""></a></li>
+                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/wife.png') }}" alt=""></a></li>
+                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/od.png') }}" alt=""></a></li>
                         </ul>
                     </div>
                 </div>
-            </div>
-            {% if children is defined %}
-                {% if children|length > 0 %}
-                    <div class="bottom-header">
-                        <div class="bottom-header-block">
-                            {% set subMenu = knp_menu_get('SiteMainBundle:FrontendMenuBuilder:subMenu', [], {'children': children} ) %}
-                            {{ knp_menu_render(subMenu) }}
-                        </div>
-                    </div>
+                {% if app.request.get('_route') != 'frontend_homepage' %}
+                    <div class="border"></div>
                 {% endif %}
-            {% endif %}
+            </div>
+            {#{% if children is defined %}#}
+                {#{% if children|length > 0 %}#}
+                    {#<div class="bottom-header">#}
+                        {#<div class="bottom-header-block">#}
+                            {#{% set subMenu = knp_menu_get('SiteMainBundle:FrontendMenuBuilder:subMenu', [], {'children': children} ) %}#}
+                            {#{{ knp_menu_render(subMenu) }}#}
+                        {#</div>#}
+                    {#</div>#}
+                {#{% endif %}#}
+            {#{% endif %}#}
         </div>
         {% block content %}
         {% endblock %}

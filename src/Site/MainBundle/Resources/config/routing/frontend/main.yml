@@ -6,5 +6,9 @@ frontend_partners:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/partners.yml"
     prefix: /partners
 
+frontend_news:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/news.yml"
+    prefix: /novosti
+
 frontend_page:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"

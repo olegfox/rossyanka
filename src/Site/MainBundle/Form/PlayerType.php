@@ -23,6 +23,10 @@ class PlayerType extends AbstractType
                 'required' => false,
                 'label' => 'backend.player.secondname'
             ))
+            ->add('patronymic', null, array(
+                'required' => false,
+                'label' => 'backend.player.patronymic'
+            ))
             ->add('file', 'file', array(
                 'required' => false,
                 'label' => 'backend.player.img'
@@ -32,6 +36,70 @@ class PlayerType extends AbstractType
                 'label' => 'backend.player.birthday',
                 'data' => new \DateTime("now"),
                 'years' => range(1900, date('Y'))
+            ))
+            ->add('birthPlace', null, array(
+                'required' => false,
+                'label' => 'backend.player.birth_place'
+            ))
+            ->add('nationality', null, array(
+                'required' => false,
+                'label' => 'backend.player.nationality'
+            ))
+            ->add('amplua', null, array(
+                'required' => false,
+                'label' => 'backend.player.amplua'
+            ))
+            ->add('height', null, array(
+                'required' => false,
+                'label' => 'backend.player.height'
+            ))
+            ->add('weight', null, array(
+                'required' => false,
+                'label' => 'backend.player.weight'
+            ))
+            ->add('firstCoach', null, array(
+                'required' => false,
+                'label' => 'backend.player.firstCoach'
+            ))
+            ->add('progress', null, array(
+                'required' => false,
+                'label' => 'backend.player.progress'
+            ))
+            ->add('title', null, array(
+                'required' => false,
+                'label' => 'backend.player.title'
+            ))
+            ->add('previousTeams', null, array(
+                'required' => false,
+                'label' => 'backend.player.previous_teams'
+            ))
+            ->add('favoritePlace', null, array(
+                'required' => false,
+                'label' => 'backend.player.favorite_place'
+            ))
+            ->add('favoriteDish', null, array(
+                'required' => false,
+                'label' => 'backend.player.favorite_dish'
+            ))
+            ->add('favoriteMusic', null, array(
+                'required' => false,
+                'label' => 'backend.player.favorite_music'
+            ))
+            ->add('favoriteBook', null, array(
+                'required' => false,
+                'label' => 'backend.player.favorite_book'
+            ))
+            ->add('anySport', null, array(
+                'required' => false,
+                'label' => 'backend.player.any_sport'
+            ))
+            ->add('hobby', null, array(
+                'required' => false,
+                'label' => 'backend.player.hobby'
+            ))
+            ->add('favoritePhrase', null, array(
+                'required' => false,
+                'label' => 'backend.player.favorite_phrase'
             ))
             ->add('status', 'choice', array(
                 'required' => true,

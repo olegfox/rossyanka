@@ -124,14 +124,31 @@ backend:
         empty_list: Нет игроков
         firstname: Имя
         secondname: Фамилия
+        patronymic: Отчество
         img: Фото
         birthday: День рождения
+        birth_place: Место Рождения
+        nationality: Гражданство
+        amplua: Амплуа
+        height: Рост
+        weight: Вес
+        firstCoach: Первый тренер
+        progress: Достижения
+        title: Звания
+        previous_teams: Предыдущие команды
+        favorite_place: Любимое место
+        favorite_dish: Любимое блюдо
+        favorite_music: Любимая музыка
+        favorite_book: Любимая книга
+        any_sport: Если бы не футбол, то что?
+        hobby: Чем занимаетесь в свободное время
+        favorite_phrase: Любимая фраза
         status: Статус
         not_found: Игрока не существует
         status_choice:
-            main: основной
-            yorth: молодёжн.
-            archive: архив
+            main: основной состав
+            yorth: молодёжная сборная
+            archive: в архиве
         validation:
             firstname: Вы не ввели имя!
     actions: Действия
@@ -144,3 +161,9 @@ backend:
 frontend:
     partners:
         title: Партнеры
+    news:
+        title: Новости
+        type:
+            events: События
+            interviews: Интервью
+            opinion: Мнения

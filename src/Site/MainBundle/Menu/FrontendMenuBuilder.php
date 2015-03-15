@@ -22,36 +22,51 @@ class FrontendMenuBuilder extends ContainerAware
         $menu = $factory->createItem('root');
 
         foreach ($menus as $m) {
+
             if ($m->getSlug() == 'glavnaia') {
+
 //                $menu->addChild($m->getTitle(), array(
 //                    'route' => 'frontend_homepage'
 //                ));
-            }else{
-                $menu->addChild($m->getTitle(), array(
+
+            } elseif ($m->getSlug() == 'novosti') {
+
+                $newsMenu = $menu->addChild($m->getTitle(), array(
+                    'route' => 'frontend_news_index',
+                    'routeParameters' => array('type' => 'events')
+                ));
+
+//              Подменю
+                $newsMenu->addChild('события', array(
+                    'route' => 'frontend_news_index',
+                    'routeParameters' => array('type' => 'events')
+                ));
+                $newsMenu->addChild('интервью', array(
+                    'route' => 'frontend_news_index',
+                    'routeParameters' => array('type' => 'interviews')
+                ));
+                $newsMenu->addChild('мнения', array(
+                    'route' => 'frontend_news_index',
+                    'routeParameters' => array('type' => 'opinion')
+                ));
+
+            } else {
+
+                $mainMenu = $menu->addChild($m->getTitle(), array(
                     'route' => 'frontend_page',
                     'routeParameters' => array('slug' => $m->getSlug())
                 ));
+
+//              Подменю
+                foreach ($m->getChildren() as $c) {
+                    $mainMenu->addChild($c->getTitle(), array(
+                        'route' => 'frontend_page_child',
+                        'routeParameters' => array('parent' => $c->getParent()->getSlug(), 'slug' => $c->getSlug())
+                    ));
+                }
+
             }
-        }
 
-        $menu->setCurrent($this->container->get('request')->getRequestUri());
-
-        return $menu;
-    }
-
-    public function subMenu(FactoryInterface $factory, array $options)
-    {
-        $request = $this->container->get('request');
-
-        $routeName = $request->get('_route');
-
-        $menu = $factory->createItem('root');
-
-        foreach ($options['children'] as $m) {
-            $menu->addChild($m->getTitle(), array(
-                'route' => 'frontend_page_child',
-                'routeParameters' => array('parent' => $m->getParent()->getSlug(), 'slug' => $m->getSlug())
-            ));
         }
 
         $menu->setCurrent($this->container->get('request')->getRequestUri());

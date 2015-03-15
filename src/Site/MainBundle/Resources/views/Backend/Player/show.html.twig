@@ -16,12 +16,80 @@
             <td>{{ entity.secondname }}</td>
         </tr>
         <tr>
+            <th>{{ 'backend.player.patronymic'|trans({}, 'menu') }}</th>
+            <td>{{ entity.patronymic }}</td>
+        </tr>
+        <tr>
             <th>{{ 'backend.player.img'|trans({}, 'menu') }}</th>
             <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ entity.firstname }}" width="150px"/></a></td>
         </tr>
         <tr>
             <th>{{ 'backend.player.birthday'|trans({}, 'menu') }}</th>
             <td>{{ entity.birthday|date('d.m.Y') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.birth_place'|trans({}, 'menu') }}</th>
+            <td>{{ entity.birthPlace }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.nationality'|trans({}, 'menu') }}</th>
+            <td>{{ entity.nationality }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.amplua'|trans({}, 'menu') }}</th>
+            <td>{{ entity.amplua }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.height'|trans({}, 'menu') }}</th>
+            <td>{{ entity.height }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.weight'|trans({}, 'menu') }}</th>
+            <td>{{ entity.weight }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.firstCoach'|trans({}, 'menu') }}</th>
+            <td>{{ entity.firstCoach }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.progress'|trans({}, 'menu') }}</th>
+            <td>{{ entity.progress }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.title'|trans({}, 'menu') }}</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.previous_teams'|trans({}, 'menu') }}</th>
+            <td>{{ entity.previousTeams }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.favorite_place'|trans({}, 'menu') }}</th>
+            <td>{{ entity.favoritePlace }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.favorite_dish'|trans({}, 'menu') }}</th>
+            <td>{{ entity.favoriteDish }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.favorite_music'|trans({}, 'menu') }}</th>
+            <td>{{ entity.favoriteMusic }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.favorite_book'|trans({}, 'menu') }}</th>
+            <td>{{ entity.favoriteBook }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.any_sport'|trans({}, 'menu') }}</th>
+            <td>{{ entity.anySport }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.hobby'|trans({}, 'menu') }}</th>
+            <td>{{ entity.hobby }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.player.favorite_phrase'|trans({}, 'menu') }}</th>
+            <td>{{ entity.favoritePhrase }}</td>
         </tr>
         <tr>
             <th>{{ 'backend.player.status'|trans({}, 'menu') }}</th>

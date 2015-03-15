@@ -17,19 +17,8 @@ class PageController extends Controller
         }
 
         $params = array(
-            'page' => $page,
-            'children' => $page->getChildren()
+            'page' => $page
         );
-
-        if(!is_null($parent)){
-            $parent = $repository->findOneBySlug($parent);
-
-            if(!$parent){
-                throw $this->createNotFoundException($this->get('translator')->trans('backend.page.not_found'));
-            }
-
-            $params['children'] = $parent->getChildren();
-        }
 
         return $this->render('SiteMainBundle:Frontend/Page:index.html.twig', $params);
     }
