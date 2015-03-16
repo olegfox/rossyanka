@@ -37,6 +37,12 @@ class Team
     private $img;
 
     /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128)
+     */
+    private $slug;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Event", inversedBy="teams")
      **/
     private $event;
@@ -252,5 +258,28 @@ class Team
     public function getEvent()
     {
         return $this->event;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Team
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

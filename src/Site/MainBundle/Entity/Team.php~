@@ -37,6 +37,12 @@ class Team
     private $img;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Event", inversedBy="teams")
      **/
     private $event;
@@ -219,5 +225,38 @@ class Team
 
     public function __toString(){
         return $this->name;
+    }
+
+    /**
+     * Add event
+     *
+     * @param \Site\MainBundle\Entity\Event $event
+     * @return Team
+     */
+    public function addEvent(\Site\MainBundle\Entity\Event $event)
+    {
+        $this->event[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param \Site\MainBundle\Entity\Event $event
+     */
+    public function removeEvent(\Site\MainBundle\Entity\Event $event)
+    {
+        $this->event->removeElement($event);
+    }
+
+    /**
+     * Get event
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvent()
+    {
+        return $this->event;
     }
 }

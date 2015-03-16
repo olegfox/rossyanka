@@ -1,12 +1,17 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
+{% from 'SiteMainBundle:Frontend/Player:macros.html.twig' import listPlayers %}
+
 {% block title %}{{ page.title }}{% endblock %}
 {% block meta_description %}{{ page.metaDescription }}{% endblock %}
 {% block meta_keywords %}{{ page.metaKeywords }}{% endblock %}
 
 {% block content %}
     <div class="wrap_content">
-        <div class="content">
+        <div class="content {% if page.parent.id is defined %}content-top{% endif %}">
+            {% if team is defined %}
+                {{  listPlayers(team.players) }}
+            {% endif %}
             {{ page.text|raw }}
         </div>
     </div>

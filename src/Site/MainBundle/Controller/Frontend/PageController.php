@@ -20,6 +20,17 @@ class PageController extends Controller
             'page' => $page
         );
 
+        if($slug == 'osnovnoi-sostav'){
+            $repository_team = $this->getDoctrine()->getRepository('SiteMainBundle:Team');
+            $team = $repository_team->findOneByName('Россиянка');
+
+            if($team){
+                $params = array_merge($params, array(
+                    'team' => $team
+                ));
+            }
+        }
+
         return $this->render('SiteMainBundle:Frontend/Page:index.html.twig', $params);
     }
 }

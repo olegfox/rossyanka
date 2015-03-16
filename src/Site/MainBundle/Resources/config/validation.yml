@@ -25,10 +25,10 @@ Site\MainBundle\Entity\Page:
                 type: integer
                 message: "backend.page.validation.position_integer"
             - GreaterThan:
-                value: 0
+                value: -1
                 message: "backend.page.validation.position_min"
             - NotBlank:
-                message: "backend.news.validation.position"
+                message: "backend.page.validation.position"
 
 Site\MainBundle\Entity\Partners:
     properties:

@@ -238,6 +238,9 @@ input:focus{
     margin: 0 auto;
     background: #fff;
 }
+.content-top{
+    padding-top: 72px;
+}
 .content p{
     margin-top: 0px;
     margin-bottom: 0px;
@@ -826,3 +829,49 @@ img, a{
     margin-top: -344px;
     clear: both;
 }
+
+/* Player */
+.table-player{
+    width: 100%;
+    margin-bottom: 30px;
+    border: 1px solid #c2c2c2;
+}
+.table-player table{
+    margin-bottom: 0px;
+    border: 0;
+}
+.table-player table td{
+    width: 50%;
+    padding: 5px;
+}
+.table-player table th{
+    border-bottom: 1px solid #c2c2c2;
+}
+.table-player table th.last{
+    border: 0;
+}
+.table-player > thead > tr > th,
+.table-player > tbody > tr > th,
+.table-player > tfoot > tr > th,
+.table-player > thead > tr > td,
+.table-player > tbody > tr > td,
+.table-player > tfoot > tr > td{
+
+}
+.table-player th{
+    font-family: Calibri-Regular;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 5px;
+}
+.table-player td{
+    font-family: Calibri-Regular;
+    font-size: 16px;
+    vertical-align: top;
+    text-align: left;
+}
+.table-player td.img{
+    width: 230px;
+}
+/* end Player */
