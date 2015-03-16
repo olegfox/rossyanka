@@ -1,0 +1,7 @@
+frontend_event_index:
+    path:     /{type}
+    defaults: { _controller: "SiteMainBundle:Frontend/Event:index", subtype: null }
+
+frontend_event_sub_index:
+    path:     /{type}/{subtype}
+    defaults: { _controller: "SiteMainBundle:Frontend/Event:index" }

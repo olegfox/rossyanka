@@ -110,6 +110,12 @@ backend:
         back_to_list: Назад к списку команд
         empty_list: Нет команд
         name: Название команды
+        games: Игры
+        wins: Победы
+        standoff: Ничья
+        defeat: Поряжения
+        balls: Мячи
+        points: Очки
         img: Герб команды
         event: Команды
         players: Игроки

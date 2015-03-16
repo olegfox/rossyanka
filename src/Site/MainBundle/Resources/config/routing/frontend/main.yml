@@ -10,5 +10,9 @@ frontend_news:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/news.yml"
     prefix: /novosti
 
+frontend_event:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/event.yml"
+    prefix: /turniry
+
 frontend_page:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"

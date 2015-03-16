@@ -15,6 +15,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class Event
 {
+
+    const NAME_CHAMPIONSHIP = 0;
+    const NAME_CUP = 1;
+    const NAME_EUROPA_LEAGUE = 2;
+    const NAME_YOUTH_CHAMPIONSHIP = 3;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

@@ -23,6 +23,30 @@ class TeamType extends AbstractType
                 'required' => false,
                 'label' => 'backend.team.img'
             ))
+            ->add('games', null, array(
+                'required' => false,
+                'label' => 'backend.team.games'
+            ))
+            ->add('wins', null, array(
+                'required' => false,
+                'label' => 'backend.team.wins'
+            ))
+            ->add('standoff', null, array(
+                'required' => false,
+                'label' => 'backend.team.standoff'
+            ))
+            ->add('defeat', null, array(
+                'required' => false,
+                'label' => 'backend.team.defeat'
+            ))
+            ->add('balls', null, array(
+                'required' => false,
+                'label' => 'backend.team.balls'
+            ))
+            ->add('points', null, array(
+                'required' => false,
+                'label' => 'backend.team.points'
+            ))
 //            ->add('event', 'entity', array(
 //                'label'=>'backend.team.event',
 //                'class'=>'SiteMainBundle:Event',

@@ -35,6 +35,14 @@ h1{
     margin: 0;
     padding: 17px 0px;
 }
+h2{
+    font-family: Calibri-Regular;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 17px;
+    margin: 0;
+    padding: 17px 0px;
+}
 .hide{
     display: none;
 }
@@ -73,21 +81,20 @@ ul{
     height: 45px;
     margin: 68px 0 0 0;
 }
-.main-menu ul{
-    overflow: hidden;
+.main-menu > ul{
     height: 45px;
 }
-.main-menu ul li{
+.main-menu > ul li{
     float: left;
     margin: 0 0 0 35px;
     height: 45px;
 }
-.main-menu ul li:hover a,
-.main-menu ul li.current a,
-.main-menu ul li.current_ancestor a{
+.main-menu > ul > li:hover a,
+.main-menu > ul > li.current a,
+.main-menu > ul > li.current_ancestor a{
     color: #fd131c;
 }
-.main-menu ul li a{
+.main-menu > ul > li a{
     font-family: Calibri-Regular;
     font-weight: bold;
     font-size: 16px;
@@ -95,7 +102,7 @@ ul{
     text-decoration: none;
     text-transform: uppercase;
 }
-.main-menu ul li ul{
+.main-menu > ul > li > ul{
     display: none;
     position: absolute;
     margin-top: 26px;
@@ -108,18 +115,50 @@ ul{
     padding: 0px 17px;
     margin: 26px -17px 0px -18px;
 }
-.main-menu ul li:hover ul,
-.main-menu ul li.current_ancestor ul,
-.main-menu ul li.current ul{
+.main-menu > ul > li > ul > li.first{
+    margin-left: 0;
+}
+/*.main-menu > ul > li:hover > ul,*/
+.main-menu > ul > li.current_ancestor > ul,
+.main-menu > ul > li.current > ul{
     display: inline-block;
 }
-.main-menu ul li ul li:hover a,
-.main-menu ul li ul li.current a,
-.main-menu ul li ul li.current_ancestor a{
+.main-menu > ul > li > ul > li:hover > a,
+.main-menu > ul > li > ul > li.current > a,
+.main-menu > ul > li > ul > li.current_ancestor > a{
     color: #000!important;
 }
-.main-menu ul li ul li a{
+.main-menu > ul > li > ul > li > a{
     color: #fff!important;
+}
+.main-menu > ul > li > ul > li > ul{
+    display: none;
+    position: absolute;
+    height: 44px;
+    line-height: 45px;
+    z-index: 1000;
+    width: 100%;
+    left: 0;
+    background: #fff;
+    border-bottom: #d9d9d9 solid 1px;
+    margin: 0;
+    padding: 0;
+}
+.main-menu > ul > li > ul > li > ul > li.first{
+    margin-left: 17px;
+}
+/*.main-menu > ul > li > ul > li:hover > ul,*/
+.main-menu > ul > li > ul > li.current_ancestor > ul,
+.main-menu > ul > li > ul > li.current > ul{
+    display: inline-block;
+}
+.main-menu > ul > li > ul > li > ul > li:hover > a,
+.main-menu > ul > li > ul > li > ul > li.current > a,
+.main-menu > ul > li > ul > li > ul > li.current_ancestor > a{
+    color: #fd131c!important;
+}
+.main-menu > ul > li > ul > li > ul > li > a{
+    color: #000!important;
 }
 .header-right-block{
     width: 185px;
@@ -139,13 +178,13 @@ ul{
 }
 input[type="text"]::-webkit-input-placeholder {
     color: #000;
-} 
+}
 input[type="text"]::-moz-placeholder {
     color: #000;
 }
 input[type="text"]::-o-input-placeholder {
     color: #000;
-} 
+}
 input[type="text"]::-ms-placeholder {
     color: #000;
 }
@@ -245,6 +284,9 @@ input:focus{
 .content-top{
     padding-top: 72px;
 }
+.content-top-event{
+    padding-top: 102px;
+}
 .content p{
     margin-top: 0px;
     margin-bottom: 0px;
@@ -333,7 +375,7 @@ input:focus{
     color: #fff;
     text-transform: uppercase;
     text-decoration: none;
-   
+
 }
 .content-slide .content-slide-block{
     width: 231px;
@@ -381,7 +423,7 @@ ul li:focus, ul li a:focus{
     border-bottom: 1px solid #c2c2c2;
 }
 .content .news_list .tab-articl{
-     margin: 0px 0px 35px 0px;
+    margin: 0px 0px 35px 0px;
 }
 .tab-articl-img{
     display: block;
@@ -684,7 +726,6 @@ img, a{
     width: 240px;
     height: 250px;
     position: relative;
-    font-family: Arial;
     margin: 30px auto 0 auto;
 }
 #daily-events-calendar div{
@@ -701,7 +742,6 @@ img, a{
 }
 #daily-events-calendar div span{
     display: none;
-    font-family: Arial;
     font-size: 12px;
     color: #fff;
     background: #000;
@@ -878,3 +918,36 @@ img, a{
     width: 230px;
 }
 /* end Player */
+
+/* Event */
+.table-event{
+    background-color: #fff;
+    border-collapse: collapse;
+    color: #535f68;
+    font-family: Calibri-Regular;
+    font-size: 16px;
+    line-height: 18px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.table-event thead th{
+    padding-bottom: 10px;
+}
+.table-event tbody tr:hover{
+    background: #f6b8b9;
+    cursor: pointer;
+}
+.table-event td{
+    border-color: #d4d5d5;
+    padding: 8px 5px;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    vertical-align: middle;
+    text-align: center;
+}
+.table-event td img{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+/* end Event */

@@ -29,6 +29,7 @@ class FrontendMenuBuilder extends ContainerAware
 //                    'route' => 'frontend_homepage'
 //                ));
 
+//          Меню новостей
             } elseif ($m->getSlug() == 'novosti') {
 
                 $newsMenu = $menu->addChild($m->getTitle(), array(
@@ -49,7 +50,42 @@ class FrontendMenuBuilder extends ContainerAware
                     'route' => 'frontend_news_index',
                     'routeParameters' => array('type' => 'opinion')
                 ));
+//          Меню турниров
+            } elseif ($m->getSlug() == 'turniry') {
 
+//              Если это турниры, то сразу попадаем на чемпионаты
+                $eventMenu = $menu->addChild($m->getTitle(), array(
+                    'route' => 'frontend_event_sub_index',
+                    'routeParameters' => array('type' => $m->getChildren()[0]->getSlug(), 'subtype' => $m->getChildren()[0]->getChildren()[0]->getSlug())
+                ));
+
+//              Подменю турниров
+                foreach ($m->getChildren() as $c) {
+                    $subEventMenu = null;
+
+                    if(count($c->getChildren()) > 0){
+                        $subEventMenu = $eventMenu->addChild($c->getTitle(), array(
+                            'route' => 'frontend_event_sub_index',
+                            'routeParameters' => array('type' => $c->getSlug(), 'subtype' => $c->getChildren()[0]->getSlug())
+                        ));
+                    }else{
+                        $subEventMenu = $eventMenu->addChild($c->getTitle(), array(
+                            'route' => 'frontend_event_index',
+                            'routeParameters' => array('type' => $c->getSlug())
+                        ));
+                    }
+
+
+//                  ПодменюПодменю турниров
+                    foreach ($c->getChildren() as $c2) {
+                        $subEventMenu->addChild($c2->getTitle(), array(
+                            'route' => 'frontend_event_sub_index',
+                            'routeParameters' => array('type' => $c->getSlug(), 'subtype' => $c2->getSlug())
+                        ));
+                    }
+                }
+
+//          Меню текстовых страниц
             } else {
 
                 $mainMenu = $menu->addChild($m->getTitle(), array(

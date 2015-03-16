@@ -6,9 +6,9 @@
                 <img src="{{ image(n.webPath).zoomCrop(230, 155) }}" alt="{{ n.title }}" width="230px" height="155px">
             </a>
             <div class="tab-articl-description">
-                <a href="{{ link }}" class="tab-articl-title">{{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</a>
                 <a href="{{ link }}" class="tab-articl-text">{{ n.title }}</a>
-                <a href="{{ link }}" class="tab-articl-text">{{ n.description }}</a>
+                <a href="{{ link }}" class="tab-articl-title">{{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</a>
+                <a href="{{ link }}" class="tab-articl-text tab-articl-preview">{{ n.description }}</a>
             </div>
         </div>
     {% endfor %}
@@ -23,8 +23,8 @@
                     <div class="content-slide-block-title">
                         <div class="inner">
                             <a href="{{ path('frontend_news_one', {type: n.getTypeUrl(), slug: n.slug}) }}">
-                                {{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}<br>
-                                {{ n.title }}
+                                {{ n.title }}<br>
+                                {{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}
                             </a>
                         </div>
                     </div>
@@ -36,8 +36,8 @@
                 <div class="content-slide-block-title">
                     <div class="inner">
                         <a href="{{ path('frontend_news_one', {type: n.getTypeUrl(), slug: n.slug}) }}">
-                            {{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}<br>
-                            {{ n.title }}
+                            {{ n.title }}<br>
+                            {{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}
                         </a>
                     </div>
                 </div>

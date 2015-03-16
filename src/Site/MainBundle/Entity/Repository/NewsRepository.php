@@ -9,7 +9,7 @@ class NewsRepository extends EntityRepository
 
 //  Поиск всех новостей
     public function findAll(){
-        return $this->findBy(array(), array('date' => 'ASC'));
+        return $this->findBy(array(), array('date' => 'DESC'));
     }
 
 //  Поиск всех новостей + разбивание по типам
@@ -62,7 +62,7 @@ class NewsRepository extends EntityRepository
 
         $news = $em->createQuery('
         SELECT n FROM Site\MainBundle\Entity\News n
-        ORDER BY n.date ASC
+        ORDER BY n.date DESC
         ')
             ->setMaxResults(3)
             ->getResult();

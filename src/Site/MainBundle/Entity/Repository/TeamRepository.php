@@ -3,6 +3,7 @@
 namespace Site\MainBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Site\MainBundle\Entity\Event;
 
 /**
  * TeamRepository
@@ -12,4 +13,48 @@ use Doctrine\ORM\EntityRepository;
  */
 class TeamRepository extends EntityRepository
 {
+
+//  Поиск команд по типу матча
+    public function findByEventType($type){
+
+        switch($type){
+            case 'chiempionat': {
+                $typeNumber = Event::NAME_CHAMPIONSHIP;
+            }break;
+            case 'kubok': {
+                $typeNumber = Event::NAME_CUP;
+            }break;
+            case 'ligha-ievropy': {
+                $typeNumber = Event::NAME_EUROPA_LEAGUE;
+            }break;
+            case 'molodiozhnoie-piervienstvo': {
+                $typeNumber = Event::NAME_YOUTH_CHAMPIONSHIP;
+            }break;
+            default: {
+                $typeNumber = Event::NAME_CHAMPIONSHIP;
+            }break;
+        }
+
+        $em = $this->getEntityManager();
+
+        $events = $em->createQuery('
+            SELECT e FROM Site\MainBundle\Entity\Event e
+            WHERE e.name = :typeNumber and e.datetime <= :now
+        ')
+            ->setParameters(array(
+                'typeNumber' => $typeNumber,
+                'now' => new \DateTime()
+            ))
+            ->getResult();
+
+        $teams = array();
+
+        foreach($events as $e){
+            foreach($e->getTeams() as $t){
+                $teams[] = $t;
+            }
+        }
+
+        return $teams;
+    }
 }

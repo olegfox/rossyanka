@@ -3,6 +3,7 @@
 namespace Site\MainBundle\Controller\Frontend;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Site\MainBundle\Entity\Player;
 
 class PageController extends Controller
 {
@@ -31,13 +32,13 @@ class PageController extends Controller
 
                 if($slug == 'osnovnoi-sostav'){
                     foreach($team->getPlayers() as $player){
-                        if($player->getStatus() == 0){
+                        if($player->getStatus() == Player::STATUS_MAIN){
                             $players[] = $player;
                         }
                     }
                 }else{
                     foreach($team->getPlayers() as $player){
-                        if($player->getStatus() == 2){
+                        if($player->getStatus() == Player::STATUS_DOP){
                             $players[] = $player;
                         }
                     }

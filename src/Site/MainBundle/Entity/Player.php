@@ -15,6 +15,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class Player
 {
+
+    const STATUS_MAIN = 0;
+    const STATUS_DOP = 1;
+    const STATUS_YORTH = 2;
+    const STATUS_ARCHIVE = 3;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

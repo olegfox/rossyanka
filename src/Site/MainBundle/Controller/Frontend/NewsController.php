@@ -13,9 +13,9 @@ class NewsController extends Controller
 
         $news = $repository->findType($type);
 
-        if(!$news){
-            throw $this->createNotFoundException($this->get('translator')->trans('backend.news.not_found'));
-        }
+//        if(!$news){
+//            throw $this->createNotFoundException($this->get('translator')->trans('backend.news.not_found'));
+//        }
 
         $params = array(
             'news' => $news
