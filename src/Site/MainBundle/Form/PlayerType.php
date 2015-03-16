@@ -34,7 +34,6 @@ class PlayerType extends AbstractType
             ->add('birthday', null, array(
                 'required' => false,
                 'label' => 'backend.player.birthday',
-                'data' => new \DateTime("now"),
                 'years' => range(1900, date('Y'))
             ))
             ->add('birthPlace', null, array(
@@ -107,7 +106,8 @@ class PlayerType extends AbstractType
                 'choices' => array(
                     0 => 'backend.player.status_choice.main',
                     1 => 'backend.player.status_choice.yorth',
-                    2 => 'backend.player.status_choice.archive',
+                    2 => 'backend.player.status_choice.dop',
+                    3 => 'backend.player.status_choice.archive',
                 ),
                 'translation_domain' => 'menu'
             ))

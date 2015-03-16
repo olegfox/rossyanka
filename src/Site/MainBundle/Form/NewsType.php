@@ -21,8 +21,7 @@ class NewsType extends AbstractType
             ))
             ->add('date', null, array(
                 'required' => true,
-                'label' => 'backend.news.date',
-                'data' => new \DateTime("now")
+                'label' => 'backend.news.date'
             ))
             ->add('type', 'choice', array(
                 'required' => true,

@@ -62,6 +62,8 @@ ul{
     position: absolute;
     bottom: 0;
     width: 100%;
+    padding: 0px 17px;
+    margin: 0px -17px 0px -18px;
 }
 .logo{
     float: left;
@@ -103,6 +105,8 @@ ul{
     width: 100%;
     left: 0;
     background: #fd131c;
+    padding: 0px 17px;
+    margin: 26px -17px 0px -18px;
 }
 .main-menu ul li:hover ul,
 .main-menu ul li.current_ancestor ul,

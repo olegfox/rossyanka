@@ -147,6 +147,7 @@ backend:
         not_found: Игрока не существует
         status_choice:
             main: основной состав
+            dop: дублирующий состав
             yorth: молодёжная сборная
             archive: в архиве
         validation:

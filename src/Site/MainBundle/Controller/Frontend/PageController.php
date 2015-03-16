@@ -20,15 +20,35 @@ class PageController extends Controller
             'page' => $page
         );
 
-        if($slug == 'osnovnoi-sostav'){
+        if($slug == 'osnovnoi-sostav' || $slug == 'dubliruiushchii-sostav'){
             $repository_team = $this->getDoctrine()->getRepository('SiteMainBundle:Team');
+
             $team = $repository_team->findOneByName('Россиянка');
 
             if($team){
+
+                $players = array();
+
+                if($slug == 'osnovnoi-sostav'){
+                    foreach($team->getPlayers() as $player){
+                        if($player->getStatus() == 0){
+                            $players[] = $player;
+                        }
+                    }
+                }else{
+                    foreach($team->getPlayers() as $player){
+                        if($player->getStatus() == 2){
+                            $players[] = $player;
+                        }
+                    }
+                }
+
                 $params = array_merge($params, array(
-                    'team' => $team
+                    'players' => $players
                 ));
+
             }
+
         }
 
         return $this->render('SiteMainBundle:Frontend/Page:index.html.twig', $params);

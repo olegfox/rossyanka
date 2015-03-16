@@ -414,10 +414,13 @@ class Player
                 return 'backend.player.status_choice.yorth';
             }break;
             case 2: {
+                return 'backend.player.status_choice.dop';
+            }break;
+            case 3: {
                 return 'backend.player.status_choice.archive';
             }break;
             default: {
-            return 'backend.player.status_choice.main';
+                return 'backend.player.status_choice.main';
             }break;
         }
     }
