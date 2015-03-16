@@ -69,6 +69,13 @@ class News
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="text", type="text", nullable=true)
      */
     private $text;
@@ -403,5 +410,28 @@ class News
     public function getImg()
     {
         return $this->img;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return News
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

@@ -8,6 +8,7 @@
             <div class="tab-articl-description">
                 <a href="{{ link }}" class="tab-articl-title">{{ n.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</a>
                 <a href="{{ link }}" class="tab-articl-text">{{ n.title }}</a>
+                <a href="{{ link }}" class="tab-articl-text">{{ n.description }}</a>
             </div>
         </div>
     {% endfor %}

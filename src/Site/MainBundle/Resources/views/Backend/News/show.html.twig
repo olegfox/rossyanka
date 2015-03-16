@@ -12,6 +12,10 @@
             <td>{{ entity.title }}</td>
         </tr>
         <tr>
+            <th>{{ 'backend.news.description'|trans({}, 'menu') }}</th>
+            <td>{{ entity.description }}</td>
+        </tr>
+        <tr>
             <th>{{ 'backend.news.img'|trans({}, 'menu') }}</th>
             <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ entity.title }}" width="150px"/></a></td>
         </tr>

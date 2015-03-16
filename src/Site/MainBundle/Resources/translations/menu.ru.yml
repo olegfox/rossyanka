@@ -65,6 +65,7 @@ backend:
         type: Тип новости
         date: Дата
         img: Изображение новости
+        description: Превью новости
         text: Текст новости
         not_found: Новость не существует
         type_choice:

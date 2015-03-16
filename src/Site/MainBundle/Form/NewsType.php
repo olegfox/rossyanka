@@ -45,6 +45,10 @@ class NewsType extends AbstractType
                 'required' => false,
                 'label' => 'backend.news.metakeywords'
             ))
+            ->add('description', 'textarea', array(
+                'required' => false,
+                'label' => 'backend.news.description'
+            ))
             ->add('text', 'textarea', array(
                 'required' => false,
                 'label' => 'backend.news.text',

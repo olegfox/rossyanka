@@ -69,6 +69,13 @@ class News
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="text", type="text", nullable=true)
      */
     private $text;
@@ -268,6 +275,24 @@ class News
             }break;
             default: {
                 return 'backend.news.type_choice.events';
+            }break;
+        }
+    }
+
+    public function getTypeUrl()
+    {
+        switch($this->type){
+            case 0: {
+                return 'events';
+            }break;
+            case 1: {
+                return 'interviews';
+            }break;
+            case 2: {
+                return 'opinion';
+            }break;
+            default: {
+                return 'events';
             }break;
         }
     }
