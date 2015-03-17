@@ -12,6 +12,11 @@
             {% if players is defined %}
                 {{  listPlayers(players) }}
             {% endif %}
+            {% if page.slug == 'kontakty' %}
+                <div class="map">
+                    <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=iVkQZkFYQa0dMXd2X1kfFaaHE-8TlP89&width=100%&height=450"></script>
+                </div>
+            {% endif %}
             {{ page.text|raw }}
         </div>
     </div>

@@ -90,7 +90,6 @@ class EventController extends Controller
         $form->remove('score');
         $form->remove('numberGoals');
         $form->remove('numberYellowCards');
-        $form->remove('teams');
         return $this->render('SiteMainBundle:Backend/Event:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
@@ -138,7 +137,6 @@ class EventController extends Controller
             $editForm->remove('score');
             $editForm->remove('numberGoals');
             $editForm->remove('numberYellowCards');
-            $editForm->remove('teams');
         }
         $deleteForm = $this->createDeleteForm($id);
 
