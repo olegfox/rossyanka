@@ -15,6 +15,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class Player
 {
+
+    const STATUS_MAIN = 0;
+    const STATUS_DOP = 1;
+    const STATUS_YORTH = 2;
+    const STATUS_ARCHIVE = 3;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -414,10 +420,13 @@ class Player
                 return 'backend.player.status_choice.yorth';
             }break;
             case 2: {
+                return 'backend.player.status_choice.dop';
+            }break;
+            case 3: {
                 return 'backend.player.status_choice.archive';
             }break;
             default: {
-            return 'backend.player.status_choice.main';
+                return 'backend.player.status_choice.main';
             }break;
         }
     }
@@ -825,5 +834,28 @@ class Player
     public function getFavoritePhrase()
     {
         return $this->favoritePhrase;
+    }
+
+    /**
+     * Set patronymic
+     *
+     * @param string $patronymic
+     * @return Player
+     */
+    public function setPatronymic($patronymic)
+    {
+        $this->patronymic = $patronymic;
+
+        return $this;
+    }
+
+    /**
+     * Get patronymic
+     *
+     * @return string 
+     */
+    public function getPatronymic()
+    {
+        return $this->patronymic;
     }
 }

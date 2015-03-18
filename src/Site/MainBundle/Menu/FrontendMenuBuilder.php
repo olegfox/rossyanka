@@ -29,6 +29,11 @@ class FrontendMenuBuilder extends ContainerAware
 //                    'route' => 'frontend_homepage'
 //                ));
 
+//          Меню Медиа
+            } elseif ($m->getSlug() == 'miedia') {
+                $menu->addChild($m->getTitle(), array(
+                    'route' => 'frontend_media_index'
+                ));
 //          Меню новостей
             } elseif ($m->getSlug() == 'novosti') {
 

@@ -116,3 +116,9 @@ Site\MainBundle\Entity\Player:
         firstCoach:
             - Length:
                 max: 50
+
+Site\MainBundle\Entity\Media:
+    properties:
+        title:
+            - NotBlank:
+                message: "backend.media.validation.title"

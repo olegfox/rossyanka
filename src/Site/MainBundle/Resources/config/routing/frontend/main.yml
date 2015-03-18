@@ -14,5 +14,9 @@ frontend_event:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/event.yml"
     prefix: /turniry
 
+frontend_media:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/media.yml"
+    prefix: /miedia
+
 frontend_page:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"

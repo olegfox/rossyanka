@@ -159,6 +159,27 @@ backend:
             archive: в архиве
         validation:
             firstname: Вы не ввели имя!
+    media:
+        h1_show: Медиа
+        h1_list: Список медиа
+        h1_edit: Редактирование медиа
+        h1_create: Создание медиа
+        back_to_list: Назад к списку медиа
+        empty_list: Нет медиа
+        title: Заголовок
+        description: Краткое описание
+        preview: Превью картинка
+        text: Текст
+        metaTitle: Мета-заголовок
+        metaDescription: Мета-описание
+        metaKeywords: Ключевые слова
+        video: Видео (Youtube, Vimeo)
+        photos: Фото-галерея
+        created: Дата создания
+        not_found: Медиа не существует
+        video_not_found: Нет видео
+        validation:
+            title: Вы не ввели заголовок!
     actions: Действия
     show: показать
     edit: редактировать

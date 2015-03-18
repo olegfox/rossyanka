@@ -28,4 +28,8 @@ backend_team:
 
 backend_player:
     resource: "@SiteMainBundle/Resources/config/routing/backend/player.yml"
-    prefix: /player
+    prefix: /
+
+backend_media:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/media.yml"
+    prefix: /media

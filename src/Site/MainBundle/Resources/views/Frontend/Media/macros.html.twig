@@ -1,0 +1,50 @@
+{% macro grid(columns) %}
+    {% for media in columns %}<div class="column" id="col{{ loop.index0 }}">
+            {% for m in media %}
+                {% set link = path('frontend_media_one', {slug: m.slug}) %}
+                <div class="media-one">
+                    <a href="{{ link }}"><img src="{{ image(m.webPath).cropResize(500) }}" alt="{{ m.title }}"/></a>
+                    <div class="description">
+                        <a href="{{ link }}">{{ m.title }}</a><br/>
+                        <a href="{{ link }}">{{ m.description }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>{% endfor %}
+{% endmacro %}
+
+{% macro one(media) %}
+    <h1>{{ media.title }}</h1>
+    {% if media.photos|length > 0 %}
+        <div class="gallery">
+            {% for p in media.photos %}
+                {% if loop.index == 1 %}
+                    <img src="{{ image(p.link).cropResize(1164) }}"/>
+                    <a href="{{ asset(p.link) }}" class="play" rel="group{{ media.id }}">
+                        <img src="{{ asset('bundles/sitemain/frontend/images/gallery-open.png') }}"
+                             width="269px" height="91px"
+                             alt=""/>
+                    </a>
+                {% else %}
+                    <a href="{{ asset(p.link) }}" class="hide" rel="group{{ media.id }}"></a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if media.video.id is defined %}
+        <div class="videos">
+            <div class="wrap_video">
+                <div class="video">
+                    <a href="{{ media.video.html|json_encode }}">
+                        <img src="{{ asset('bundles/sitemain/frontend/images/play.png?v1') }}" />
+                    </a>
+                    <img src="{{ image(media.video.getPreviewImageUrl()).zoomCrop(720, 439) }}" alt="{{ media.title }}"/>
+                    <div class="background"></div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="text">
+        {{ media.text|raw }}
+    </div>
+{% endmacro %}
