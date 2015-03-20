@@ -1,6 +1,7 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
 {% from 'SiteMainBundle:Frontend/Player:macros.html.twig' import listPlayers %}
+{% from 'SiteMainBundle:Frontend/Director:macros.html.twig' import listDirectors %}
 
 {% block title %}{{ page.title }}{% endblock %}
 {% block meta_description %}{{ page.metaDescription }}{% endblock %}
@@ -11,6 +12,9 @@
         <div class="content {% if page.parent.id is defined %}content-top{% endif %}">
             {% if players is defined %}
                 {{  listPlayers(players) }}
+            {% endif %}
+            {% if directors is defined %}
+                {{  listDirectors(directors) }}
             {% endif %}
             {% if page.slug == 'kontakty' %}
                 <div class="map">

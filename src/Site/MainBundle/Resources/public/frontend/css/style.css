@@ -87,13 +87,17 @@ ul {
 }
 
 .logo {
+    position: relative;
     float: left;
+    z-index: 2;
 }
 
 .main-menu {
-    float: left;
     height: 45px;
     margin: 68px 0 0 0;
+    position: absolute;
+    width: 100%;
+    text-align: center;
 }
 
 .main-menu > ul {
@@ -101,9 +105,12 @@ ul {
 }
 
 .main-menu > ul li {
-    float: left;
+    display: inline-block;
     margin: 0 0 0 35px;
     height: 45px;
+}
+.main-menu > ul li.first{
+    margin: 0;
 }
 
 /*.main-menu > ul > li.children.current,*/
@@ -130,11 +137,13 @@ ul {
 .main-menu > ul > li > ul {
     display: none;
     position: absolute;
-    left: 223px;
     margin-top: 26px;
     height: 44px;
     line-height: 45px;
     z-index: 1000;
+    left: 0px;
+    right: 0;
+    text-align: center;
     background: #e46464;
     padding: 0px 17px;
     margin: 26px -17px 0px -18px;
@@ -198,9 +207,11 @@ ul {
 }
 
 .header-right-block {
+    position: relative;
     width: 185px;
     float: right;
     margin: 15px 5px 0 0;
+    z-index: 2;
 }
 
 .search input[type="text"] {
@@ -1411,6 +1422,8 @@ img, a {
 .table-players td {
     border-color: #d4d5d5;
     height: 50px;
+    white-space: nowrap;
+    width: 350px;
     border-bottom: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
     vertical-align: middle;
@@ -1419,7 +1432,6 @@ img, a {
 
 .table-players td.first{
     text-align: left;
-    width: 245px;
 }
 
 .table-players td img {
@@ -1434,3 +1446,29 @@ img, a {
     text-decoration: none;
 }
 /* end Players Table */
+
+/* Directors */
+.directors{
+    position: relative;
+    margin: 0px 12px;
+}
+.directors .director{
+    display: inline-block;
+    width: 25%;
+}
+.directors .director .inner{
+    margin: 0px 35px 40px 35px;
+}
+.directors .director img{
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 100%;
+}
+.directors .director .description{
+    font-family: Calibri-Regular;
+    font-size: 16px;
+    line-height: 18px;
+    text-transform: uppercase;
+    text-align: center;
+}
+/* end Directors */

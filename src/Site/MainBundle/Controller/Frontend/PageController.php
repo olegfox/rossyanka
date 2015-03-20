@@ -50,6 +50,14 @@ class PageController extends Controller
 
             }
 
+        }elseif($slug == "rukovodstvo"){
+            $repository_director = $this->getDoctrine()->getRepository('SiteMainBundle:Director');
+
+            $directors = $repository_director->findAll();
+
+            $params = array_merge($params, array(
+                'directors' => $directors
+            ));
         }
 
         return $this->render('SiteMainBundle:Frontend/Page:index.html.twig', $params);

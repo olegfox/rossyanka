@@ -33,3 +33,7 @@ backend_player:
 backend_media:
     resource: "@SiteMainBundle/Resources/config/routing/backend/media.yml"
     prefix: /media
+
+backend_director:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/director.yml"
+    prefix: /director

@@ -122,3 +122,9 @@ Site\MainBundle\Entity\Media:
         title:
             - NotBlank:
                 message: "backend.media.validation.title"
+
+Site\MainBundle\Entity\Director:
+    properties:
+        name:
+            - NotBlank:
+                message: "backend.director.validation.name"

@@ -54,7 +54,7 @@ class Player
 
     /**
      * @Gedmo\Slug(fields={"firstname", "secondname", "patronymic"})
-     * @ORM\Column(length=128, unique=true)
+     * @ORM\Column(length=128)
      */
     private $slug;
 

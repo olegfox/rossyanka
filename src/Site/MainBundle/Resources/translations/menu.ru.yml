@@ -181,6 +181,19 @@ backend:
         video_not_found: Нет видео
         validation:
             title: Вы не ввели заголовок!
+    director:
+        h1_show: Руководитель
+        h1_list: Список руководителей
+        h1_edit: Редактирование руководителя
+        h1_create: Создание руководителя
+        back_to_list: Назад к списку руководителей
+        empty_list: Нет руководителей
+        name: ФИО руководителя
+        img: Фото
+        status: Статус
+        not_found: Руководителя не существует
+        validation:
+            name: Вы не ввели ФИО!
     actions: Действия
     show: показать
     edit: редактировать
