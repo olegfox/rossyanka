@@ -1,6 +1,7 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
 {% from 'SiteMainBundle:Frontend/Event:macros.html.twig' import table %}
+{% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
 
 {% block title %}{{ page.title }}{% endblock %}
 {% block meta_description %}{{ page.metaDescription }}{% endblock %}
@@ -9,10 +10,56 @@
 {% block content %}
     <div class="wrap_content">
         <div class="content content-top content-top-event">
-            {% if teams is defined %}
-                {{ table(teams) }}
-            {% endif %}
-            {{ page.text|raw }}
+            <div class="event-table">
+                <ul class="menu">
+                    <li {% if app.request.get('subtype') == 'novosti' %}class="current"{% endif %}>
+                        {% if app.request.get('subtype') != 'novosti' %}
+                            <a href="{{ path('frontend_event_sub_index', {type: app.request.get('type'), subtype: 'novosti'}) }}">
+                        {% endif %}
+                            Новости
+                        {% if app.request.get('subtype') != 'novosti' %}
+                            </a>
+                        {% endif %}
+                    </li>
+                    <li {% if app.request.get('subtype') == 'kaliendar-ighr' %}class="current"{% endif %}>
+                        {% if app.request.get('subtype') != 'kaliendar-ighr' %}
+                            <a href="{{ path('frontend_event_sub_index', {type: app.request.get('type'), subtype: 'kaliendar-ighr'}) }}">
+                        {% endif %}
+                            Календарь игр
+                        {% if app.request.get('subtype') != 'kaliendar-ighr' %}
+                            </a>
+                        {% endif %}
+                    </li>
+                    <li {% if app.request.get('subtype') == 'riezul-taty-matchiei' %}class="current"{% endif %}>
+                        {% if app.request.get('subtype') != 'riezul-taty-matchiei' %}
+                            <a href="{{ path('frontend_event_sub_index', {type: app.request.get('type'), subtype: 'riezul-taty-matchiei'}) }}">
+                        {% endif %}
+                            Результаты матчей
+                        {% if app.request.get('subtype') != 'riezul-taty-matchiei' %}
+                            </a>
+                        {% endif %}
+                    </li>
+                    <li {% if app.request.get('subtype') == 'turnirnaia-tablitsa' %}class="current"{% endif %}>
+                        {% if app.request.get('subtype') != 'turnirnaia-tablitsa' %}
+                            <a href="{{ path('frontend_event_sub_index', {type: app.request.get('type'), subtype: 'turnirnaia-tablitsa'}) }}">
+                        {% endif %}
+                            Турнирная таблица
+                        {% if app.request.get('subtype') != 'turnirnaia-tablitsa' %}
+                            </a>
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="table-content">
+                    {% if teams is defined %}
+                        {{ table(teams) }}
+                    {% endif %}
+                    {% if news is defined %}
+                        <div class="news_list">
+                            {{ listTab(news) }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

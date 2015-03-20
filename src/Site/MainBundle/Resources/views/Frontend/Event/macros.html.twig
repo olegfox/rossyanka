@@ -1,47 +1,42 @@
 {% macro table(teams) %}
-    <h2>
-        Турнирная таблица
-    </h2>
-    <table class="table-event">
-        <thead>
-            <th></th>
-            <th></th>
-            <th>Игры</th>
-            <th>Победы</th>
-            <th>Ничьи</th>
-            <th>Пораж.</th>
-            <th>Мячи</th>
-            <th>Очки</th>
-        </thead>
-        <tbody>
-            {% for team in teams %}
-                <tr>
-                    <td>
-                        {{ loop.index }}
-                    </td>
-                    <td>
-                        <img src="{{ image(team.webPath).resize(50) }}" alt=""/> {{ team.name }}
-                    </td>
-                    <td>
-                        {{ team.games }}
-                    </td>
-                    <td>
-                        {{ team.wins }}
-                    </td>
-                    <td>
-                        {{ team.standoff }}
-                    </td>
-                    <td>
-                        {{ team.defeat }}
-                    </td>
-                    <td>
-                        {{ team.balls }}
-                    </td>
-                    <td>
-                        {{ team.points }}
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    {% if teams|length > 0 %}
+        <table class="table-event">
+            <thead>
+                <th></th>
+                <th>Игры</th>
+                <th>Победы</th>
+                <th>Ничьи</th>
+                <th>Пораж.</th>
+                <th>Мячи</th>
+                <th>Очки</th>
+            </thead>
+            <tbody>
+                {% for team in teams %}
+                    <tr>
+                        <td class="first">
+                            <img src="{{ image(team.webPath).resize(50) }}" alt=""/> {{ team.name }}
+                        </td>
+                        <td>
+                            {{ team.games }}
+                        </td>
+                        <td>
+                            {{ team.wins }}
+                        </td>
+                        <td>
+                            {{ team.standoff }}
+                        </td>
+                        <td>
+                            {{ team.defeat }}
+                        </td>
+                        <td>
+                            {{ team.balls }}
+                        </td>
+                        <td>
+                            {{ team.points }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endmacro %}

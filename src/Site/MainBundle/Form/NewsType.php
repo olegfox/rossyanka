@@ -33,6 +33,19 @@ class NewsType extends AbstractType
                 ),
                 'translation_domain' => 'menu'
             ))
+            ->add('typeEvent', 'choice', array(
+                'required' => false,
+                'label' => 'backend.news.type_event',
+                'choices' => array(
+                    0 => 'backend.event.name_choice.championship',
+                    1 => 'backend.event.name_choice.cup',
+                    2 => 'backend.event.name_choice.europa_league',
+                    3 => 'backend.event.name_choice.youth_championship'
+                ),
+                'expanded' => true,
+                'multiple' => false,
+                'translation_domain' => 'menu'
+            ))
             ->add('metaTitle', 'text', array(
                 'required' => false,
                 'label' => 'backend.news.metatitle'

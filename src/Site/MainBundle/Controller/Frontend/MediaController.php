@@ -24,7 +24,7 @@ class MediaController extends Controller
         $params = array(
             'media' => $columns,
             'mediaLength' => count($media),
-            'lastSlug' => $media[count($media) - 1]->getSlug(),
+            'lastSlug' => count($media) ? $media[count($media) - 1]->getSlug() : 0,
             'page' => $page
         );
 
@@ -48,7 +48,7 @@ class MediaController extends Controller
         $params = array(
             'allMedia' => $columns,
             'mediaLength' => count($allMedia),
-            'lastSlug' => $allMedia[count($allMedia) - 1]->getSlug(),
+            'lastSlug' => count($allMedia) ? $allMedia[count($allMedia) - 1]->getSlug() : 0,
             'media' => $media
         );
 
@@ -71,7 +71,7 @@ class MediaController extends Controller
         $params = array(
             'allMedia' => $columns,
             'mediaLength' => count($allMedia),
-            'lastSlug' => $allMedia[count($allMedia) - 1]->getSlug()
+            'lastSlug' => count($allMedia) ? $allMedia[count($allMedia) - 1]->getSlug() : 0
         );
 
         return $this->render('SiteMainBundle:Frontend/Media:ajax.html.twig', $params);

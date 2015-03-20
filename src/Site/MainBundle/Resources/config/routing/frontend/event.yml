@@ -1,7 +1,9 @@
 frontend_event_index:
     path:     /{type}
-    defaults: { _controller: "SiteMainBundle:Frontend/Event:index", subtype: null }
+    defaults: { _controller: "SiteMainBundle:Frontend/Event:index", subtype: null}
 
 frontend_event_sub_index:
     path:     /{type}/{subtype}
     defaults: { _controller: "SiteMainBundle:Frontend/Event:index" }
+    requirements:
+        subtype: novosti|kaliendar-ighr|riezul-taty-matchiei|turnirnaia-tablitsa

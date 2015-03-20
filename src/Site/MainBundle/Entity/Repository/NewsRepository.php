@@ -3,6 +3,7 @@
 namespace Site\MainBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Site\MainBundle\Entity\Event;
 
 class NewsRepository extends EntityRepository
 {
@@ -69,6 +70,32 @@ class NewsRepository extends EntityRepository
 
         return $news;
 
+    }
+
+//  Поиск новостей по типу события
+    public function findByEventType($typeEvent){
+
+        switch($typeEvent){
+            case 'chiempionat': {
+                $typeNumber = Event::NAME_CHAMPIONSHIP;
+            }break;
+            case 'kubok': {
+                $typeNumber = Event::NAME_CUP;
+            }break;
+            case 'ligha-ievropy': {
+                $typeNumber = Event::NAME_EUROPA_LEAGUE;
+            }break;
+            case 'molodiozhnoie-piervienstvo': {
+                $typeNumber = Event::NAME_YOUTH_CHAMPIONSHIP;
+            }break;
+            default: {
+                $typeNumber = Event::NAME_CHAMPIONSHIP;
+            }break;
+        }
+
+        $news = $this->findBy(array('typeEvent' => $typeNumber), array('date' => 'DESC'));
+
+        return $news;
     }
 
 }

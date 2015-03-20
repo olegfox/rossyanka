@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class News
 {
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -44,6 +45,11 @@ class News
      * @ORM\Column(type="smallint", nullable=false)
      */
     private $type = 0;
+
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $typeEvent;
 
     /**
      * @var string
@@ -433,5 +439,28 @@ class News
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set typeEvent
+     *
+     * @param integer $typeEvent
+     * @return News
+     */
+    public function setTypeEvent($typeEvent)
+    {
+        $this->typeEvent = $typeEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get typeEvent
+     *
+     * @return integer 
+     */
+    public function getTypeEvent()
+    {
+        return $this->typeEvent;
     }
 }

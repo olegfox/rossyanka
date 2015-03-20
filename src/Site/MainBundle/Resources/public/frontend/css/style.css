@@ -70,13 +70,20 @@ ul {
 }
 
 .header-block .border {
-    height: 2px;
+    height: 1px;
     background: #fc0c17;
     position: absolute;
     bottom: 0;
     width: 100%;
     padding: 0px 17px;
     margin: 0px -17px 0px -18px;
+}
+
+.header-block .border.submenu{
+    height: 45px;
+    bottom: -43px;
+    background: #e46464;
+    border-top: #fc0c17 solid 1px;
 }
 
 .logo {
@@ -98,6 +105,12 @@ ul {
     margin: 0 0 0 35px;
     height: 45px;
 }
+
+/*.main-menu > ul > li.children.current,*/
+/*.main-menu > ul > li.children.current_ancestor*/
+/*{*/
+    /*background: url('/bundles/sitemain/frontend/images/arrow.png') bottom center no-repeat;*/
+/*}*/
 
 .main-menu > ul > li:hover a,
 .main-menu > ul > li.current a,
@@ -121,9 +134,7 @@ ul {
     height: 44px;
     line-height: 45px;
     z-index: 1000;
-    width: 100%;
-    left: 0;
-    background: #fd131c;
+    background: #e46464;
     padding: 0px 17px;
     margin: 26px -17px 0px -18px;
 }
@@ -154,12 +165,15 @@ ul {
     height: 44px;
     line-height: 45px;
     z-index: 1000;
-    width: 100%;
-    left: 0;
     background: #fff;
     border-bottom: #d9d9d9 solid 1px;
     margin: 0;
     padding: 0;
+}
+
+.main-menu > ul > li > ul > li > ul.menu_level_2{
+    width: 100%;
+    left: 0;
 }
 
 .main-menu > ul > li > ul > li > ul > li.first {
@@ -330,7 +344,8 @@ input:focus {
 }
 
 .content-top-event {
-    padding-top: 102px;
+    padding-top: 97px;
+    padding-bottom: 52px;
 }
 
 .content p {
@@ -1095,22 +1110,29 @@ img, a {
 }
 
 .table-event thead th {
-    padding-bottom: 10px;
     font-weight: 400;
+    height: 70px;
+    border-bottom: 1px solid #000;
 }
 
 .table-event tbody tr:hover {
-    background: #f6b8b9;
+    /*background: #f6b8b9;*/
     cursor: pointer;
 }
 
 .table-event td {
     border-color: #d4d5d5;
-    padding: 8px 5px;
+    padding: 0px 10px;
+    height: 80px;
     border-bottom: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
     vertical-align: middle;
     text-align: center;
+}
+
+.table-event td.first{
+    text-align: left;
+    width: 245px;
 }
 
 .table-event td img {
@@ -1313,3 +1335,40 @@ img, a {
 }
 
 /* end Media */
+
+/* Event Table */
+.event-table{
+    border: 2px solid #E36363;
+    margin: 0px 53px;
+}
+.event-table ul.menu{
+    height: 55px;
+    line-height: 55px;
+    border-bottom: #E36363 solid 2px;
+    margin: 0px 12px;
+    text-align: center;
+}
+.event-table ul.menu li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+.event-table ul.menu li,
+.event-table ul.menu li a{
+    font-family: Calibri-Regular;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+}
+.event-table ul.menu li.current,
+.event-table ul.menu li a:hover{
+    color: #E36363;
+}
+.event-table .table-content{
+    padding: 25px 12px;
+}
+.event-table .table-content .news_list{
+    padding: 0px;
+}
+/* end Event Table */

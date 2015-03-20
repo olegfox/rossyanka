@@ -63,6 +63,7 @@ backend:
         metadescription: Мета-описание
         metakeywords: Ключевые слова
         type: Тип новости
+        type_event: Тип турнира
         date: Дата
         img: Изображение новости
         description: Превью новости

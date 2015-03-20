@@ -68,6 +68,21 @@ class MediaController extends Controller
 
             }
 
+//          Добавляем фотки в фотогалерею
+            $imagesJson = $request->get('gallery');
+            if ($imagesJson) {
+
+                $images = json_decode($imagesJson);
+
+                foreach ($images as $image) {
+                    $mediaPhoto = new MediaPhoto();
+                    $mediaPhoto->setLink("uploads/media/" . $image);
+                    $mediaPhoto->setMedia($entity);
+                    $em->persist($mediaPhoto);
+                }
+
+            }
+
             $em->persist($entity);
             $em->flush();
 

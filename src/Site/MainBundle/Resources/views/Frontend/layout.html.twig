@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 {% if app.request.get('_route') != 'frontend_homepage' %}
-                    <div class="border"></div>
+                    <div class="border{% if app.request.get('_route') == 'frontend_page_child' or app.request.get('_route') == 'frontend_news_index' or app.request.get('_route') == 'frontend_event_sub_index' or app.request.get('_route') == 'frontend_event_index' %} submenu{% elseif page is defined %}{% if page.children|length > 0 %} submenu{% endif %}{% endif %}"></div>
                 {% endif %}
             </div>
             {#{% if children is defined %}#}

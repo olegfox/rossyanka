@@ -39,7 +39,8 @@ class FrontendMenuBuilder extends ContainerAware
 
                 $newsMenu = $menu->addChild($m->getTitle(), array(
                     'route' => 'frontend_news_index',
-                    'routeParameters' => array('type' => 'events')
+                    'routeParameters' => array('type' => 'events'),
+                    'attributes' => array('class' => 'children')
                 ));
 
 //              Подменю
@@ -61,34 +62,21 @@ class FrontendMenuBuilder extends ContainerAware
 //              Если это турниры, то сразу попадаем на чемпионаты
                 $eventMenu = $menu->addChild($m->getTitle(), array(
                     'route' => 'frontend_event_sub_index',
-                    'routeParameters' => array('type' => $m->getChildren()[0]->getSlug(), 'subtype' => $m->getChildren()[0]->getChildren()[0]->getSlug())
+                    'routeParameters' => array('type' => $m->getChildren()[0]->getSlug(), 'subtype' => 'novosti'),
+                    'attributes' => array('class' => 'children')
                 ));
 
 //              Подменю турниров
                 foreach ($m->getChildren() as $c) {
-                    $subEventMenu = null;
-
-                    if(count($c->getChildren()) > 0){
-                        $subEventMenu = $eventMenu->addChild($c->getTitle(), array(
-                            'route' => 'frontend_event_sub_index',
-                            'routeParameters' => array('type' => $c->getSlug(), 'subtype' => $c->getChildren()[0]->getSlug())
-                        ));
-                    }else{
-                        $subEventMenu = $eventMenu->addChild($c->getTitle(), array(
-                            'route' => 'frontend_event_index',
-                            'routeParameters' => array('type' => $c->getSlug())
-                        ));
-                    }
-
-
-//                  ПодменюПодменю турниров
-                    foreach ($c->getChildren() as $c2) {
-                        $subEventMenu->addChild($c2->getTitle(), array(
-                            'route' => 'frontend_event_sub_index',
-                            'routeParameters' => array('type' => $c->getSlug(), 'subtype' => $c2->getSlug())
-                        ));
+                    $subEventMenu = $eventMenu->addChild($c->getTitle(), array(
+                        'route' => 'frontend_event_sub_index',
+                        'routeParameters' => array('type' => $c->getSlug(), 'subtype' => 'novosti')
+                    ));
+                    if($routeName == 'frontend_event_sub_index' && $request->get('type') == $c->getSlug()){
+                        $subEventMenu->setCurrent(true);
                     }
                 }
+
 
 //          Меню текстовых страниц
             } else {
@@ -97,6 +85,12 @@ class FrontendMenuBuilder extends ContainerAware
                     'route' => 'frontend_page',
                     'routeParameters' => array('slug' => $m->getSlug())
                 ));
+
+                if(count($m->getChildren()) > 0){
+                    $mainMenu->setAttributes(array(
+                        'class' => 'children'
+                    ));
+                }
 
 //              Подменю
                 foreach ($m->getChildren() as $c) {
