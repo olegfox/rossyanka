@@ -14,7 +14,7 @@
                 {% for team in teams %}
                     <tr>
                         <td class="first">
-                            <img src="{{ image(team.webPath).resize(50) }}" alt=""/> {{ team.name }}
+                            {% if team.name == 'Россиянка' %}<a href="{{ path('frontend_page_child', {parent: 'komanda', slug: 'osnovnoi-sostav'}) }}">{% endif %}<img src="{{ image(team.webPath).resize(50) }}" alt=""/> {{ team.name }}{% if team.slug == 'Россиянка' %}</a>{% endif %}
                         </td>
                         <td>
                             {{ team.games }}

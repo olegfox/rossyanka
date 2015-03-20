@@ -18,5 +18,9 @@ frontend_media:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/media.yml"
     prefix: /miedia
 
+frontend_players:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/player.yml"
+    prefix: /players
+
 frontend_page:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"

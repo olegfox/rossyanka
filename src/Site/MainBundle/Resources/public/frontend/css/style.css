@@ -130,6 +130,7 @@ ul {
 .main-menu > ul > li > ul {
     display: none;
     position: absolute;
+    left: 223px;
     margin-top: 26px;
     height: 44px;
     line-height: 45px;
@@ -346,6 +347,10 @@ input:focus {
 .content-top-event {
     padding-top: 97px;
     padding-bottom: 52px;
+}
+
+.content-top-player{
+    padding-top: 18px;
 }
 
 .content p {
@@ -1117,7 +1122,7 @@ img, a {
 
 .table-event tbody tr:hover {
     /*background: #f6b8b9;*/
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .table-event td {
@@ -1139,6 +1144,12 @@ img, a {
     display: inline-block;
     vertical-align: middle;
     margin-right: 20px;
+    border: 0;
+}
+
+.table-event td a{
+    color: #000;
+    text-decoration: none;
 }
 
 /* end Event */
@@ -1159,6 +1170,7 @@ img, a {
 .media h1{
     margin: 0px 10px;
     padding-top: 0px;
+    text-align: center;
 }
 
 .media .text{
@@ -1372,3 +1384,53 @@ img, a {
     padding: 0px;
 }
 /* end Event Table */
+
+/* Players Table */
+.table-players {
+    background-color: #fff;
+    border-collapse: collapse;
+    color: #535f68;
+    font-family: Calibri-Regular;
+    font-size: 16px;
+    line-height: 18px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.table-players thead th {
+    font-weight: 400;
+    height: 50px;
+    border-bottom: 1px solid #000;
+}
+
+.table-players tbody tr:hover {
+    /*background: #f6b8b9;*/
+    /*cursor: pointer;*/
+}
+
+.table-players td {
+    border-color: #d4d5d5;
+    height: 50px;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table-players td.first{
+    text-align: left;
+    width: 245px;
+}
+
+.table-players td img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    border: 0;
+}
+
+.table-players td a{
+    color: #000;
+    text-decoration: none;
+}
+/* end Players Table */

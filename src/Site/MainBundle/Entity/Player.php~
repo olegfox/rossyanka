@@ -53,6 +53,12 @@ class Player
     private $patronymic;
 
     /**
+     * @Gedmo\Slug(fields={"firstname", "secondname", "patronomyc"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
+    /**
      * Место рождения
      * @var string
      *

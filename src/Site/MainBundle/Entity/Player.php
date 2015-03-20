@@ -53,6 +53,12 @@ class Player
     private $patronymic;
 
     /**
+     * @Gedmo\Slug(fields={"firstname", "secondname", "patronymic"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
+    /**
      * Место рождения
      * @var string
      *
@@ -857,5 +863,28 @@ class Player
     public function getPatronymic()
     {
         return $this->patronymic;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Player
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

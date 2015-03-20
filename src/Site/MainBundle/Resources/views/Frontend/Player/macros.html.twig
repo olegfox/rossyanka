@@ -1,102 +1,139 @@
 {% macro listPlayers(players) %}
     {% if players|length > 0 %}
-        {% for p in players %}
-            <table class="table-player">
-                <tr>
-                    <td class="img">
-                        <img src="{{ image(p.webPath).resize(230) }}"
-                             alt="{{ p.firstname ~ ' ' ~ p.secondname ~ ' ' ~ p.patronymic }}"/>
-                    </td>
-                    <td>
-                        <table class="table-player">
-                            <tr>
-                                <th>{{ 'backend.player.firstname'|trans({}, 'menu') }}</th>
-                                <td>{{ p.firstname }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.secondname'|trans({}, 'menu') }}</th>
-                                <td>{{ p.secondname }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.patronymic'|trans({}, 'menu') }}</th>
-                                <td>{{ p.patronymic }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.birthday'|trans({}, 'menu') }}</th>
-                                <td>{{ p.birthday|date('d.m.Y') }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.birth_place'|trans({}, 'menu') }}</th>
-                                <td>{{ p.birthPlace }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.nationality'|trans({}, 'menu') }}</th>
-                                <td>{{ p.nationality }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.amplua'|trans({}, 'menu') }}</th>
-                                <td>{{ p.amplua }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.height'|trans({}, 'menu') }}</th>
-                                <td>{{ p.height }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.weight'|trans({}, 'menu') }}</th>
-                                <td>{{ p.weight }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.firstCoach'|trans({}, 'menu') }}</th>
-                                <td>{{ p.firstCoach }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.progress'|trans({}, 'menu') }}</th>
-                                <td>{{ p.progress }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.title'|trans({}, 'menu') }}</th>
-                                <td>{{ p.title }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.previous_teams'|trans({}, 'menu') }}</th>
-                                <td>{{ p.previousTeams }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.favorite_place'|trans({}, 'menu') }}</th>
-                                <td>{{ p.favoritePlace }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.favorite_dish'|trans({}, 'menu') }}</th>
-                                <td>{{ p.favoriteDish }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.favorite_music'|trans({}, 'menu') }}</th>
-                                <td>{{ p.favoriteMusic }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.favorite_book'|trans({}, 'menu') }}</th>
-                                <td>{{ p.favoriteBook }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.any_sport'|trans({}, 'menu') }}</th>
-                                <td>{{ p.anySport }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.hobby'|trans({}, 'menu') }}</th>
-                                <td>{{ p.hobby }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ 'backend.player.favorite_phrase'|trans({}, 'menu') }}</th>
-                                <td>{{ p.favoritePhrase }}</td>
-                            </tr>
-                            <tr>
-                                <th class="last">{{ 'backend.player.status'|trans({}, 'menu') }}</th>
-                                <td>{{ p.getStatusText()|trans({}, 'menu') }}</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        {% endfor %}
+        <table class="table-players">
+            <thead>
+                <th>Игрок</th>
+                <th>{{ 'backend.player.amplua'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.player.nationality'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.player.birthday'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.player.height'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.player.weight'|trans({}, 'menu') }}</th>
+            </thead>
+            <tbody>
+                {% for p in players %}
+                    <tr>
+                        <td class="first">
+                            <a href="{{ path('frontend_player_index', {slug: p.slug}) }}">
+                                <img src="{{ image(p.webPath).zoomCrop(50, 50) }}" alt="{{ image(p.webPath).zoomCrop(50, 50) }}" width="50px" height="50px" /> {{ p.firstname ~ ' ' ~ p.secondname ~ ' ' ~ p.patronymic }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ p.amplua }}
+                        </td>
+                        <td>
+                            {{ p.nationality }}
+                        </td>
+                        <td>
+                            {{ p.birthday|date('d.m.Y') }}
+                        </td>
+                        <td>
+                            {{ p.height }}
+                        </td>
+                        <td>
+                            {{ p.weight }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
+{% endmacro %}
+
+{% macro one(player) %}
+    <table class="table-player">
+        <tr>
+            <td class="img">
+                <img src="{{ image(player.webPath).cropResize(230) }}"
+                     alt="{{ player.firstname ~ ' ' ~ player.secondname ~ ' ' ~ player.patronymic }}"/>
+            </td>
+            <td>
+                <table class="table-player">
+                    <tr>
+                        <th>{{ 'backend.player.firstname'|trans({}, 'menu') }}</th>
+                        <td>{{ player.firstname }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.secondname'|trans({}, 'menu') }}</th>
+                        <td>{{ player.secondname }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.patronymic'|trans({}, 'menu') }}</th>
+                        <td>{{ player.patronymic }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.birthday'|trans({}, 'menu') }}</th>
+                        <td>{{ player.birthday|date('d.m.Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.birth_place'|trans({}, 'menu') }}</th>
+                        <td>{{ player.birthPlace }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.nationality'|trans({}, 'menu') }}</th>
+                        <td>{{ player.nationality }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.amplua'|trans({}, 'menu') }}</th>
+                        <td>{{ player.amplua }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.height'|trans({}, 'menu') }}</th>
+                        <td>{{ player.height }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.weight'|trans({}, 'menu') }}</th>
+                        <td>{{ player.weight }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.firstCoach'|trans({}, 'menu') }}</th>
+                        <td>{{ player.firstCoach }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.progress'|trans({}, 'menu') }}</th>
+                        <td>{{ player.progress }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.title'|trans({}, 'menu') }}</th>
+                        <td>{{ player.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.previous_teams'|trans({}, 'menu') }}</th>
+                        <td>{{ player.previousTeams }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.favorite_place'|trans({}, 'menu') }}</th>
+                        <td>{{ player.favoritePlace }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.favorite_dish'|trans({}, 'menu') }}</th>
+                        <td>{{ player.favoriteDish }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.favorite_music'|trans({}, 'menu') }}</th>
+                        <td>{{ player.favoriteMusic }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.favorite_book'|trans({}, 'menu') }}</th>
+                        <td>{{ player.favoriteBook }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.any_sport'|trans({}, 'menu') }}</th>
+                        <td>{{ player.anySport }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.hobby'|trans({}, 'menu') }}</th>
+                        <td>{{ player.hobby }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'backend.player.favorite_phrase'|trans({}, 'menu') }}</th>
+                        <td>{{ player.favoritePhrase }}</td>
+                    </tr>
+                    <tr>
+                        <th class="last">{{ 'backend.player.status'|trans({}, 'menu') }}</th>
+                        <td>{{ player.getStatusText()|trans({}, 'menu') }}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 {% endmacro %}
