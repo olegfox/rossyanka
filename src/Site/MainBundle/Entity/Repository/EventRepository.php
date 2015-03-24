@@ -7,33 +7,194 @@ use Site\MainBundle\Entity\Event;
 
 class EventRepository extends EntityRepository
 {
-    public function findAll(){
+    public function findAll()
+    {
         return $this->findBy(array(), array('datetime' => 'ASC'));
     }
 
-//  Поиск событий по типу
-    public function findByType($type){
+//  Поиск событий по типу (Календарь игр)
+    public function findByType($type)
+    {
 
-        switch($type){
-            case 'chiempionat': {
+        switch ($type) {
+            case 'chiempionat':
+            {
                 $typeNumber = Event::NAME_CHAMPIONSHIP;
-            }break;
-            case 'kubok': {
+            }
+                break;
+            case 'kubok':
+            {
                 $typeNumber = Event::NAME_CUP;
-            }break;
-            case 'ligha-ievropy': {
+            }
+                break;
+            case 'ligha-ievropy':
+            {
                 $typeNumber = Event::NAME_EUROPA_LEAGUE;
-            }break;
-            case 'molodiozhnoie-piervienstvo': {
+            }
+                break;
+            case 'molodiozhnoie-piervienstvo':
+            {
                 $typeNumber = Event::NAME_YOUTH_CHAMPIONSHIP;
-            }break;
-            default: {
+            }
+                break;
+            default:
+                {
                 $typeNumber = Event::NAME_CHAMPIONSHIP;
-            }break;
+                }
+                break;
         }
 
-        $events = $this->findByName($typeNumber);
+        $events = $this->getEntityManager()->createQuery('
+            SELECT e FROM SiteMainBundle:Event e
+            WHERE e.name = :typeNumber
+            ORDER BY e.datetime ASC
+        ')
+            ->setParameters(array(
+                'typeNumber' => $typeNumber
+            ))
+            ->getResult();
 
         return $events;
+    }
+
+//  Результат матчей по типу
+    public function findByTypeResult($type)
+    {
+
+        switch ($type) {
+            case 'chiempionat':
+            {
+                $typeNumber = Event::NAME_CHAMPIONSHIP;
+            }
+                break;
+            case 'kubok':
+            {
+                $typeNumber = Event::NAME_CUP;
+            }
+                break;
+            case 'ligha-ievropy':
+            {
+                $typeNumber = Event::NAME_EUROPA_LEAGUE;
+            }
+                break;
+            case 'molodiozhnoie-piervienstvo':
+            {
+                $typeNumber = Event::NAME_YOUTH_CHAMPIONSHIP;
+            }
+                break;
+            default:
+                {
+                $typeNumber = Event::NAME_CHAMPIONSHIP;
+                }
+                break;
+        }
+
+        $em = $this->getEntityManager();
+
+//      Все матчи определённого, которые уже прошли
+        $events = $em->createQuery('
+            SELECT e FROM Site\MainBundle\Entity\Event e
+            WHERE e.name = :typeNumber and e.datetime <= :now
+        ')
+            ->setParameters(array(
+                'typeNumber' => $typeNumber,
+                'now' => new \DateTime()
+            ))
+            ->getResult();
+
+//      Список всех команд
+        $teams = $em->createQuery('
+            SELECT t FROM Site\MainBundle\Entity\Team t
+        ')
+            ->getResult();
+
+        $resultEvents = array();
+
+        $i = 0;
+        $j = 0;
+
+//      Строки
+        foreach ($teams as $t1) {
+//          Столбцы
+            foreach ($teams as $t2) {
+//              Если команды разные
+                if ($t1->getId() != $t2->getId()) {
+                    $fl = 0;
+                    foreach ($events as $e) {
+//                      Если в игре две команды
+                        if (count($e->getEventTeam()) == 2) {
+//                          Если для этих двух команд найдена игра
+                            if ($e->getEventTeam()[0]->getTeam()->getId() == $t1->getId() && $e->getEventTeam()[1]->getTeam()->getId() == $t2->getId()) {
+//                              Если в массиве такой записи ещё нет
+                                if(!isset($resultEvents[$i][$j]['nameTeamRow'])){
+                                    $resultEvents[$i][$j]['nameTeamRow'] = $t1->getName();
+                                    $resultEvents[$i][$j]['nameTeamCol'] = $t2->getName();
+                                    $resultEvents[$i][$j]['img1'] = $t1->getWebPath();
+                                    $resultEvents[$i][$j]['img2'] = $t2->getWebPath();
+                                }
+//                              Если такая запись уже есть, то добавляем только счет
+                                $resultEvents[$i][$j]['score'][] = $e->getScore();
+                                $fl = 1;
+                            }
+                        }
+                    }
+//                  Если игры для этих двух команд не найдено
+                    if($fl == 0){
+                        $resultEvents[$i][$j]['nameTeamRow'] = $t1->getName();
+                        $resultEvents[$i][$j]['nameTeamCol'] = $t2->getName();
+                        $resultEvents[$i][$j]['img1'] = $t1->getWebPath();
+                        $resultEvents[$i][$j]['img2'] = $t2->getWebPath();
+                        $resultEvents[$i][$j]['score'] = 0;
+                    }
+//              Если команды одинаковые
+                } else {
+                    $resultEvents[$i][$j]['nameTeamRow'] = $t1->getName();
+                    $resultEvents[$i][$j]['nameTeamCol'] = $t2->getName();
+                    $resultEvents[$i][$j]['img1'] = $t1->getWebPath();
+                    $resultEvents[$i][$j]['img2'] = $t2->getWebPath();
+                    $resultEvents[$i][$j]['score'] = -1;
+                }
+                $j++;
+            }
+            $i++;
+        }
+
+        return $resultEvents;
+    }
+
+//  Последний прошедший матч
+    public function findLastPastEvent()
+    {
+        $event = $this->getEntityManager()->createQuery('
+            SELECT e FROM SiteMainBundle:Event e
+            WHERE e.datetime <= :now
+            ORDER BY e.datetime DESC
+        ')
+            ->setParameters(array(
+                'now' => new \DateTime()
+            ))
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+            ->getResult();
+
+        return $event;
+    }
+
+//  Первый предстоящий матч
+    public function findFirstFutureEvent()
+    {
+        $event = $this->getEntityManager()->createQuery('
+            SELECT e FROM SiteMainBundle:Event e
+            WHERE e.datetime > :now
+            ORDER BY e.datetime ASC
+        ')
+            ->setParameters(array(
+                'now' => new \DateTime()
+            ))
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+            ->getResult();
+
+        return $event;
     }
 }

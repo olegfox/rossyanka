@@ -40,3 +40,78 @@
         </table>
     {% endif %}
 {% endmacro %}
+
+{% macro calendarEvent(events) %}
+    {% if events|length > 0 %}
+        <table class="table-event">
+            <thead>
+                <th>Тур</th>
+                <th>Дата, время</th>
+                <th></th>
+                <th></th>
+                <th>Стадион</th>
+            </thead>
+            <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>
+                        {{ event.tour }}
+                    </td>
+                    <td>
+                        {{ event.datetime|date('d.m.Y H:i') }}
+                    </td>
+                    <td>
+                        {% for team in event.teams %}
+                             {{ team.name }}{% if loop.last == false %}<span> - </span>{% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {{ event.score ? event.score : '-:-' }}
+                    </td>
+                    <td>
+                        {{ event.stadium }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro result(resultEvents) %}
+
+    {% if resultEvents|length > 0 %}
+        <table class="table-event">
+            {% for row in resultEvents %}
+                {% set insideLoop = loop %}
+                    {% if insideLoop.first %}
+                        <tr>
+                            <td></td>
+                            {% for column in row %}
+                                <td>{{ loop.index }}<img src="{{ image(column['img2']).zoomCrop(50, 50) }}" alt="{{ column['nameTeamRow'] }}"/></td>
+                            {% endfor %}
+                        </tr>
+                    {% endif %}
+                        <tr>
+                            {% for column in row %}
+                                {# Если это первый столбец #}
+                                {% if loop.first %}
+                                    <td>{{ insideLoop.index }}<img src="{{ image(column['img1']).zoomCrop(50, 50) }}" alt="{{ column['nameTeamRow'] }}"/></td>
+                                    {# Если это не первый столбец #}
+                                {% endif %}
+                                <td>
+                                    {% for score in column['score'] %}
+                                        {{ score }}{% if loop.last == false %}<br/>{% endif %}
+                                    {% else %}
+                                        {% if column['score'] == 0 %}
+                                            -:-
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+{% endmacro %}

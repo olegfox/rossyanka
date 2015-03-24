@@ -29,6 +29,12 @@ class Event
     private $id;
 
     /**
+     * Тур
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $tour;
+
+    /**
      * Название турнира
      * @ORM\Column(type="smallint", nullable=false)
      */
@@ -65,10 +71,17 @@ class Event
     private $numberYellowCards = 0;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Team", inversedBy="events")
-     * @ORM\JoinTable(name="events_teams")
+     * Стадион
+     * @var string
+     *
+     * @ORM\Column(name="stadium", type="string", length=100, nullable=true)
+     */
+    private $stadium;
+
+    /**
+     * @ORM\OneToMany(targetEntity="EventTeam", mappedBy="event")
      **/
-    private $teams;
+    private $eventTeam;
 
     /**
      * Get id
@@ -215,44 +228,50 @@ class Event
     {
         return $this->numberYellowCards;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add teams
+     * Set stadium
      *
-     * @param \Site\MainBundle\Entity\Team $teams
+     * @param string $stadium
      * @return Event
      */
-    public function addTeam(\Site\MainBundle\Entity\Team $teams)
+    public function setStadium($stadium)
     {
-        $this->teams[] = $teams;
+        $this->stadium = $stadium;
 
         return $this;
     }
 
     /**
-     * Remove teams
+     * Get stadium
      *
-     * @param \Site\MainBundle\Entity\Team $teams
+     * @return string 
      */
-    public function removeTeam(\Site\MainBundle\Entity\Team $teams)
+    public function getStadium()
     {
-        $this->teams->removeElement($teams);
+        return $this->stadium;
     }
 
     /**
-     * Get teams
+     * Set tour
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param integer $tour
+     * @return Event
      */
-    public function getTeams()
+    public function setTour($tour)
     {
-        return $this->teams;
+        $this->tour = $tour;
+
+        return $this;
+    }
+
+    /**
+     * Get tour
+     *
+     * @return integer 
+     */
+    public function getTour()
+    {
+        return $this->tour;
     }
 }

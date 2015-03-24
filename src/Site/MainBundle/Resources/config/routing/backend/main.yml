@@ -37,3 +37,7 @@ backend_media:
 backend_director:
     resource: "@SiteMainBundle/Resources/config/routing/backend/director.yml"
     prefix: /director
+
+backend_baner:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/baner.yml"
+    prefix: /baner

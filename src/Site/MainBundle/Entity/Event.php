@@ -29,6 +29,12 @@ class Event
     private $id;
 
     /**
+     * Тур
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $tour;
+
+    /**
      * Название турнира
      * @ORM\Column(type="smallint", nullable=false)
      */
@@ -65,10 +71,18 @@ class Event
     private $numberYellowCards = 0;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Team", inversedBy="events")
-     * @ORM\JoinTable(name="events_teams")
+     * Стадион
+     * @var string
+     *
+     * @ORM\Column(name="stadium", type="string", length=100, nullable=true)
+     */
+    private $stadium;
+
+    /**
+     * @ORM\OneToMany(targetEntity="EventTeam", mappedBy="event", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"position" = "ASC"})
      **/
-    private $teams;
+    private $eventTeam;
 
     /**
      * Get id
@@ -215,44 +229,103 @@ class Event
     {
         return $this->numberYellowCards;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add teams
+     * Set stadium
      *
-     * @param \Site\MainBundle\Entity\Team $teams
+     * @param string $stadium
      * @return Event
      */
-    public function addTeam(\Site\MainBundle\Entity\Team $teams)
+    public function setStadium($stadium)
     {
-        $this->teams[] = $teams;
+        $this->stadium = $stadium;
 
         return $this;
     }
 
     /**
-     * Remove teams
+     * Get stadium
      *
-     * @param \Site\MainBundle\Entity\Team $teams
+     * @return string 
      */
-    public function removeTeam(\Site\MainBundle\Entity\Team $teams)
+    public function getStadium()
     {
-        $this->teams->removeElement($teams);
+        return $this->stadium;
     }
 
     /**
-     * Get teams
+     * Set tour
+     *
+     * @param integer $tour
+     * @return Event
+     */
+    public function setTour($tour)
+    {
+        $this->tour = $tour;
+
+        return $this;
+    }
+
+    /**
+     * Get tour
+     *
+     * @return integer 
+     */
+    public function getTour()
+    {
+        return $this->tour;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->eventTeam = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add eventTeam
+     *
+     * @param \Site\MainBundle\Entity\EventTeam $eventTeam
+     * @return Event
+     */
+    public function addEventTeam(\Site\MainBundle\Entity\EventTeam $eventTeam)
+    {
+        $this->eventTeam[] = $eventTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventTeam
+     *
+     * @param \Site\MainBundle\Entity\EventTeam $eventTeam
+     */
+    public function removeEventTeam(\Site\MainBundle\Entity\EventTeam $eventTeam)
+    {
+        $this->eventTeam->removeElement($eventTeam);
+    }
+
+    /**
+     * Get eventTeam
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getTeams()
+    public function getEventTeam()
     {
-        return $this->teams;
+        return $this->eventTeam;
+    }
+
+    public function getEventTeamString(){
+        $string = "";
+        for($i = 0; $i < count($this->getEventTeam()); $i++){
+            $eventTeam = $this->getEventTeam()[$i];
+            $string = $string . $eventTeam->getTeam()->getName();
+            if($i != count($this->getEventTeam()) - 1){
+                $string = $string . ' - ';
+            }
+        }
+        return $string;
     }
 }

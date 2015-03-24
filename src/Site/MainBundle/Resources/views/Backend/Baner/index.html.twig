@@ -1,31 +1,33 @@
 {% extends 'SiteMainBundle:Backend:layout.html.twig' %}
 
 {% block content -%}
-    <h1>{{ 'backend.director.h1_list'|trans({}, 'menu') }}</h1>
+    <h1>{{ 'backend.baner.h1_list'|trans({}, 'menu') }}</h1>
 
     {% if entities|length > 0 %}
         <table class="records_list table table-striped table-bordered">
             <thead>
-                <tr>
-                    <th>{{ 'backend.director.name'|trans({}, 'menu') }}</th>
-                    <th>{{ 'backend.director.img'|trans({}, 'menu') }}</th>
-                    <th>{{ 'backend.director.status'|trans({}, 'menu') }}</th>
-                    <th>{{ 'backend.actions'|trans({}, 'menu') }}</th>
-                </tr>
+            <tr>
+                <th>Id</th>
+                <th>{{ 'backend.baner.img'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.baner.link'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.baner.on_main.head'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.actions'|trans({}, 'menu') }}</th>
+            </tr>
             </thead>
             <tbody>
             {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('backend_director_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                    <td><a href="{{ path('backend_baner_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td><a href="{{ entity.link }}" target="_blank">{{ entity.link }}</a></td>
                     <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ image(entity.webPath).resize(150) }}" width="150px"/></a></td>
-                    <td>{{ entity.status }}</td>
+                    <td>{{ entity.onMain ? 'Да' : 'Нет' }}</td>
                     <td>
                         <ul class="nav nav-pills">
                             <li>
-                                <a href="{{ path('backend_director_show', { 'id': entity.id }) }}">{{ 'backend.show'|trans({}, 'menu') }}</a>
+                                <a href="{{ path('backend_baner_show', { 'id': entity.id }) }}">{{ 'backend.show'|trans({}, 'menu') }}</a>
                             </li>
                             <li>
-                                <a href="{{ path('backend_director_edit', { 'id': entity.id }) }}">{{ 'backend.edit'|trans({}, 'menu') }}</a>
+                                <a href="{{ path('backend_baner_edit', { 'id': entity.id }) }}">{{ 'backend.edit'|trans({}, 'menu') }}</a>
                             </li>
                         </ul>
                     </td>
@@ -36,13 +38,13 @@
         {{ knp_pagination_render(entities) }}
     {% else %}
         <div class="alert alert-warning">
-            {{ 'backend.director.empty_list'|trans({}, 'menu') }}
+            {{ 'backend.baner.empty_list'|trans({}, 'menu') }}
         </div>
     {% endif %}
 
     <ul class="nav nav-pills">
         <li class="active">
-            <a href="{{ path('backend_director_new') }}">
+            <a href="{{ path('backend_baner_new') }}">
                 {{ 'backend.create'|trans({}, 'menu') }}
             </a>
         </li>

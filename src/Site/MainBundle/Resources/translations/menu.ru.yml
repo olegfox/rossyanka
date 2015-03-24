@@ -85,10 +85,12 @@ backend:
         back_to_list: Назад к списку событий
         empty_list: Нет событий
         name: Турнир
+        tour: Тур
         datetime: Дата и время
         score: Счет
         number_goals: Количество голов
         number_yellow_cards: Количество жёлтых карточек
+        stadium: Стадион
         teams: Команды
         not_found: Событие не существует
         name_choice:
@@ -98,6 +100,8 @@ backend:
             youth_championship: молодежное первенство
         validation:
             name: Вы не выбрали турнир!
+            tour_integer: Вы некорректно ввели значение тура!
+            tour_min: Значение тура не может быть меньше нуля!
             datetime: Вы не ввели дату и время!
             number_goals_integer: Вы некорректно ввели количество голов!
             number_goals_min: Количество голов не может быть меньше нуля!
@@ -123,6 +127,11 @@ backend:
         not_found: Команды не существует
         validation:
             name: Вы не выбрали название команды!
+    event_team:
+        team: Команда
+        position: Позиция
+        add_team: Добавить команду
+        delete_team: Удалить команду
     player:
         h1_show: Игрок
         h1_list: Список игроков
@@ -194,6 +203,22 @@ backend:
         not_found: Руководителя не существует
         validation:
             name: Вы не ввели ФИО!
+    baner:
+        h1_show: Реклама
+        h1_list: Список рекламы
+        h1_edit: Редактирование рекламы
+        h1_create: Создание рекламы
+        back_to_list: Назад к списку рекламы
+        empty_list: Нет рекламы
+        link: Ссылка
+        img: Изображение
+        on_main:
+            head: Показать банер?
+            yes: да
+            no: нет
+        not_found: Банер не найден
+        validation:
+            link_not_valid: Вы ввели некорректную ссылку (http:// обязательно)!
     actions: Действия
     show: показать
     edit: редактировать

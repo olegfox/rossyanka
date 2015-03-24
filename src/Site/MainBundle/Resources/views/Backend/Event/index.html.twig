@@ -8,7 +8,10 @@
             <thead>
             <tr>
                 <th>{{ 'backend.event.name'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.event.tour'|trans({}, 'menu') }}</th>
                 <th>{{ 'backend.event.datetime'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.event.teams'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.event.score'|trans({}, 'menu') }}</th>
                 <th>{{ 'backend.actions'|trans({}, 'menu') }}</th>
             </tr>
             </thead>
@@ -16,7 +19,10 @@
             {% for entity in entities %}
                 <tr>
                     <td><a href="{{ path('backend_event_show', { 'id': entity.id }) }}">{{ entity.getNameText()|trans({}, 'menu') }}</a></td>
+                    <td>{{ entity.tour }}</td>
                     <td>{{ entity.datetime|date('d.m.Y H:i:s') }}</td>
+                    <td>{{ entity.getEventTeamString() }}</td>
+                    <td>{{ entity.score }}</td>
                     <td>
                         <ul class="nav nav-pills">
                             <li>

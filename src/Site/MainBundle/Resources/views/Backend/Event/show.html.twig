@@ -12,6 +12,10 @@
             <td>{{ entity.getNameText()|trans({}, 'menu') }}</td>
         </tr>
         <tr>
+            <th>{{ 'backend.event.tour'|trans({}, 'menu') }}</th>
+            <td>{{ entity.tour }}</td>
+        </tr>
+        <tr>
             <th>{{ 'backend.event.datetime'|trans({}, 'menu') }}</th>
             <td>{{ entity.datetime|date('d.m.Y H:i:s') }}</td>
         </tr>
@@ -26,6 +30,10 @@
         <tr>
             <th>{{ 'backend.event.number_yellow_cards'|trans({}, 'menu') }}</th>
             <td>{{ entity.numberYellowCards }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.event.teams'|trans({}, 'menu') }}</th>
+            <td>{{ entity.getEventTeamString() }}</td>
         </tr>
         </tbody>
     </table>

@@ -28,6 +28,10 @@ class EventType extends AbstractType
                 'multiple' => false,
                 'translation_domain' => 'menu'
             ))
+            ->add('tour', null, array(
+                'required' => false,
+                'label' => 'backend.event.tour'
+            ))
             ->add('datetime', null, array(
                 'required' => true,
                 'label' => 'backend.event.datetime'
@@ -50,11 +54,19 @@ class EventType extends AbstractType
                     'min' => 0
                 )
             ))
-            ->add('teams', 'entity', array(
+            ->add('stadium', null, array(
+                'required' => false,
+                'label' => 'backend.event.stadium'
+            ))
+            ->add('eventTeam', 'bootstrap_collection', array(
                 'label'=>'backend.event.teams',
-                'class'=>'SiteMainBundle:Team',
-                'multiple'=>true,
-                'expanded'=>true
+                'type' => new EventTeamType(),
+                'allow_add'          => true,
+                'allow_delete'       => true,
+                'add_button_text'    => 'backend.event_team.add_team',
+                'delete_button_text' => 'backend.event_team.delete_team',
+                'sub_widget_col'     => 9,
+                'button_col'         => 3
             ))
         ;
     }

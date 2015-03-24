@@ -17,8 +17,8 @@ class Player
 {
 
     const STATUS_MAIN = 0;
-    const STATUS_DOP = 1;
-    const STATUS_YORTH = 2;
+    const STATUS_YORTH = 1;
+    const STATUS_DOP = 2;
     const STATUS_ARCHIVE = 3;
 
     /**

@@ -1,0 +1,16 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block title %}Результаты поиска{% endblock %}
+
+{% block content %}
+    <div class="wrap_content">
+        <div class="content">
+            <p>
+                News - {{ news|length }}
+            </p>
+            <p>
+                Players - {{ players|length }}
+            </p>
+        </div>
+    </div>
+{% endblock %}

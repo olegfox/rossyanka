@@ -16,7 +16,6 @@ class TeamRepository extends EntityRepository
 
 //  Поиск команд по типу матча
     public function findByEventType($type){
-
         switch($type){
             case 'chiempionat': {
                 $typeNumber = Event::NAME_CHAMPIONSHIP;
@@ -51,7 +50,15 @@ class TeamRepository extends EntityRepository
 
         foreach($events as $e){
             foreach($e->getTeams() as $t){
-                $teams[] = $t;
+                $f = 0;
+                foreach($teams as $team){
+                    if($t->getId() == $team->getId()){
+                        $f = 1;
+                    }
+                }
+                if($f == 0){
+                    $teams[] = $t;
+                }
             }
         }
 

@@ -1,0 +1,12 @@
+{% if baner.id is defined %}
+    <div class="reklama" id="box" style="display: block;">
+        {% if baner.link|length > 0 %}
+            <a href="{{ baner.link }}" target="_blank">
+        {% endif %}
+        <img src="{{ image(baner.webPath).cropResize(1200) }}" alt="{{ image(baner.webPath).cropResize(1200) }}"/>
+        {% if baner.link|length > 0 %}
+            </a>
+        {% endif %}    
+        <a href="#" id="close" onclick="openbox('box'); return false"></a>
+    </div>
+{% endif %}

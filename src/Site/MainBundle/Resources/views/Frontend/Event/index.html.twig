@@ -1,6 +1,8 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
 {% from 'SiteMainBundle:Frontend/Event:macros.html.twig' import table %}
+{% from 'SiteMainBundle:Frontend/Event:macros.html.twig' import calendarEvent %}
+{% from 'SiteMainBundle:Frontend/Event:macros.html.twig' import result %}
 {% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
 
 {% block title %}{{ page.title }}{% endblock %}
@@ -50,13 +52,23 @@
                     </li>
                 </ul>
                 <div class="table-content">
-                    {% if teams is defined %}
-                        {{ table(teams) }}
-                    {% endif %}
+                    {# Вывод новостей #}
                     {% if news is defined %}
                         <div class="news_list">
                             {{ listTab(news) }}
                         </div>
+                    {% endif %}
+                    {# Вывод календаря игр #}
+                    {% if events is defined %}
+                        {{ calendarEvent(events) }}
+                    {% endif %}
+                    {# Вывод результата матчей #}
+                    {% if resultEvents is defined %}
+                        {{ result(resultEvents) }}
+                    {% endif %}
+                    {# Вывод турнирной таблицы #}
+                    {% if teams is defined %}
+                        {{ table(teams) }}
                     {% endif %}
                 </div>
             </div>

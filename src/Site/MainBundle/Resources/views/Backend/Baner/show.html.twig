@@ -1,0 +1,42 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.baner.h1_show'|trans({}, 'menu') }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.baner.img'|trans({}, 'menu') }}</th>
+            <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ image(entity.webPath).resize(150) }}" width="150px"/></a></td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.baner.link'|trans({}, 'menu') }}</th>
+            <td><a href="{{ entity.link }}" target="_blank">{{ entity.link }}</a></td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.baner.on_main.head'|trans({}, 'menu') }}</th>
+            <td>{{ entity.onMain ? 'Да' : 'Нет' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_baner_index') }}">
+                {{ 'backend.baner.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_baner_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_baner_new') }}">
+                {{ 'backend.create'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

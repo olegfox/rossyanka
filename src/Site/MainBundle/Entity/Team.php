@@ -79,9 +79,9 @@ class Team
     private $slug;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Event", inversedBy="teams")
+     * @ORM\OneToMany(targetEntity="EventTeam", mappedBy="team")
      **/
-    private $event;
+    private $eventTeam;
 
     /**
      * @Assert\File()
@@ -264,39 +264,6 @@ class Team
     }
 
     /**
-     * Add event
-     *
-     * @param \Site\MainBundle\Entity\Event $event
-     * @return Team
-     */
-    public function addEvent(\Site\MainBundle\Entity\Event $event)
-    {
-        $this->event[] = $event;
-
-        return $this;
-    }
-
-    /**
-     * Remove event
-     *
-     * @param \Site\MainBundle\Entity\Event $event
-     */
-    public function removeEvent(\Site\MainBundle\Entity\Event $event)
-    {
-        $this->event->removeElement($event);
-    }
-
-    /**
-     * Get event
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getEvent()
-    {
-        return $this->event;
-    }
-
-    /**
      * Set slug
      *
      * @param string $slug
@@ -455,5 +422,38 @@ class Team
     public function getWins()
     {
         return $this->wins;
+    }
+
+    /**
+     * Add eventTeam
+     *
+     * @param \Site\MainBundle\Entity\EventTeam $eventTeam
+     * @return Team
+     */
+    public function addEventTeam(\Site\MainBundle\Entity\EventTeam $eventTeam)
+    {
+        $this->eventTeam[] = $eventTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventTeam
+     *
+     * @param \Site\MainBundle\Entity\EventTeam $eventTeam
+     */
+    public function removeEventTeam(\Site\MainBundle\Entity\EventTeam $eventTeam)
+    {
+        $this->eventTeam->removeElement($eventTeam);
+    }
+
+    /**
+     * Get eventTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEventTeam()
+    {
+        return $this->eventTeam;
     }
 }

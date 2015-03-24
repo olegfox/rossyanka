@@ -12,5 +12,36 @@ use Doctrine\ORM\EntityRepository;
  */
 class PlayerRepository extends EntityRepository
 {
+//  Поиск
+    public function findSearch($text){
+        $em = $this->getEntityManager();
 
+        $players = $em->createQuery('
+            SELECT p FROM Site\MainBundle\Entity\Player p
+            WHERE p.firstname LIKE :text
+            OR p.secondname LIKE :text
+            OR p.patronymic LIKE :text
+            OR p.birthPlace LIKE :text
+            OR p.nationality LIKE :text
+            OR p.amplua LIKE :text
+            OR p.height LIKE :text
+            OR p.weight LIKE :text
+            OR p.firstCoach LIKE :text
+            OR p.progress LIKE :text
+            OR p.title LIKE :text
+            OR p.previousTeams LIKE :text
+            OR p.favoritePlace LIKE :text
+            OR p.favoriteDish LIKE :text
+            OR p.favoriteBook LIKE :text
+            OR p.anySport LIKE :text
+            OR p.hobby LIKE :text
+            OR p.favoritePhrase LIKE :text
+        ')
+        ->setParameters(array(
+            'text' => '%' . $text . '%'
+        ))
+        ->getResult();
+
+        return $players;
+    }
 }

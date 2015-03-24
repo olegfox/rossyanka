@@ -20,6 +20,7 @@ class BackendMenuBuilder extends ContainerAware
         $menu->addChild('Игроки', array('route' => 'backend_player_index'));
         $menu->addChild('Руководство', array('route' => 'backend_director_index'));
         $menu->addChild('Медиа', array('route' => 'backend_media_index'));
+        $menu->addChild('Реклама', array('route' => 'backend_baner_index'));
 
         $menu->setCurrent($this->container->get('request')->getRequestUri());
 

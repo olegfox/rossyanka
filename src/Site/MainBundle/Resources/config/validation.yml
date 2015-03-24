@@ -64,6 +64,13 @@ Site\MainBundle\Entity\Event:
         name:
             - NotBlank:
                 message: "backend.event.validation.name"
+        tour:
+            - Type:
+                type: integer
+                message: "backend.event.validation.tour_integer"
+            - GreaterThan:
+                value: -1
+                message: "backend.event.validation.tour_min"
         datetime:
             - NotBlank:
                 message: "backend.event.validation.datetime"
@@ -128,3 +135,9 @@ Site\MainBundle\Entity\Director:
         name:
             - NotBlank:
                 message: "backend.director.validation.name"
+
+Site\MainBundle\Entity\Baner:
+    properties:
+        link:
+            - Url:
+                message: "backend.baner.validation.link_not_valid"

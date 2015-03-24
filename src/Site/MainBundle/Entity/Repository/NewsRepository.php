@@ -98,4 +98,23 @@ class NewsRepository extends EntityRepository
         return $news;
     }
 
+//  Поиск
+    public function findSearch($text){
+        $em = $this->getEntityManager();
+
+        $news = $em->createQuery('
+            SELECT n FROM Site\MainBundle\Entity\News n
+            WHERE n.title LIKE :text
+            OR n.description LIKE :text
+            OR n.text LIKE :text
+            ORDER BY n.date DESC
+        ')
+        ->setParameters(array(
+            'text' => '%' . $text . '%'
+        ))
+        ->getResult();
+
+        return $news;
+    }
+
 }

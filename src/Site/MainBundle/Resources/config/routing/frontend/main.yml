@@ -22,5 +22,13 @@ frontend_players:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/player.yml"
     prefix: /players
 
+frontend_baner:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/baner.yml"
+    prefix: /baner
+
+frontend_search_index:
+    path:     /search
+    defaults: { _controller: "SiteMainBundle:Frontend/Search:index" }
+
 frontend_page:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"

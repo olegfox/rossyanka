@@ -4,6 +4,7 @@ namespace Site\MainBundle\Controller\Backend;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Site\MainBundle\Entity\Event;
 use Site\MainBundle\Form\EventType;
@@ -47,6 +48,9 @@ class EventController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            foreach($entity->getEventTeam() as $eventTeam){
+                $eventTeam->setEvent($entity);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -179,11 +183,35 @@ class EventController extends Controller
             throw $this->createNotFoundException($this->get('translator')->trans('backend.event.not_found'));
         }
 
+        $originalEventTeam = new ArrayCollection();
+
+        // Create an ArrayCollection of the current Tag objects in the database
+        foreach ($entity->getEventTeam() as $eventTeam) {
+            $originalEventTeam->add($eventTeam);
+        }
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+            foreach ($originalEventTeam as $eventTeam) {
+
+                if (false === $entity->getEventTeam()->contains($eventTeam)) {
+
+                    $entity->getEventTeam()->removeElement($eventTeam);
+
+                    $em->remove($eventTeam);
+
+                }
+
+            }
+
+            foreach($entity->getEventTeam() as $eventTeam){
+                $eventTeam->setEvent($entity);
+            }
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('backend_event_edit', array('id' => $id)));

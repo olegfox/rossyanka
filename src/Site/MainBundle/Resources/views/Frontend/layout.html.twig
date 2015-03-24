@@ -7,10 +7,7 @@
 
 {% block body %}
     <div class="wrap">
-        <div class="reklama" id="box" style="display: block;">
-            РЕКЛАМА
-            <a href="#" onclick="openbox('box'); return false"></a>
-        </div>
+        {{ render(url('frontend_baner_index')) }}
         <div class="header">
             <div class="header-block">
                 <div class="logo">
@@ -23,8 +20,8 @@
                 </div>
                 <div class="header-right-block">
                     <div class="search">
-                        <form>
-                            <input type="text" placeholder="поиск по сайту">
+                        <form action="{{ path('frontend_search_index') }}" method="get">
+                            <input type="text" name="text" placeholder="поиск по сайту">
                         </form>
                     </div>
                     <div class="soc-icons">

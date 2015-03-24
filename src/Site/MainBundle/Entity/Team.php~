@@ -79,9 +79,9 @@ class Team
     private $slug;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Event", inversedBy="teams")
+     * @ORM\OneToMany(targetEntity="EventTeam", mappedBy="team")
      **/
-    private $event;
+    private $eventTeam;
 
     /**
      * @Assert\File()
@@ -261,39 +261,6 @@ class Team
 
     public function __toString(){
         return $this->name;
-    }
-
-    /**
-     * Add event
-     *
-     * @param \Site\MainBundle\Entity\Event $event
-     * @return Team
-     */
-    public function addEvent(\Site\MainBundle\Entity\Event $event)
-    {
-        $this->event[] = $event;
-
-        return $this;
-    }
-
-    /**
-     * Remove event
-     *
-     * @param \Site\MainBundle\Entity\Event $event
-     */
-    public function removeEvent(\Site\MainBundle\Entity\Event $event)
-    {
-        $this->event->removeElement($event);
-    }
-
-    /**
-     * Get event
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getEvent()
-    {
-        return $this->event;
     }
 
     /**

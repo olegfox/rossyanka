@@ -1,0 +1,30 @@
+backend_baner_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Baner:index" }
+
+backend_baner_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Baner:show" }
+
+backend_baner_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Baner:new" }
+
+backend_baner_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Baner:create" }
+    methods:  POST
+
+backend_baner_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Baner:edit" }
+
+backend_baner_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Baner:update" }
+    methods:  [POST, PUT]
+
+backend_baner_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Baner:delete" }
+    methods:  [POST, DELETE]
