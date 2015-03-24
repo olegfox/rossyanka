@@ -383,7 +383,7 @@ input:focus {
 }
 
 .content-right-block {
-    width: 440px;
+    width: 443px;
     float: right;
 }
 
@@ -420,17 +420,17 @@ input:focus {
     position: absolute;
     bottom: 0;
     word-wrap: break-word;
-    background: rgba(0, 0, 0, 0.4);
-    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000, endColorstr=#66000000);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000, endColorstr=#66000000);
+    background: rgba(0, 0, 0, 0.3);
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
     zoom: 1;
 }
 
 .content-slide .content-slide-block:hover .content-slide-block-title,
 .content-slide .content-slide-block.current .content-slide-block-title {
-    background: rgba(0, 0, 0, 0.8);
-    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000, endColorstr=#CC000000);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000, endColorstr=#CC000000);
+    background: rgba(0, 0, 0, 0.5);
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
     zoom: 1;
 }
 
@@ -445,9 +445,9 @@ input:focus {
 
 .content-slide .content-slide-block.first:hover .content-slide-block-title,
 .content-slide .content-slide-block.current.first .content-slide-block-title {
-    background: rgba(0, 0, 0, 0.4);
-    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000, endColorstr=#66000000);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000, endColorstr=#66000000);
+    background: rgba(0, 0, 0, 0.3);
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
     zoom: 1;
 }
 
@@ -877,6 +877,7 @@ ul li:focus, ul li a:focus {
 .kybki {
     text-align: center;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .kybki a {
@@ -930,13 +931,13 @@ img, a {
     position: relative;
     z-index: 200;
     width: 1165px;
-    margin: -480px auto 0 auto;
+    margin: -479px auto 0 auto;
 }
 
 .the-end-main {
     position: absolute;
     top: 10px;
-    right: 0;
+    right: -7px;
     z-index: 100000;
     width: 200px;
 }
@@ -945,7 +946,7 @@ img, a {
     width: 180px;
     background: #fff;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .the-end-title {
@@ -1042,7 +1043,7 @@ img, a {
     min-height: 100%;
     width: 1199px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1, StartColorStr='#FFFFFFFF', EndColorStr='#FFFFFFFF')";
     filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#FFFFFFFF', EndColorStr='#FFFFFFFF');
     zoom: 1 !important;
@@ -1165,6 +1166,16 @@ img, a {
 .table-event td a{
     color: #000;
     text-decoration: none;
+}
+
+.table-event-result span.number{
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.table-event-result td img{
+    margin-right: 0px;
 }
 
 /* end Event */

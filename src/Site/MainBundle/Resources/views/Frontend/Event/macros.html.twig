@@ -61,8 +61,8 @@
                         {{ event.datetime|date('d.m.Y H:i') }}
                     </td>
                     <td>
-                        {% for team in event.teams %}
-                             {{ team.name }}{% if loop.last == false %}<span> - </span>{% endif %}
+                        {% for eventTeam in event.eventTeam %}
+                             {{ eventTeam.team.name }}{% if loop.last == false %}<span> - </span>{% endif %}
                         {% endfor %}
                     </td>
                     <td>
@@ -81,14 +81,14 @@
 {% macro result(resultEvents) %}
 
     {% if resultEvents|length > 0 %}
-        <table class="table-event">
+        <table class="table-event table-event-result">
             {% for row in resultEvents %}
                 {% set insideLoop = loop %}
                     {% if insideLoop.first %}
                         <tr>
                             <td></td>
                             {% for column in row %}
-                                <td>{{ loop.index }}<img src="{{ image(column['img2']).zoomCrop(50, 50) }}" alt="{{ column['nameTeamRow'] }}"/></td>
+                                <td><img src="{{ image(column['img2']).zoomCrop(50, 50).jpeg(100) }}" alt="{{ column['nameTeamRow'] }}"/></td>
                             {% endfor %}
                         </tr>
                     {% endif %}
@@ -96,7 +96,7 @@
                             {% for column in row %}
                                 {# Если это первый столбец #}
                                 {% if loop.first %}
-                                    <td>{{ insideLoop.index }}<img src="{{ image(column['img1']).zoomCrop(50, 50) }}" alt="{{ column['nameTeamRow'] }}"/></td>
+                                    <td><img src="{{ image(column['img1']).zoomCrop(50, 50).jpeg(100) }}" alt="{{ column['nameTeamRow'] }}"/></td>
                                     {# Если это не первый столбец #}
                                 {% endif %}
                                 <td>

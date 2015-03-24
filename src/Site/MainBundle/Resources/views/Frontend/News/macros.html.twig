@@ -19,7 +19,9 @@
         {% for n in news %}
             {% if loop.first %}
                 <div class="content-slide-block first">
-                    <img src="{{ image(n.webPath).zoomCrop(715, 480) }}" alt="{{ n.title }}">
+                    <a href="{{ path('frontend_news_one', {type: n.getTypeUrl(), slug: n.slug}) }}">
+                        <img src="{{ image(n.webPath).zoomCrop(715, 480) }}" alt="{{ n.title }}">
+                    </a>
                     <div class="content-slide-block-title">
                         <div class="inner">
                             <a href="{{ path('frontend_news_one', {type: n.getTypeUrl(), slug: n.slug}) }}">

@@ -80,11 +80,17 @@ class FrontendMenuBuilder extends ContainerAware
 
 //          Меню текстовых страниц
             } else {
-
                 $mainMenu = $menu->addChild($m->getTitle(), array(
                     'route' => 'frontend_page',
                     'routeParameters' => array('slug' => $m->getSlug())
                 ));
+
+                if($m->getSlug() == 'komanda'){
+                    $mainMenu = $menu->addChild($m->getTitle(), array(
+                        'route' => 'frontend_page_child',
+                        'routeParameters' => array('parent' => $m->getSlug(), 'slug' => $m->getChildren()[0]->getSlug())
+                    ));
+                }
 
                 if(count($m->getChildren()) > 0){
                     $mainMenu->setAttributes(array(

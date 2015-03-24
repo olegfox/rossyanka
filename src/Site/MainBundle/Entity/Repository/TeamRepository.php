@@ -36,8 +36,10 @@ class TeamRepository extends EntityRepository
 
         $em = $this->getEntityManager();
 
-        $events = $em->createQuery('
-            SELECT e FROM Site\MainBundle\Entity\Event e
+        $teams = $em->createQuery('
+            SELECT t FROM Site\MainBundle\Entity\Team t
+            LEFT JOIN t.eventTeam et
+            LEFT JOIN et.event e
             WHERE e.name = :typeNumber and e.datetime <= :now
         ')
             ->setParameters(array(
@@ -46,21 +48,21 @@ class TeamRepository extends EntityRepository
             ))
             ->getResult();
 
-        $teams = array();
-
-        foreach($events as $e){
-            foreach($e->getTeams() as $t){
-                $f = 0;
-                foreach($teams as $team){
-                    if($t->getId() == $team->getId()){
-                        $f = 1;
-                    }
-                }
-                if($f == 0){
-                    $teams[] = $t;
-                }
-            }
-        }
+//        $teams = array();
+//
+//        foreach($events as $e){
+//            foreach($e->getTeams() as $t){
+//                $f = 0;
+//                foreach($teams as $team){
+//                    if($t->getId() == $team->getId()){
+//                        $f = 1;
+//                    }
+//                }
+//                if($f == 0){
+//                    $teams[] = $t;
+//                }
+//            }
+//        }
 
         return $teams;
     }

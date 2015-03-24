@@ -17,6 +17,7 @@ $(function(){
             $('.content-left-block .content-slide-block.first').html(object.html()).find('*').hide();
             $('.content-left-block .content-slide-block.first img.little').remove();
             $('.content-left-block .content-slide-block.first img.big').removeClass('hide');
+            $('.content-left-block .content-slide-block.first img.big').wrap('<a href="' + object.find('a').attr('href') + '"></a>');
             $('.content-left-block .content-slide-block.first *').fadeIn(200);
         });
     });

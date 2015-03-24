@@ -28,9 +28,9 @@ Date: July 29, 2010
     bottom: 55px;
     width: 100%;
     height: 85px;
-	background: rgba(0,0,0,0.15);
-    -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#26000000,endColorstr=#26000000);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#26000000,endColorstr=#26000000);
+	background: rgba(0,0,0,0.3);
+    -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
     zoom: 1;
 }
 .slide-block p{

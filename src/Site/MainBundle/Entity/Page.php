@@ -75,6 +75,7 @@ class Page
 
     /**
      * @ORM\OneToMany(targetEntity="Page", cascade={"persist", "remove"}, mappedBy="parent")
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $children;
 
