@@ -18,6 +18,10 @@ backend_news:
     resource: "@SiteMainBundle/Resources/config/routing/backend/news.yml"
     prefix: /news
 
+backend_announcement:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/announcement.yml"
+    prefix: /announcement
+
 backend_event:
     resource: "@SiteMainBundle/Resources/config/routing/backend/event.yml"
     prefix: /event

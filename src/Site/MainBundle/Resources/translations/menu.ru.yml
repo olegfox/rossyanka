@@ -77,6 +77,25 @@ backend:
             title: Вы не ввели заголовок!
             date: Вы не ввели дату!
             type: Вы не выбрали тип новости!
+    announcement:
+        h1_show: Анонс
+        h1_list: Список анонсов
+        h1_edit: Редактирование анонса
+        h1_create: Создание анонса
+        back_to_list: Назад к списку анонсов
+        empty_list: Нет анонсов
+        title: Заголовок анонса
+        metatitle: Мета-заголовок
+        metadescription: Мета-описание
+        metakeywords: Ключевые слова
+        date: Дата
+        img: Изображение анонса
+        description: Превью анонса
+        text: Текст анонса
+        not_found: Анонса не существует
+        validation:
+            title: Вы не ввели заголовок!
+            date: Вы не ввели дату!
     event:
         h1_show: Событие
         h1_list: Список событий
@@ -235,3 +254,5 @@ frontend:
             events: События
             interviews: Интервью
             opinion: Мнения
+    announcement:
+        title: Анонсы

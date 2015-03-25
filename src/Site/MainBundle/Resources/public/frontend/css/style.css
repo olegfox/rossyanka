@@ -376,6 +376,9 @@ input:focus {
 .content .news_list {
     padding-top: 72px;
 }
+.content .announce_list{
+    padding-top: 0px;
+}
 
 .content-left-block {
     width: 715px;
@@ -901,16 +904,109 @@ img, a {
     text-align: center;
 }
 
+#daily-events-calendar div.day1{
+    font-size:28px;
+    left:84px;
+    top:0px;
+}
+
+#daily-events-calendar div.day2{
+    font-size:27px;
+    left:149px;
+    top:25px;
+}
+
+#daily-events-calendar div.day3{
+    font-size:26px;
+    left:186px;
+    top:80px;
+}
+
+#daily-events-calendar div.day4{
+    font-size:25px;
+    left:185px;
+    top:143px;
+}
+
+#daily-events-calendar div.day5{
+    font-size:24px;
+    left:151px;
+    top:192px;
+}
+
+#daily-events-calendar div.day6{
+    font-size:23px;
+    left:98px;
+    top:211px;
+}
+
+#daily-events-calendar div.day7{
+    font-size:22px;
+    left:46px;
+    top:198px;
+}
+
+#daily-events-calendar div.day8{
+    font-size:21px;
+    left:14px;
+    top:160px;
+}
+
+#daily-events-calendar div.day9{
+    font-size:20px;
+    left:9px;
+    top:113px;
+}
+
+#daily-events-calendar div.day10{
+    font-size:19px;
+    left:30px;
+    top:75px;
+}
+
+#daily-events-calendar div.day11{
+    font-size:18px;
+    left:66px;
+    top:57px;
+}
+
+#daily-events-calendar div.day12{
+    font-size:17px;
+    left:103px;
+    top:63px;
+}
+
+#daily-events-calendar div.day13{
+    font-size:16px;
+    left:127px;
+    top:87px;
+}
+
+#daily-events-calendar div.day14{
+    font-size:15px;
+    left:133px;
+    top:117px;
+}
+
+#daily-events-calendar div.day15{
+    font-size:14px;
+    left:121px;
+    top:142px;
+}
+
 #daily-events-calendar div a {
     text-decoration: none;
     color: #000;
+    width:23px;
+    height:23px;
+    line-height:23px;
 }
 
 #daily-events-calendar div:hover a {
     text-decoration: underline;
 }
 
-#daily-events-calendar div span {
+#daily-events-calendar div.list-events {
     display: none;
     font-size: 12px;
     color: #fff;
@@ -922,9 +1018,37 @@ img, a {
     margin: 0 0 0 -80px;
 }
 
-#daily-events-calendar div:hover span {
+#daily-events-calendar div:hover div.list-events {
     display: block;
     position: absolute;
+}
+
+#daily-events-calendar div.list-events a{
+
+}
+
+#daily-events-calendar div.list-events a .name{
+    color: #fff;
+    word-wrap: break-word;
+    text-transform: uppercase;
+    line-height: 14px;
+    display: inline-block;
+    max-width: 100%;
+    width: 100%;
+}
+
+#daily-events-calendar div.list-events a .datetime{
+    color: #fff;
+    display: inline-block;
+    max-width: 100%;
+    width: 100%;
+}
+
+#daily-events-calendar div.list-events a .command{
+    color: #fff;
+    display: inline-block;
+    max-width: 100%;
+    width: 100%;
 }
 
 .the-end-main-main {

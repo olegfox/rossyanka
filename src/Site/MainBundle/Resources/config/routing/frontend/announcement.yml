@@ -1,0 +1,7 @@
+frontend_announcement_index:
+    path:     /{date}
+    defaults: { _controller: "SiteMainBundle:Frontend/Announcement:index" }
+
+frontend_announcement_one:
+    path:     /{date}/{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/Announcement:one" }

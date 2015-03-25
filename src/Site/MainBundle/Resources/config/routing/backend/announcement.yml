@@ -1,0 +1,30 @@
+backend_announcement_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Announcement:index" }
+
+backend_announcement_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Announcement:show" }
+
+backend_announcement_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Announcement:new" }
+
+backend_announcement_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Announcement:create" }
+    methods:  POST
+
+backend_announcement_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Announcement:edit" }
+
+backend_announcement_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Announcement:update" }
+    methods:  [POST, PUT]
+
+backend_announcement_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Announcement:delete" }
+    methods:  [POST, DELETE]

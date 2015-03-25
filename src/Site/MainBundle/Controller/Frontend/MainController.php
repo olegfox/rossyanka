@@ -19,6 +19,7 @@ class MainController extends Controller
         $sliders = $repository_slider->findAll();
         $lastPastEvent = $repository_event->findLastPastEvent();
         $firstFutureEvent = $repository_event->findFirstFutureEvent();
+        $calendarEvent = $repository_event->getCalendar();
 
         return $this->render('SiteMainBundle:Frontend/Main:index.html.twig', array(
             'news' => $news,
@@ -26,7 +27,8 @@ class MainController extends Controller
             'page' => $page,
             'sliders' => $sliders,
             'lastPastEvent' => $lastPastEvent,
-            'firstFutureEvent' => $firstFutureEvent
+            'firstFutureEvent' => $firstFutureEvent,
+            'calendarEvent' => $calendarEvent
         ));
     }
 }

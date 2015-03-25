@@ -1,16 +1,23 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
+{% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
+{% from 'SiteMainBundle:Frontend/Player:macros.html.twig' import listPlayers %}
+
 {% block title %}Результаты поиска{% endblock %}
 
 {% block content %}
     <div class="wrap_content">
         <div class="content">
-            <p>
-                News - {{ news|length }}
-            </p>
-            <p>
-                Players - {{ players|length }}
-            </p>
+            <h1>
+                Новости - {{ news|length }}
+            </h1>
+            <div class="news_list announce_list">
+                {{ listTab(news) }}
+            </div>
+            <h1>
+                Игроки - {{ players|length }}
+            </h1>
+            {{ listPlayers(players) }}
         </div>
     </div>
 {% endblock %}

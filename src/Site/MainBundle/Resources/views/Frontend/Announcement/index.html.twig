@@ -1,0 +1,16 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% from 'SiteMainBundle:Frontend/Announcement:macros.html.twig' import listTab %}
+
+{% block title %}{{ 'frontend.announcement.title'|trans({}, 'menu') }} | {{ app.request.get('date') }}{% endblock %}
+
+{% block content %}
+    <div class="wrap_content">
+        <div class="content">
+            <h1>Анонсы | {{ app.request.get('date') }}</h1>
+            <div class="news_list announce_list">
+                {{ listTab(announcements) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

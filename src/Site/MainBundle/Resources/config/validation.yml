@@ -13,6 +13,17 @@ Site\MainBundle\Entity\News:
             - NotBlank:
                 message: "backend.news.validation.type"
 
+Site\MainBundle\Entity\Announcement:
+    properties:
+        title:
+            - NotBlank:
+                message: "backend.announcement.validation.title"
+            - Length:
+                max: 100
+        date:
+            - NotBlank:
+                message: "backend.announcement.validation.date"
+
 Site\MainBundle\Entity\Page:
     properties:
         title:

@@ -1,0 +1,31 @@
+{% macro listTab(announcements) %}
+    {% for announce in announcements %}
+        {# Если это матч #}
+        {% if announce.datetime is defined %}
+            {% set link = '' %}
+        {# Если это анонс #}
+        {% else %}
+            {% set link = path('frontend_announcement_one', {date: announce.date|date('d-m-Y'), slug: announce.slug}) %}
+        {% endif %}
+        <div class="tab-articl">
+            {% if announce.datetime is not defined %}
+                <a href="{{ link }}" class="tab-articl-img">
+                    <img src="{{ image(announce.webPath).zoomCrop(230, 155) }}" alt="{{ announce.title }}" width="230px" height="155px">
+                </a>
+            {% endif %}
+            <div class="tab-articl-description">
+                {# Если это матч #}
+                {% if announce.datetime is defined %}
+                    <a href="{{ link }}" class="tab-articl-text">{{ announce.getNameText()|trans({}, 'menu') }}</a>
+                    <a href="{{ link }}" class="tab-articl-title">{{ announce.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y H:I') }}</a>
+                    <a href="{{ link }}" class="tab-articl-text tab-articl-preview">{{ announce.getEventTeamString() }}</a>
+                {# Если это анонс #}
+                {% else %}
+                    <a href="{{ link }}" class="tab-articl-text">{{ announce.title }}</a>
+                    <a href="{{ link }}" class="tab-articl-title">{{ announce.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</a>
+                    <a href="{{ link }}" class="tab-articl-text tab-articl-preview">{{ announce.description }}</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}

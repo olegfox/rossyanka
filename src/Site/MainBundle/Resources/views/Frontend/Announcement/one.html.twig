@@ -1,0 +1,13 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block title %}{{ 'frontend.announcement.title'|trans({}, 'menu') }} | {{ app.request.get('date') }} | {{ announcement.metaTitle }}{% endblock %}
+{% block meta_description %}{{ announcement.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ announcement.metaKeywords }}{% endblock %}
+
+{% block content %}
+    <div class="wrap_content">
+        <div class="content">
+            {{ announcement.text|raw }}
+        </div>
+    </div>
+{% endblock %}

@@ -126,7 +126,7 @@ class EventRepository extends EntityRepository
 //                          Если для этих двух команд найдена игра
                             if ($e->getEventTeam()[0]->getTeam()->getId() == $t1->getId() && $e->getEventTeam()[1]->getTeam()->getId() == $t2->getId()) {
 //                              Если в массиве такой записи ещё нет
-                                if(!isset($resultEvents[$i][$j]['nameTeamRow'])){
+                                if (!isset($resultEvents[$i][$j]['nameTeamRow'])) {
                                     $resultEvents[$i][$j]['nameTeamRow'] = $t1->getName();
                                     $resultEvents[$i][$j]['nameTeamCol'] = $t2->getName();
                                     $resultEvents[$i][$j]['img1'] = $t1->getWebPath();
@@ -139,7 +139,7 @@ class EventRepository extends EntityRepository
                         }
                     }
 //                  Если игры для этих двух команд не найдено
-                    if($fl == 0){
+                    if ($fl == 0) {
                         $resultEvents[$i][$j]['nameTeamRow'] = $t1->getName();
                         $resultEvents[$i][$j]['nameTeamCol'] = $t2->getName();
                         $resultEvents[$i][$j]['img1'] = $t1->getWebPath();
@@ -196,5 +196,55 @@ class EventRepository extends EntityRepository
             ->getResult();
 
         return $event;
+    }
+
+//  Календарь событий
+    public function getCalendar()
+    {
+        $calendar = array();
+
+        $date_begin = (new \DateTime())->format('Y-m-d');
+        $date_end = date('Y-m-d', strtotime($date_begin . ' + 14 days'));
+        $i = 0;
+
+        $date = $date_begin;
+
+        $events = $this->getEntityManager()->createQuery('
+            SELECT e FROM SiteMainBundle:Event e
+            WHERE e.datetime >= :date_begin AND e.datetime <= :date_end
+        ')
+            ->setParameters(array(
+                'date_begin' => new \DateTime($date_begin),
+                'date_end' => new \DateTime($date_end)
+            ))
+            ->getResult();
+
+        $announcements = $this->getEntityManager()->createQuery('
+            SELECT a FROM SiteMainBundle:Announcement a
+            WHERE a.date >= :date_begin AND a.date <= :date_end
+        ')
+            ->setParameters(array(
+                'date_begin' => new \DateTime($date_begin),
+                'date_end' => new \DateTime($date_end)
+            ))
+            ->getResult();
+
+        while ($date <= $date_end) {
+            $calendar[$i]['date'] = (new \DateTime())->setTimestamp(strtotime($date));
+            foreach($events as $event){
+                if($calendar[$i]['date']->format('Y-m-d') == $event->getDatetime()->format('Y-m-d')){
+                    $calendar[$i]['events'][] = $event;
+                }
+            }
+            foreach($announcements as $announcement){
+                if($calendar[$i]['date']->format('Y-m-d') == $announcement->getDate()->format('Y-m-d')){
+                    $calendar[$i]['events'][] = $announcement;
+                }
+            }
+            $date = date('Y-m-d', strtotime($date . ' + 1 days'));
+            $i++;
+        }
+
+        return $calendar;
     }
 }

@@ -2,40 +2,43 @@
     {% if teams|length > 0 %}
         <table class="table-event">
             <thead>
-                <th></th>
-                <th>Игры</th>
-                <th>Победы</th>
-                <th>Ничьи</th>
-                <th>Пораж.</th>
-                <th>Мячи</th>
-                <th>Очки</th>
+            <th></th>
+            <th>Игры</th>
+            <th>Победы</th>
+            <th>Ничьи</th>
+            <th>Пораж.</th>
+            <th>Мячи</th>
+            <th>Очки</th>
             </thead>
             <tbody>
-                {% for team in teams %}
-                    <tr>
-                        <td class="first">
-                            {% if team.name == 'Россиянка' %}<a href="{{ path('frontend_page_child', {parent: 'komanda', slug: 'osnovnoi-sostav'}) }}">{% endif %}<img src="{{ image(team.webPath).resize(50) }}" alt=""/> {{ team.name }}{% if team.slug == 'Россиянка' %}</a>{% endif %}
-                        </td>
-                        <td>
-                            {{ team.games }}
-                        </td>
-                        <td>
-                            {{ team.wins }}
-                        </td>
-                        <td>
-                            {{ team.standoff }}
-                        </td>
-                        <td>
-                            {{ team.defeat }}
-                        </td>
-                        <td>
-                            {{ team.balls }}
-                        </td>
-                        <td>
-                            {{ team.points }}
-                        </td>
-                    </tr>
-                {% endfor %}
+            {% for team in teams %}
+                <tr>
+                    <td class="first">
+                        {% if team.name == 'Россиянка' %}<a
+                                href="{{ path('frontend_page_child', {parent: 'komanda', slug: 'osnovnoi-sostav'}) }}">{% endif %}
+                            <img src="{{ image(team.webPath).resize(50) }}"
+                                 alt=""/> {{ team.name }}{% if team.slug == 'Россиянка' %}</a>{% endif %}
+                    </td>
+                    <td>
+                        {{ team.games }}
+                    </td>
+                    <td>
+                        {{ team.wins }}
+                    </td>
+                    <td>
+                        {{ team.standoff }}
+                    </td>
+                    <td>
+                        {{ team.defeat }}
+                    </td>
+                    <td>
+                        {{ team.balls }}
+                    </td>
+                    <td>
+                        {{ team.points }}
+                    </td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     {% endif %}
@@ -45,11 +48,11 @@
     {% if events|length > 0 %}
         <table class="table-event">
             <thead>
-                <th>Тур</th>
-                <th>Дата, время</th>
-                <th></th>
-                <th></th>
-                <th>Стадион</th>
+            <th>Тур</th>
+            <th>Дата, время</th>
+            <th></th>
+            <th></th>
+            <th>Стадион</th>
             </thead>
             <tbody>
             {% for event in events %}
@@ -62,7 +65,7 @@
                     </td>
                     <td>
                         {% for eventTeam in event.eventTeam %}
-                             {{ eventTeam.team.name }}{% if loop.last == false %}<span> - </span>{% endif %}
+                            {{ eventTeam.team.name }}{% if loop.last == false %}<span> - </span>{% endif %}
                         {% endfor %}
                     </td>
                     <td>
@@ -84,34 +87,78 @@
         <table class="table-event table-event-result">
             {% for row in resultEvents %}
                 {% set insideLoop = loop %}
-                    {% if insideLoop.first %}
-                        <tr>
-                            <td></td>
-                            {% for column in row %}
-                                <td><img src="{{ image(column['img2']).zoomCrop(50, 50).jpeg(100) }}" alt="{{ column['nameTeamRow'] }}"/></td>
-                            {% endfor %}
-                        </tr>
-                    {% endif %}
-                        <tr>
-                            {% for column in row %}
-                                {# Если это первый столбец #}
-                                {% if loop.first %}
-                                    <td><img src="{{ image(column['img1']).zoomCrop(50, 50).jpeg(100) }}" alt="{{ column['nameTeamRow'] }}"/></td>
-                                    {# Если это не первый столбец #}
+                {% if insideLoop.first %}
+                    <tr>
+                        <td></td>
+                        {% for column in row %}
+                            <td><img src="{{ image(column['img2']).zoomCrop(50, 50).jpeg(100) }}"
+                                     alt="{{ column['nameTeamRow'] }}"/></td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+                <tr>
+                    {% for column in row %}
+                        {# Если это первый столбец #}
+                        {% if loop.first %}
+                            <td><img src="{{ image(column['img1']).zoomCrop(50, 50).jpeg(100) }}"
+                                     alt="{{ column['nameTeamRow'] }}"/></td>
+                            {# Если это не первый столбец #}
+                        {% endif %}
+                        <td>
+                            {% for score in column['score'] %}
+                                {{ score }}{% if loop.last == false %}<br/>{% endif %}
+                            {% else %}
+                                {% if column['score'] == 0 %}
+                                    -:-
                                 {% endif %}
-                                <td>
-                                    {% for score in column['score'] %}
-                                        {{ score }}{% if loop.last == false %}<br/>{% endif %}
-                                    {% else %}
-                                        {% if column['score'] == 0 %}
-                                            -:-
-                                        {% endif %}
-                                    {% endfor %}
-                                </td>
                             {% endfor %}
-                        </tr>
+                        </td>
+                    {% endfor %}
+                </tr>
             {% endfor %}
         </table>
     {% endif %}
 
+{% endmacro %}
+
+{% macro calendarCircle(calendar) %}
+    {% if calendar|length > 0 %}
+        <div class="right-block-title">календарь предстоящих событий</div>
+        <div id="daily-events-calendar">
+            {% for c in calendar %}
+                <div class="day{{ loop.index }}">
+                    <a href="{{ path('frontend_announcement_index', {date: c['date']|date('d-m-Y')}) }}">{{ c['date']|date('j') }}</a>
+                    {% if c['events'] is defined %}
+                        {% if c['events']|length > 0 %}
+                            <div class="list-events">
+                                <ul>
+                                    {% for event in c['events'] %}
+                                        {# Если это матч #}
+                                        {% if event.datetime is defined %}
+                                            <li>
+                                                <a href="#">
+                                                    <span class="name">{{ event.getNameText()|trans({}, 'menu') }}</span>
+                                                    <span class="datetime">{{ event.datetime|date('H:i') }}</span>
+                                                    <span class="command">{{ event.getEventTeamString() }}</span>
+                                                </a>
+                                            </li>
+                                            {# Если это анонс #}
+                                        {% else %}
+                                            <li>
+                                                <a href="{{ path('frontend_announcement_one', {date: event.date|date('d-m-Y'), slug: event.slug}) }}">
+                                                    <img src="{{ image(event.webPath).zoomCrop(50, 50).jpeg(100) }}"
+                                                         alt="" width="50px" height="50px"/>
+                                                    <span class="name">{{ event.title }}</span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endmacro %}
