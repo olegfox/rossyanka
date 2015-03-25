@@ -37,6 +37,7 @@ class EventController extends Controller
             'entities' => $pagination,
         ));
     }
+
     /**
      * Creates a new Event entity.
      *
@@ -48,8 +49,11 @@ class EventController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            foreach($entity->getEventTeam() as $eventTeam){
+            foreach ($entity->getEventTeam() as $eventTeam) {
                 $eventTeam->setEvent($entity);
+            }
+            foreach ($entity->getBenchCoach() as $benchCoach) {
+                $benchCoach->setEvent($entity);
             }
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -60,7 +64,7 @@ class EventController extends Controller
 
         return $this->render('SiteMainBundle:Backend/Event:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -90,13 +94,13 @@ class EventController extends Controller
     public function newAction()
     {
         $entity = new Event();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
         $form->remove('score');
         $form->remove('numberGoals');
         $form->remove('numberYellowCards');
         return $this->render('SiteMainBundle:Backend/Event:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -117,7 +121,7 @@ class EventController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('SiteMainBundle:Backend/Event:show.html.twig', array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -137,7 +141,7 @@ class EventController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        if($entity->getDatetime() > new \DateTime()){
+        if ($entity->getDatetime() > new \DateTime()) {
             $editForm->remove('score');
             $editForm->remove('numberGoals');
             $editForm->remove('numberYellowCards');
@@ -145,19 +149,19 @@ class EventController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('SiteMainBundle:Backend/Event:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Event entity.
-    *
-    * @param Event $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Event entity.
+     *
+     * @param Event $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Event $entity)
     {
         $form = $this->createForm(new EventType(), $entity, array(
@@ -169,6 +173,7 @@ class EventController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Event entity.
      *
@@ -185,9 +190,14 @@ class EventController extends Controller
 
         $originalEventTeam = new ArrayCollection();
 
-        // Create an ArrayCollection of the current Tag objects in the database
         foreach ($entity->getEventTeam() as $eventTeam) {
             $originalEventTeam->add($eventTeam);
+        }
+
+        $originalBenchCoach = new ArrayCollection();
+
+        foreach ($entity->getBenchCoach() as $benchCoach) {
+            $originalBenchCoach->add($benchCoach);
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -208,8 +218,24 @@ class EventController extends Controller
 
             }
 
-            foreach($entity->getEventTeam() as $eventTeam){
+            foreach ($entity->getEventTeam() as $eventTeam) {
                 $eventTeam->setEvent($entity);
+            }
+
+            foreach ($originalBenchCoach as $benchCoach) {
+
+                if (false === $entity->getBenchCoach()->contains($benchCoach)) {
+
+                    $entity->getBenchCoach()->removeElement($benchCoach);
+
+                    $em->remove($benchCoach);
+
+                }
+
+            }
+
+            foreach ($entity->getBenchCoach() as $benchCoach) {
+                $benchCoach->setEvent($entity);
             }
 
             $em->flush();
@@ -218,11 +244,12 @@ class EventController extends Controller
         }
 
         return $this->render('SiteMainBundle:Backend/Event:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Event entity.
      *
@@ -266,7 +293,6 @@ class EventController extends Controller
                     'class' => 'btn-danger'
                 )
             ))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

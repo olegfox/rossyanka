@@ -28,40 +28,52 @@
             <span class="jFlowNext"><div></div></span>
             <div class="the-end-main-main">
                 <div class="the-end-main">
-                    <div class="the-end">
-                        <div class="the-end-title">предстоящий матч</div>
-                        <div class="the-end-date">13 февраля 2015 в 20:00</div>
-                        <div class="the-end-last-block">
-                            <div class="the-end-last-block-1">
-                                <img src="{{ asset('bundles/sitemain/frontend/images/end1.jpg') }}" alt="">
-                                <div class="the-end-last-block-title">Динамо</div>
-                            </div>
-                            <div class="the-end-last-block-2">
-                                8 : 7
-                            </div>
-                            <div class="the-end-last-block-3">
-                                <img src="{{ asset('bundles/sitemain/frontend/images/end2.jpg') }}" alt="">
-                                <div class="the-end-last-block-title">Литекс</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="the-end">
-                        <div class="the-end-title">Прошедший матч</div>
-                        <div class="the-end-date">13 февраля 2015</div>
-                        <div class="the-end-last-block">
-                            <div class="the-end-last-block-1">
-                                <img src="{{ asset('bundles/sitemain/frontend/images/end1.jpg') }}" alt="">
-                                <div class="the-end-last-block-title">Динамо</div>
-                            </div>
-                            <div class="the-end-last-block-2">
-                                8 : 7
-                            </div>
-                            <div class="the-end-last-block-3">
-                                <img src="{{ asset('bundles/sitemain/frontend/images/end2.jpg') }}" alt="">
-                                <div class="the-end-last-block-title">Литекс</div>
+                    {% if firstFutureEvent[0].id is defined %}
+                        <div class="the-end">
+                            <div class="the-end-title">предстоящий матч</div>
+                            <div class="the-end-date">{{ firstFutureEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} в {{ firstFutureEvent[0].datetime|date('H:i') }}</div>
+                            <div class="the-end-last-block">
+                                {% if firstFutureEvent[0].eventTeam[0].team.id is defined %}
+                                    <div class="the-end-last-block-1">
+                                        <img src="{{ image(firstFutureEvent[0].eventTeam[0].team.webPath).resize(53, 61).jpeg(100) }}" alt="{{ firstFutureEvent[0].eventTeam[0].team.name }}" width="53px" height="61px">
+                                        <div class="the-end-last-block-title">{{ firstFutureEvent[0].eventTeam[0].team.name }}</div>
+                                    </div>
+                                {% endif %}
+                                <div class="the-end-last-block-2">
+                                    {{ firstFutureEvent[0].score }}
+                                </div>
+                                {% if firstFutureEvent[0].eventTeam[1].team.id is defined %}
+                                    <div class="the-end-last-block-3">
+                                        <img src="{{ image(firstFutureEvent[0].eventTeam[1].team.webPath).resize(53, 61).jpeg(100) }}" alt="{{ firstFutureEvent[0].eventTeam[1].team.name }}" width="53px" height="61px">
+                                        <div class="the-end-last-block-title">{{ firstFutureEvent[0].eventTeam[1].team.name }}</div>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
-                    </div>
+                    {% endif %}
+                    {% if lastPastEvent[0].id is defined %}
+                        <div class="the-end">
+                            <div class="the-end-title">прошедший матч</div>
+                            <div class="the-end-date">{{ lastPastEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} в {{ lastPastEvent[0].datetime|date('H:i') }}</div>
+                            <div class="the-end-last-block">
+                                {% if lastPastEvent[0].eventTeam[0].team.id is defined %}
+                                    <div class="the-end-last-block-1">
+                                        <img src="{{ image(lastPastEvent[0].eventTeam[0].team.webPath).resize(53, 61).jpeg(100) }}" alt="{{ lastPastEvent[0].eventTeam[0].team.name }}" width="53px" height="61px">
+                                        <div class="the-end-last-block-title">{{ lastPastEvent[0].eventTeam[0].team.name }}</div>
+                                    </div>
+                                {% endif %}
+                                <div class="the-end-last-block-2">
+                                    {{ lastPastEvent[0].score }}
+                                </div>
+                                {% if lastPastEvent[0].eventTeam[1].team.id is defined %}
+                                    <div class="the-end-last-block-3">
+                                        <img src="{{ image(lastPastEvent[0].eventTeam[1].team.webPath).resize(53, 61).jpeg(100) }}" alt="{{ lastPastEvent[0].eventTeam[1].team.name }}" width="53px" height="61px">
+                                        <div class="the-end-last-block-title">{{ lastPastEvent[0].eventTeam[1].team.name }}</div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <div id="myController" class="date">
@@ -173,82 +185,42 @@
                 </ul>
                 <div id="tabs2">
                     <div class="chempionat">
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">М</div>
-                            <div class="chempionat-td chempionat-td-2">Команда</div>
-                            <div class="chempionat-td chempionat-td-3">И</div>
-                            <div class="chempionat-td chempionat-td-4">О</div>
-                        </div>
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">1</div>
-                            <div class="chempionat-td chempionat-td-2">Зенит</div>
-                            <div class="chempionat-td chempionat-td-3">17</div>
-                            <div class="chempionat-td chempionat-td-4">41</div>
-                        </div>
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">1</div>
-                            <div class="chempionat-td chempionat-td-2">Зенит</div>
-                            <div class="chempionat-td chempionat-td-3">17</div>
-                            <div class="chempionat-td chempionat-td-4">41</div>
-                        </div>
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">1</div>
-                            <div class="chempionat-td chempionat-td-2">Зенит</div>
-                            <div class="chempionat-td chempionat-td-3">17</div>
-                            <div class="chempionat-td chempionat-td-4">41</div>
-                        </div>
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">1</div>
-                            <div class="chempionat-td chempionat-td-2">Зенит</div>
-                            <div class="chempionat-td chempionat-td-3">17</div>
-                            <div class="chempionat-td chempionat-td-4">41</div>
-                        </div>
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">1</div>
-                            <div class="chempionat-td chempionat-td-2">Зенит</div>
-                            <div class="chempionat-td chempionat-td-3">17</div>
-                            <div class="chempionat-td chempionat-td-4">41</div>
-                        </div>
+                        {% if teamsChiemp|length > 0 %}
+                            <div class="chempionat-tr">
+                                <div class="chempionat-td chempionat-td-1">М</div>
+                                <div class="chempionat-td chempionat-td-2">Команда</div>
+                                <div class="chempionat-td chempionat-td-3">И</div>
+                                <div class="chempionat-td chempionat-td-4">О</div>
+                            </div>
+                            {% for team in teamsChiemp %}
+                                <div class="chempionat-tr">
+                                    <div class="chempionat-td chempionat-td-1">{{ team.balls|default(0) }}</div>
+                                    <div class="chempionat-td chempionat-td-2">{{ team.name }}</div>
+                                    <div class="chempionat-td chempionat-td-3">{{ team.games|default(0) }}</div>
+                                    <div class="chempionat-td chempionat-td-4">{{ team.points|default(0) }}</div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
                 <div id="tabs3">
                     <div class="chempionat">
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">М</div>
-                            <div class="chempionat-td chempionat-td-2">Команда</div>
-                            <div class="chempionat-td chempionat-td-3">И</div>
-                            <div class="chempionat-td chempionat-td-4">О</div>
-                        </div>
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">1</div>
-                            <div class="chempionat-td chempionat-td-2">ЦСКА</div>
-                            <div class="chempionat-td chempionat-td-3">17</div>
-                            <div class="chempionat-td chempionat-td-4">41</div>
-                        </div>
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">1</div>
-                            <div class="chempionat-td chempionat-td-2">ЦСКА</div>
-                            <div class="chempionat-td chempionat-td-3">17</div>
-                            <div class="chempionat-td chempionat-td-4">41</div>
-                        </div>
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">1</div>
-                            <div class="chempionat-td chempionat-td-2">ЦСКА</div>
-                            <div class="chempionat-td chempionat-td-3">17</div>
-                            <div class="chempionat-td chempionat-td-4">41</div>
-                        </div>
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">1</div>
-                            <div class="chempionat-td chempionat-td-2">ЦСКА</div>
-                            <div class="chempionat-td chempionat-td-3">17</div>
-                            <div class="chempionat-td chempionat-td-4">41</div>
-                        </div>
-                        <div class="chempionat-tr">
-                            <div class="chempionat-td chempionat-td-1">1</div>
-                            <div class="chempionat-td chempionat-td-2">ЦСКА</div>
-                            <div class="chempionat-td chempionat-td-3">17</div>
-                            <div class="chempionat-td chempionat-td-4">41</div>
-                        </div>
+                        {% if teamsMolodioz|length > 0 %}
+                            <div class="chempionat-tr">
+                                <div class="chempionat-td chempionat-td-1">М</div>
+                                <div class="chempionat-td chempionat-td-2">Команда</div>
+                                <div class="chempionat-td chempionat-td-3">И</div>
+                                <div class="chempionat-td chempionat-td-4">О</div>
+                            </div>
+                            {% for team in teamsMolodioz %}
+                                <div class="chempionat-tr">
+                                    <div class="chempionat-td chempionat-td-1">{{ team.balls|default(0) }}</div>
+                                    <div class="chempionat-td chempionat-td-2">{{ team.name }}</div>
+                                    <div class="chempionat-td chempionat-td-3">{{ team.games|default(0) }}</div>
+                                    <div class="chempionat-td chempionat-td-4">{{ team.points|default(0) }}</div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>

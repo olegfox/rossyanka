@@ -17,7 +17,7 @@
                 {# Если это матч #}
                 {% if announce.datetime is defined %}
                     <a href="{{ link }}" class="tab-articl-text">{{ announce.getNameText()|trans({}, 'menu') }}</a>
-                    <a href="{{ link }}" class="tab-articl-title">{{ announce.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y H:I') }}</a>
+                    <a href="{{ link }}" class="tab-articl-title">{{ announce.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} {{ announce.datetime|date('H:i') }}</a>
                     <a href="{{ link }}" class="tab-articl-text tab-articl-preview">{{ announce.getEventTeamString() }}</a>
                 {# Если это анонс #}
                 {% else %}

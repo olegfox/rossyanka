@@ -111,6 +111,7 @@ backend:
         number_yellow_cards: Количество жёлтых карточек
         stadium: Стадион
         teams: Команды
+        bench_coach: Запасные тренеры
         not_found: Событие не существует
         name_choice:
             championship: чемпионат
@@ -151,6 +152,14 @@ backend:
         position: Позиция
         add_team: Добавить команду
         delete_team: Удалить команду
+    bench_coach:
+        name: ФИО тренера
+        type:
+          name: Команда
+          first: Первая команда
+          second: Вторая команда
+        add: Добавить тренера
+        delete: Удалить тренера
     player:
         h1_show: Игрок
         h1_list: Список игроков

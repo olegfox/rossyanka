@@ -1125,9 +1125,11 @@ img, a {
 .the-end-last-block-title {
     font-family: Calibri-Regular;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 11px;
     color: #000;
     text-align: center;
+    word-wrap: normal;
+    white-space: nowrap;
 }
 
 .margin-right-0 {

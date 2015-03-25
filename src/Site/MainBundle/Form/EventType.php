@@ -2,6 +2,7 @@
 
 namespace Site\MainBundle\Form;
 
+use Site\MainBundle\Entity\BenchCoach;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -65,6 +66,16 @@ class EventType extends AbstractType
                 'allow_delete'       => true,
                 'add_button_text'    => 'backend.event_team.add_team',
                 'delete_button_text' => 'backend.event_team.delete_team',
+                'sub_widget_col'     => 9,
+                'button_col'         => 3
+            ))
+            ->add('benchCoach', 'bootstrap_collection', array(
+                'label'=>'backend.event.bench_coach',
+                'type' => new BenchCoachType(),
+                'allow_add'          => true,
+                'allow_delete'       => true,
+                'add_button_text'    => 'backend.bench_coach.add',
+                'delete_button_text' => 'backend.bench_coach.delete',
                 'sub_widget_col'     => 9,
                 'button_col'         => 3
             ))

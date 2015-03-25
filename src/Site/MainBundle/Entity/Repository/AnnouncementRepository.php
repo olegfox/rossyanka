@@ -9,7 +9,17 @@ class AnnouncementRepository extends EntityRepository
 
 //  Поиск всех анонсов
     public function findAll(){
-        return $this->findBy(array(), array('date' => 'DESC'));
+        $announcements = $this->getEntityManager()->createQuery('
+            SELECT a FROM SiteMainBundle:Announcement a
+            WHERE a.date >= :now
+            ORDER BY a.date DESC
+        ')
+            ->setParameters(array(
+                'now' => new \DateTime()
+            ))
+            ->getResult();
+
+        return $announcements;
     }
 
 //  Все анонсы за определённый день (анонсы и матчи)

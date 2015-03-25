@@ -16,7 +16,7 @@
                     <td class="first">
                         {% if team.name == 'Россиянка' %}<a
                                 href="{{ path('frontend_page_child', {parent: 'komanda', slug: 'osnovnoi-sostav'}) }}">{% endif %}
-                            <img src="{{ image(team.webPath).resize(50) }}"
+                            <img src="{{ image(team.webPath).resize(50, 50) }}"
                                  alt=""/> {{ team.name }}{% if team.slug == 'Россиянка' %}</a>{% endif %}
                     </td>
                     <td>
@@ -91,7 +91,7 @@
                     <tr>
                         <td></td>
                         {% for column in row %}
-                            <td><img src="{{ image(column['img2']).zoomCrop(50, 50).jpeg(100) }}"
+                            <td><img src="{{ image(column['img2']).resize(50, 50).jpeg(100) }}"
                                      alt="{{ column['nameTeamRow'] }}"/></td>
                         {% endfor %}
                     </tr>
@@ -100,7 +100,7 @@
                     {% for column in row %}
                         {# Если это первый столбец #}
                         {% if loop.first %}
-                            <td><img src="{{ image(column['img1']).zoomCrop(50, 50).jpeg(100) }}"
+                            <td><img src="{{ image(column['img1']).resize(50, 50).jpeg(100) }}"
                                      alt="{{ column['nameTeamRow'] }}"/></td>
                             {# Если это не первый столбец #}
                         {% endif %}

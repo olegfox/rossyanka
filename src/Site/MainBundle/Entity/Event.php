@@ -85,6 +85,11 @@ class Event
     private $eventTeam;
 
     /**
+     * @ORM\OneToMany(targetEntity="BenchCoach", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $benchCoach;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -327,5 +332,38 @@ class Event
             }
         }
         return $string;
+    }
+
+    /**
+     * Add benchCoach
+     *
+     * @param \Site\MainBundle\Entity\BenchCoach $benchCoach
+     * @return Event
+     */
+    public function addBenchCoach(\Site\MainBundle\Entity\BenchCoach $benchCoach)
+    {
+        $this->benchCoach[] = $benchCoach;
+
+        return $this;
+    }
+
+    /**
+     * Remove benchCoach
+     *
+     * @param \Site\MainBundle\Entity\BenchCoach $benchCoach
+     */
+    public function removeBenchCoach(\Site\MainBundle\Entity\BenchCoach $benchCoach)
+    {
+        $this->benchCoach->removeElement($benchCoach);
+    }
+
+    /**
+     * Get benchCoach
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBenchCoach()
+    {
+        return $this->benchCoach;
     }
 }
