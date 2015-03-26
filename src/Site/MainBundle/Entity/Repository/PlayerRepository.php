@@ -13,7 +13,8 @@ use Doctrine\ORM\EntityRepository;
 class PlayerRepository extends EntityRepository
 {
 //  Поиск
-    public function findSearch($text){
+    public function findSearch($text)
+    {
         $em = $this->getEntityManager();
 
         $players = $em->createQuery('
@@ -37,11 +38,34 @@ class PlayerRepository extends EntityRepository
             OR p.hobby LIKE :text
             OR p.favoritePhrase LIKE :text
         ')
-        ->setParameters(array(
-            'text' => '%' . $text . '%'
-        ))
-        ->getResult();
+            ->setParameters(array(
+                'text' => '%' . $text . '%'
+            ))
+            ->getResult();
 
         return $players;
+    }
+
+//  Игроки из первой команды
+    public function getPlayerFirstTeam()
+    {
+        $firstTeamId = $this->getEntityManager()->createQuery('
+            SELECT t.id FROM Site\MainBundle\Entity\Team t
+            ORDER BY t.name ASC
+        ')
+            ->setMaxResults(1)
+            ->setFirstResult(0)
+            ->getSingleScalarResult();
+
+        if ($firstTeamId) {
+            return $this->getEntityManager()->createQueryBuilder()
+                ->select('p')
+                ->from('Site\MainBundle\Entity\Player', 'p')
+                ->leftJoin('p.teams', 't')
+                ->where('t.id = :firstTeamId')
+                ->setParameter('firstTeamId', $firstTeamId);
+        }
+
+        return false;
     }
 }

@@ -69,7 +69,11 @@
                         {% endfor %}
                     </td>
                     <td>
-                        {{ event.score ? event.score : '-:-' }}
+                        {% if event.score %}
+                            <a href="{{ path('frontend_event_game_index', {id: event.id}) }}">{{ event.score }}</a>
+                        {% else %}
+                            -:-
+                        {% endif %}
                     </td>
                     <td>
                         {{ event.stadium }}
@@ -105,8 +109,10 @@
                             {# Если это не первый столбец #}
                         {% endif %}
                         <td>
-                            {% for score in column['score'] %}
-                                {{ score }}{% if loop.last == false %}<br/>{% endif %}
+                            {% for key, score in column['score'] %}
+                                {% if key != 'eventId' %}
+                                    <a href="{{ path('frontend_event_game_index', {id: column['score']['eventId']}) }}">{{ score }}</a>{% if loop.last == false %}<br/>{% endif %}
+                                {% endif %}
                             {% else %}
                                 {% if column['score'] == 0 %}
                                     -:-
@@ -136,7 +142,7 @@
                                         {# Если это матч #}
                                         {% if event.datetime is defined %}
                                             <li>
-                                                <a href="#">
+                                                <a href="{{ path('frontend_event_game_index', {id: event.id}) }}">
                                                     <span class="name">{{ event.getNameText()|trans({}, 'menu') }}</span>
                                                     <span class="datetime">{{ event.datetime|date('H:i') }}</span>
                                                     <span class="command">{{ event.getEventTeamString() }}</span>

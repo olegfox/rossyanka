@@ -111,7 +111,12 @@ backend:
         number_yellow_cards: Количество жёлтых карточек
         stadium: Стадион
         teams: Команды
-        bench_coach: Запасные тренеры
+        bench_coach: Тренеры
+        player_team: Состав команд
+        bench_player_team: Запасные
+        replacement_event: Замены
+        punishment_event: Наказания
+        goal_event: Голы
         not_found: Событие не существует
         name_choice:
             championship: чемпионат
@@ -160,6 +165,56 @@ backend:
           second: Вторая команда
         add: Добавить тренера
         delete: Удалить тренера
+    player_team:
+        type:
+          name: Команда
+          first: Первая команда
+          second: Вторая команда
+        player: Игрок
+        add: Добавить игрока
+        delete: Удалить игрока
+    bench_player_team:
+        type:
+          name: Команда
+          first: Первая команда
+          second: Вторая команда
+        player: Игрок
+        add: Добавить игрока
+        delete: Удалить игрока
+    replacement_event:
+        type:
+          name: Команда
+          first: Первая команда
+          second: Вторая команда
+        player: Игрок
+        time: Время
+        add: Добавить замену
+        delete: Удалить замену
+    punishment_event:
+        type:
+          name: Команда
+          first: Первая команда
+          second: Вторая команда
+        player: Игрок
+        time: Время
+        type_punishment:
+          name: Тип наказания
+          first: Жёлтая карточка
+          second: Красная карточка
+        add: Добавить наказание
+        delete: Удалить наказание
+    goal_event:
+        type:
+          name: Команда
+          first: Первая команда
+          second: Вторая команда
+        player: Игрок
+        time: Время
+        score: Счёт
+        add: Добавить гол
+        delete: Удалить гол
+        validation:
+          score: Вы не ввели счёт!
     player:
         h1_show: Игрок
         h1_list: Список игроков
@@ -175,6 +230,7 @@ backend:
         birth_place: Место Рождения
         nationality: Гражданство
         amplua: Амплуа
+        amplua_short: Амплуа коротко
         height: Рост
         weight: Вес
         firstCoach: Первый тренер
@@ -255,6 +311,14 @@ backend:
     delete: удалить
 
 frontend:
+    event:
+      tour: Тур
+      goals: Голы
+      punishments: Наказания
+      replacements: Замены
+      player_team: Составы команд
+      bench_player_team: Запасные
+      bench_coach: Тренеры
     partners:
         title: Партнеры
     news:

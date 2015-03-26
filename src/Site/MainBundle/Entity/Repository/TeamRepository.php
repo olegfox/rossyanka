@@ -14,6 +14,10 @@ use Site\MainBundle\Entity\Event;
 class TeamRepository extends EntityRepository
 {
 
+    public function findAll(){
+        return $this->findBy(array(), array('name' => 'ASC'));
+    }
+
 //  Поиск команд по типу матча
     public function findByEventType($type){
         switch($type){

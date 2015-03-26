@@ -133,6 +133,7 @@ class EventRepository extends EntityRepository
                                     $resultEvents[$i][$j]['img2'] = $t2->getWebPath();
                                 }
 //                              Если такая запись уже есть, то добавляем только счет
+                                $resultEvents[$i][$j]['score']['eventId'] = $e->getId();
                                 $resultEvents[$i][$j]['score'][] = $e->getScore();
                                 $fl = 1;
                             }

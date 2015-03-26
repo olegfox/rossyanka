@@ -59,4 +59,19 @@ class EventController extends Controller
 
         return $this->render('SiteMainBundle:Frontend/Event:index.html.twig', $params);
     }
+
+    public function gameAction($id){
+        $repository = $this->getDoctrine()->getRepository('SiteMainBundle:Event');
+
+        $event = $repository->find($id);
+
+        if(!$event){
+            throw $this->createNotFoundException($this->get('translator')->trans('backend.event.not_found'));
+        }
+
+        $params = array(
+            'event' => $event
+        );
+        return $this->render('SiteMainBundle:Frontend/Event:game.html.twig', $params);
+    }
 }

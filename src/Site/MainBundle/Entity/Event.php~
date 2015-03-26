@@ -90,6 +90,36 @@ class Event
     private $benchCoach;
 
     /**
+     * Состав команд
+     * @ORM\OneToMany(targetEntity="PlayerTeam", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $playerTeam;
+
+    /**
+     * Запасные
+     * @ORM\OneToMany(targetEntity="BenchPlayerTeam", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $benchPlayerTeam;
+
+    /**
+     * Замены в игре
+     * @ORM\OneToMany(targetEntity="ReplacementEvent", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $replacementEvent;
+
+    /**
+     * Накзания в игре
+     * @ORM\OneToMany(targetEntity="PunishmentEvent", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $punishmentEvent;
+
+    /**
+     * Голы в игре
+     * @ORM\OneToMany(targetEntity="GoalEvent", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $goalEvent;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -332,5 +362,170 @@ class Event
             }
         }
         return $string;
+    }
+
+    /**
+     * Add benchCoach
+     *
+     * @param \Site\MainBundle\Entity\BenchCoach $benchCoach
+     * @return Event
+     */
+    public function addBenchCoach(\Site\MainBundle\Entity\BenchCoach $benchCoach)
+    {
+        $this->benchCoach[] = $benchCoach;
+
+        return $this;
+    }
+
+    /**
+     * Remove benchCoach
+     *
+     * @param \Site\MainBundle\Entity\BenchCoach $benchCoach
+     */
+    public function removeBenchCoach(\Site\MainBundle\Entity\BenchCoach $benchCoach)
+    {
+        $this->benchCoach->removeElement($benchCoach);
+    }
+
+    /**
+     * Get benchCoach
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBenchCoach()
+    {
+        return $this->benchCoach;
+    }
+
+    /**
+     * Add playerTeam
+     *
+     * @param \Site\MainBundle\Entity\PlayerTeam $playerTeam
+     * @return Event
+     */
+    public function addPlayerTeam(\Site\MainBundle\Entity\PlayerTeam $playerTeam)
+    {
+        $this->playerTeam[] = $playerTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove playerTeam
+     *
+     * @param \Site\MainBundle\Entity\PlayerTeam $playerTeam
+     */
+    public function removePlayerTeam(\Site\MainBundle\Entity\PlayerTeam $playerTeam)
+    {
+        $this->playerTeam->removeElement($playerTeam);
+    }
+
+    /**
+     * Get playerTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayerTeam()
+    {
+        return $this->playerTeam;
+    }
+
+    /**
+     * Add replacementEvent
+     *
+     * @param \Site\MainBundle\Entity\ReplacementEvent $replacementEvent
+     * @return Event
+     */
+    public function addReplacementEvent(\Site\MainBundle\Entity\ReplacementEvent $replacementEvent)
+    {
+        $this->replacementEvent[] = $replacementEvent;
+
+        return $this;
+    }
+
+    /**
+     * Remove replacementEvent
+     *
+     * @param \Site\MainBundle\Entity\ReplacementEvent $replacementEvent
+     */
+    public function removeReplacementEvent(\Site\MainBundle\Entity\ReplacementEvent $replacementEvent)
+    {
+        $this->replacementEvent->removeElement($replacementEvent);
+    }
+
+    /**
+     * Get replacementEvent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReplacementEvent()
+    {
+        return $this->replacementEvent;
+    }
+
+    /**
+     * Add punishmentEvent
+     *
+     * @param \Site\MainBundle\Entity\PunishmentEvent $punishmentEvent
+     * @return Event
+     */
+    public function addPunishmentEvent(\Site\MainBundle\Entity\PunishmentEvent $punishmentEvent)
+    {
+        $this->punishmentEvent[] = $punishmentEvent;
+
+        return $this;
+    }
+
+    /**
+     * Remove punishmentEvent
+     *
+     * @param \Site\MainBundle\Entity\PunishmentEvent $punishmentEvent
+     */
+    public function removePunishmentEvent(\Site\MainBundle\Entity\PunishmentEvent $punishmentEvent)
+    {
+        $this->punishmentEvent->removeElement($punishmentEvent);
+    }
+
+    /**
+     * Get punishmentEvent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPunishmentEvent()
+    {
+        return $this->punishmentEvent;
+    }
+
+    /**
+     * Add goalEvent
+     *
+     * @param \Site\MainBundle\Entity\GoalEvent $goalEvent
+     * @return Event
+     */
+    public function addGoalEvent(\Site\MainBundle\Entity\GoalEvent $goalEvent)
+    {
+        $this->goalEvent[] = $goalEvent;
+
+        return $this;
+    }
+
+    /**
+     * Remove goalEvent
+     *
+     * @param \Site\MainBundle\Entity\GoalEvent $goalEvent
+     */
+    public function removeGoalEvent(\Site\MainBundle\Entity\GoalEvent $goalEvent)
+    {
+        $this->goalEvent->removeElement($goalEvent);
+    }
+
+    /**
+     * Get goalEvent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGoalEvent()
+    {
+        return $this->goalEvent;
     }
 }

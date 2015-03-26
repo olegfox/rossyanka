@@ -90,6 +90,36 @@ class Event
     private $benchCoach;
 
     /**
+     * Состав команд
+     * @ORM\OneToMany(targetEntity="PlayerTeam", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $playerTeam;
+
+    /**
+     * Запасные
+     * @ORM\OneToMany(targetEntity="BenchPlayerTeam", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $benchPlayerTeam;
+
+    /**
+     * Замены в игре
+     * @ORM\OneToMany(targetEntity="ReplacementEvent", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $replacementEvent;
+
+    /**
+     * Накзания в игре
+     * @ORM\OneToMany(targetEntity="PunishmentEvent", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $punishmentEvent;
+
+    /**
+     * Голы в игре
+     * @ORM\OneToMany(targetEntity="GoalEvent", mappedBy="event", cascade={"persist", "remove"})
+     **/
+    private $goalEvent;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -365,5 +395,330 @@ class Event
     public function getBenchCoach()
     {
         return $this->benchCoach;
+    }
+
+    /**
+     * Add playerTeam
+     *
+     * @param \Site\MainBundle\Entity\PlayerTeam $playerTeam
+     * @return Event
+     */
+    public function addPlayerTeam(\Site\MainBundle\Entity\PlayerTeam $playerTeam)
+    {
+        $this->playerTeam[] = $playerTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove playerTeam
+     *
+     * @param \Site\MainBundle\Entity\PlayerTeam $playerTeam
+     */
+    public function removePlayerTeam(\Site\MainBundle\Entity\PlayerTeam $playerTeam)
+    {
+        $this->playerTeam->removeElement($playerTeam);
+    }
+
+    /**
+     * Get playerTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayerTeam()
+    {
+        return $this->playerTeam;
+    }
+
+    /**
+     * Add replacementEvent
+     *
+     * @param \Site\MainBundle\Entity\ReplacementEvent $replacementEvent
+     * @return Event
+     */
+    public function addReplacementEvent(\Site\MainBundle\Entity\ReplacementEvent $replacementEvent)
+    {
+        $this->replacementEvent[] = $replacementEvent;
+
+        return $this;
+    }
+
+    /**
+     * Remove replacementEvent
+     *
+     * @param \Site\MainBundle\Entity\ReplacementEvent $replacementEvent
+     */
+    public function removeReplacementEvent(\Site\MainBundle\Entity\ReplacementEvent $replacementEvent)
+    {
+        $this->replacementEvent->removeElement($replacementEvent);
+    }
+
+    /**
+     * Get replacementEvent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReplacementEvent()
+    {
+        return $this->replacementEvent;
+    }
+
+    /**
+     * Add punishmentEvent
+     *
+     * @param \Site\MainBundle\Entity\PunishmentEvent $punishmentEvent
+     * @return Event
+     */
+    public function addPunishmentEvent(\Site\MainBundle\Entity\PunishmentEvent $punishmentEvent)
+    {
+        $this->punishmentEvent[] = $punishmentEvent;
+
+        return $this;
+    }
+
+    /**
+     * Remove punishmentEvent
+     *
+     * @param \Site\MainBundle\Entity\PunishmentEvent $punishmentEvent
+     */
+    public function removePunishmentEvent(\Site\MainBundle\Entity\PunishmentEvent $punishmentEvent)
+    {
+        $this->punishmentEvent->removeElement($punishmentEvent);
+    }
+
+    /**
+     * Get punishmentEvent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPunishmentEvent()
+    {
+        return $this->punishmentEvent;
+    }
+
+    /**
+     * Add goalEvent
+     *
+     * @param \Site\MainBundle\Entity\GoalEvent $goalEvent
+     * @return Event
+     */
+    public function addGoalEvent(\Site\MainBundle\Entity\GoalEvent $goalEvent)
+    {
+        $this->goalEvent[] = $goalEvent;
+
+        return $this;
+    }
+
+    /**
+     * Remove goalEvent
+     *
+     * @param \Site\MainBundle\Entity\GoalEvent $goalEvent
+     */
+    public function removeGoalEvent(\Site\MainBundle\Entity\GoalEvent $goalEvent)
+    {
+        $this->goalEvent->removeElement($goalEvent);
+    }
+
+    /**
+     * Get goalEvent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGoalEvent()
+    {
+        return $this->goalEvent;
+    }
+
+    /**
+     * Add benchPlayerTeam
+     *
+     * @param \Site\MainBundle\Entity\BenchPlayerTeam $benchPlayerTeam
+     * @return Event
+     */
+    public function addBenchPlayerTeam(\Site\MainBundle\Entity\BenchPlayerTeam $benchPlayerTeam)
+    {
+        $this->benchPlayerTeam[] = $benchPlayerTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove benchPlayerTeam
+     *
+     * @param \Site\MainBundle\Entity\BenchPlayerTeam $benchPlayerTeam
+     */
+    public function removeBenchPlayerTeam(\Site\MainBundle\Entity\BenchPlayerTeam $benchPlayerTeam)
+    {
+        $this->benchPlayerTeam->removeElement($benchPlayerTeam);
+    }
+
+    /**
+     * Get benchPlayerTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBenchPlayerTeam()
+    {
+        return $this->benchPlayerTeam;
+    }
+
+    /**
+     * Получение массива наказаний игроков для вывода в шаблоне
+     */
+    public function getPunishmentEventArray(){
+        $punishments = array(
+            'left' => array(),
+            'right' => array()
+        );
+
+        foreach($this->punishmentEvent as $punishment){
+            if($punishment->getType() == false){
+                $punishments['left'][] = $punishment;
+            }else{
+                $punishments['right'][] = $punishment;
+            }
+        }
+
+        $countString = count($punishments['left']) > count($punishments['right']) ? count($punishments['left']) : count($punishments['right']);
+        $result = array();
+
+        for($i = 0; $i < $countString; $i++){
+            if(isset($punishments['left'][$i])){
+                $result[$i]['left'] = $punishments['left'][$i];
+            }
+            if(isset($punishments['right'][$i])){
+                $result[$i]['right'] = $punishments['right'][$i];
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Получение массива замен для вывода в шаблоне
+     */
+    public function getReplacementEventArray(){
+        $replacements = array(
+            'left' => array(),
+            'right' => array()
+        );
+
+        foreach($this->replacementEvent as $replacement){
+            if($replacement->getType() == false){
+                $replacements['left'][] = $replacement;
+            }else{
+                $replacements['right'][] = $replacement;
+            }
+        }
+
+        $countString = count($replacements['left']) > count($replacements['right']) ? count($replacements['left']) : count($replacements['right']);
+        $result = array();
+
+        for($i = 0; $i < $countString; $i++){
+            if(isset($replacements['left'][$i])){
+                $result[$i]['left'] = $replacements['left'][$i];
+            }
+            if(isset($replacements['right'][$i])){
+                $result[$i]['right'] = $replacements['right'][$i];
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Получение массива состава команд для вывода в шаблоне
+     */
+    public function getPlayerTeamArray(){
+        $playerTeams = array(
+            'left' => array(),
+            'right' => array()
+        );
+
+        foreach($this->playerTeam as $playerTeam){
+            if($playerTeam->getType() == false){
+                $playerTeams['left'][] = $playerTeam;
+            }else{
+                $playerTeams['right'][] = $playerTeam;
+            }
+        }
+
+        $countString = count($playerTeams['left']) > count($playerTeams['right']) ? count($playerTeams['left']) : count($playerTeams['right']);
+        $result = array();
+
+        for($i = 0; $i < $countString; $i++){
+            if(isset($playerTeams['left'][$i])){
+                $result[$i]['left'] = $playerTeams['left'][$i];
+            }
+            if(isset($replacements['right'][$i])){
+                $result[$i]['right'] = $playerTeams['right'][$i];
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Получение массива запасных для вывода в шаблоне
+     */
+    public function getBenchPlayerTeamArray(){
+        $benchPlayerTeams = array(
+            'left' => array(),
+            'right' => array()
+        );
+
+        foreach($this->benchPlayerTeam as $benchPlayerTeam){
+            if($benchPlayerTeam->getType() == false){
+                $benchPlayerTeams['left'][] = $benchPlayerTeam;
+            }else{
+                $benchPlayerTeams['right'][] = $benchPlayerTeam;
+            }
+        }
+
+        $countString = count($benchPlayerTeams['left']) > count($benchPlayerTeams['right']) ? count($benchPlayerTeams['left']) : count($benchPlayerTeams['right']);
+        $result = array();
+
+        for($i = 0; $i < $countString; $i++){
+            if(isset($benchPlayerTeams['left'][$i])){
+                $result[$i]['left'] = $benchPlayerTeams['left'][$i];
+            }
+            if(isset($benchPlayerTeams['right'][$i])){
+                $result[$i]['right'] = $benchPlayerTeams['right'][$i];
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Получение массива тренеров для вывода в шаблоне
+     */
+    public function getBenchCoachArray(){
+        $benchCoachs = array(
+            'left' => array(),
+            'right' => array()
+        );
+
+        foreach($this->benchCoach as $benchCoach){
+            if($benchCoach->getType() == false){
+                $benchCoachs['left'][] = $benchCoach;
+            }else{
+                $benchCoachs['right'][] = $benchCoach;
+            }
+        }
+
+        $countString = count($benchCoachs['left']) > count($benchCoachs['right']) ? count($benchCoachs['left']) : count($benchCoachs['right']);
+        $result = array();
+
+        for($i = 0; $i < $countString; $i++){
+            if(isset($benchCoachs['left'][$i])){
+                $result[$i]['left'] = $benchCoachs['left'][$i];
+            }
+            if(isset($benchCoachs['right'][$i])){
+                $result[$i]['right'] = $benchCoachs['right'][$i];
+            }
+        }
+
+        return $result;
     }
 }

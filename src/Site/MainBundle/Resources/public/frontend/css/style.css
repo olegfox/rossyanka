@@ -1073,6 +1073,16 @@ img, a {
     margin-bottom: 10px;
 }
 
+.the-end a{
+    display: block;
+    width: 200px;
+    height: 150px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+
 .the-end-title {
     font-family: Calibri-Regular;
     font-weight: 400;
@@ -1613,3 +1623,111 @@ img, a {
     text-align: center;
 }
 /* end Directors */
+
+/* Game Page */
+.game-table{
+    font-family: Arial;
+}
+.game-table h1{
+    font-family: Arial;
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-bottom: #e36363 solid 2px;
+    margin: 0px 10px;
+    padding: 17px 0px;
+    text-align: center;
+}
+.game-table .wrap_teams{
+    padding: 50px 0px 30px 0px;
+    margin: 0px 10px;
+    background: url('../images/game-table-team-shadow.jpg') no-repeat bottom center;
+}
+.game-table .wrap_teams .teams{
+    max-width: 440px;
+    display: table;
+    margin: 0px auto;
+    padding-bottom: 30px;
+}
+.game-table .wrap_teams .teams .team-1,
+.game-table .wrap_teams .teams .team-2{
+    display: table-cell;
+    vertical-align: top;
+    text-align: center;
+}
+.game-table .wrap_teams .teams .team-1 .name,
+.game-table .wrap_teams .teams .team-2 .name{
+    margin-top: 25px;
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.game-table .wrap_teams .teams .score{
+    color: #000;
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 7px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px 65px 30px 65px;
+}
+.game-table .lists{
+
+}
+.game-table .lists h2{
+    font-family: Arial;
+    color: #F00;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: #f2f2f2 solid 2px;
+    margin: 0px 10px;
+}
+.game-table .lists .wrap_list{
+    padding: 0px 10px;
+}
+.game-table .lists .list{
+    display: table;
+    width: 100%;
+    padding: 15px 0px;
+    margin-bottom: 35px;
+    border-bottom: #f2f2f2 solid 2px;
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;
+}
+.game-table .lists .list .team-0{
+    display: table-cell;
+    width: 33.33%;
+    padding-left: 55px;
+}
+.game-table .lists .list .team-1{
+    display: table-cell;
+    width: 33.33%;
+    padding-left: 55px;
+}
+.game-table .lists .list .score{
+    display: table-cell;
+    width: 33.33%;
+    text-align: center;
+}
+.game-table .lists .list .card{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    vertical-align: middle;
+    margin: -4px 0px 0px -43px;
+    position: absolute;
+}
+.game-table .lists .list .card.yellow{
+    background: #fff343;
+}
+.game-table .lists .list .card.red{
+    background: #ff0000;
+}
+/* end Game Page */

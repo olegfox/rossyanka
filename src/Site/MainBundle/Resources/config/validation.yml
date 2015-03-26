@@ -152,3 +152,9 @@ Site\MainBundle\Entity\Baner:
         link:
             - Url:
                 message: "backend.baner.validation.link_not_valid"
+
+Site\MainBundle\Entity\GoalEvent:
+    properties:
+        score:
+            - NotBlank:
+                message: "backend.goal_event.validation.score"

@@ -1,0 +1,166 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block content %}
+    <div class="wrap_content">
+        <div class="content content-top content-top-event">
+            <div class="event-table game-table">
+                <h1>
+                    {{ event.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y')~' года '~event.datetime|date('H:i')~' '~event.tour~' '~'frontend.event.tour'|trans({}, 'menu') }}
+                </h1>
+                {# Команды #}
+                <div class="wrap_teams">
+                    <div class="teams">
+                        <div class="team-1">
+                            {% if event.eventTeam[0].team.id is defined %}
+                                <img src="{{ image(event.eventTeam[0].team.webPath).resize(120, 120).jpeg(100) }}" alt="{{ event.eventTeam[0].team.name }}"/>
+                                <div class="name">{{ event.eventTeam[0].team.name }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="score">
+                            {{ event.score }}
+                        </div>
+                        <div class="team-2">
+                            {% if event.eventTeam[1].team.id is defined %}
+                                <img src="{{ image(event.eventTeam[1].team.webPath).resize(120, 120).jpeg(100) }}" alt="{{ event.eventTeam[1].team.name }}"/>
+                                <div class="name">{{ event.eventTeam[1].team.name }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {# Голы #}
+                <div class="lists">
+                    <h2>{{ 'frontend.event.goals'|trans({}, 'menu') }}</h2>
+                    {% for goal in event.goalEvent %}
+                        <div class="wrap_list">
+                            <div class="list">
+                                <div class="team-0">
+                                    {% if goal.type == false %}
+                                        {{ goal.player.fullName }} ({{ goal.time }})
+                                    {% endif %}
+                                </div>
+                                <div class="score">
+                                    {{ goal.score }}
+                                </div>
+                                <div class="team-1">
+                                    {% if goal.type == true %}
+                                        {{ goal.player.fullName }} ({{ goal.time }})
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {# Наказания #}
+                <div class="lists">
+                    <h2>{{ 'frontend.event.punishments'|trans({}, 'menu') }}</h2>
+                    {% for punishment in event.getPunishmentEventArray() %}
+                        <div class="wrap_list">
+                            <div class="list">
+                                <div class="team-0">
+                                    {% if punishment['left'] is defined %}
+                                        <span class="card {% if punishment['left'].typePunishment == 0 %}yellow{% else %}red{% endif %}"></span> {{ punishment['left'].player.fullName }} ({{ punishment['left'].time }})
+                                    {% endif %}
+                                </div>
+                                <div class="score">
+                                </div>
+                                <div class="team-1">
+                                    {% if punishment['right'] is defined %}
+                                        <span class="card {% if punishment['right'].typePunishment == 0 %}yellow{% else %}red{% endif %}"></span> {{ punishment['right'].player.fullName }} ({{ punishment['right'].time }})
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {# Замены #}
+                <div class="lists">
+                    <h2>{{ 'frontend.event.replacements'|trans({}, 'menu') }}</h2>
+                    {% for replacement in event.getReplacementEventArray() %}
+                        <div class="wrap_list">
+                            <div class="list">
+                                <div class="team-0">
+                                    {% if replacement['left'] is defined %}
+                                        {{ replacement['left'].player.fullName }} ({{ replacement['left'].time }})
+                                    {% endif %}
+                                </div>
+                                <div class="score">
+                                </div>
+                                <div class="team-1">
+                                    {% if replacement['right'] is defined %}
+                                        {{ replacement['right'].player.fullName }} ({{ replacement['right'].time }})
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {# Составы команд #}
+                <div class="lists">
+                    <h2>{{ 'frontend.event.player_team'|trans({}, 'menu') }}</h2>
+                    {% for playerTeam in event.getPlayerTeamArray() %}
+                        <div class="wrap_list">
+                            <div class="list">
+                                <div class="team-0">
+                                    {% if playerTeam['left'] is defined %}
+                                        {{ playerTeam['left'].player.fullName }} ({{ playerTeam['left'].player.ampluaShort }})
+                                    {% endif %}
+                                </div>
+                                <div class="score">
+                                </div>
+                                <div class="team-1">
+                                    {% if playerTeam['right'] is defined %}
+                                        {{ playerTeam['right'].player.fullName }} ({{ playerTeam['right'].player.ampluaShort }})
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {# Запасные #}
+                <div class="lists">
+                    <h2>{{ 'frontend.event.bench_player_team'|trans({}, 'menu') }}</h2>
+                    {% for benchPlayerTeam in event.getBenchPlayerTeamArray() %}
+                        <div class="wrap_list">
+                            <div class="list">
+                                <div class="team-0">
+                                    {% if benchPlayerTeam['left'] is defined %}
+                                        {{ benchPlayerTeam['left'].player.fullName }} ({{ benchPlayerTeam['left'].player.ampluaShort }})
+                                    {% endif %}
+                                </div>
+                                <div class="score">
+                                </div>
+                                <div class="team-1">
+                                    {% if benchPlayerTeam['right'] is defined %}
+                                        {{ benchPlayerTeam['right'].player.fullName }} ({{ benchPlayerTeam['right'].player.ampluaShort }})
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {# Тренеры #}
+                <div class="lists">
+                    <h2>{{ 'frontend.event.bench_coach'|trans({}, 'menu') }}</h2>
+                    {% for benchCoach in event.getBenchCoachArray() %}
+                        <div class="wrap_list">
+                            <div class="list">
+                                <div class="team-0">
+                                    {% if benchCoach['left'] is defined %}
+                                        {{ benchCoach['left'].name }}
+                                    {% endif %}
+                                </div>
+                                <div class="score">
+                                </div>
+                                <div class="team-1">
+                                    {% if benchCoach['right'] is defined %}
+                                        {{ benchCoach['right'].name }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

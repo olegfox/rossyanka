@@ -67,7 +67,11 @@ class EventType extends AbstractType
                 'add_button_text'    => 'backend.event_team.add_team',
                 'delete_button_text' => 'backend.event_team.delete_team',
                 'sub_widget_col'     => 9,
-                'button_col'         => 3
+                'button_col'         => 3,
+                'prototype_name'     => 'inlinep',
+                'options'            => array(
+                    'attr' => array('style' => 'inline')
+                )
             ))
             ->add('benchCoach', 'bootstrap_collection', array(
                 'label'=>'backend.event.bench_coach',
@@ -77,7 +81,81 @@ class EventType extends AbstractType
                 'add_button_text'    => 'backend.bench_coach.add',
                 'delete_button_text' => 'backend.bench_coach.delete',
                 'sub_widget_col'     => 9,
-                'button_col'         => 3
+                'button_col'         => 3,
+                'prototype_name'     => 'inlinep',
+                'options'            => array(
+                    'attr' => array('style' => 'inline')
+                )
+            ))
+            ->add('playerTeam', 'bootstrap_collection', array(
+                'label'=>'backend.event.player_team',
+                'type' => new PlayerTeamType(),
+                'allow_add'          => true,
+                'allow_delete'       => true,
+                'add_button_text'    => 'backend.player_team.add',
+                'delete_button_text' => 'backend.player_team.delete',
+                'sub_widget_col'     => 9,
+                'button_col'         => 3,
+                'prototype_name'     => 'inlinep',
+                'options'            => array(
+                    'attr' => array('style' => 'inline')
+                )
+            ))
+            ->add('benchPlayerTeam', 'bootstrap_collection', array(
+                'label'=>'backend.event.bench_player_team',
+                'type' => new BenchPlayerTeamType(),
+                'allow_add'          => true,
+                'allow_delete'       => true,
+                'add_button_text'    => 'backend.bench_player_team.add',
+                'delete_button_text' => 'backend.bench_player_team.delete',
+                'sub_widget_col'     => 9,
+                'button_col'         => 3,
+                'prototype_name'     => 'inlinep',
+                'options'            => array(
+                    'attr' => array('style' => 'inline')
+                )
+            ))
+            ->add('replacementEvent', 'bootstrap_collection', array(
+                'label'=>'backend.event.replacement_event',
+                'type' => new ReplacementEventType(),
+                'allow_add'          => true,
+                'allow_delete'       => true,
+                'add_button_text'    => 'backend.replacement_event.add',
+                'delete_button_text' => 'backend.replacement_event.delete',
+                'sub_widget_col'     => 9,
+                'button_col'         => 3,
+                'prototype_name'     => 'inlinep',
+                'options'            => array(
+                    'attr' => array('style' => 'inline')
+                )
+            ))
+            ->add('punishmentEvent', 'bootstrap_collection', array(
+                'label'=>'backend.event.punishment_event',
+                'type' => new PunishmentEventType(),
+                'allow_add'          => true,
+                'allow_delete'       => true,
+                'add_button_text'    => 'backend.punishment_event.add',
+                'delete_button_text' => 'backend.punishment_event.delete',
+                'sub_widget_col'     => 9,
+                'button_col'         => 3,
+                'prototype_name'     => 'inlinep',
+                'options'            => array(
+                    'attr' => array('style' => 'inline')
+                )
+            ))
+            ->add('goalEvent', 'bootstrap_collection', array(
+                'label'=>'backend.event.goal_event',
+                'type' => new GoalEventType(),
+                'allow_add'          => true,
+                'allow_delete'       => true,
+                'add_button_text'    => 'backend.goal_event.add',
+                'delete_button_text' => 'backend.goal_event.delete',
+                'sub_widget_col'     => 9,
+                'button_col'         => 3,
+                'prototype_name'     => 'inlinep',
+                'options'            => array(
+                    'attr' => array('style' => 'inline')
+                )
             ))
         ;
     }

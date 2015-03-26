@@ -48,6 +48,10 @@ class PlayerType extends AbstractType
                 'required' => false,
                 'label' => 'backend.player.amplua'
             ))
+            ->add('ampluaShort', null, array(
+                'required' => false,
+                'label' => 'backend.player.amplua_short'
+            ))
             ->add('height', null, array(
                 'required' => false,
                 'label' => 'backend.player.height'

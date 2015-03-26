@@ -53,6 +53,7 @@
                     {% endif %}
                     {% if lastPastEvent[0].id is defined %}
                         <div class="the-end">
+                            <a href="{{ path('frontend_event_game_index', {id: lastPastEvent[0].id}) }}"></a>
                             <div class="the-end-title">прошедший матч</div>
                             <div class="the-end-date">{{ lastPastEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} в {{ lastPastEvent[0].datetime|date('H:i') }}</div>
                             <div class="the-end-last-block">

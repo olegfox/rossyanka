@@ -83,6 +83,14 @@ class Player
     private $amplua;
 
     /**
+     * Амплуа сокращенно
+     * @var string
+     *
+     * @ORM\Column(name="amplua_short", type="string", length=50, nullable=true)
+     */
+    private $ampluaShort;
+
+    /**
      * Рост
      * @var string
      *
@@ -214,6 +222,36 @@ class Player
      * @ORM\JoinTable(name="players_teams")
      **/
     private $teams;
+
+    /**
+     * Состав команд
+     * @ORM\OneToMany(targetEntity="PlayerTeam", mappedBy="player", cascade={"persist", "remove"})
+     **/
+    private $playerTeam;
+
+    /**
+     * Запасные
+     * @ORM\OneToMany(targetEntity="BenchPlayerTeam", mappedBy="player", cascade={"persist", "remove"})
+     **/
+    private $benchPlayerTeam;
+
+    /**
+     * Замены в игре
+     * @ORM\OneToMany(targetEntity="ReplacementEvent", mappedBy="player", cascade={"persist", "remove"})
+     **/
+    private $replacementEvent;
+
+    /**
+     * Наказания в игре
+     * @ORM\OneToMany(targetEntity="PunishmentEvent", mappedBy="player", cascade={"persist", "remove"})
+     **/
+    private $punishmentEvent;
+
+    /**
+     * Голы в игре
+     * @ORM\OneToMany(targetEntity="GoalEvent", mappedBy="player", cascade={"persist", "remove"})
+     **/
+    private $goalEvent;
 
     public function getAbsolutePath()
     {
@@ -471,6 +509,10 @@ class Player
     }
 
     public function __toString(){
+        return $this->getFirstname() . ' ' . $this->getSecondname();
+    }
+
+    public function fullName(){
         return $this->getFirstname() . ' ' . $this->getSecondname();
     }
 
@@ -886,5 +928,193 @@ class Player
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Add playerTeam
+     *
+     * @param \Site\MainBundle\Entity\PlayerTeam $playerTeam
+     * @return Player
+     */
+    public function addPlayerTeam(\Site\MainBundle\Entity\PlayerTeam $playerTeam)
+    {
+        $this->playerTeam[] = $playerTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove playerTeam
+     *
+     * @param \Site\MainBundle\Entity\PlayerTeam $playerTeam
+     */
+    public function removePlayerTeam(\Site\MainBundle\Entity\PlayerTeam $playerTeam)
+    {
+        $this->playerTeam->removeElement($playerTeam);
+    }
+
+    /**
+     * Get playerTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayerTeam()
+    {
+        return $this->playerTeam;
+    }
+
+    /**
+     * Add replacementEvent
+     *
+     * @param \Site\MainBundle\Entity\ReplacementEvent $replacementEvent
+     * @return Player
+     */
+    public function addReplacementEvent(\Site\MainBundle\Entity\ReplacementEvent $replacementEvent)
+    {
+        $this->replacementEvent[] = $replacementEvent;
+
+        return $this;
+    }
+
+    /**
+     * Remove replacementEvent
+     *
+     * @param \Site\MainBundle\Entity\ReplacementEvent $replacementEvent
+     */
+    public function removeReplacementEvent(\Site\MainBundle\Entity\ReplacementEvent $replacementEvent)
+    {
+        $this->replacementEvent->removeElement($replacementEvent);
+    }
+
+    /**
+     * Get replacementEvent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReplacementEvent()
+    {
+        return $this->replacementEvent;
+    }
+
+    /**
+     * Add punishmentEvent
+     *
+     * @param \Site\MainBundle\Entity\PunishmentEvent $punishmentEvent
+     * @return Player
+     */
+    public function addPunishmentEvent(\Site\MainBundle\Entity\PunishmentEvent $punishmentEvent)
+    {
+        $this->punishmentEvent[] = $punishmentEvent;
+
+        return $this;
+    }
+
+    /**
+     * Remove punishmentEvent
+     *
+     * @param \Site\MainBundle\Entity\PunishmentEvent $punishmentEvent
+     */
+    public function removePunishmentEvent(\Site\MainBundle\Entity\PunishmentEvent $punishmentEvent)
+    {
+        $this->punishmentEvent->removeElement($punishmentEvent);
+    }
+
+    /**
+     * Get punishmentEvent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPunishmentEvent()
+    {
+        return $this->punishmentEvent;
+    }
+
+    /**
+     * Add goalEvent
+     *
+     * @param \Site\MainBundle\Entity\GoalEvent $goalEvent
+     * @return Player
+     */
+    public function addGoalEvent(\Site\MainBundle\Entity\GoalEvent $goalEvent)
+    {
+        $this->goalEvent[] = $goalEvent;
+
+        return $this;
+    }
+
+    /**
+     * Remove goalEvent
+     *
+     * @param \Site\MainBundle\Entity\GoalEvent $goalEvent
+     */
+    public function removeGoalEvent(\Site\MainBundle\Entity\GoalEvent $goalEvent)
+    {
+        $this->goalEvent->removeElement($goalEvent);
+    }
+
+    /**
+     * Get goalEvent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGoalEvent()
+    {
+        return $this->goalEvent;
+    }
+
+    /**
+     * Add benchPlayerTeam
+     *
+     * @param \Site\MainBundle\Entity\BenchPlayerTeam $benchPlayerTeam
+     * @return Player
+     */
+    public function addBenchPlayerTeam(\Site\MainBundle\Entity\BenchPlayerTeam $benchPlayerTeam)
+    {
+        $this->benchPlayerTeam[] = $benchPlayerTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove benchPlayerTeam
+     *
+     * @param \Site\MainBundle\Entity\BenchPlayerTeam $benchPlayerTeam
+     */
+    public function removeBenchPlayerTeam(\Site\MainBundle\Entity\BenchPlayerTeam $benchPlayerTeam)
+    {
+        $this->benchPlayerTeam->removeElement($benchPlayerTeam);
+    }
+
+    /**
+     * Get benchPlayerTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBenchPlayerTeam()
+    {
+        return $this->benchPlayerTeam;
+    }
+
+    /**
+     * Set ampluaShort
+     *
+     * @param string $ampluaShort
+     * @return Player
+     */
+    public function setAmpluaShort($ampluaShort)
+    {
+        $this->ampluaShort = $ampluaShort;
+
+        return $this;
+    }
+
+    /**
+     * Get ampluaShort
+     *
+     * @return string 
+     */
+    public function getAmpluaShort()
+    {
+        return $this->ampluaShort;
     }
 }

@@ -49,12 +49,39 @@ class EventController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+//          Команды
             foreach ($entity->getEventTeam() as $eventTeam) {
                 $eventTeam->setEvent($entity);
             }
+//          Тренера
             foreach ($entity->getBenchCoach() as $benchCoach) {
                 $benchCoach->setEvent($entity);
             }
+//          Состав команд
+            foreach ($entity->getPlayerTeam() as $playerTeam) {
+                $playerTeam->setEvent($entity);
+            }
+//          Запасные
+            foreach ($entity->getBenchPlayerTeam() as $benchPlayerTeam) {
+                $benchPlayerTeam->setEvent($entity);
+            }
+//          Замены в игре
+            foreach ($entity->getReplacementEvent() as $replacementEvent) {
+                $replacementEvent->setEvent($entity);
+            }
+//          Наказания в игре
+            foreach ($entity->getPunishmentEvent() as $punishmentEvent) {
+                $punishmentEvent->setEvent($entity);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+//          Голы в игре
+            foreach ($entity->getGoalEvent() as $goalEvent) {
+                $goalEvent->setEvent($entity);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -164,6 +191,7 @@ class EventController extends Controller
      */
     private function createEditForm(Event $entity)
     {
+
         $form = $this->createForm(new EventType(), $entity, array(
             'action' => $this->generateUrl('backend_event_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -188,16 +216,53 @@ class EventController extends Controller
             throw $this->createNotFoundException($this->get('translator')->trans('backend.event.not_found'));
         }
 
+//      Команды
         $originalEventTeam = new ArrayCollection();
 
         foreach ($entity->getEventTeam() as $eventTeam) {
             $originalEventTeam->add($eventTeam);
         }
 
+//      Тренера
         $originalBenchCoach = new ArrayCollection();
 
         foreach ($entity->getBenchCoach() as $benchCoach) {
             $originalBenchCoach->add($benchCoach);
+        }
+
+//      Состав команд
+        $originalPlayerTeam = new ArrayCollection();
+
+        foreach ($entity->getPlayerTeam() as $playerTeam) {
+            $originalPlayerTeam->add($playerTeam);
+        }
+
+//      Запасные
+        $originalBenchPlayerTeam = new ArrayCollection();
+
+        foreach ($entity->getBenchPlayerTeam() as $benchPlayerTeam) {
+            $originalBenchPlayerTeam->add($benchPlayerTeam);
+        }
+
+//      Замены игроков
+        $originalReplacementEvent = new ArrayCollection();
+
+        foreach ($entity->getReplacementEvent() as $replacementEvent) {
+            $originalReplacementEvent->add($replacementEvent);
+        }
+
+//      Наказания игроков
+        $originalPunishmentEvent = new ArrayCollection();
+
+        foreach ($entity->getPunishmentEvent() as $punishmentEvent) {
+            $originalPunishmentEvent->add($punishmentEvent);
+        }
+
+//      Голы игроков
+        $originalGoalEvent = new ArrayCollection();
+
+        foreach ($entity->getGoalEvent() as $goalEvent) {
+            $originalGoalEvent->add($goalEvent);
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -206,6 +271,7 @@ class EventController extends Controller
 
         if ($editForm->isValid()) {
 
+//          Команды
             foreach ($originalEventTeam as $eventTeam) {
 
                 if (false === $entity->getEventTeam()->contains($eventTeam)) {
@@ -222,6 +288,7 @@ class EventController extends Controller
                 $eventTeam->setEvent($entity);
             }
 
+//          Тренера
             foreach ($originalBenchCoach as $benchCoach) {
 
                 if (false === $entity->getBenchCoach()->contains($benchCoach)) {
@@ -236,6 +303,91 @@ class EventController extends Controller
 
             foreach ($entity->getBenchCoach() as $benchCoach) {
                 $benchCoach->setEvent($entity);
+            }
+
+//          Состав команд
+            foreach ($originalPlayerTeam as $playerTeam) {
+
+                if (false === $entity->getPlayerTeam()->contains($playerTeam)) {
+
+                    $entity->getPlayerTeam()->removeElement($playerTeam);
+
+                    $em->remove($playerTeam);
+
+                }
+
+            }
+
+            foreach ($entity->getPlayerTeam() as $playerTeam) {
+                $playerTeam->setEvent($entity);
+            }
+
+//          Запасные
+            foreach ($originalBenchPlayerTeam as $benchPlayerTeam) {
+
+                if (false === $entity->getBenchPlayerTeam()->contains($benchPlayerTeam)) {
+
+                    $entity->getBenchPlayerTeam()->removeElement($benchPlayerTeam);
+
+                    $em->remove($benchPlayerTeam);
+
+                }
+
+            }
+
+            foreach ($entity->getBenchPlayerTeam() as $benchPlayerTeam) {
+                $benchPlayerTeam->setEvent($entity);
+            }
+
+//          Замены игроков
+            foreach ($originalReplacementEvent as $replacementEvent) {
+
+                if (false === $entity->getReplacementEvent()->contains($replacementEvent)) {
+
+                    $entity->getReplacementEvent()->removeElement($replacementEvent);
+
+                    $em->remove($replacementEvent);
+
+                }
+
+            }
+
+            foreach ($entity->getReplacementEvent() as $replacementEvent) {
+                $replacementEvent->setEvent($entity);
+            }
+
+//          Наказания игроков
+            foreach ($originalPunishmentEvent as $punishmentEvent) {
+
+                if (false === $entity->getPunishmentEvent()->contains($punishmentEvent)) {
+
+                    $entity->getPunishmentEvent()->removeElement($punishmentEvent);
+
+                    $em->remove($punishmentEvent);
+
+                }
+
+            }
+
+            foreach ($entity->getPunishmentEvent() as $punishmentEvent) {
+                $punishmentEvent->setEvent($entity);
+            }
+
+//          Голы игроков
+            foreach ($originalGoalEvent as $goalEvent) {
+
+                if (false === $entity->getGoalEvent()->contains($goalEvent)) {
+
+                    $entity->getGoalEvent()->removeElement($goalEvent);
+
+                    $em->remove($goalEvent);
+
+                }
+
+            }
+
+            foreach ($entity->getGoalEvent() as $goalEvent) {
+                $goalEvent->setEvent($entity);
             }
 
             $em->flush();

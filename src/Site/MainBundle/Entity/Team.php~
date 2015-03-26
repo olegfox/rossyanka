@@ -84,6 +84,12 @@ class Team
     private $eventTeam;
 
     /**
+     * Состав команд
+     * @ORM\OneToMany(targetEntity="PlayerTeam", mappedBy="team", cascade={"persist", "remove"})
+     **/
+    private $playerTeam;
+
+    /**
      * @Assert\File()
      */
     private $file;
@@ -422,5 +428,38 @@ class Team
     public function getWins()
     {
         return $this->wins;
+    }
+
+    /**
+     * Add eventTeam
+     *
+     * @param \Site\MainBundle\Entity\EventTeam $eventTeam
+     * @return Team
+     */
+    public function addEventTeam(\Site\MainBundle\Entity\EventTeam $eventTeam)
+    {
+        $this->eventTeam[] = $eventTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventTeam
+     *
+     * @param \Site\MainBundle\Entity\EventTeam $eventTeam
+     */
+    public function removeEventTeam(\Site\MainBundle\Entity\EventTeam $eventTeam)
+    {
+        $this->eventTeam->removeElement($eventTeam);
+    }
+
+    /**
+     * Get eventTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEventTeam()
+    {
+        return $this->eventTeam;
     }
 }
