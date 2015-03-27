@@ -13,6 +13,7 @@ class MainController extends Controller
         $repository_slider = $this->getDoctrine()->getRepository('SiteMainBundle:Slider');
         $repository_event = $this->getDoctrine()->getRepository('SiteMainBundle:Event');
         $repository_team = $this->getDoctrine()->getRepository('SiteMainBundle:Team');
+        $repository_instagram = $this->getDoctrine()->getRepository('SiteMainBundle:Instagram');
 
         $page = $repository_page->findOneBySlug('glavnaia');
         $news = $repository_news->findAllForType();
@@ -23,6 +24,7 @@ class MainController extends Controller
         $calendarEvent = $repository_event->getCalendar();
         $teamsChiemp = $repository_team->findByEventType('chiempionat');
         $teamsMolodioz = $repository_team->findByEventType('molodiozhnoie-piervienstvo');
+        $instagram = $repository_instagram->findAll();
 
         return $this->render('SiteMainBundle:Frontend/Main:index.html.twig', array(
             'news' => $news,
@@ -33,7 +35,8 @@ class MainController extends Controller
             'firstFutureEvent' => $firstFutureEvent,
             'calendarEvent' => $calendarEvent,
             'teamsChiemp' => $teamsChiemp,
-            'teamsMolodioz' => $teamsMolodioz
+            'teamsMolodioz' => $teamsMolodioz,
+            'instagram' => $instagram
         ));
     }
 }

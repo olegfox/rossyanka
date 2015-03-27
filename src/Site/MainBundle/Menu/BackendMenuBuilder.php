@@ -22,6 +22,7 @@ class BackendMenuBuilder extends ContainerAware
         $menu->addChild('Руководство', array('route' => 'backend_director_index'));
         $menu->addChild('Медиа', array('route' => 'backend_media_index'));
         $menu->addChild('Реклама', array('route' => 'backend_baner_index'));
+        $menu->addChild('Instagram', array('route' => 'backend_instagram_index'));
 
         $menu->setCurrent($this->container->get('request')->getRequestUri());
 

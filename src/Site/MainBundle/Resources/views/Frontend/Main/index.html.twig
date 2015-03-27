@@ -8,6 +8,11 @@
 {% block meta_description %}{{ page.metaDescription }}{% endblock %}
 {% block meta_keywords %}{{ page.metaKeywords }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/slick.css') }}"/>
+{% endblock %}
+
 {% block content %}
     <div class="slide">
         <div id="container">
@@ -226,6 +231,17 @@
                 </div>
             </div>
         </div>
+        {# Instagram #}
+        <div class="right-block">
+            <div class="right-block-title">Instagram</div>
+            <div class="instagram">
+                {% for m in instagram %}
+                    <a href="{{ m.getLink() }}" target="_blank">
+                        <img src="{{ image(m.getStandardImageUrl()).zoomCrop(500, 500).jpeg() }}" alt="{{ image(m.getStandardImageUrl()).zoomCrop(500, 500).jpeg() }}"/>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
     <div class="clear"></div>
     </div>
@@ -238,6 +254,7 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/slick.min.js') }}"></script>
     <script language="javascript">
         $(document).ready(function(){
             $("#myController").jFlow({
@@ -251,6 +268,13 @@
                 prev: ".jFlowPrev", // must be class, use . sign
                 next: ".jFlowNext", // must be class, use . sign
                 auto: true
+            });
+            $('.instagram').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: false
             });
         });
     </script>

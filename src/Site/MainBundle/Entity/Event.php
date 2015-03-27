@@ -650,7 +650,7 @@ class Event
             if(isset($playerTeams['left'][$i])){
                 $result[$i]['left'] = $playerTeams['left'][$i];
             }
-            if(isset($replacements['right'][$i])){
+            if(isset($playerTeams['right'][$i])){
                 $result[$i]['right'] = $playerTeams['right'][$i];
             }
         }

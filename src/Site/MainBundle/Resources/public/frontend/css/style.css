@@ -1067,6 +1067,7 @@ img, a {
 }
 
 .the-end {
+    position: relative;
     width: 180px;
     background: #fff;
     padding: 10px;
@@ -1675,7 +1676,7 @@ img, a {
     padding: 0px 65px 30px 65px;
 }
 .game-table .lists{
-
+    margin-bottom: 35px;
 }
 .game-table .lists h2{
     font-family: Arial;
@@ -1694,7 +1695,6 @@ img, a {
     display: table;
     width: 100%;
     padding: 15px 0px;
-    margin-bottom: 35px;
     border-bottom: #f2f2f2 solid 2px;
     color: #000;
     font-size: 18px;
@@ -1731,3 +1731,6 @@ img, a {
     background: #ff0000;
 }
 /* end Game Page */
+.instagram{
+    margin-top: 15px;
+}

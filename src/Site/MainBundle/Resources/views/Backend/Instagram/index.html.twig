@@ -1,0 +1,60 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% from 'SiteMainBundle:Backend/Instagram:macros.html.twig' import grid %}
+
+{% block content -%}
+    <h1>{{ 'backend.instagram.h1_show'|trans({}, 'menu') }}</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>{{ 'backend.instagram.all_photo'|trans({}, 'menu') }}</h2>
+            <div class="row" id="container_instagram">
+                {{ grid(media, 0) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>{{ 'backend.instagram.site_photo'|trans({}, 'menu') }}</h2>
+            <div class="row" id="container_site_instagram">
+                {{ grid(entities, 1) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        function add(button){
+            var $form = $(button).parent();
+
+            $.post($form.attr('action'), $form.serialize(), function(data){
+                var response = JSON.parse(data);
+                $('#container_site_instagram .row').append($form.parent().parent().parent());
+                $('#container_site_instagram .col-md-4:last .caption form').remove();
+                $('#container_site_instagram .col-md-4:last .caption').html('<form action="' + response.route + '" method="DELETE"><button class="btn btn-danger" role="button" type="button" onclick="del(this);">' + response.textButton + '</button></form>');
+            }).fail(function(e){
+                throw Error('Ошибка добавления фото из инстаграма');
+            });
+        }
+        function del(button){
+            var $form = $(button).parent();
+
+            $.post($form.attr('action'), {}, function(data){
+                $form.parent().parent().parent().remove();
+            }).fail(function(e){
+                throw Error('Ошибка удаления фото');
+            });
+
+        }
+        function ajax(button){
+            var $form = $(button).parent();
+
+            $.post($form.attr('action'), $form.serialize(), function(data){
+                $form.parent().remove();
+                $('#container_instagram .row').append(data);
+            }).fail(function(e){
+                throw Error('Ошибка загрузки фотографий');
+            });
+        }
+    </script>
+{% endblock %}

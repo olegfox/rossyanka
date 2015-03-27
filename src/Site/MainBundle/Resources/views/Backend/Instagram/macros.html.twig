@@ -1,0 +1,43 @@
+{% macro grid(media, delete = 0) %}
+<div class="row">
+    {% if media|length > 0 %}
+
+        {% for key,m in media %}
+            {% if key != 'max_id' %}
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="{{ m['standard_image_url'] }}" target="_blank">
+                            <img src="{{ m['thumbnail_url'] }}" alt="{{ m['thumbnail_url'] }}" width="100%">
+                        </a>
+                        <div class="caption">
+                            {% if delete %}
+                                <form action="{{ path('backend_instagram_delete', {id: m['id']}) }}" method="DELETE">
+                                    <button class="btn btn-danger" role="button" type="button" onclick="del(this);">{{ 'backend.instagram.delete'|trans({}, 'menu') }}</button>
+                                </form>
+                            {% else %}
+                                <form action="{{ path('backend_instagram_new') }}" method="POST">
+                                    <input type="hidden" name="link" value="{{ m['link'] }}" />
+                                    <input type="hidden" name="low_image_url" value="{{ m['low_image_url'] }}" />
+                                    <input type="hidden" name="standard_image_url" value="{{ m['standard_image_url'] }}" />
+                                    <input type="hidden" name="thumbnail_url" value="{{ m['thumbnail_url'] }}" />
+                                    <input type="hidden" name="caption_text" value="{{ m['caption_text'] }}" />
+                                    <button class="btn btn-primary" role="button" type="button" onclick="add(this);">{{ 'backend.instagram.add'|trans({}, 'menu') }}</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% elseif key == "max_id" and loop.index > 1 %}
+                <div class="col-md-12">
+                    <form action="{{ path('backend_instagram_index_ajax') }}" method="POST">
+                        <input type="hidden" name="max_id" value="{{ m }}" />
+                        <button class="btn btn-primary" role="button" type="button" onclick="ajax(this);">{{ 'backend.instagram.next'|trans({}, 'menu') }}</button>
+                    </form>
+                    <p></p>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    {% endif %}
+</div>
+{% endmacro %}
