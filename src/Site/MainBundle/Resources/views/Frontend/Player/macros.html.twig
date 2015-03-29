@@ -14,7 +14,8 @@
                     <tr>
                         <td class="first">
                             <a href="{{ path('frontend_player_index', {slug: p.slug}) }}">
-                                <img src="{{ image(p.webPath).zoomCrop(50, 50) }}" alt="{{ image(p.webPath).zoomCrop(50, 50) }}" width="50px" height="50px" /> {{ p.firstname ~ ' ' ~ p.secondname ~ ' ' ~ p.patronymic }}
+                                <span><img src="{{ image(p.webPath).zoomCrop(120, 120).jpeg(100) }}" alt="{{ image(p.webPath).zoomCrop(120, 120) }}" width="50px" height="50px" /></span>
+                                {{ p.firstname ~ ' ' ~ p.secondname ~ ' ' ~ p.patronymic }}
                             </a>
                         </td>
                         <td>

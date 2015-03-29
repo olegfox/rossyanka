@@ -102,12 +102,6 @@ class Event
     private $benchPlayerTeam;
 
     /**
-     * Замены в игре
-     * @ORM\OneToMany(targetEntity="ReplacementEvent", mappedBy="event", cascade={"persist", "remove"})
-     **/
-    private $replacementEvent;
-
-    /**
      * Накзания в игре
      * @ORM\OneToMany(targetEntity="PunishmentEvent", mappedBy="event", cascade={"persist", "remove"})
      **/
@@ -428,39 +422,6 @@ class Event
     public function getPlayerTeam()
     {
         return $this->playerTeam;
-    }
-
-    /**
-     * Add replacementEvent
-     *
-     * @param \Site\MainBundle\Entity\ReplacementEvent $replacementEvent
-     * @return Event
-     */
-    public function addReplacementEvent(\Site\MainBundle\Entity\ReplacementEvent $replacementEvent)
-    {
-        $this->replacementEvent[] = $replacementEvent;
-
-        return $this;
-    }
-
-    /**
-     * Remove replacementEvent
-     *
-     * @param \Site\MainBundle\Entity\ReplacementEvent $replacementEvent
-     */
-    public function removeReplacementEvent(\Site\MainBundle\Entity\ReplacementEvent $replacementEvent)
-    {
-        $this->replacementEvent->removeElement($replacementEvent);
-    }
-
-    /**
-     * Get replacementEvent
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getReplacementEvent()
-    {
-        return $this->replacementEvent;
     }
 
     /**

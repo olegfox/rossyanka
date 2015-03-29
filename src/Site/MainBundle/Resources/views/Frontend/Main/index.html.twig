@@ -237,7 +237,7 @@
             <div class="instagram">
                 {% for m in instagram %}
                     <a href="{{ m.getLink() }}" target="_blank">
-                        <img src="{{ image(m.getStandardImageUrl()).zoomCrop(500, 500).jpeg() }}" alt="{{ image(m.getStandardImageUrl()).zoomCrop(500, 500).jpeg() }}"/>
+                        <img src="{{ m.getStandardImageUrl() }}" alt="{{ m.getStandardImageUrl() }}"/>
                     </a>
                 {% endfor %}
             </div>

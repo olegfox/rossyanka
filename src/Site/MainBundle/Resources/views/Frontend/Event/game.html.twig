@@ -72,28 +72,6 @@
                         </div>
                     {% endfor %}
                 </div>
-                {# Замены #}
-                <div class="lists">
-                    <h2>{{ 'frontend.event.replacements'|trans({}, 'menu') }}</h2>
-                    {% for replacement in event.getReplacementEventArray() %}
-                        <div class="wrap_list">
-                            <div class="list">
-                                <div class="team-0">
-                                    {% if replacement['left'] is defined %}
-                                        {{ replacement['left'].player.fullName }} ({{ replacement['left'].time }})
-                                    {% endif %}
-                                </div>
-                                <div class="score">
-                                </div>
-                                <div class="team-1">
-                                    {% if replacement['right'] is defined %}
-                                        {{ replacement['right'].player.fullName }} ({{ replacement['right'].time }})
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
                 {# Составы команд #}
                 <div class="lists">
                     <h2>{{ 'frontend.event.player_team'|trans({}, 'menu') }}</h2>
@@ -102,14 +80,14 @@
                             <div class="list">
                                 <div class="team-0">
                                     {% if playerTeam['left'] is defined %}
-                                        {{ playerTeam['left'].player.fullName }} ({{ playerTeam['left'].player.ampluaShort }})
+                                        {{ playerTeam['left'].player.fullName }} ({{ playerTeam['left'].player.ampluaShort }}) {{ playerTeam['left'].time ? '('~playerTeam['left'].time~')' : '' }}
                                     {% endif %}
                                 </div>
                                 <div class="score">
                                 </div>
                                 <div class="team-1">
                                     {% if playerTeam['right'] is defined %}
-                                        {{ playerTeam['right'].player.fullName }} ({{ playerTeam['right'].player.ampluaShort }})
+                                        {{ playerTeam['right'].player.fullName }} ({{ playerTeam['right'].player.ampluaShort }}) {{ playerTeam['right'].time ? '('~playerTeam['right'].time~')' : '' }}
                                     {% endif %}
                                 </div>
                             </div>

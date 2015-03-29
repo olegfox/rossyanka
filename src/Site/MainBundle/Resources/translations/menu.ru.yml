@@ -114,7 +114,6 @@ backend:
         bench_coach: Тренеры
         player_team: Состав команд
         bench_player_team: Запасные
-        replacement_event: Замены
         punishment_event: Наказания
         goal_event: Голы
         not_found: Событие не существует
@@ -173,6 +172,7 @@ backend:
         player: Игрок
         add: Добавить игрока
         delete: Удалить игрока
+        time: Время
     bench_player_team:
         type:
           name: Команда
@@ -181,15 +181,6 @@ backend:
         player: Игрок
         add: Добавить игрока
         delete: Удалить игрока
-    replacement_event:
-        type:
-          name: Команда
-          first: Первая команда
-          second: Вторая команда
-        player: Игрок
-        time: Время
-        add: Добавить замену
-        delete: Удалить замену
     punishment_event:
         type:
           name: Команда

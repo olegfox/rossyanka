@@ -65,10 +65,6 @@ class EventController extends Controller
             foreach ($entity->getBenchPlayerTeam() as $benchPlayerTeam) {
                 $benchPlayerTeam->setEvent($entity);
             }
-//          Замены в игре
-            foreach ($entity->getReplacementEvent() as $replacementEvent) {
-                $replacementEvent->setEvent($entity);
-            }
 //          Наказания в игре
             foreach ($entity->getPunishmentEvent() as $punishmentEvent) {
                 $punishmentEvent->setEvent($entity);
@@ -244,13 +240,6 @@ class EventController extends Controller
             $originalBenchPlayerTeam->add($benchPlayerTeam);
         }
 
-//      Замены игроков
-        $originalReplacementEvent = new ArrayCollection();
-
-        foreach ($entity->getReplacementEvent() as $replacementEvent) {
-            $originalReplacementEvent->add($replacementEvent);
-        }
-
 //      Наказания игроков
         $originalPunishmentEvent = new ArrayCollection();
 
@@ -337,23 +326,6 @@ class EventController extends Controller
 
             foreach ($entity->getBenchPlayerTeam() as $benchPlayerTeam) {
                 $benchPlayerTeam->setEvent($entity);
-            }
-
-//          Замены игроков
-            foreach ($originalReplacementEvent as $replacementEvent) {
-
-                if (false === $entity->getReplacementEvent()->contains($replacementEvent)) {
-
-                    $entity->getReplacementEvent()->removeElement($replacementEvent);
-
-                    $em->remove($replacementEvent);
-
-                }
-
-            }
-
-            foreach ($entity->getReplacementEvent() as $replacementEvent) {
-                $replacementEvent->setEvent($entity);
             }
 
 //          Наказания игроков

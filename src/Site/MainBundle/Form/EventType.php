@@ -115,20 +115,6 @@ class EventType extends AbstractType
                     'attr' => array('style' => 'inline')
                 )
             ))
-            ->add('replacementEvent', 'bootstrap_collection', array(
-                'label'=>'backend.event.replacement_event',
-                'type' => new ReplacementEventType(),
-                'allow_add'          => true,
-                'allow_delete'       => true,
-                'add_button_text'    => 'backend.replacement_event.add',
-                'delete_button_text' => 'backend.replacement_event.delete',
-                'sub_widget_col'     => 9,
-                'button_col'         => 3,
-                'prototype_name'     => 'inlinep',
-                'options'            => array(
-                    'attr' => array('style' => 'inline')
-                )
-            ))
             ->add('punishmentEvent', 'bootstrap_collection', array(
                 'label'=>'backend.event.punishment_event',
                 'type' => new PunishmentEventType(),

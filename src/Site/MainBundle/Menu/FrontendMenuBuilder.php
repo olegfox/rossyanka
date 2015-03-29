@@ -62,7 +62,7 @@ class FrontendMenuBuilder extends ContainerAware
 //              Если это турниры, то сразу попадаем на чемпионаты
                 $eventMenu = $menu->addChild($m->getTitle(), array(
                     'route' => 'frontend_event_sub_index',
-                    'routeParameters' => array('type' => $m->getChildren()[0]->getSlug(), 'subtype' => 'novosti'),
+                    'routeParameters' => array('type' => $m->getChildren()[0]->getSlug(), 'subtype' => 'turnirnaia-tablitsa'),
                     'attributes' => array('class' => 'children')
                 ));
 
@@ -70,7 +70,7 @@ class FrontendMenuBuilder extends ContainerAware
                 foreach ($m->getChildren() as $c) {
                     $subEventMenu = $eventMenu->addChild($c->getTitle(), array(
                         'route' => 'frontend_event_sub_index',
-                        'routeParameters' => array('type' => $c->getSlug(), 'subtype' => 'novosti')
+                        'routeParameters' => array('type' => $c->getSlug(), 'subtype' => 'turnirnaia-tablitsa')
                     ));
                     if($routeName == 'frontend_event_sub_index' && $request->get('type') == $c->getSlug()){
                         $subEventMenu->setCurrent(true);

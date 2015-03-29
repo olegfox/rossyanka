@@ -40,6 +40,12 @@ class PlayerTeam
      **/
     private $player;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="time", type="string", length = 50, nullable=true)
+     */
+    private $time;
 
     /**
      * Get id
@@ -118,5 +124,28 @@ class PlayerTeam
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set time
+     *
+     * @param string $time
+     * @return PlayerTeam
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return string 
+     */
+    public function getTime()
+    {
+        return $this->time;
     }
 }

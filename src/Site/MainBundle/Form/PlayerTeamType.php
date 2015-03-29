@@ -31,6 +31,10 @@ class PlayerTeamType extends AbstractType
 //                'query_builder' => function (\Site\MainBundle\Entity\Repository\PlayerRepository $pr) {
 //                        return $pr->getPlayerFirstTeam();
 //                    }
+            ))
+            ->add('time', null, array(
+                'required' => false,
+                'label' => 'backend.punishment_event.time'
             ));
     }
 
