@@ -132,7 +132,7 @@
         <div class="right-block-title">календарь предстоящих событий</div>
         <div id="daily-events-calendar">
             {% for c in calendar %}
-                <div class="day{{ loop.index }}">
+                <div class="day{{ loop.index }}{% if c['events'] is defined %}{% if c['events']|length > 0 %} active{% endif %}{% endif %}">
                     <a href="{{ path('frontend_announcement_index', {date: c['date']|date('d-m-Y')}) }}">{{ c['date']|date('j') }}</a>
                     {% if c['events'] is defined %}
                         {% if c['events']|length > 0 %}

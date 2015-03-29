@@ -3,7 +3,7 @@
         <div class="directors">
             {% for director in directors %}<div class="director">
                 <div class="inner">
-                    <img src="{{ image(director.webPath).zoomCrop(210, 210) }}" alt="{{ director.name }}"/>
+                    <img src="{{ image(director.webPath).zoomCrop(300, 300).jpeg(100) }}" alt="{{ director.name }}"/>
                     <div class="description">
                         {{ director.status }}<br/>
                         {{ director.name }}

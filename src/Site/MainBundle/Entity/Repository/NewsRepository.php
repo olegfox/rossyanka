@@ -65,7 +65,7 @@ class NewsRepository extends EntityRepository
         SELECT n FROM Site\MainBundle\Entity\News n
         ORDER BY n.date DESC
         ')
-            ->setMaxResults(3)
+            ->setMaxResults(4)
             ->getResult();
 
         return $news;

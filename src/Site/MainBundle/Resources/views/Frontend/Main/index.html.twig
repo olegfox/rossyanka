@@ -235,11 +235,29 @@
         <div class="right-block">
             <div class="right-block-title">Instagram</div>
             <div class="instagram">
-                {% for m in instagram %}
-                    <a href="{{ m.getLink() }}" target="_blank">
-                        <img src="{{ m.getStandardImageUrl() }}" alt="{{ m.getStandardImageUrl() }}"/>
-                    </a>
+                {% for column in instagram %}
+                    <div class="page">
+                        {% for item in column %}<a href="{{ item.getLink() }}" target="_blank">
+                                <img src="{{ item.getStandardImageUrl() }}" alt="{{ item.getStandardImageUrl() }}"/>
+                            </a>{% endfor %}
+                    </div>
                 {% endfor %}
+            </div>
+        </div>
+        <div class="right-block">
+            <div class="poll">
+                <!-- Put this script tag to the <head> of your page -->
+                <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
+
+                <script type="text/javascript">
+                    VK.init({apiId: 4851713, onlyWidgets: true});
+                </script>
+
+                <!-- Put this div tag to the place, where the Poll block will be -->
+                <div id="vk_poll"></div>
+                <script type="text/javascript">
+                    VK.Widgets.Poll("vk_poll", {width: "443"}, "176811355_028952d2a213b5b069");
+                </script>
             </div>
         </div>
     </div>

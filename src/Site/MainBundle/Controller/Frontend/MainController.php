@@ -24,7 +24,7 @@ class MainController extends Controller
         $calendarEvent = $repository_event->getCalendar();
         $teamsChiemp = $repository_team->findByEventType('chiempionat');
         $teamsMolodioz = $repository_team->findByEventType('molodiozhnoie-piervienstvo');
-        $instagram = $repository_instagram->findAll();
+        $instagram = $repository_instagram->findAllColumn();
 
         return $this->render('SiteMainBundle:Frontend/Main:index.html.twig', array(
             'news' => $news,

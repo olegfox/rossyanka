@@ -31,4 +31,19 @@ class InstagramRepository extends EntityRepository
 
         return $media;
     }
+
+    public function findAllColumn(){
+        $all = $this->findAll();
+        $column = array();
+        $i = 0;
+
+        foreach($all as $key => $item){
+            $column[$i][] = $item;
+            if($key % 3 == 0){
+                $i++;
+            }
+        }
+
+        return $column;
+    }
 }
