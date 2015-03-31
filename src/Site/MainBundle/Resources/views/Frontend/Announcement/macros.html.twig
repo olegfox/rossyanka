@@ -7,7 +7,7 @@
         {% else %}
             {% set link = path('frontend_announcement_one', {date: announce.date|date('d-m-Y'), slug: announce.slug}) %}
         {% endif %}
-        <div class="tab-articl">
+        <div class="tab-articl {% if loop.last %}last{% endif %}">
             {% if announce.datetime is not defined %}
                 <a href="{{ link }}" class="tab-articl-img">
                     <img src="{{ image(announce.webPath).zoomCrop(230, 155) }}" alt="{{ announce.title }}" width="230px" height="155px">

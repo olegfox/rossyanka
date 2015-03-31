@@ -1,5 +1,4 @@
 {% macro grid(media, delete = 0) %}
-<div class="row">
     {% if media|length > 0 %}
 
         {% for key,m in media %}
@@ -39,5 +38,4 @@
         {% endfor %}
 
     {% endif %}
-</div>
 {% endmacro %}

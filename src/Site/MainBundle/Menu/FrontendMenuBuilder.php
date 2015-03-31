@@ -72,11 +72,11 @@ class FrontendMenuBuilder extends ContainerAware
                         'route' => 'frontend_event_sub_index',
                         'routeParameters' => array('type' => $c->getSlug(), 'subtype' => 'turnirnaia-tablitsa')
                     ));
-                    if($routeName == 'frontend_event_sub_index' && $request->get('type') == $c->getSlug()){
+                    if(($routeName == 'frontend_event_sub_index' && $request->get('type') == $c->getSlug()) ||
+                       ($routeName == 'frontend_event_game_index' && $request->get('type') == $c->getSlug())){
                         $subEventMenu->setCurrent(true);
                     }
                 }
-
 
 //          Меню текстовых страниц
             } else {

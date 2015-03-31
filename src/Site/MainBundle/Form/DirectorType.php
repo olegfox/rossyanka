@@ -15,6 +15,16 @@ class DirectorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('type', 'choice', array(
+                'required' => true,
+                'label' => 'backend.director.type.name',
+                'choices' => array(
+                    0 => 'backend.director.type.type_1',
+                    1 => 'backend.director.type.type_2',
+                    2 => 'backend.director.type.type_3'
+                ),
+                'translation_domain' => 'menu'
+            ))
             ->add('name', null, array(
                 'required' => true,
                 'label' => 'backend.director.name'

@@ -1,5 +1,5 @@
 frontend_event_game_index:
-    path:     /games/{id}
+    path:     /{type}/games/{id}
     defaults: { _controller: "SiteMainBundle:Frontend/Event:game" }
 
 frontend_event_index:

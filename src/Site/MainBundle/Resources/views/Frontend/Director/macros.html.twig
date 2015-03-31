@@ -1,15 +1,20 @@
 {% macro listDirectors(directors) %}
     {% if directors|length > 0 %}
         <div class="directors">
-            {% for director in directors %}<div class="director">
-                <div class="inner">
-                    <img src="{{ image(director.webPath).zoomCrop(300, 300).jpeg(100) }}" alt="{{ director.name }}"/>
-                    <div class="description">
-                        {{ director.status }}<br/>
-                        {{ director.name }}
+            {% for type in directors %}
+                {% if type.directors|length > 0 %}
+                    <h2>{{ type.name }}</h2>
+                {% endif %}
+                {% for director in type.directors %}<div class="director">
+                    <div class="inner">
+                        <img src="{{ image(director.webPath).zoomCrop(300, 300).jpeg(100) }}" alt="{{ director.name }}"/>
+                        <div class="description">
+                            {{ director.status }}<br/>
+                            {{ director.name }}
+                        </div>
                     </div>
-                </div>
-                </div>{% endfor %}
+                    </div>{% endfor %}
+            {% endfor %}
         </div>
     {% endif %}
 {% endmacro %}

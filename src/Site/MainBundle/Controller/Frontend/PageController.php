@@ -53,7 +53,7 @@ class PageController extends Controller
         }elseif($slug == "rukovodstvo"){
             $repository_director = $this->getDoctrine()->getRepository('SiteMainBundle:Director');
 
-            $directors = $repository_director->findAll();
+            $directors = $repository_director->findAllArray();
 
             $params = array_merge($params, array(
                 'directors' => $directors

@@ -12,4 +12,36 @@ use Doctrine\ORM\EntityRepository;
  */
 class DirectorRepository extends EntityRepository
 {
+
+//  Массив руководителей, разделенных по разделам
+    public function findAllArray(){
+        $directors = $this->findAll();
+
+        $array = array(
+            0 => array(
+                'name' => 'Руководство',
+                'directors' => array()
+            ),
+            1 => array(
+                'name' => 'Тренерский штаб',
+                'directors' => array()
+            ),
+            2 => array(
+                'name' => 'Технический персонал',
+                'directors' => array()
+            )
+        );
+
+        foreach($directors as $director){
+            if($director->getType() == 0){
+                $array[0]['directors'][] = $director;
+            }elseif($director->getType() == 1){
+                $array[1]['directors'][] = $director;
+            }elseif($director->getType() == 2){
+                $array[2]['directors'][] = $director;
+            }
+        }
+
+        return $array;
+    }
 }

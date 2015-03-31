@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Site\MainBundle\Entity\Director
  *
- * @ORM\Table(name="player")
+ * @ORM\Table(name="director")
  * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\DirectorRepository")
  */
 class Director
@@ -22,6 +22,12 @@ class Director
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * Тип руководителя
+     * @ORM\Column(type="smallint", nullable=false)
+     */
+    private $type = 0;
 
     /**
      * ФИО руководителя
@@ -69,7 +75,7 @@ class Director
 
     protected function getUploadDir()
     {
-        return 'uploads/player';
+        return 'uploads/director';
     }
 
     /**
@@ -115,5 +121,84 @@ class Director
         );
 
         $this->file = null;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Director
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set img
+     *
+     * @param string $img
+     * @return Director
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * Get img
+     *
+     * @return string 
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return Director
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

@@ -9,13 +9,17 @@
         <div class="col-md-6">
             <h2>{{ 'backend.instagram.all_photo'|trans({}, 'menu') }}</h2>
             <div class="row" id="container_instagram">
-                {{ grid(media, 0) }}
+                <div class="row">
+                    {{ grid(media, 0) }}
+                </div>
             </div>
         </div>
         <div class="col-md-6">
             <h2>{{ 'backend.instagram.site_photo'|trans({}, 'menu') }}</h2>
             <div class="row" id="container_site_instagram">
-                {{ grid(entities, 1) }}
+                <div class="row">
+                    {{ grid(entities, 1) }}
+                </div>
             </div>
         </div>
     </div>

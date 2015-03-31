@@ -26,11 +26,11 @@
                     </div>
                     <div class="soc-icons">
                         <ul>
-                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/twitter.png') }}" alt=""></a></li>
-                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/vk.png') }}" alt=""></a></li>
-                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/facebook.png') }}" alt=""></a></li>
-                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/inst.png') }}" alt=""></a></li>
-                            <li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/od.png') }}" alt=""></a></li>
+                            <li><a href="https://twitter.com/fcrossiyanka" target="_blank"><img src="{{ asset('bundles/sitemain/frontend/images/icons/twitter.png') }}" alt=""></a></li>
+                            <li><a href="https://vk.com/fcrossiyanka" target="_blank"><img src="{{ asset('bundles/sitemain/frontend/images/icons/vk.png') }}" alt=""></a></li>
+                            <li><a href="https://facebook.com/fcrossiyanka" target="_blank"><img src="{{ asset('bundles/sitemain/frontend/images/icons/facebook.png') }}" alt=""></a></li>
+                            <li><a href="https://instagram.com/fcrossiyanka" target="_blank"><img src="{{ asset('bundles/sitemain/frontend/images/icons/inst.png') }}" alt=""></a></li>
+                            {#<li><a href=""><img src="{{ asset('bundles/sitemain/frontend/images/icons/od.png') }}" alt=""></a></li>#}
                         </ul>
                     </div>
                 </div>
@@ -80,12 +80,7 @@
             });
         });
         function openbox(id){
-            display = document.getElementById(id).style.display;
-            if(display=='none'){
-                document.getElementById(id).style.display='block';
-            }else{
-                document.getElementById(id).style.display='none';
-            }
+            $('#' + id).hide();
         }
     </script>
 {% endblock %}

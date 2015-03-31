@@ -134,6 +134,7 @@ class EventRepository extends EntityRepository
                                 }
 //                              Если такая запись уже есть, то добавляем только счет
                                 $resultEvents[$i][$j]['score']['eventId'] = $e->getId();
+                                $resultEvents[$i][$j]['score']['eventSlug'] = $e->getSlug();
                                 $resultEvents[$i][$j]['score'][] = $e->getScore();
                                 $fl = 1;
                             }

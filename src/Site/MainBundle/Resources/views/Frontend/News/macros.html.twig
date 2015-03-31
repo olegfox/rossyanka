@@ -1,7 +1,7 @@
 {% macro listTab(news) %}
     {% for n in news %}
         {% set link = path('frontend_news_one', {type: n.getTypeUrl(), slug: n.slug}) %}
-        <div class="tab-articl">
+        <div class="tab-articl {% if loop.last %}last{% endif %}">
             <a href="{{ link }}" class="tab-articl-img">
                 <img src="{{ image(n.webPath).zoomCrop(230, 155) }}" alt="{{ n.title }}" width="230px" height="155px">
             </a>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             {% endif %}
-            <div class="content-slide-block second {% if loop.first %}current{% endif %}">
+            <div class="content-slide-block second {% if loop.first %}current{% endif %} {% if loop.last %}last{% endif %}">
                 <img class="little" src="{{ image(n.webPath).zoomCrop(231, 155) }}" alt="{{ n.title }}">
                 <img class="big hide" src="{{ image(n.webPath).zoomCrop(715, 480) }}" alt="{{ n.title }}">
                 <div class="content-slide-block-title">

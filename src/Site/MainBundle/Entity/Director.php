@@ -24,6 +24,12 @@ class Director
     private $id;
 
     /**
+     * Тип руководителя
+     * @ORM\Column(type="smallint", nullable=false)
+     */
+    private $type = 0;
+
+    /**
      * ФИО руководителя
      * @var string
      *
@@ -194,5 +200,28 @@ class Director
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return Director
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

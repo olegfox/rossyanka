@@ -146,6 +146,27 @@ class Event
         return $this->name;
     }
 
+    public function getSlug()
+    {
+        switch($this->name){
+            case 0: {
+                return 'chiempionat';
+            }break;
+            case 1: {
+                return 'kubok';
+            }break;
+            case 2: {
+                return 'ligha-ievropy';
+            }break;
+            case 3: {
+                return 'molodiozhnoie-piervienstvo';
+            }break;
+            default: {
+                return 'chiempionat';
+            }break;
+        }
+    }
+
     public function getNameText()
     {
         switch($this->name){

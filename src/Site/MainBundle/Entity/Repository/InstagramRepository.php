@@ -18,7 +18,7 @@ class InstagramRepository extends EntityRepository
     public function findAllArray(){
         $all = $this->findAll();
         $media = array();
-        $i = 0;
+        $i = 1;
 
         foreach ($all as $item) {
             $media[$i]['id'] = $item->getId();
@@ -35,13 +35,15 @@ class InstagramRepository extends EntityRepository
     public function findAllColumn(){
         $all = $this->findAll();
         $column = array();
-        $i = 0;
+        $i = 1;
+        $j = 1;
 
-        foreach($all as $key => $item){
+        foreach($all as $item){
             $column[$i][] = $item;
-            if($key % 3 == 0){
+            if($j % 3 == 0){
                 $i++;
             }
+            $j++;
         }
 
         return $column;
