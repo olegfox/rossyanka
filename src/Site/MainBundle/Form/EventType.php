@@ -29,6 +29,20 @@ class EventType extends AbstractType
                 'multiple' => false,
                 'translation_domain' => 'menu'
             ))
+            ->add('final', 'choice', array(
+                'required' => false,
+                'label' => 'backend.event.final.name',
+                'choices' => array(
+                    0 => 'backend.event.final.final_1',
+                    1 => 'backend.event.final.final_1_2',
+                    2 => 'backend.event.final.final_1_4',
+                    3 => 'backend.event.final.final_1_8',
+                    4 => 'backend.event.final.final_1_16'
+                ),
+                'expanded' => false,
+                'multiple' => false,
+                'translation_domain' => 'menu'
+            ))
             ->add('tour', null, array(
                 'required' => false,
                 'label' => 'backend.event.tour'

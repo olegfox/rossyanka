@@ -168,3 +168,64 @@
         </div>
     {% endif %}
 {% endmacro %}
+
+{% macro cuboc(events) %}
+    <div class="finals">
+        {# Матчи в виде графика #}
+        {% for key,final in events|reverse %}{% if key != 0 %}<div class="final final-{{ key }}">
+                    <div class="name">
+                        {{ final['name']|trans({}, 'menu') }}
+                    </div>
+                    <div class="wrap_rectangle">
+                        {% for event in final['events'] %}
+                            <div class="rectangle{% if loop.last %} last{% endif %}">
+                                {% if event.eventTeam[0].team.id is defined %}
+                                    <div class="team">
+                                        <img src="{{ image(event.eventTeam[0].team.webPath).resize(25, 25).jpeg(100) }}" alt="{{ image(event.eventTeam[0].team.webPath).resize(25, 25).jpeg(100) }}" width="25px" height="25px" />
+                                        <div class="name">
+                                            {{ event.eventTeam[0].team.name }}
+                                        </div>
+                                        <div class="score">
+                                            {{ event.score1 }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if event.eventTeam[1].team.id is defined %}
+                                    <div class="team second">
+                                        <img src="{{ image(event.eventTeam[1].team.webPath).resize(25, 25).jpeg(100) }}" alt="{{ image(event.eventTeam[1].team.webPath).resize(25, 25).jpeg(100) }}" width="25px" height="25px" />
+                                        <div class="name second">
+                                            {{ event.eventTeam[1].team.name }}
+                                        </div>
+                                        <div class="score second">
+                                            {{ event.score2 }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>{% endif %}{% endfor %}
+        <hr/>
+        {# Матчи в виде таблицы #}
+        <div class="final-table">
+            {% for final in events|reverse %}
+                <table>
+                    <tr>
+                        <td class="name" colspan="5">
+                            {{ final['name']|trans({}, 'menu') }}
+                        </td>
+                    </tr>
+                {% for event in final['events'] %}
+                    <tr>
+                        <td>{{ event.datetime|date('d.m.Y') }}</td>
+                        <td>{{ event.datetime|date('H:i') }}</td>
+                        <td>{{ event.getEventTeamString() }}</td>
+                        <td>{{ event.score }}</td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}

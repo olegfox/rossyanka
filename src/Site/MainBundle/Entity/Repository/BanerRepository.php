@@ -12,20 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class BanerRepository extends EntityRepository
 {
-    function findRandom(){
+    function findRandom()
+    {
         $count = $this->getEntityManager()->createQuery('
             SELECT count(b.id) FROM SiteMainBundle:Baner b
             WHERE b.onMain = 1
         ')
-        ->getSingleScalarResult();
+            ->getSingleScalarResult();
 
-        $baner = $this->getEntityManager()->createQuery('
-            SELECT b FROM SiteMainBundle:Baner b
-            WHERE b.onMain = 1
-        ')
-        ->setFirstResult(rand(0, $count - 1))
-        ->setMaxResults(1)
-        ->getSingleResult();
+        $baner = false;
+
+        if ($count > 0) {
+            $baner = $this->getEntityManager()->createQuery('
+                SELECT b FROM SiteMainBundle:Baner b
+                WHERE b.onMain = 1
+            ')
+                ->setFirstResult(rand(0, $count - 1))
+                ->setMaxResults(1)
+                ->getSingleResult();
+        }
 
         return $baner;
     }

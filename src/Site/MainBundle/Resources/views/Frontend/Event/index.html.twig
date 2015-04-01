@@ -4,6 +4,7 @@
 {% from 'SiteMainBundle:Frontend/Event:macros.html.twig' import calendarEvent %}
 {% from 'SiteMainBundle:Frontend/Event:macros.html.twig' import result %}
 {% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
+{% from 'SiteMainBundle:Frontend/Event:macros.html.twig' import cuboc %}
 
 {% block title %}{{ page.title }}{% endblock %}
 {% block meta_description %}{{ page.metaDescription }}{% endblock %}
@@ -69,6 +70,10 @@
                     {# Вывод турнирной таблицы #}
                     {% if teams is defined %}
                         {{ table(teams) }}
+                    {% endif %}
+                    {# Вывод турнирной таблицы для кубка #}
+                    {% if cub is defined %}
+                        {{ cuboc(cub) }}
                     {% endif %}
                 </div>
             </div>

@@ -1880,3 +1880,109 @@ img, a {
     float: right;
 }
 /* end news on main */
+
+/* Finals */
+.finals{
+    width: 933px;
+    margin: 0px auto;
+}
+.finals > .final{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 20px;
+}
+.finals > .final > .name{
+    color: #000;
+    font-family: "Arial";
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 23px;
+}
+.finals > .final > .wrap_rectangle > .rectangle{
+    width: 170px;
+    padding: 10px;
+    margin-bottom: 7px;
+    border: #b8b8b8 solid 1px;
+}
+.finals > .final.final-2 > .wrap_rectangle{
+    margin-top: 63px;
+}
+.finals > .final.final-3 > .wrap_rectangle{
+    margin-top: 143px;
+}
+.finals > .final.final-4 > .wrap_rectangle{
+    margin-top: 303px;
+}
+.finals > .final.final-2 > .wrap_rectangle > .rectangle{
+    margin-bottom: 90px;
+}
+.finals > .final.final-3 > .wrap_rectangle > .rectangle{
+    margin-bottom: 250px;
+}
+.finals > .final > .wrap_rectangle > .rectangle.last{
+    margin-bottom: 0px;
+}
+.finals > .final > .wrap_rectangle > .rectangle > .team{
+    margin-bottom: 3px;
+}
+.finals > .final > .wrap_rectangle > .rectangle > .team.second{
+    margin-bottom: 0px;
+}
+.finals > .final > .wrap_rectangle > .rectangle > .team img{
+    display: inline-block;
+    vertical-align: middle;
+}
+.finals > .final > .wrap_rectangle > .rectangle > .team > .name{
+    font-family: "Arial";
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #000;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 7px;
+}
+.finals > .final > .wrap_rectangle > .rectangle > .team > .name.second{
+    color: #7B7B7B;
+}
+.finals > .final > .wrap_rectangle > .rectangle > .team > .score{
+    font-family: "Arial";
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #000;
+    float: right;
+    margin-top: 5px;
+}
+.finals > .final > .wrap_rectangle > .rectangle > .team > .score.second{
+    color: #7B7B7B;
+}
+.finals > hr{
+    margin: 20px -50px;
+    background: #e36363;
+    height: 2px;
+    border: 0px;
+}
+.finals > .final-table{
+    color: #000;
+    font-family: "Arial";
+    font-size: 14px;
+    font-weight: 400;
+}
+.finals > .final-table table{
+    width: 100%;
+    border-spacing: 0px;
+}
+.finals > .final-table table tr{
+
+}
+.finals > .final-table table tr td{
+    padding: 10px 20px;
+    border-bottom: #e5e5e5 solid 1px;
+}
+.finals > .final-table table tr td.name{
+    font-weight: 700;
+}
+/* end Finals */

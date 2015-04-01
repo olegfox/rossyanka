@@ -21,6 +21,12 @@ class Event
     const NAME_EUROPA_LEAGUE = 2;
     const NAME_YOUTH_CHAMPIONSHIP = 3;
 
+    const FINAL_1 = 0;
+    const FINAL_1_2 = 1;
+    const FINAL_1_4 = 2;
+    const FINAL_1_8 = 3;
+    const FINAL_1_16 = 4;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -112,6 +118,12 @@ class Event
      * @ORM\OneToMany(targetEntity="GoalEvent", mappedBy="event", cascade={"persist", "remove"})
      **/
     private $goalEvent;
+
+    /**
+     * Финал
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $final;
 
     /**
      * Get id
@@ -232,6 +244,22 @@ class Event
     public function getScore()
     {
         return $this->score;
+    }
+
+    public function getScore1(){
+        if(isset($this->getEventTeam()[0])){
+            return explode(':', $this->getScore())[0];
+        }
+
+        return 0;
+    }
+
+    public function getScore2(){
+        if(isset($this->getEventTeam()[1])){
+            return explode(':', $this->getScore())[1];
+        }
+
+        return 0;
     }
 
     /**
@@ -702,5 +730,28 @@ class Event
         }
 
         return $result;
+    }
+
+    /**
+     * Set final
+     *
+     * @param integer $final
+     * @return Event
+     */
+    public function setFinal($final)
+    {
+        $this->final = $final;
+
+        return $this;
+    }
+
+    /**
+     * Get final
+     *
+     * @return integer 
+     */
+    public function getFinal()
+    {
+        return $this->final;
     }
 }

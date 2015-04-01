@@ -48,11 +48,19 @@ class EventController extends Controller
                 }break;
 //              Страничка с турнирной таблицей для событий
                 case 'turnirnaia-tablitsa': {
-                    $repository_team = $this->getDoctrine()->getRepository('SiteMainBundle:Team');
-                    $teams = $repository_team->findByEventType($type);
-                    $params = array_merge($params, array(
-                        'teams' => $teams
-                    ));
+                    if($type == 'kubok'){
+                        $repository_event = $this->getDoctrine()->getRepository('SiteMainBundle:Event');
+                        $cuboc = $repository_event->getCuboc();
+                        $params = array_merge($params, array(
+                            'cub' => $cuboc
+                        ));
+                    }else{
+                        $repository_team = $this->getDoctrine()->getRepository('SiteMainBundle:Team');
+                        $teams = $repository_team->findByEventType($type);
+                        $params = array_merge($params, array(
+                            'teams' => $teams
+                        ));
+                    }
                 }break;
             }
         }

@@ -116,6 +116,13 @@ backend:
         bench_player_team: Запасные
         punishment_event: Наказания
         goal_event: Голы
+        final:
+          name: Финал
+          final_1: Финал
+          final_1_2: 1/2 финала
+          final_1_4: 1/4 финала
+          final_1_8: 1/8 финала
+          final_1_16: 1/16 финала
         not_found: Событие не существует
         name_choice:
             championship: чемпионат

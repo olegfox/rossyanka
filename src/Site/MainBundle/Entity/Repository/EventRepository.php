@@ -249,4 +249,65 @@ class EventRepository extends EntityRepository
 
         return $calendar;
     }
+
+//  Турнирная таблица в Кубке
+    public function getCuboc(){
+        $em = $this->getEntityManager();
+
+//      Все матчи кубка, которые уже прошли
+        $events = $em->createQuery('
+            SELECT e FROM Site\MainBundle\Entity\Event e
+            WHERE e.name = :typeNumber and e.datetime <= :now
+        ')
+            ->setParameters(array(
+                'typeNumber' => Event::NAME_CUP,
+                'now' => new \DateTime()
+            ))
+            ->getResult();
+
+        $cuboc = array(
+            Event::FINAL_1 => array(
+                'name' => 'backend.event.final.final_1',
+                'events' => array()
+            ),
+            Event::FINAL_1_2 => array(
+                'name' => 'backend.event.final.final_1_2',
+                'events' => array()
+            ),
+            Event::FINAL_1_4 => array(
+                'name' => 'backend.event.final.final_1_4',
+                'events' => array()
+            ),
+            Event::FINAL_1_8 => array(
+                'name' => 'backend.event.final.final_1_8',
+                'events' => array()
+            ),
+            Event::FINAL_1_16 => array(
+                'name' => 'backend.event.final.final_1_16',
+                'events' => array()
+            )
+        );
+
+        foreach($events as $event){
+            switch($event->getFinal()){
+                case Event::FINAL_1: {
+                    $cuboc[Event::FINAL_1]['events'][] = $event;
+                }break;
+                case Event::FINAL_1_2: {
+                    $cuboc[Event::FINAL_1_2]['events'][] = $event;
+                }break;
+                case Event::FINAL_1_4: {
+                    $cuboc[Event::FINAL_1_4]['events'][] = $event;
+                }break;
+                case Event::FINAL_1_8: {
+                    $cuboc[Event::FINAL_1_8]['events'][] = $event;
+                }break;
+                case Event::FINAL_1_16: {
+                    $cuboc[Event::FINAL_1_16]['events'][] = $event;
+                }break;
+            }
+        }
+
+        return $cuboc;
+    }
 }
