@@ -3,6 +3,7 @@
 namespace Site\MainBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Site\MainBundle\Entity\Player;
 
 /**
  * PlayerRepository
@@ -24,7 +25,7 @@ class PlayerRepository extends EntityRepository
             OR p.patronymic LIKE :text
             OR p.birthPlace LIKE :text
             OR p.nationality LIKE :text
-            OR p.amplua LIKE :text
+            OR p.amplua IN (SELECT a.id FROM Site\MainBundle\Entity\Amplua a WHERE a.name LIKE :text)
             OR p.height LIKE :text
             OR p.weight LIKE :text
             OR p.firstCoach LIKE :text
@@ -37,9 +38,11 @@ class PlayerRepository extends EntityRepository
             OR p.anySport LIKE :text
             OR p.hobby LIKE :text
             OR p.favoritePhrase LIKE :text
+            AND p.status <> :notStatus
         ')
             ->setParameters(array(
-                'text' => '%' . $text . '%'
+                'text' => '%' . $text . '%',
+                'notStatus' => Player::STATUS_ARCHIVE
             ))
             ->getResult();
 
@@ -63,9 +66,32 @@ class PlayerRepository extends EntityRepository
                 ->from('Site\MainBundle\Entity\Player', 'p')
                 ->leftJoin('p.teams', 't')
                 ->where('t.id = :firstTeamId')
-                ->setParameter('firstTeamId', $firstTeamId);
+                ->andWhere('p.status <> :notStatus')
+                ->setParameters(array(
+                    'firstTeamId' => $firstTeamId,
+                    'notStatus' => Player::STATUS_ARCHIVE
+                ));
         }
 
         return false;
+    }
+
+//  Поиск игроков по названию команды
+    public function findOneByTeamWithStatus($teamName, $status){
+        return $this->getEntityManager()->createQueryBuilder()
+            ->select('p')
+            ->from('Site\MainBundle\Entity\Player', 'p')
+            ->leftJoin('p.teams', 't')
+            ->where('t.name LIKE :teamName')
+            ->andWhere('p.status = :status')
+            ->andWhere('p.status <> :notStatus')
+            ->orderBy('p.amplua', 'ASC')
+            ->setParameters(array(
+                'teamName' => $teamName,
+                'status' => $status,
+                'notStatus' => Player::STATUS_ARCHIVE
+            ))
+            ->getQuery()
+            ->getResult();
     }
 }

@@ -31,6 +31,12 @@ class PlayerType extends AbstractType
                 'required' => false,
                 'label' => 'backend.player.img'
             ))
+            ->add('teams', 'entity', array(
+                'required' => false,
+                'label' => 'backend.player.teams',
+                'class' => 'Site\MainBundle\Entity\Team',
+                'multiple' => true
+            ))
             ->add('birthday', null, array(
                 'required' => false,
                 'label' => 'backend.player.birthday',
@@ -44,13 +50,10 @@ class PlayerType extends AbstractType
                 'required' => false,
                 'label' => 'backend.player.nationality'
             ))
-            ->add('amplua', null, array(
-                'required' => false,
-                'label' => 'backend.player.amplua'
-            ))
-            ->add('ampluaShort', null, array(
-                'required' => false,
-                'label' => 'backend.player.amplua_short'
+            ->add('amplua', 'entity', array(
+                'required' => true,
+                'label' => 'backend.player.amplua',
+                'class' => 'Site\MainBundle\Entity\Amplua'
             ))
             ->add('height', null, array(
                 'required' => false,

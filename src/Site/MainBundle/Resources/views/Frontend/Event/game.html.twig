@@ -118,14 +118,14 @@
                             <div class="list">
                                 <div class="team-0">
                                     {% if playerTeam['left'] is defined %}
-                                        {{ playerTeam['left'].player.fullName }} ({{ playerTeam['left'].player.ampluaShort }}) {{ playerTeam['left'].time ? '('~playerTeam['left'].time~')' : '' }}
+                                        {{ playerTeam['left'].player.fullName }} ({{ playerTeam['left'].player.amplua.nameShort }}) {{ playerTeam['left'].time ? '('~playerTeam['left'].time~')' : '' }}
                                     {% endif %}
                                 </div>
                                 <div class="score">
                                 </div>
                                 <div class="team-1">
                                     {% if playerTeam['right'] is defined %}
-                                        {{ playerTeam['right'].player.fullName }} ({{ playerTeam['right'].player.ampluaShort }}) {{ playerTeam['right'].time ? '('~playerTeam['right'].time~')' : '' }}
+                                        {{ playerTeam['right'].player.fullName }} ({{ playerTeam['right'].player.amplua.nameShort }}) {{ playerTeam['right'].time ? '('~playerTeam['right'].time~')' : '' }}
                                     {% endif %}
                                 </div>
                             </div>
@@ -140,14 +140,14 @@
                             <div class="list">
                                 <div class="team-0">
                                     {% if benchPlayerTeam['left'] is defined %}
-                                        {{ benchPlayerTeam['left'].player.fullName }} ({{ benchPlayerTeam['left'].player.ampluaShort }})
+                                        {{ benchPlayerTeam['left'].player.fullName }} ({{ benchPlayerTeam['left'].player.amplua.nameShort }})
                                     {% endif %}
                                 </div>
                                 <div class="score">
                                 </div>
                                 <div class="team-1">
                                     {% if benchPlayerTeam['right'] is defined %}
-                                        {{ benchPlayerTeam['right'].player.fullName }} ({{ benchPlayerTeam['right'].player.ampluaShort }})
+                                        {{ benchPlayerTeam['right'].player.fullName }} ({{ benchPlayerTeam['right'].player.amplua.nameShort }})
                                     {% endif %}
                                 </div>
                             </div>

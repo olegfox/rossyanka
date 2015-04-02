@@ -123,3 +123,8 @@ stof_doctrine_extensions:
 #    template:
 #        pagination: KnpPaginatorBundle:Pagination:sliding.html.twig     # sliding pagination controls template
 #        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+
+prism_poll:
+    form:
+        poll:     Site\PollBundle\Form\PollType
+        opinion:     Site\PollBundle\Form\OpinionType

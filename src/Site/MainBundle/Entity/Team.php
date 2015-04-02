@@ -90,7 +90,10 @@ class Team
 
     /**
      * @ORM\ManyToMany(targetEntity="Player", inversedBy="teams")
-     **/
+     * @ORM\JoinTable(name="team_player",
+     *       joinColumns={@ORM\JoinColumn(name="player_id", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="team_id", referencedColumnName="id")})
+     */
     private $players;
 
     public function getAbsolutePath()

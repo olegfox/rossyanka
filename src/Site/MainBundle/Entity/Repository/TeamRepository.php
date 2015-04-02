@@ -70,4 +70,5 @@ class TeamRepository extends EntityRepository
 
         return $teams;
     }
+
 }

@@ -81,7 +81,7 @@ class Media
     private $metaKeywords;
 
     /**
-     * @ORM\OneToOne(targetEntity="MediaVideo", mappedBy="media")
+     * @ORM\OneToOne(targetEntity="MediaVideo", mappedBy="media", cascade={"persist", "remove"})
      **/
     private $video;
 
@@ -91,7 +91,7 @@ class Media
     private $videoUrl;
 
     /**
-     * @ORM\OneToMany(targetEntity="MediaPhoto", mappedBy="media")
+     * @ORM\OneToMany(targetEntity="MediaPhoto", mappedBy="media", cascade={"persist", "remove"})
      **/
     private $photos;
 
@@ -506,5 +506,19 @@ class Media
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * @ORM\PreRemove
+     */
+    public function deleteAllPhotos()
+    {
+        $photos = $this->getPhotos();
+
+        foreach ($photos as $photo) {
+            if(file_exists($photo->getLink())){
+                unlink($photo->getLink());
+            }
+        }
     }
 }

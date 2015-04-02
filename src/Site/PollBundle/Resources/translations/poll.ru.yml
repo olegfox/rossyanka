@@ -1,7 +1,7 @@
 backend:
   poll:
     h1_list: Список опросов
-    h1_edit: Редактирование опроса
+    h1_edit: Опрос
     h1_create: Создание опроса
     back_to_list: Назад к списку опросов
     new: Новый опрос
@@ -13,7 +13,9 @@ backend:
     published: Опубликован
     closed: Закрыт
     choices: Варианты ответов
+    choice: Вариант ответа
     add_choice: Добавить вариант
+    delete_choice: Удалить вариант
     submit: Сохранить
 
 frontend:

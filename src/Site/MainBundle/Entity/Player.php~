@@ -75,20 +75,10 @@ class Player
     private $nationality;
 
     /**
-     * Амплуа
-     * @var string
-     *
-     * @ORM\Column(name="amplua", type="string", length=50, nullable=true)
-     */
+     * @ORM\ManyToOne(targetEntity="Amplua", inversedBy="players")
+     * @ORM\JoinColumn(name="amplua_id", referencedColumnName="id")
+     **/
     private $amplua;
-
-    /**
-     * Амплуа сокращенно
-     * @var string
-     *
-     * @ORM\Column(name="amplua_short", type="string", length=50, nullable=true)
-     */
-    private $ampluaShort;
 
     /**
      * Рост
@@ -219,8 +209,10 @@ class Player
 
     /**
      * @ORM\ManyToMany(targetEntity="Team", inversedBy="players")
-     * @ORM\JoinTable(name="players_teams")
-     **/
+     * @ORM\JoinTable(name="team_player",
+     *       joinColumns={@ORM\JoinColumn(name="team_id", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="player_id", referencedColumnName="id")})
+     */
     private $teams;
 
     /**
@@ -234,12 +226,6 @@ class Player
      * @ORM\OneToMany(targetEntity="BenchPlayerTeam", mappedBy="player", cascade={"persist", "remove"})
      **/
     private $benchPlayerTeam;
-
-    /**
-     * Замены в игре
-     * @ORM\OneToMany(targetEntity="ReplacementEvent", mappedBy="player", cascade={"persist", "remove"})
-     **/
-    private $replacementEvent;
 
     /**
      * Наказания в игре
@@ -509,11 +495,11 @@ class Player
     }
 
     public function __toString(){
-        return $this->getFirstname() . ' ' . $this->getSecondname();
+        return $this->getSecondname() . ' ' . $this->getFirstname() . ' ' . $this->getPatronymic();
     }
 
     public function fullName(){
-        return $this->getFirstname() . ' ' . $this->getSecondname();
+        return $this->getSecondname() . ' ' . $this->getFirstname() . ' ' . $this->getPatronymic();
     }
 
     /**
@@ -560,29 +546,6 @@ class Player
     public function getNationality()
     {
         return $this->nationality;
-    }
-
-    /**
-     * Set amplua
-     *
-     * @param string $amplua
-     * @return Player
-     */
-    public function setAmplua($amplua)
-    {
-        $this->amplua = $amplua;
-
-        return $this;
-    }
-
-    /**
-     * Get amplua
-     *
-     * @return string 
-     */
-    public function getAmplua()
-    {
-        return $this->amplua;
     }
 
     /**
@@ -964,39 +927,6 @@ class Player
     }
 
     /**
-     * Add replacementEvent
-     *
-     * @param \Site\MainBundle\Entity\ReplacementEvent $replacementEvent
-     * @return Player
-     */
-    public function addReplacementEvent(\Site\MainBundle\Entity\ReplacementEvent $replacementEvent)
-    {
-        $this->replacementEvent[] = $replacementEvent;
-
-        return $this;
-    }
-
-    /**
-     * Remove replacementEvent
-     *
-     * @param \Site\MainBundle\Entity\ReplacementEvent $replacementEvent
-     */
-    public function removeReplacementEvent(\Site\MainBundle\Entity\ReplacementEvent $replacementEvent)
-    {
-        $this->replacementEvent->removeElement($replacementEvent);
-    }
-
-    /**
-     * Get replacementEvent
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getReplacementEvent()
-    {
-        return $this->replacementEvent;
-    }
-
-    /**
      * Add punishmentEvent
      *
      * @param \Site\MainBundle\Entity\PunishmentEvent $punishmentEvent
@@ -1094,4 +1024,5 @@ class Player
     {
         return $this->benchPlayerTeam;
     }
+
 }

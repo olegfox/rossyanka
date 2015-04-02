@@ -22,33 +22,17 @@ class PageController extends Controller
         );
 
         if($slug == 'osnovnoi-sostav' || $slug == 'dubliruiushchii-sostav'){
-            $repository_team = $this->getDoctrine()->getRepository('SiteMainBundle:Team');
+            $repository_player = $this->getDoctrine()->getRepository('SiteMainBundle:Player');
 
-            $team = $repository_team->findOneByName('Россиянка');
-
-            if($team){
-
-                $players = array();
-
-                if($slug == 'osnovnoi-sostav'){
-                    foreach($team->getPlayers() as $player){
-                        if($player->getStatus() == Player::STATUS_MAIN){
-                            $players[] = $player;
-                        }
-                    }
-                }else{
-                    foreach($team->getPlayers() as $player){
-                        if($player->getStatus() == Player::STATUS_DOP){
-                            $players[] = $player;
-                        }
-                    }
-                }
-
-                $params = array_merge($params, array(
-                    'players' => $players
-                ));
-
+            if($slug == 'osnovnoi-sostav'){
+                $players = $repository_player->findOneByTeamWithStatus('Россиянка', Player::STATUS_MAIN);
+            }else{
+                $players = $repository_player->findOneByTeamWithStatus('Россиянка', Player::STATUS_DOP);
             }
+
+            $params = array_merge($params, array(
+                'players' => $players
+            ));
 
         }elseif($slug == "rukovodstvo"){
             $repository_director = $this->getDoctrine()->getRepository('SiteMainBundle:Director');

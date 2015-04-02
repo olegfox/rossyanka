@@ -323,6 +323,8 @@ class MediaController extends Controller
                 throw $this->createNotFoundException($this->get('translator')->trans('backend.media.not_found'));
             }
 
+            $entity->deleteAllPhotos();
+
             $em->remove($entity);
             $em->flush();
         }

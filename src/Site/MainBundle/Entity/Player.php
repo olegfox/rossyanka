@@ -75,20 +75,10 @@ class Player
     private $nationality;
 
     /**
-     * Амплуа
-     * @var string
-     *
-     * @ORM\Column(name="amplua", type="string", length=50, nullable=true)
-     */
+     * @ORM\ManyToOne(targetEntity="Amplua", inversedBy="players")
+     * @ORM\JoinColumn(name="amplua_id", referencedColumnName="id")
+     **/
     private $amplua;
-
-    /**
-     * Амплуа сокращенно
-     * @var string
-     *
-     * @ORM\Column(name="amplua_short", type="string", length=50, nullable=true)
-     */
-    private $ampluaShort;
 
     /**
      * Рост
@@ -219,8 +209,10 @@ class Player
 
     /**
      * @ORM\ManyToMany(targetEntity="Team", inversedBy="players")
-     * @ORM\JoinTable(name="players_teams")
-     **/
+     * @ORM\JoinTable(name="team_player",
+     *       joinColumns={@ORM\JoinColumn(name="team_id", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="player_id", referencedColumnName="id")})
+     */
     private $teams;
 
     /**
@@ -503,11 +495,11 @@ class Player
     }
 
     public function __toString(){
-        return $this->getFirstname() . ' ' . $this->getSecondname();
+        return $this->getSecondname() . ' ' . $this->getFirstname() . ' ' . $this->getPatronymic();
     }
 
     public function fullName(){
-        return $this->getFirstname() . ' ' . $this->getSecondname();
+        return $this->getSecondname() . ' ' . $this->getFirstname() . ' ' . $this->getPatronymic();
     }
 
     /**
@@ -554,29 +546,6 @@ class Player
     public function getNationality()
     {
         return $this->nationality;
-    }
-
-    /**
-     * Set amplua
-     *
-     * @param string $amplua
-     * @return Player
-     */
-    public function setAmplua($amplua)
-    {
-        $this->amplua = $amplua;
-
-        return $this;
-    }
-
-    /**
-     * Get amplua
-     *
-     * @return string 
-     */
-    public function getAmplua()
-    {
-        return $this->amplua;
     }
 
     /**
@@ -1056,26 +1025,27 @@ class Player
         return $this->benchPlayerTeam;
     }
 
+
     /**
-     * Set ampluaShort
+     * Set amplua
      *
-     * @param string $ampluaShort
+     * @param \Site\MainBundle\Entity\Amplua $amplua
      * @return Player
      */
-    public function setAmpluaShort($ampluaShort)
+    public function setAmplua(\Site\MainBundle\Entity\Amplua $amplua = null)
     {
-        $this->ampluaShort = $ampluaShort;
+        $this->amplua = $amplua;
 
         return $this;
     }
 
     /**
-     * Get ampluaShort
+     * Get amplua
      *
-     * @return string 
+     * @return \Site\MainBundle\Entity\Amplua 
      */
-    public function getAmpluaShort()
+    public function getAmplua()
     {
-        return $this->ampluaShort;
+        return $this->amplua;
     }
 }
