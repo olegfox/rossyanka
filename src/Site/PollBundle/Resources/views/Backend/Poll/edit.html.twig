@@ -1,0 +1,85 @@
+{% extends 'PrismPollBundle:Backend:layout.html.twig' %}
+{% form_theme form 'PrismPollBundle:Backend:form_custom_layout.html.twig' %}
+
+{% block content %}
+    {#<h1>{{ 'backend.baner.h1_edit'|trans({}, 'menu') }}</h1>#}
+    {##}
+    <h1>{{ poll }}</h1>
+
+    {% if app.session.flashbag.has('success') %}
+        <div class="alert alert-success">
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                {{ flashMessage }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form action="{{ path('PrismPollBundle_backend_poll_edit', {'pollId': poll.id }) }}" class="form-horizontal" method="post" novalidate="novalidate" {{ form_enctype(form) }}>
+
+        <table>
+            {{ form_row(form.name) }}
+            {{ form_row(form.published) }}
+            {{ form_row(form.closed) }}
+            {#<div class="form-group">#}
+                {#<label class="control-label col-lg-2">{{ 'backend.poll.name'|trans({}, 'poll') }}</label>#}
+                {#<div class="col-lg-10">#}
+                    {#{{ form_widget(form.name) }}#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="form-group">#}
+                {#<label class="control-label col-lg-2">{{ 'backend.poll.published'|trans({}, 'poll') }}</label>#}
+                {#<div class="col-lg-10">#}
+                    {#{{ form_widget(form.published) }}#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="form-group">#}
+                {#<label class="control-label col-lg-2">{{ 'backend.poll.closed'|trans({}, 'poll') }}</label>#}
+                {#<div class="col-lg-10">#}
+                    {#{{ form_widget(form.closed) }}#}
+                {#</div>#}
+            {#</div>#}
+
+            <tr>
+                <th>{{ 'backend.poll.choices'|trans({}, 'poll') }}:</th>
+                <td>
+                    <table id="opinions" data-prototype="{% filter escape %}{{ _self.opinionPrototype(form.opinions.vars.prototype) }}{% endfilter %}">
+                        {% for opinion in form.opinions %}
+                            <tr>
+                                {{ _self.opinionPrototype(opinion) }}
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                    <a href="#" id="add_choice">+ <span>{{ 'backend.add_choice'|trans({}, 'poll') }}</span></a>
+                </td>
+            </tr>
+
+            {{ form_row(form._token) }}
+        </table>
+
+        <div id="submit">
+            <input class="btn btn-primarys" type="submit" value="{{ 'backend.submit'|trans({}, 'poll') }}" />
+        </div>
+    </form>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('PrismPollBundle_backend_poll_list') }}" id="back">{{ 'backend.poll.back_to_list'|trans({}, 'poll') }}</a>
+        </li>
+    </ul>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% include 'PrismPollBundle:Backend/Poll:edit_js.html.twig' %}
+{% endblock %}
+
+{% macro opinionPrototype(opinion) %}
+    <th>{{ form_label(opinion.name) }}</th>
+    <td>
+        {{ form_widget(opinion.name) }}
+        <a href="#" class="delete_choice">Delete Choice</a>
+        {{ form_errors(opinion.name) }}
+    </td>
+{% endmacro %}

@@ -10,6 +10,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('bundles/prismpoll/css/frontend.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/slick.css') }}"/>
 {% endblock %}
 
@@ -242,18 +243,7 @@
         </div>
         <div class="right-block">
             <div class="poll">
-                <!-- Put this script tag to the <head> of your page -->
-                <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
-
-                <script type="text/javascript">
-                    VK.init({apiId: 4851713, onlyWidgets: true});
-                </script>
-
-                <!-- Put this div tag to the place, where the Poll block will be -->
-                <div id="vk_poll"></div>
-                <script type="text/javascript">
-                    VK.Widgets.Poll("vk_poll", {width: "443"}, "176811355_028952d2a213b5b069");
-                </script>
+                {{ render(url('PrismPollBundle_frontend_poll_list')) }}
             </div>
         </div>
     </div>
@@ -291,5 +281,62 @@
                 arrows: false
             });
         });
+
+        onSubmit();
+
+        clickLink();
+
+        function onSubmit(){
+            $('#polls_list form').on('submit', function(e) {
+
+                var contentDiv = $(this).parent();
+
+                $.ajax({
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    url: $(this).attr('action'),
+                    success: function(response) {
+                        ajaxSuccess(response, contentDiv);
+                    },
+                    error: function(){
+                        ajaxError(contentDiv);
+                    }
+                });
+
+                e.preventDefault();
+            });
+        }
+
+        function clickLink(){
+            $('a.see_results, a.see_form').on('click', function(e) {
+
+                var contentDiv = $('.poll #polls_list .content');
+
+                $.ajax({
+                    type: 'GET',
+                    url: $(this).attr('href'),
+                    success: function(response) {
+                        ajaxSuccess(response, contentDiv);
+                        clickLink();
+                        onSubmit();
+                    },
+                    error: function(){
+                        ajaxError(contentDiv);
+                    }
+                });
+
+                e.preventDefault();
+            });
+        }
+
+        function ajaxSuccess(response, contentDiv) {
+            contentDiv.html(response);
+        }
+
+        function ajaxError(contentDiv) {
+            if (contentDiv.children('form').children('.ajax_error').length == 0) {
+                contentDiv.children('form').prepend('<div class="ajax_error error">{{ 'frontend.poll.error'|trans({}, 'poll') }}</div>');
+            }
+        }
     </script>
 {% endblock %}

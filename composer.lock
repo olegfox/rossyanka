@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "56d28e64e1592940c138b572db8c83b4",
+    "hash": "c88a2e4dbd5c30eb9858988812f06aad",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1911,6 +1911,50 @@
             "time": "2015-01-07 15:45:13"
         },
         {
+            "name": "prism/poll-bundle",
+            "version": "dev-master",
+            "target-dir": "Prism/PollBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/emiliemarchand/PrismPollBundle.git",
+                "reference": "b0e750d44048ef76eeb7959885277097c805a312"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/emiliemarchand/PrismPollBundle/zipball/b0e750d44048ef76eeb7959885277097c805a312",
+                "reference": "b0e750d44048ef76eeb7959885277097c805a312",
+                "shasum": ""
+            },
+            "require": {
+                "stof/doctrine-extensions-bundle": "~1.1@dev",
+                "symfony/symfony": "~2.4"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Prism\\PollBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Émilie Marchand",
+                    "email": "emilie.marchand@gmail.com"
+                }
+            ],
+            "description": "A simple poll bundle for symfony2",
+            "homepage": "https://github.com/emiliemarchand/PrismPollBundle",
+            "keywords": [
+                "poll",
+                "question",
+                "vote"
+            ],
+            "time": "2014-11-05 02:15:57"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.0",
             "source": {
@@ -2756,7 +2800,8 @@
     "stability-flags": {
         "gregwar/image-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
-        "ollieltd/instagram-bundle": 20
+        "ollieltd/instagram-bundle": 20,
+        "prism/poll-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

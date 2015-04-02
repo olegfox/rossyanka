@@ -940,7 +940,7 @@ img, a {
     margin: 30px auto 0 auto;
 }
 
-#daily-events-calendar div {
+#daily-events-calendar div.day {
     position: absolute;
     min-width: 17px;
     text-align: center;
@@ -955,6 +955,11 @@ img, a {
     line-height: 41px;
 }
 
+#daily-events-calendar div.day1 .wrap-list-events{
+    bottom: 25px;
+    left: -14px;
+}
+
 #daily-events-calendar div.day2{
     font-size:27px;
     left:149px;
@@ -963,7 +968,10 @@ img, a {
     width: 40px;
     line-height: 42px;
 }
-
+#daily-events-calendar div.day2 .wrap-list-events{
+    bottom: 25px;
+    left: -15px;
+}
 #daily-events-calendar div.day3{
     font-size:26px;
     left:186px;
@@ -972,7 +980,10 @@ img, a {
     width: 39px;
     line-height: 40px;
 }
-
+#daily-events-calendar div.day3 .wrap-list-events{
+    bottom: 25px;
+    left: -15px;
+}
 #daily-events-calendar div.day4{
     font-size:25px;
     left:185px;
@@ -981,7 +992,10 @@ img, a {
     width: 38px;
     line-height: 38px;
 }
-
+#daily-events-calendar div.day4 .wrap-list-events{
+    bottom: 25px;
+    left: -15px;
+}
 #daily-events-calendar div.day5{
     font-size:24px;
     left:151px;
@@ -990,7 +1004,10 @@ img, a {
     width: 37px;
     line-height: 37px;
 }
-
+#daily-events-calendar div.day5 .wrap-list-events{
+    bottom: 25px;
+    left: -15px;
+}
 #daily-events-calendar div.day6{
     font-size:23px;
     left:98px;
@@ -999,7 +1016,10 @@ img, a {
     width: 36px;
     line-height: 38px;
 }
-
+#daily-events-calendar div.day6 .wrap-list-events{
+    bottom: 25px;
+    left: -16px;
+}
 #daily-events-calendar div.day7{
     font-size:22px;
     left:46px;
@@ -1008,7 +1028,10 @@ img, a {
     width: 35px;
     line-height: 35px;
 }
-
+#daily-events-calendar div.day7 .wrap-list-events{
+    bottom: 25px;
+    left: -15px;
+}
 #daily-events-calendar div.day8{
     font-size:21px;
     left:14px;
@@ -1017,7 +1040,10 @@ img, a {
     width: 34px;
     line-height: 34px;
 }
-
+#daily-events-calendar div.day8 .wrap-list-events{
+    bottom: 25px;
+    left: -15px;
+}
 #daily-events-calendar div.day9{
     font-size:20px;
     left:9px;
@@ -1026,7 +1052,10 @@ img, a {
     width: 33px;
     line-height: 34px;
 }
-
+#daily-events-calendar div.day9 .wrap-list-events{
+    bottom: 22px;
+    left: -18px;
+}
 #daily-events-calendar div.day10{
     font-size:19px;
     left:30px;
@@ -1035,7 +1064,10 @@ img, a {
     width: 32px;
     line-height: 32px;
 }
-
+#daily-events-calendar div.day10 .wrap-list-events{
+    bottom: 20px;
+    left: -19px;
+}
 #daily-events-calendar div.day11{
     font-size:18px;
     left:66px;
@@ -1044,7 +1076,10 @@ img, a {
     width: 31px;
     line-height: 31px;
 }
-
+#daily-events-calendar div.day11 .wrap-list-events{
+    bottom: 20px;
+    left: -19px;
+}
 #daily-events-calendar div.day12{
     font-size:17px;
     left:103px;
@@ -1053,7 +1088,10 @@ img, a {
     width: 30px;
     line-height: 30px;
 }
-
+#daily-events-calendar div.day12 .wrap-list-events{
+    bottom: 20px;
+    left: -19px;
+}
 #daily-events-calendar div.day13{
     font-size:16px;
     left:127px;
@@ -1062,7 +1100,10 @@ img, a {
     width: 29px;
     line-height: 29px;
 }
-
+#daily-events-calendar div.day13 .wrap-list-events{
+    bottom: 18px;
+    left: -20px;
+}
 #daily-events-calendar div.day14{
     font-size:15px;
     left:133px;
@@ -1071,7 +1112,10 @@ img, a {
     width: 28px;
     line-height: 28px;
 }
-
+#daily-events-calendar div.day14 .wrap-list-events{
+    bottom: 12px;
+    left: -20px;
+}
 #daily-events-calendar div.day15{
     font-size:14px;
     left:121px;
@@ -1080,14 +1124,16 @@ img, a {
     width: 27px;
     line-height: 27px;
 }
-
+#daily-events-calendar div.day15 .wrap-list-events{
+    bottom: 12px;
+    left: -20px;
+}
 #daily-events-calendar div a {
     font-family: "Arial";
     font-weight: 400;
     text-transform: uppercase;
     text-decoration: none;
     color: #000;
-    padding: 5px;
 }
 
 #daily-events-calendar > div:hover,
@@ -1100,14 +1146,17 @@ img, a {
 #daily-events-calendar div.active a{
     color: #fff;
 }
-
+#daily-events-calendar div.wrap-list-events{
+    position: absolute;
+    width: 235px;
+    padding-bottom: 20px;
+}
 #daily-events-calendar div.list-events {
     display: none;
     font-size: 12px;
     color: #fff;
-    background: #000;
     width: 160px;
-    padding: 10px;
+    padding: 0px;
     z-index: 1;
     text-align: left;
     margin: 0 0 0 -80px;
@@ -1115,7 +1164,84 @@ img, a {
 
 #daily-events-calendar div:hover div.list-events {
     display: block;
+    background: url('/bundles/sitemain/frontend/images/icon-bottom-anons.png') no-repeat bottom center;
+    padding-bottom: 14px;
+    width: 235px;
+}
+
+#daily-events-calendar .list-events ul {
+    border: solid 2px #707070;
+    border-bottom: 0px;
+    background: #fff;
+}
+
+#daily-events-calendar .list-events ul li{
+    border-bottom: solid 2px #707070;
+}
+
+#daily-events-calendar .list-events ul li.last{
+    border: 0px;
+}
+#daily-events-calendar .list-events ul li.item-event{
+    position: relative;
+    height: 130px;
+}
+#daily-events-calendar .list-events ul li.item-event a{
     position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+#daily-events-calendar .list-events ul li.item-event .datetime{
+    color: #000;
+    font-family: "Arial";
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 15px 15px 12px 15px;
+}
+
+#daily-events-calendar .list-events ul li.item-event .the-end-last-block-1 .the-end-last-block-title,
+#daily-events-calendar .list-events ul li.item-event .the-end-last-block-3 .the-end-last-block-title{
+    line-height: 12px;
+}
+
+#daily-events-calendar .list-events ul li.item-event .the-end-last-block-2{
+    margin: 9px 0 0 0;
+}
+
+#daily-events-calendar .list-events ul li.item-event .the-end-last-block-title{
+    margin-top: -14px;
+}
+#daily-events-calendar .list-events ul li.item-anons{
+    position: relative;
+}
+#daily-events-calendar .list-events ul li.item-anons a{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+#daily-events-calendar .list-events ul li.item-anons .datetime{
+    color: #000;
+    font-family: "Arial";
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 15px 15px 0px 15px;
+}
+
+#daily-events-calendar .list-events ul li.item-anons .name{
+    color: #000;
+    font-family: "Arial";
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px 15px 15px 15px;
+    word-break: break-all;
 }
 
 #daily-events-calendar div.list-events a{
@@ -1123,13 +1249,16 @@ img, a {
 }
 
 #daily-events-calendar div.list-events a .name{
-    color: #fff;
+    color: #000;
+    font-weight: 700;
+    font-size: 16px;
     word-wrap: break-word;
     text-transform: uppercase;
     line-height: 14px;
-    display: inline-block;
+    display: block;
     max-width: 100%;
-    width: 100%;
+    padding: 0px 13px;
+    margin-top: -5px;
 }
 
 #daily-events-calendar div.list-events a .datetime{
@@ -1986,3 +2115,65 @@ img, a {
     font-weight: 700;
 }
 /* end Finals */
+
+/* Poll */
+.poll #polls_list .content{
+    font-family: "Arial";
+    font-size: 12px;
+    font-weight: 400;
+    width: auto;
+    background: none;
+    border: 0px;
+    padding: 0px;
+}
+.poll #polls_list .content input[type="submit"]{
+    background: #e46464;
+    border: 0px;
+    color: #fff;
+    padding: 5px;
+    cursor: pointer;
+}
+.poll #polls_list .content .see_results,
+.poll #polls_list .content .see_form{
+    color: #000;
+}
+.poll #polls_list h2{
+    font-size: 1em;
+    margin: 0px;
+    line-height: 1em;
+    padding: 10px 0px;
+}
+.poll .results{
+    width: 100%;
+    border-spacing: 0px;
+}
+.poll .results .fill_color_1{
+    background-color: #e46464;
+}
+.poll .results .graph_bar{
+    border: 0px;
+    width: auto;
+    padding: 0px;
+}
+.poll .results th{
+    padding: 0 0px 5px 0;
+    width: 50%;
+}
+.poll .results td.sub_total{
+    width: 15%;
+}
+.poll .results td{
+    width: 35%;
+}
+.poll #poll2_opinions li input[type='radio']{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px;
+    cursor: pointer;
+}
+.poll #poll2_opinions li label{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px;
+}
+/* end Poll */

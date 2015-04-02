@@ -49,3 +49,7 @@ backend_baner:
 backend_instagram:
     resource: "@SiteMainBundle/Resources/config/routing/backend/instagram.yml"
     prefix: /instagram
+
+SitePollBundle_backend:
+    resource: "@SitePollBundle/Resources/config/routing/backend.yml"
+    prefix: /poll

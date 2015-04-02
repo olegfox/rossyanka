@@ -120,6 +120,7 @@ class EventRepository extends EntityRepository
 //              Если команды разные
                 if ($t1->getId() != $t2->getId()) {
                     $fl = 0;
+                    $k = 0;
                     foreach ($events as $e) {
 //                      Если в игре две команды
                         if (count($e->getEventTeam()) == 2) {
@@ -133,9 +134,9 @@ class EventRepository extends EntityRepository
                                     $resultEvents[$i][$j]['img2'] = $t2->getWebPath();
                                 }
 //                              Если такая запись уже есть, то добавляем только счет
-                                $resultEvents[$i][$j]['score']['eventId'] = $e->getId();
-                                $resultEvents[$i][$j]['score']['eventSlug'] = $e->getSlug();
-                                $resultEvents[$i][$j]['score'][] = $e->getScore();
+                                $resultEvents[$i][$j]['score'][$k]['game'] = $e;
+                                $resultEvents[$i][$j]['score'][$k]['score'] = $e->getScore();
+                                $k++;
                                 $fl = 1;
                             }
                         }

@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Oh\InstagramBundle\OhInstagramBundle(),
+            new Prism\PollBundle\PrismPollBundle(),
+            new Site\PollBundle\SitePollBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

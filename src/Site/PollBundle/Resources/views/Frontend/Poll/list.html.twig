@@ -1,0 +1,18 @@
+{% if polls %}
+    <div id="polls_list">
+
+        <div class="right-block-title">{{ 'frontend.poll.title'|trans({}, 'poll') }}</div>
+
+        <ul>
+            {% for poll in polls %}
+                <li>
+                    <h2>{{ poll }}</h2>
+                    <div class="content">
+                        {{ render(controller('PrismPollBundle:Frontend\\Poll:Vote', { 'pollId': poll.id })) }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+{% endif %}
