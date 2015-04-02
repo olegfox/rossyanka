@@ -21,10 +21,13 @@ class NewsRepository extends EntityRepository
 
         foreach($news as $n){
             if($n->getType() == 0){
+                if(count($newsArray['events']) == 4) continue;
                 $newsArray['events'][] = $n;
             }elseif($n->getType() == 1){
+                if(count($newsArray['interviews']) == 4) continue;
                 $newsArray['interviews'][] = $n;
             }elseif($n->getType() == 2){
+                if(count($newsArray['opinion']) == 4) continue;
                 $newsArray['opinion'][] = $n;
             }
         }

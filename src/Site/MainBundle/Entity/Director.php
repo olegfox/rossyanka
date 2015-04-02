@@ -63,8 +63,8 @@ class Director
 
     public function getWebPath()
     {
-        return null === $this->img
-            ? null
+        return null === $this->img || !file_exists($this->getUploadDir().'/'.$this->img)
+            ? 'bundles/sitemain/frontend/images/fallback.jpg'
             : $this->getUploadDir().'/'.$this->img;
     }
 

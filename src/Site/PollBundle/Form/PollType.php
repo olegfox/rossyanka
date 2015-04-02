@@ -38,7 +38,7 @@ class PollType extends BasePollType
                 'by_reference' => false,
                 'add_button_text'    => 'backend.poll.add_choice',
                 'delete_button_text' => 'backend.poll.delete_choice',
-                'sub_widget_col'     => 9,
+                'sub_widget_col'     => 3,
                 'button_col'         => 3,
                 'prototype_name'     => 'inlinep',
                 'options'            => array(

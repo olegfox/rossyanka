@@ -132,28 +132,28 @@
                         </div>
                     {% endfor %}
                 </div>
-                {# Запасные #}
-                <div class="lists">
-                    <h2>{{ 'frontend.event.bench_player_team'|trans({}, 'menu') }}</h2>
-                    {% for benchPlayerTeam in event.getBenchPlayerTeamArray() %}
-                        <div class="wrap_list">
-                            <div class="list">
-                                <div class="team-0">
-                                    {% if benchPlayerTeam['left'] is defined %}
-                                        {{ benchPlayerTeam['left'].player.fullName }} ({{ benchPlayerTeam['left'].player.amplua.nameShort }})
-                                    {% endif %}
-                                </div>
-                                <div class="score">
-                                </div>
-                                <div class="team-1">
-                                    {% if benchPlayerTeam['right'] is defined %}
-                                        {{ benchPlayerTeam['right'].player.fullName }} ({{ benchPlayerTeam['right'].player.amplua.nameShort }})
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
+                {#&#123;&#35; Запасные &#35;&#125;#}
+                {#<div class="lists">#}
+                    {#<h2>{{ 'frontend.event.bench_player_team'|trans({}, 'menu') }}</h2>#}
+                    {#{% for benchPlayerTeam in event.getBenchPlayerTeamArray() %}#}
+                        {#<div class="wrap_list">#}
+                            {#<div class="list">#}
+                                {#<div class="team-0">#}
+                                    {#{% if benchPlayerTeam['left'] is defined %}#}
+                                        {#{{ benchPlayerTeam['left'].player.fullName }} ({{ benchPlayerTeam['left'].player.amplua.nameShort }})#}
+                                    {#{% endif %}#}
+                                {#</div>#}
+                                {#<div class="score">#}
+                                {#</div>#}
+                                {#<div class="team-1">#}
+                                    {#{% if benchPlayerTeam['right'] is defined %}#}
+                                        {#{{ benchPlayerTeam['right'].player.fullName }} ({{ benchPlayerTeam['right'].player.amplua.nameShort }})#}
+                                    {#{% endif %}#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#{% endfor %}#}
+                {#</div>#}
                 {# Тренеры #}
                 <div class="lists">
                     <h2>{{ 'frontend.event.bench_coach'|trans({}, 'menu') }}</h2>

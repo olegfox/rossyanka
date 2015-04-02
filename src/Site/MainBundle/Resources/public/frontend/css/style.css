@@ -353,6 +353,8 @@ input:focus {
     width: 1164px;
     margin: 0 auto;
     background: #fff;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
 }
 
 .content-top {
@@ -371,7 +373,7 @@ input:focus {
 .content p {
     margin-top: 0px;
     margin-bottom: 0px;
-    padding: 1em 0px;
+    padding: 0.3em 0px;
     font-family: Calibri-Regular;
     font-weight: 400;
     font-size: 16px;
@@ -427,17 +429,17 @@ input:focus {
     position: absolute;
     bottom: 0;
     word-wrap: break-word;
-    background: rgba(0, 0, 0, 0.3);
-    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
+    background: rgba(0, 0, 0, 0.8);
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc000000, endColorstr=#cc000000);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc000000, endColorstr=#cc000000);
     zoom: 1;
 }
 
 .content-slide .content-slide-block:hover .content-slide-block-title,
 .content-slide .content-slide-block.current .content-slide-block-title {
-    background: rgba(0, 0, 0, 0.5);
-    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
+    background: rgba(0, 0, 0, 0.8);
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc000000, endColorstr=#cc000000);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc000000, endColorstr=#cc000000);
     zoom: 1;
 }
 
@@ -452,9 +454,9 @@ input:focus {
 
 .content-slide .content-slide-block.first:hover .content-slide-block-title,
 .content-slide .content-slide-block.current.first .content-slide-block-title {
-    background: rgba(0, 0, 0, 0.3);
-    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
+    background: rgba(0, 0, 0, 0.8);
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc000000, endColorstr=#cc000000);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc000000, endColorstr=#cc000000);
     zoom: 1;
 }
 
@@ -647,13 +649,16 @@ ul li:focus, ul li a:focus {
 }
 
 .partners-block-title {
-    font-family: Calibri-Regular;
+    background: #e46464;
+    font-family: "Arial";
+    font-size: 16px;
     font-weight: 400;
-    font-size: 18px;
-    color: #000;
     text-transform: uppercase;
-    padding: 10px;
-    border-bottom: 1px solid #d1d1d1;
+    color: #fff;
+    padding: 0px 10px;
+    margin: 0px -18px 10px -17px;
+    height: 40px;
+    line-height: 41px;
 }
 
 .partners-block ul li {
@@ -678,6 +683,7 @@ ul li:focus, ul li a:focus {
 
 .partners-block ul {
     border-bottom: 1px solid #d1d1d1;
+    text-align: center;
 }
 
 .footer {
@@ -1150,6 +1156,7 @@ img, a {
     position: absolute;
     width: 235px;
     padding-bottom: 20px;
+    z-index: 1;
 }
 #daily-events-calendar div.list-events {
     display: none;
@@ -1433,7 +1440,6 @@ img, a {
 .table-player {
     width: 100%;
     margin-bottom: 30px;
-    border: 1px solid #c2c2c2;
 }
 
 .table-player table {
@@ -1849,6 +1855,8 @@ img, a {
 .directors h2{
     text-align: center;
     padding-bottom: 27px;
+    COLOR: red;
+    font-size: 20px;
 }
 .directors .director{
     display: inline-block;
@@ -1875,6 +1883,7 @@ img, a {
 /* Game Page */
 .game-table{
     font-family: Arial;
+    padding-bottom: 38px;
 }
 .game-table h1{
     font-family: Arial;
@@ -2176,5 +2185,8 @@ img, a {
     vertical-align: middle;
     margin: 0px;
     cursor: pointer;
+}
+.poll .results .total{
+    text-align: left;
 }
 /* end Poll */

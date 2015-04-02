@@ -115,20 +115,20 @@ class EventType extends AbstractType
                     'attr' => array('style' => 'inline')
                 )
             ))
-            ->add('benchPlayerTeam', 'bootstrap_collection', array(
-                'label'=>'backend.event.bench_player_team',
-                'type' => new BenchPlayerTeamType(),
-                'allow_add'          => true,
-                'allow_delete'       => true,
-                'add_button_text'    => 'backend.bench_player_team.add',
-                'delete_button_text' => 'backend.bench_player_team.delete',
-                'sub_widget_col'     => 9,
-                'button_col'         => 3,
-                'prototype_name'     => 'inlinep',
-                'options'            => array(
-                    'attr' => array('style' => 'inline')
-                )
-            ))
+//            ->add('benchPlayerTeam', 'bootstrap_collection', array(
+//                'label'=>'backend.event.bench_player_team',
+//                'type' => new BenchPlayerTeamType(),
+//                'allow_add'          => true,
+//                'allow_delete'       => true,
+//                'add_button_text'    => 'backend.bench_player_team.add',
+//                'delete_button_text' => 'backend.bench_player_team.delete',
+//                'sub_widget_col'     => 9,
+//                'button_col'         => 3,
+//                'prototype_name'     => 'inlinep',
+//                'options'            => array(
+//                    'attr' => array('style' => 'inline')
+//                )
+//            ))
             ->add('punishmentEvent', 'bootstrap_collection', array(
                 'label'=>'backend.event.punishment_event',
                 'type' => new PunishmentEventType(),

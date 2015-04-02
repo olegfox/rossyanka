@@ -24,16 +24,25 @@
     <tfoot>
         <tr>
             <td>
-                {% if hasVoted %}
-                    &nbsp;
-                {% else %}
-                    <a href="{{ path('PrismPollBundle_frontend_poll_vote', {'pollId': poll.id }) }}" class="see_form">{{ 'frontend.poll.vote'|trans({}, 'poll') }}</a>
-                {% endif %}
-            </td>
-            <td colspan="2" class="total">
-                {{ 'frontend.poll.total'|trans({}, 'poll') }}:
-                {% set total = poll.totalVotes  %}
-                {{ total }} {{ 'frontend.poll.votes'|trans({}, 'poll') }}
+                <table>
+                    <tr>
+                        <td>
+                            {% if hasVoted %}
+                                &nbsp;
+                            {% else %}
+                                <a href="{{ path('PrismPollBundle_frontend_poll_vote', {'pollId': poll.id }) }}" class="see_form">{{ 'frontend.poll.vote'|trans({}, 'poll') }}</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="total">
+                            {{ 'frontend.poll.total'|trans({}, 'poll') }}:
+                            {% set total = poll.totalVotes  %}
+                            {{ total }} {{ 'frontend.poll.votes'|trans({}, 'poll') }}
+                        </td>
+                    </tr>
+                </table>
+
             </td>
         </tr>
     </tfoot>

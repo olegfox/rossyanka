@@ -59,9 +59,6 @@
                 <p>2001—2014 © Professional Football Club CSKA Moscow.</p>
                 <p>Official Member of the European Club Association (ECA)</p>
             </div>
-            <div class="footer-block-right">
-                сайт создан командой олега митина
-            </div>
         </div>
     </div>
 {% endblock %}
@@ -75,9 +72,7 @@
     <script src="{{ asset('bundles/sitemain/frontend/js/script.js') }}" type="text/javascript"></script>
     <script>
         $(function() {
-            $( "#tabs,#tabs2,#tabs3" ).tabs({
-                collapsible: true
-            });
+            $( "#tabs,#tabs2,#tabs3" ).tabs();
         });
         function openbox(id){
             $('#' + id).hide();
