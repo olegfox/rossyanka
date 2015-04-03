@@ -1,0 +1,30 @@
+backend_cuboc_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Cuboc:index" }
+
+backend_cuboc_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Cuboc:show" }
+
+backend_cuboc_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Cuboc:new" }
+
+backend_cuboc_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Cuboc:create" }
+    methods:  POST
+
+backend_cuboc_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Cuboc:edit" }
+
+backend_cuboc_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Cuboc:update" }
+    methods:  [POST, PUT]
+
+backend_cuboc_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Cuboc:delete" }
+    methods:  [POST, DELETE]

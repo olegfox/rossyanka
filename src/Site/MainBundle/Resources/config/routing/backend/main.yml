@@ -53,3 +53,7 @@ backend_instagram:
 SitePollBundle_backend:
     resource: "@SitePollBundle/Resources/config/routing/backend.yml"
     prefix: /poll
+
+backend_cuboc:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/cuboc.yml"
+    prefix: /cuboc

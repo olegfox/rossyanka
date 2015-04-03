@@ -123,13 +123,18 @@
         <div class="right-block kybki">
             <div class="right-block-title">награды и кубки</div>
             <div class="kybki">
-                <a href="">
-                    <img src="{{ asset('bundles/sitemain/frontend/images/cuboc1.jpg') }}" alt="">
-                </a><a href="">
-                    <img src="{{ asset('bundles/sitemain/frontend/images/cuboc2.jpg') }}" alt="">
-                </a><a href="">
-                    <img src="{{ asset('bundles/sitemain/frontend/images/cuboc3.jpg') }}" alt="">
-                </a>
+                {% for c in cuboc %}<div class="kubok">
+                    <img src="{{ asset(c.webPath) }}" alt="{{ asset(c.webPath) }}">
+                    <div class="kubok_wrap_window">
+                        <div class="window">
+                            <div class="wrap_text">
+                                <div class="text">
+                                    {{ c.text }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>{% endfor %}
             </div>
         </div>
         {#<div class="right-block">#}
@@ -183,7 +188,7 @@
         <div class="right-block">
             <div id="tabs3" class="main-tab main-tab2">
                 <ul>
-                    <li><a href="#tabs2">основной состав </a></li>
+                    <li><a href="#tabs2">основной состав</a></li>
                     <li><a href="#tabs3">молодежная сборная</a></li>
                 </ul>
                 <div id="tabs2">

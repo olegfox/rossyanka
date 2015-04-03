@@ -211,14 +211,14 @@ ul {
 
 .header-right-block {
     position: relative;
-    width: 185px;
+    width: 153px;
     float: right;
     margin: 15px 5px 0 0;
     z-index: 2;
 }
 
 .search input[type="text"] {
-    width: 165px;
+    width: 133px;
     padding: 5px 10px;
     font-family: Calibri-Regular;
     font-weight: 400;
@@ -931,8 +931,42 @@ ul li:focus, ul li a:focus {
     margin-top: 0px;
 }
 
-.kybki a {
+.kybki div.kubok {
+    position: relative;
     display: inline-block;
+    cursor: pointer;
+}
+
+.kubok_wrap_window{
+    display: none;
+    position: absolute;
+    width: 235px;
+    padding-bottom: 0px;
+    z-index: 1;
+}
+
+.kubok_wrap_window .window{
+    display: block;
+    background: url('/bundles/sitemain/frontend/images/icon-bottom-anons.png') no-repeat bottom center;
+    padding-bottom: 14px;
+    width: 235px;
+}
+
+.kubok_wrap_window .window .wrap_text{
+    border: solid 2px #707070;
+    border-bottom: 0px;
+    background: #fff;
+}
+
+.kubok_wrap_window .window .wrap_text .text{
+    color: #000;
+    font-family: "Arial";
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 15px;
+    word-break: break-all;
 }
 
 img, a {
