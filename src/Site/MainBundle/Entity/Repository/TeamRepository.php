@@ -20,9 +20,22 @@ class TeamRepository extends EntityRepository
 
 //  Поиск команд по типу матча
     public function findByEventType($type){
+        $query = '
+            SELECT t FROM Site\MainBundle\Entity\Team t
+            LEFT JOIN t.eventTeam et
+            LEFT JOIN et.event e
+            WHERE e.name = :typeNumber and e.datetime <= :now
+        ';
+
         switch($type){
             case 'chiempionat': {
                 $typeNumber = Event::NAME_CHAMPIONSHIP;
+                $query = '
+                    SELECT t FROM Site\MainBundle\Entity\Team t
+                    LEFT JOIN t.eventTeam et
+                    LEFT JOIN et.event e
+                    WHERE e.name = :typeNumber and e.datetime > :now
+                ';
             }break;
             case 'kubok': {
                 $typeNumber = Event::NAME_CUP;
@@ -32,6 +45,12 @@ class TeamRepository extends EntityRepository
             }break;
             case 'molodiozhnoie-piervienstvo': {
                 $typeNumber = Event::NAME_YOUTH_CHAMPIONSHIP;
+                $query = '
+                    SELECT t FROM Site\MainBundle\Entity\Team t
+                    LEFT JOIN t.eventTeam et
+                    LEFT JOIN et.event e
+                    WHERE e.name = :typeNumber and e.datetime > :now
+                ';
             }break;
             default: {
                 $typeNumber = Event::NAME_CHAMPIONSHIP;
@@ -40,33 +59,12 @@ class TeamRepository extends EntityRepository
 
         $em = $this->getEntityManager();
 
-        $teams = $em->createQuery('
-            SELECT t FROM Site\MainBundle\Entity\Team t
-            LEFT JOIN t.eventTeam et
-            LEFT JOIN et.event e
-            WHERE e.name = :typeNumber and e.datetime <= :now
-        ')
+        $teams = $em->createQuery($query)
             ->setParameters(array(
                 'typeNumber' => $typeNumber,
                 'now' => new \DateTime()
             ))
             ->getResult();
-
-//        $teams = array();
-//
-//        foreach($events as $e){
-//            foreach($e->getTeams() as $t){
-//                $f = 0;
-//                foreach($teams as $team){
-//                    if($t->getId() == $team->getId()){
-//                        $f = 1;
-//                    }
-//                }
-//                if($f == 0){
-//                    $teams[] = $t;
-//                }
-//            }
-//        }
 
         return $teams;
     }

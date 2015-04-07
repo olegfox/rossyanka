@@ -3,7 +3,7 @@
         {% set link = path('frontend_news_one', {type: n.getTypeUrl(), slug: n.slug}) %}
         <div class="tab-articl {% if loop.last %}last{% endif %}">
             <a href="{{ link }}" class="tab-articl-img">
-                <img src="{{ image(n.webPath).zoomCrop(230, 155) }}" alt="{{ n.title }}" width="230px" height="155px">
+                <img src="{{ image(n.webPath).zoomCrop(230, 155).jpeg(100) }}" alt="{{ n.title }}" width="230px" height="155px">
             </a>
             <div class="tab-articl-description">
                 <a href="{{ link }}" class="tab-articl-text">{{ n.title }}</a>
@@ -20,7 +20,7 @@
             {% if loop.first %}
                 <div class="content-slide-block first">
                     <a href="{{ path('frontend_news_one', {type: n.getTypeUrl(), slug: n.slug}) }}">
-                        <img src="{{ image(n.webPath).zoomCrop(715, 480) }}" alt="{{ n.title }}">
+                        <img src="{{ image(n.webPath).zoomCrop(715, 480).jpeg(100) }}" alt="{{ n.title }}">
                     </a>
                     <div class="content-slide-block-title">
                         <div class="inner">
@@ -33,8 +33,8 @@
                 </div>
             {% endif %}
             <div class="content-slide-block second {% if loop.first %}current{% endif %} {% if loop.last %}last{% endif %}">
-                <img class="little" src="{{ image(n.webPath).zoomCrop(231, 155) }}" alt="{{ n.title }}">
-                <img class="big hide" src="{{ image(n.webPath).zoomCrop(715, 480) }}" alt="{{ n.title }}">
+                <img class="little" src="{{ image(n.webPath).zoomCrop(231, 155).jpeg(100) }}" alt="{{ n.title }}">
+                <img class="big hide" src="{{ image(n.webPath).zoomCrop(715, 480).jpeg(100) }}" alt="{{ n.title }}">
                 <div class="content-slide-block-title">
                     <div class="inner">
                         <a href="{{ path('frontend_news_one', {type: n.getTypeUrl(), slug: n.slug}) }}">

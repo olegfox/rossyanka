@@ -966,7 +966,7 @@ ul li:focus, ul li a:focus {
     font-weight: 700;
     text-transform: uppercase;
     padding: 15px;
-    word-break: break-all;
+    word-wrap: break-word;
 }
 
 img, a {
@@ -1187,13 +1187,13 @@ img, a {
     color: #fff;
 }
 #daily-events-calendar div.wrap-list-events{
+    display: none;
     position: absolute;
     width: 235px;
     padding-bottom: 20px;
     z-index: 1;
 }
 #daily-events-calendar div.list-events {
-    display: none;
     font-size: 12px;
     color: #fff;
     width: 160px;
@@ -1203,8 +1203,12 @@ img, a {
     margin: 0 0 0 -80px;
 }
 
-#daily-events-calendar div:hover div.list-events {
+#daily-events-calendar div:hover div.wrap-list-events{
     display: block;
+    z-index: 1000;
+}
+
+#daily-events-calendar div:hover div.list-events {
     background: url('/bundles/sitemain/frontend/images/icon-bottom-anons.png') no-repeat bottom center;
     padding-bottom: 14px;
     width: 235px;
@@ -1253,7 +1257,7 @@ img, a {
 }
 
 #daily-events-calendar .list-events ul li.item-event .the-end-last-block-title{
-    margin-top: -14px;
+    margin-top: -2px;
 }
 #daily-events-calendar .list-events ul li.item-anons{
     position: relative;
@@ -2175,6 +2179,7 @@ img, a {
     color: #fff;
     padding: 5px;
     cursor: pointer;
+    border-radius: 0px;
 }
 .poll #polls_list .content .see_results,
 .poll #polls_list .content .see_form{

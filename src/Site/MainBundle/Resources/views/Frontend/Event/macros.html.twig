@@ -61,7 +61,7 @@
                         {{ event.tour }}
                     </td>
                     <td>
-                        {{ event.datetime|date('d.m.Y H:i') }}
+                        {{ event.datetime|date('d.m.Y') }}
                     </td>
                     <td>
                         {% for eventTeam in event.eventTeam %}
@@ -142,7 +142,7 @@
                                             {% if event.datetime is defined %}
                                                 <li class="item-event{% if loop.last %} last{% endif %}">
                                                     <a href="{{ path('frontend_event_game_index', {type: event.slug, id: event.id}) }}"></a>
-                                                    <div class="datetime">{{ event.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') ~ ' в ' ~ event.datetime|date('H:i') }}</div>
+                                                    <div class="datetime">{{ event.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
                                                     <div class="teams">
                                                         {% if event.eventTeam[0].team.id is defined %}
                                                             <div class="the-end-last-block-1">
@@ -165,7 +165,7 @@
                                             {% else %}
                                                 <li class="item-anons{% if loop.last %} last{% endif %}">
                                                     <a href="{{ path('frontend_announcement_one', {date: event.date|date('d-m-Y'), slug: event.slug}) }}"></a>
-                                                        <div class="datetime">{{ event.date|localizeddate('long', 'none', null, null, 'd MMMM Y') ~ ' в ' ~ event.date|date('H:i') }}</div>
+                                                        <div class="datetime">{{ event.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
                                                         <div class="name">{{ event.title }}</div>
                                                 </li>
                                             {% endif %}
@@ -230,7 +230,6 @@
                 {% for event in final['events'] %}
                     <tr>
                         <td>{{ event.datetime|date('d.m.Y') }}</td>
-                        <td>{{ event.datetime|date('H:i') }}</td>
                         <td>{{ event.getEventTeamString() }}</td>
                         <td>{{ event.score }}</td>
                         <td></td>

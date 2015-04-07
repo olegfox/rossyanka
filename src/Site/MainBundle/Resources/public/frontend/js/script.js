@@ -23,12 +23,13 @@ $(function(){
     });
 
 //  Всплывающее окошко при наведении на кубок
-    $(".kubok").on('mouseenter', function(e){
-        $(this).find('.kubok_wrap_window').clone().appendTo('body');
+    $(".kubok").on('mouseenter', function(){
+        var $object = $(this);
+        $object.find('.kubok_wrap_window').clone().appendTo('body');
         $('body').find(' > .kubok_wrap_window')
             .css({
-                top: e.pageY - $('body').find(' > .kubok_wrap_window').height() - 40,
-                left: e.pageX - $('body').find(' > .kubok_wrap_window').width()/2
+                top: $object.offset().top - $('body').find(' > .kubok_wrap_window').height() + 20,
+                left: $object.offset().left - ($('body').find(' > .kubok_wrap_window').width()/2 - $object.width()/2)
             })
             .show();
     }).on('mouseleave', function(){

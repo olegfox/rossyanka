@@ -129,3 +129,4 @@ prism_poll:
     form:
         poll:     Site\PollBundle\Form\PollType
         opinion:     Site\PollBundle\Form\OpinionType
+        vote:     Site\PollBundle\Form\VoteType

@@ -19,11 +19,11 @@ class EventTeamType extends AbstractType
                 'required' => true,
                 'label' => 'backend.event_team.team',
                 'class' => 'Site\MainBundle\Entity\Team'
-            ))
-            ->add('position', null, array(
-                'required' => false,
-                'label' => 'backend.event_team.position',
             ));
+//            ->add('position', null, array(
+//                'required' => false,
+//                'label' => 'backend.event_team.position',
+//            ));
     }
 
     /**

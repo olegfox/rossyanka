@@ -85,11 +85,13 @@ class FrontendMenuBuilder extends ContainerAware
                     'routeParameters' => array('slug' => $m->getSlug())
                 ));
 
-                if($m->getSlug() == 'komanda'){
-                    $mainMenu = $menu->addChild($m->getTitle(), array(
-                        'route' => 'frontend_page_child',
-                        'routeParameters' => array('parent' => $m->getSlug(), 'slug' => $m->getChildren()[0]->getSlug())
-                    ));
+                if($m->getSlug() == 'komanda' || $m->getSlug() == 'o-klubie'){
+                    if(is_object($m->getChildren()[0])){
+                        $mainMenu = $menu->addChild($m->getTitle(), array(
+                            'route' => 'frontend_page_child',
+                            'routeParameters' => array('parent' => $m->getSlug(), 'slug' => $m->getChildren()[0]->getSlug())
+                        ));
+                    }
                 }
 
                 if(count($m->getChildren()) > 0){

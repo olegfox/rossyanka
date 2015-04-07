@@ -37,7 +37,7 @@
                     {% if firstFutureEvent[0].id is defined %}
                         <div class="the-end">
                             <div class="the-end-title">предстоящий матч</div>
-                            <div class="the-end-date">{{ firstFutureEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} в {{ firstFutureEvent[0].datetime|date('H:i') }}</div>
+                            <div class="the-end-date">{{ firstFutureEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
                             <div class="the-end-last-block">
                                 {% if firstFutureEvent[0].eventTeam[0].team.id is defined %}
                                     <div class="the-end-last-block-1">
@@ -61,7 +61,7 @@
                         <div class="the-end">
                             <a href="{{ path('frontend_event_game_index', {type: lastPastEvent[0].slug, id: lastPastEvent[0].id}) }}"></a>
                             <div class="the-end-title">прошедший матч</div>
-                            <div class="the-end-date">{{ lastPastEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} в {{ lastPastEvent[0].datetime|date('H:i') }}</div>
+                            <div class="the-end-date">{{ lastPastEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
                             <div class="the-end-last-block">
                                 {% if lastPastEvent[0].eventTeam[0].team.id is defined %}
                                     <div class="the-end-last-block-1">
@@ -129,7 +129,7 @@
                         <div class="window">
                             <div class="wrap_text">
                                 <div class="text">
-                                    {{ c.text }}
+                                    {{ c.text|nl2br }}
                                 </div>
                             </div>
                         </div>
@@ -302,9 +302,13 @@
                     url: $(this).attr('action'),
                     success: function(response) {
                         ajaxSuccess(response, contentDiv);
+                        onSubmit();
+                        clickLink();
                     },
                     error: function(){
                         ajaxError(contentDiv);
+                        onSubmit();
+                        clickLink();
                     }
                 });
 
