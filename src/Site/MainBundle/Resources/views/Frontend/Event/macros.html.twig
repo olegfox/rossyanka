@@ -140,26 +140,10 @@
                                         {% for event in c['events'] %}
                                             {# Если это матч #}
                                             {% if event.datetime is defined %}
-                                                <li class="item-event{% if loop.last %} last{% endif %}">
-                                                    <a href="{{ path('frontend_event_game_index', {type: event.slug, id: event.id}) }}"></a>
+                                                <li class="item-anons{% if loop.last %} last{% endif %}">
+                                                    <a href="{{ path('frontend_announcement_one', {date: event.datetime|date('d-m-Y'), slug: event.slug}) }}"></a>
                                                     <div class="datetime">{{ event.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
-                                                    <div class="teams">
-                                                        {% if event.eventTeam[0].team.id is defined %}
-                                                            <div class="the-end-last-block-1">
-                                                                <img src="{{ image(event.eventTeam[0].team.webPath).resize(53, 61).jpeg(100) }}" alt="{{ event.eventTeam[0].team.name }}" width="53px" height="61px">
-                                                                <div class="the-end-last-block-title">{{ event.eventTeam[0].team.name }}</div>
-                                                            </div>
-                                                        {% endif %}
-                                                        <div class="the-end-last-block-2">
-                                                            {{ event.score }}
-                                                        </div>
-                                                        {% if event.eventTeam[1].team.id is defined %}
-                                                            <div class="the-end-last-block-3">
-                                                                <img src="{{ image(event.eventTeam[1].team.webPath).resize(53, 61).jpeg(100) }}" alt="{{ event.eventTeam[1].team.name }}" width="53px" height="61px">
-                                                                <div class="the-end-last-block-title">{{ event.eventTeam[1].team.name }}</div>
-                                                            </div>
-                                                        {% endif %}
-                                                    </div>
+                                                    <div class="name">{{ event.getEventTeamString() }}</div>
                                                 </li>
                                                 {# Если это анонс #}
                                             {% else %}

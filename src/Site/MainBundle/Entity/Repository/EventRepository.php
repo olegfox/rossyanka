@@ -214,11 +214,15 @@ class EventRepository extends EntityRepository
 
         $events = $this->getEntityManager()->createQuery('
             SELECT e FROM SiteMainBundle:Event e
+            LEFT JOIN e.eventTeam et
+            LEFT JOIN et.team t
             WHERE e.datetime >= :date_begin AND e.datetime <= :date_end
+            AND t.name LIKE :teamName
         ')
             ->setParameters(array(
                 'date_begin' => new \DateTime($date_begin),
-                'date_end' => new \DateTime($date_end)
+                'date_end' => new \DateTime($date_end),
+                'teamName' => "Россиянка"
             ))
             ->getResult();
 

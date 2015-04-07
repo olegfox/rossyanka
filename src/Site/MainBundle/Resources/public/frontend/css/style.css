@@ -940,7 +940,7 @@ ul li:focus, ul li a:focus {
 .kubok_wrap_window{
     display: none;
     position: absolute;
-    width: 235px;
+    width: auto;
     padding-bottom: 0px;
     z-index: 1;
 }
@@ -949,7 +949,7 @@ ul li:focus, ul li a:focus {
     display: block;
     background: url('/bundles/sitemain/frontend/images/icon-bottom-anons.png') no-repeat bottom center;
     padding-bottom: 14px;
-    width: 235px;
+    width: auto;
 }
 
 .kubok_wrap_window .window .wrap_text{
