@@ -6,7 +6,7 @@
 {% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listTab %}
 {% from 'SiteMainBundle:Frontend/Event:macros.html.twig' import cuboc %}
 
-{% block title %}{{ page.title }}{% endblock %}
+{% block title %}{{ page.metaTitle }}{% if metaTitle is defined %} | {{ metaTitle }}{% endif %}{% endblock %}
 {% block meta_description %}{{ page.metaDescription }}{% endblock %}
 {% block meta_keywords %}{{ page.metaKeywords }}{% endblock %}
 

@@ -1,5 +1,9 @@
 {% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
 
+{% block title %}{{ event.metaTitle }}{% endblock %}
+{% block meta_description %}{{ event.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ event.metaKeywords }}{% endblock %}
+
 {% block content %}
     <div class="wrap_content">
         <div class="content content-top content-top-event">

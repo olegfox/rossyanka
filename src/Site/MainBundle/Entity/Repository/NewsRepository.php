@@ -42,16 +42,16 @@ class NewsRepository extends EntityRepository
 
         switch($type){
             case 'events': {
-                $news = $this->findBy(array('type' => 0));
+                $news = $this->findBy(array('type' => 0), array('date' => 'DESC'));
             }break;
             case 'interviews': {
-                $news = $this->findBy(array('type' => 1));
+                $news = $this->findBy(array('type' => 1), array('date' => 'DESC'));
             }break;
             case 'opinion': {
-                $news = $this->findBy(array('type' => 2));
+                $news = $this->findBy(array('type' => 2), array('date' => 'DESC'));
             }break;
             default: {
-                $news = $this->findBy(array('type' => 0));
+                $news = $this->findBy(array('type' => 0), array('date' => 'DESC'));
             }break;
         }
 

@@ -2,7 +2,9 @@
 
 {% from 'SiteMainBundle:Frontend/Player:macros.html.twig' import one %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ player.metaTitle }}{% endblock %}
+{% block meta_description %}{{ player.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ player.metaKeywords }}{% endblock %}
 
 {% block content %}
     <div class="wrap_content">

@@ -43,6 +43,18 @@ class EventType extends AbstractType
                 'multiple' => false,
                 'translation_domain' => 'menu'
             ))
+            ->add('metaTitle', 'text', array(
+                'required' => false,
+                'label' => 'backend.event.metatitle'
+            ))
+            ->add('metaDescription', 'textarea', array(
+                'required' => false,
+                'label' => 'backend.event.metadescription'
+            ))
+            ->add('metaKeywords', 'text', array(
+                'required' => false,
+                'label' => 'backend.event.metakeywords'
+            ))
             ->add('tour', null, array(
                 'required' => false,
                 'label' => 'backend.event.tour'

@@ -61,7 +61,7 @@
                         {{ event.tour }}
                     </td>
                     <td>
-                        {{ event.datetime|date('d.m.Y') }}
+                        {{ event.datetime|date('d.m.Y') }} {% if event.datetime|date('H') != '00' or event.datetime|date('i') != '00' %}в {{ event.datetime|date('H:i') }}{% endif %}
                     </td>
                     <td>
                         {% for eventTeam in event.eventTeam %}
@@ -95,7 +95,7 @@
                     <tr>
                         <td></td>
                         {% for column in row %}
-                            <td><img src="{{ image(column['img2']).resize(50, 50).jpeg(100) }}"
+                            <td><img src="{{ image(column['img2']).resize(50, 50).png(100) }}"
                                      alt="{{ column['nameTeamRow'] }}"/></td>
                         {% endfor %}
                     </tr>
@@ -104,7 +104,7 @@
                     {% for column in row %}
                         {# Если это первый столбец #}
                         {% if loop.first %}
-                            <td><img src="{{ image(column['img1']).resize(50, 50).jpeg(100) }}"
+                            <td><img src="{{ image(column['img1']).resize(50, 50).png(100) }}"
                                      alt="{{ column['nameTeamRow'] }}"/></td>
                             {# Если это не первый столбец #}
                         {% endif %}
@@ -131,7 +131,7 @@
         <div id="daily-events-calendar">
             {% for c in calendar %}
                 <div class="day day{{ loop.index }}{% if c['events'] is defined %}{% if c['events']|length > 0 %} active{% endif %}{% endif %}">
-                    <a href="{{ path('frontend_announcement_index', {date: c['date']|date('d-m-Y')}) }}">{{ c['date']|date('j') }}</a>
+                    {% if c['events'] is defined %}{% if c['events']|length > 0 %}<a href="{{ path('frontend_announcement_index', {date: c['date']|date('d-m-Y')}) }}">{% endif %}{% endif %}{{ c['date']|date('j') }}{% if c['events'] is defined %}{% if c['events']|length > 0 %}</a>{% endif %}{% endif %}
                     {% if c['events'] is defined %}
                         {% if c['events']|length > 0 %}
                             <div class="wrap-list-events">
@@ -140,10 +140,10 @@
                                         {% for event in c['events'] %}
                                             {# Если это матч #}
                                             {% if event.datetime is defined %}
-                                                <li class="item-anons{% if loop.last %} last{% endif %}">
-                                                    <a href="{{ path('frontend_announcement_one', {date: event.datetime|date('d-m-Y'), slug: event.slug}) }}"></a>
-                                                    <div class="datetime">{{ event.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
-                                                    <div class="name">{{ event.getEventTeamString() }}</div>
+                                                <li class="no-wrap item-anons{% if loop.last %} last{% endif %}">
+                                                    {#<a href="{{ path('frontend_announcement_one', {date: event.datetime|date('d-m-Y'), slug: event.slug}) }}"></a>#}
+                                                    <div class="datetime">{{ event.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} {% if event.datetime|date('H') != '00' or event.datetime|date('i') != '00' %}в {{ event.datetime|date('H:i') }}{% endif %}</div>
+                                                    <div class="name">{{ event.getEventTeamString() }}{% if event.name == 3 %} (Д){% endif %}</div>
                                                 </li>
                                                 {# Если это анонс #}
                                             {% else %}
@@ -177,7 +177,7 @@
                             <div class="rectangle{% if loop.last %} last{% endif %}">
                                 {% if event.eventTeam[0].team.id is defined %}
                                     <div class="team">
-                                        <img src="{{ image(event.eventTeam[0].team.webPath).resize(25, 25).jpeg(100) }}" alt="{{ image(event.eventTeam[0].team.webPath).resize(25, 25).jpeg(100) }}" width="25px" height="25px" />
+                                        <img src="{{ image(event.eventTeam[0].team.webPath).resize(25, 25).png(100) }}" alt="{{ image(event.eventTeam[0].team.webPath).resize(25, 25).png(100) }}" width="25px" height="25px" />
                                         <div class="name">
                                             {{ event.eventTeam[0].team.name }}
                                         </div>
@@ -188,7 +188,7 @@
                                 {% endif %}
                                 {% if event.eventTeam[1].team.id is defined %}
                                     <div class="team second">
-                                        <img src="{{ image(event.eventTeam[1].team.webPath).resize(25, 25).jpeg(100) }}" alt="{{ image(event.eventTeam[1].team.webPath).resize(25, 25).jpeg(100) }}" width="25px" height="25px" />
+                                        <img src="{{ image(event.eventTeam[1].team.webPath).resize(25, 25).png(100) }}" alt="{{ image(event.eventTeam[1].team.webPath).resize(25, 25).png(100) }}" width="25px" height="25px" />
                                         <div class="name second">
                                             {{ event.eventTeam[1].team.name }}
                                         </div>

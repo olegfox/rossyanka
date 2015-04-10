@@ -947,7 +947,7 @@ ul li:focus, ul li a:focus {
 
 .kubok_wrap_window .window{
     display: block;
-    background: url('/bundles/sitemain/frontend/images/icon-bottom-anons.png') no-repeat bottom center;
+    background: url('/bundles/sitemain/frontend/images/icon-bottom-anons.png') no-repeat -111px 100%;
     padding-bottom: 14px;
     width: auto;
 }
@@ -995,6 +995,10 @@ img, a {
     line-height: 41px;
 }
 
+#daily-events-calendar div.day1 a{
+    padding-right: 2px;
+}
+
 #daily-events-calendar div.day1 .wrap-list-events{
     bottom: 25px;
     left: -14px;
@@ -1008,6 +1012,11 @@ img, a {
     width: 40px;
     line-height: 42px;
 }
+
+#daily-events-calendar div.day2 a{
+    padding-right: 1px;
+}
+
 #daily-events-calendar div.day2 .wrap-list-events{
     bottom: 25px;
     left: -15px;
@@ -1019,6 +1028,9 @@ img, a {
     height: 39px;
     width: 39px;
     line-height: 40px;
+}
+#daily-events-calendar div.day3 a{
+    padding-right: 2px;
 }
 #daily-events-calendar div.day3 .wrap-list-events{
     bottom: 25px;
@@ -1032,6 +1044,9 @@ img, a {
     width: 38px;
     line-height: 38px;
 }
+#daily-events-calendar div.day4 a{
+    padding-right: 2px;
+}
 #daily-events-calendar div.day4 .wrap-list-events{
     bottom: 25px;
     left: -15px;
@@ -1043,6 +1058,9 @@ img, a {
     height: 37px;
     width: 37px;
     line-height: 37px;
+}
+#daily-events-calendar div.day5 a{
+    padding-right: 2px;
 }
 #daily-events-calendar div.day5 .wrap-list-events{
     bottom: 25px;
@@ -1056,6 +1074,9 @@ img, a {
     width: 36px;
     line-height: 38px;
 }
+#daily-events-calendar div.day6 a{
+    padding-right: 3px;
+}
 #daily-events-calendar div.day6 .wrap-list-events{
     bottom: 25px;
     left: -16px;
@@ -1067,6 +1088,9 @@ img, a {
     height: 35px;
     width: 35px;
     line-height: 35px;
+}
+#daily-events-calendar div.day7 a{
+    padding-right: 2px;
 }
 #daily-events-calendar div.day7 .wrap-list-events{
     bottom: 25px;
@@ -1080,6 +1104,9 @@ img, a {
     width: 34px;
     line-height: 34px;
 }
+#daily-events-calendar div.day8 a{
+    padding-right: 2px;
+}
 #daily-events-calendar div.day8 .wrap-list-events{
     bottom: 25px;
     left: -15px;
@@ -1091,6 +1118,9 @@ img, a {
     height: 33px;
     width: 33px;
     line-height: 34px;
+}
+#daily-events-calendar div.day9 a{
+    padding-right: 2px;
 }
 #daily-events-calendar div.day9 .wrap-list-events{
     bottom: 22px;
@@ -1104,6 +1134,9 @@ img, a {
     width: 32px;
     line-height: 32px;
 }
+#daily-events-calendar div.day10 a{
+    padding-right: 2px;
+}
 #daily-events-calendar div.day10 .wrap-list-events{
     bottom: 20px;
     left: -19px;
@@ -1115,6 +1148,9 @@ img, a {
     height: 31px;
     width: 31px;
     line-height: 31px;
+}
+#daily-events-calendar div.day11 a{
+
 }
 #daily-events-calendar div.day11 .wrap-list-events{
     bottom: 20px;
@@ -1128,6 +1164,9 @@ img, a {
     width: 30px;
     line-height: 30px;
 }
+#daily-events-calendar div.day12 a{
+
+}
 #daily-events-calendar div.day12 .wrap-list-events{
     bottom: 20px;
     left: -19px;
@@ -1139,6 +1178,9 @@ img, a {
     height: 29px;
     width: 29px;
     line-height: 29px;
+}
+#daily-events-calendar div.day13 a{
+
 }
 #daily-events-calendar div.day13 .wrap-list-events{
     bottom: 18px;
@@ -1152,6 +1194,9 @@ img, a {
     width: 28px;
     line-height: 28px;
 }
+#daily-events-calendar div.day14 a{
+
+}
 #daily-events-calendar div.day14 .wrap-list-events{
     bottom: 12px;
     left: -20px;
@@ -1164,11 +1209,15 @@ img, a {
     width: 27px;
     line-height: 27px;
 }
+#daily-events-calendar div.day15 a{
+
+}
 #daily-events-calendar div.day15 .wrap-list-events{
     bottom: 12px;
     left: -20px;
 }
-#daily-events-calendar div a {
+#daily-events-calendar div a,
+#daily-events-calendar div{
     font-family: "Arial";
     font-weight: 400;
     text-transform: uppercase;
@@ -1176,7 +1225,6 @@ img, a {
     color: #000;
 }
 
-#daily-events-calendar > div:hover,
 #daily-events-calendar > div.active{
     background: #e46464;
     border-radius: 100%;
@@ -1189,7 +1237,6 @@ img, a {
 #daily-events-calendar div.wrap-list-events{
     display: none;
     position: absolute;
-    width: 235px;
     padding-bottom: 20px;
     z-index: 1;
 }
@@ -1209,18 +1256,21 @@ img, a {
 }
 
 #daily-events-calendar div:hover div.list-events {
+    display: inline-block;
     background: url('/bundles/sitemain/frontend/images/icon-bottom-anons.png') no-repeat bottom center;
     padding-bottom: 14px;
-    width: 235px;
+    width: auto;
 }
 
 #daily-events-calendar .list-events ul {
+    display: inline-block;
     border: solid 2px #707070;
     border-bottom: 0px;
     background: #fff;
 }
 
 #daily-events-calendar .list-events ul li{
+    display: inline-block;
     border-bottom: solid 2px #707070;
 }
 
@@ -1261,7 +1311,13 @@ img, a {
 }
 #daily-events-calendar .list-events ul li.item-anons{
     position: relative;
+    width: 225px;
 }
+
+#daily-events-calendar .list-events ul li.item-anons.no-wrap{
+    width: auto;
+}
+
 #daily-events-calendar .list-events ul li.item-anons a{
     position: absolute;
     height: 100%;
@@ -1281,14 +1337,18 @@ img, a {
 #daily-events-calendar .list-events ul li.item-anons .name{
     color: #000;
     font-family: "Arial";
-    font-size: 16px;
+    font-size: 14px;
     line-height: 16px;
     font-weight: 700;
     text-transform: uppercase;
     padding: 10px 15px 15px 15px;
-    word-break: break-all;
+    word-break: break-word;
 }
-
+#daily-events-calendar .list-events ul li.item-anons.no-wrap .name{
+    word-break: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+}
 #daily-events-calendar div.list-events a{
 
 }

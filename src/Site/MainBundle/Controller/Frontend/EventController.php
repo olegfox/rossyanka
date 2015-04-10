@@ -27,6 +27,7 @@ class EventController extends Controller
                     $repository_news = $this->getDoctrine()->getRepository('SiteMainBundle:News');
                     $news = $repository_news->findByEventType($type);
                     $params = array_merge($params, array(
+                        'metaTitle' => 'Новости',
                         'news' => $news
                     ));
                 }break;
@@ -35,6 +36,7 @@ class EventController extends Controller
                     $repository_event = $this->getDoctrine()->getRepository('SiteMainBundle:Event');
                     $events = $repository_event->findByType($type);
                     $params = array_merge($params, array(
+                        'metaTitle' => 'Календарь игр',
                         'events' => $events
                     ));
                 }break;
@@ -43,6 +45,7 @@ class EventController extends Controller
                     $repository_event = $this->getDoctrine()->getRepository('SiteMainBundle:Event');
                     $resultEvents = $repository_event->findByTypeResult($type);
                     $params = array_merge($params, array(
+                        'metaTitle' => 'Результаты матчей',
                         'resultEvents' => $resultEvents
                     ));
                 }break;
@@ -52,12 +55,14 @@ class EventController extends Controller
                         $repository_event = $this->getDoctrine()->getRepository('SiteMainBundle:Event');
                         $cuboc = $repository_event->getCuboc();
                         $params = array_merge($params, array(
+                            'metaTitle' => 'Турнирная таблица',
                             'cub' => $cuboc
                         ));
                     }else{
                         $repository_team = $this->getDoctrine()->getRepository('SiteMainBundle:Team');
                         $teams = $repository_team->findByEventType($type);
                         $params = array_merge($params, array(
+                            'metaTitle' => 'Турнирная таблица',
                             'teams' => $teams
                         ));
                     }

@@ -31,6 +31,18 @@ class PlayerType extends AbstractType
                 'required' => false,
                 'label' => 'backend.player.img'
             ))
+            ->add('metaTitle', 'text', array(
+                'required' => false,
+                'label' => 'backend.player.metatitle'
+            ))
+            ->add('metaDescription', 'textarea', array(
+                'required' => false,
+                'label' => 'backend.player.metadescription'
+            ))
+            ->add('metaKeywords', 'text', array(
+                'required' => false,
+                'label' => 'backend.player.metakeywords'
+            ))
             ->add('teams', 'entity', array(
                 'required' => false,
                 'label' => 'backend.player.teams',

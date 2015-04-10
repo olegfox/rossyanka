@@ -170,11 +170,15 @@ class EventRepository extends EntityRepository
     {
         $event = $this->getEntityManager()->createQuery('
             SELECT e FROM SiteMainBundle:Event e
+            LEFT JOIN e.eventTeam et
+            LEFT JOIN et.team t
             WHERE e.datetime <= :now
+            AND t.name LIKE :teamName
             ORDER BY e.datetime DESC
         ')
             ->setParameters(array(
-                'now' => new \DateTime()
+                'now' => new \DateTime(),
+                'teamName' => "Россиянка"
             ))
             ->setFirstResult(0)
             ->setMaxResults(1)
@@ -188,11 +192,15 @@ class EventRepository extends EntityRepository
     {
         $event = $this->getEntityManager()->createQuery('
             SELECT e FROM SiteMainBundle:Event e
+            LEFT JOIN e.eventTeam et
+            LEFT JOIN et.team t
             WHERE e.datetime > :now
+            AND t.name LIKE :teamName
             ORDER BY e.datetime ASC
         ')
             ->setParameters(array(
-                'now' => new \DateTime()
+                'now' => new \DateTime(),
+                'teamName' => "Россиянка"
             ))
             ->setFirstResult(0)
             ->setMaxResults(1)

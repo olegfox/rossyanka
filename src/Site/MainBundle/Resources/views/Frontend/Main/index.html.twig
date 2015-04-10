@@ -4,7 +4,7 @@
 {% from 'SiteMainBundle:Frontend/News:macros.html.twig' import listLast %}
 {% from 'SiteMainBundle:Frontend/Event:macros.html.twig' import calendarCircle %}
 
-{% block title %}{{ page.title }}{% endblock %}
+{% block title %}{{ page.metaTitle }}{% endblock %}
 {% block meta_description %}{{ page.metaDescription }}{% endblock %}
 {% block meta_keywords %}{{ page.metaKeywords }}{% endblock %}
 
@@ -37,11 +37,11 @@
                     {% if firstFutureEvent[0].id is defined %}
                         <div class="the-end">
                             <div class="the-end-title">предстоящий матч</div>
-                            <div class="the-end-date">{{ firstFutureEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                            <div class="the-end-date">{{ firstFutureEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} {% if firstFutureEvent[0].datetime|date('H') != '00' or firstFutureEvent[0].datetime|date('i') != '00' %}в {{ firstFutureEvent[0].datetime|date('H:i') }}{% endif %}</div>
                             <div class="the-end-last-block">
                                 {% if firstFutureEvent[0].eventTeam[0].team.id is defined %}
                                     <div class="the-end-last-block-1">
-                                        <img src="{{ image(firstFutureEvent[0].eventTeam[0].team.webPath).resize(53, 61).jpeg(100) }}" alt="{{ firstFutureEvent[0].eventTeam[0].team.name }}" width="53px" height="61px">
+                                        <img src="{{ image(firstFutureEvent[0].eventTeam[0].team.webPath).resize(53, 61).png(100) }}" alt="{{ firstFutureEvent[0].eventTeam[0].team.name }}" width="53px" height="61px">
                                         <div class="the-end-last-block-title">{{ firstFutureEvent[0].eventTeam[0].team.name }}</div>
                                     </div>
                                 {% endif %}
@@ -50,7 +50,7 @@
                                 </div>
                                 {% if firstFutureEvent[0].eventTeam[1].team.id is defined %}
                                     <div class="the-end-last-block-3">
-                                        <img src="{{ image(firstFutureEvent[0].eventTeam[1].team.webPath).resize(53, 61).jpeg(100) }}" alt="{{ firstFutureEvent[0].eventTeam[1].team.name }}" width="53px" height="61px">
+                                        <img src="{{ image(firstFutureEvent[0].eventTeam[1].team.webPath).resize(53, 61).png(100) }}" alt="{{ firstFutureEvent[0].eventTeam[1].team.name }}" width="53px" height="61px">
                                         <div class="the-end-last-block-title">{{ firstFutureEvent[0].eventTeam[1].team.name }}</div>
                                     </div>
                                 {% endif %}
@@ -61,7 +61,7 @@
                         <div class="the-end">
                             <a href="{{ path('frontend_event_game_index', {type: lastPastEvent[0].slug, id: lastPastEvent[0].id}) }}"></a>
                             <div class="the-end-title">прошедший матч</div>
-                            <div class="the-end-date">{{ lastPastEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                            <div class="the-end-date">{{ lastPastEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} {% if lastPastEvent[0].datetime|date('H') != '00' or lastPastEvent[0].datetime|date('i') != '00' %}в {{ lastPastEvent[0].datetime|date('H:i') }}{% endif %}</div>
                             <div class="the-end-last-block">
                                 {% if lastPastEvent[0].eventTeam[0].team.id is defined %}
                                     <div class="the-end-last-block-1">

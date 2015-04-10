@@ -29,6 +29,27 @@ class Player
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="meta_title", type="string", length=100, nullable=true)
+     */
+    private $metaTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="meta_description", type="string", length=500, nullable=true)
+     */
+    private $metaDescription;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="meta_keywords", type="string", length=500, nullable=true)
+     */
+    private $metaKeywords;
+
+    /**
      * Имя игрока
      * @var string
      *
@@ -1025,4 +1046,27 @@ class Player
         return $this->benchPlayerTeam;
     }
 
+
+    /**
+     * Set amplua
+     *
+     * @param \Site\MainBundle\Entity\Amplua $amplua
+     * @return Player
+     */
+    public function setAmplua(\Site\MainBundle\Entity\Amplua $amplua = null)
+    {
+        $this->amplua = $amplua;
+
+        return $this;
+    }
+
+    /**
+     * Get amplua
+     *
+     * @return \Site\MainBundle\Entity\Amplua 
+     */
+    public function getAmplua()
+    {
+        return $this->amplua;
+    }
 }
