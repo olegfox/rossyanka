@@ -16,15 +16,6 @@ class EventRepository extends EntityRepository
     public function findByType($type)
     {
 
-        $query = '
-            SELECT e FROM SiteMainBundle:Event e
-            LEFT JOIN e.eventTeam et
-            LEFT JOIN et.team team
-            WHERE e.name = :typeNumber
-            AND team.visible = 0
-            ORDER BY e.datetime ASC
-        ';
-
         switch ($type) {
             case 'chiempionat':
             {
@@ -34,11 +25,6 @@ class EventRepository extends EntityRepository
             case 'kubok':
             {
                 $typeNumber = Event::NAME_CUP;
-                $query = '
-                    SELECT e FROM SiteMainBundle:Event e
-                    WHERE e.name = :typeNumber
-                    ORDER BY e.datetime ASC
-                ';
             }
                 break;
             case 'ligha-ievropy':
@@ -58,7 +44,11 @@ class EventRepository extends EntityRepository
                 break;
         }
 
-        $events = $this->getEntityManager()->createQuery($query)
+        $events = $this->getEntityManager()->createQuery('
+            SELECT e FROM SiteMainBundle:Event e
+            WHERE e.name = :typeNumber
+            ORDER BY e.datetime ASC
+        ')
             ->setParameters(array(
                 'typeNumber' => $typeNumber
             ))
@@ -71,6 +61,18 @@ class EventRepository extends EntityRepository
     public function findByTypeResult($type)
     {
 
+        $query = '
+            SELECT e FROM Site\MainBundle\Entity\Event e
+            LEFT JOIN e.eventTeam et
+            LEFT JOIN et.team team
+            WHERE e.name = :typeNumber AND e.datetime <= :now AND team.visible = 0
+        ';
+
+        $queryTeams = '
+            SELECT t FROM Site\MainBundle\Entity\Team t
+            WHERE t.visible = 0
+        ';
+
         switch ($type) {
             case 'chiempionat':
             {
@@ -80,6 +82,13 @@ class EventRepository extends EntityRepository
             case 'kubok':
             {
                 $typeNumber = Event::NAME_CUP;
+                $query = '
+                    SELECT e FROM Site\MainBundle\Entity\Event e
+                    WHERE e.name = :typeNumber and e.datetime <= :now
+                ';
+                $queryTeams = '
+                    SELECT t FROM Site\MainBundle\Entity\Team t
+                ';
             }
                 break;
             case 'ligha-ievropy':
@@ -102,10 +111,7 @@ class EventRepository extends EntityRepository
         $em = $this->getEntityManager();
 
 //      Все матчи определённого, которые уже прошли
-        $events = $em->createQuery('
-            SELECT e FROM Site\MainBundle\Entity\Event e
-            WHERE e.name = :typeNumber and e.datetime <= :now
-        ')
+        $events = $em->createQuery($query)
             ->setParameters(array(
                 'typeNumber' => $typeNumber,
                 'now' => new \DateTime()
@@ -113,9 +119,7 @@ class EventRepository extends EntityRepository
             ->getResult();
 
 //      Список всех команд
-        $teams = $em->createQuery('
-            SELECT t FROM Site\MainBundle\Entity\Team t
-        ')
+        $teams = $em->createQuery($queryTeams)
             ->getResult();
 
         $resultEvents = array();

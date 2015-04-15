@@ -1,4 +1,4 @@
-{% macro table(teams) %}
+{% macro table(teams, type) %}
     {% if teams|length > 0 %}
         <table class="table-event">
             <thead>
@@ -20,22 +20,46 @@
                                  alt=""/> {{ team.name }}{% if team.slug == 'Россиянка' %}</a>{% endif %}
                     </td>
                     <td>
-                        {{ team.games }}
+                        {% if type == 'chiempionat' %}
+                            {{ team.games }}
+                        {% elseif type == 'molodiozhnoie-piervienstvo' %}
+                            {{ team.gamesM }}
+                        {% endif %}
                     </td>
                     <td>
-                        {{ team.wins }}
+                        {% if type == 'chiempionat' %}
+                            {{ team.wins }}
+                        {% elseif type == 'molodiozhnoie-piervienstvo' %}
+                            {{ team.winsM }}
+                        {% endif %}
                     </td>
                     <td>
-                        {{ team.standoff }}
+                        {% if type == 'chiempionat' %}
+                            {{ team.standoff }}
+                        {% elseif type == 'molodiozhnoie-piervienstvo' %}
+                            {{ team.standoffM }}
+                        {% endif %}
                     </td>
                     <td>
-                        {{ team.defeat }}
+                        {% if type == 'chiempionat' %}
+                            {{ team.defeat }}
+                        {% elseif type == 'molodiozhnoie-piervienstvo' %}
+                            {{ team.defeatM }}
+                        {% endif %}
                     </td>
                     <td>
-                        {{ team.balls }}
+                        {% if type == 'chiempionat' %}
+                            {{ team.balls }}
+                        {% elseif type == 'molodiozhnoie-piervienstvo' %}
+                            {{ team.ballsM }}
+                        {% endif %}
                     </td>
                     <td>
-                        {{ team.points }}
+                        {% if type == 'chiempionat' %}
+                            {{ team.points }}
+                        {% elseif type == 'molodiozhnoie-piervienstvo' %}
+                            {{ team.pointsM }}
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}
@@ -44,11 +68,11 @@
     {% endif %}
 {% endmacro %}
 
-{% macro calendarEvent(events) %}
+{% macro calendarEvent(events, type) %}
     {% if events|length > 0 %}
         <table class="table-event">
             <thead>
-                <th>Тур</th>
+                <th>{% if type == 'kubok' %}Этап{% else %}Тур{% endif %}</th>
                 <th>Дата, время</th>
                 <th>Команды</th>
                 <th>Счёт</th>
@@ -58,14 +82,14 @@
             {% for event in events %}
                 <tr>
                     <td>
-                        {{ event.tour }}
+                        {% if type == 'kubok' %}{{ event.finalText }}{% else %}{{ event.tour }}{% endif %}
                     </td>
                     <td>
                         {{ event.datetime|date('d.m.Y') }} {% if event.datetime|date('H') != '00' or event.datetime|date('i') != '00' %}в {{ event.datetime|date('H:i') }}{% endif %}
                     </td>
                     <td>
                         {% for eventTeam in event.eventTeam %}
-                            {{ eventTeam.team.name }}{% if loop.last == false %}<span> - </span>{% endif %}
+                            {% if loop.last == false %}<img src="{{ image(eventTeam.team.webPath).resize(50, 50) }}" alt=""/>{% endif %}{{ eventTeam.team.name }}{% if loop.last == false %}<span> - </span>{% endif %}{% if loop.last == true %}<img class="right" src="{{ image(eventTeam.team.webPath).resize(50, 50) }}" alt=""/>{% endif %}
                         {% endfor %}
                     </td>
                     <td>
@@ -213,7 +237,7 @@
                     </tr>
                 {% for event in final['events'] %}
                     <tr>
-                        <td>{{ event.datetime|date('d.m.Y') }}</td>
+                        <td class="first">{{ event.datetime|date('d.m.Y') }}</td>
                         <td>{{ event.getEventTeamString() }}</td>
                         <td>{{ event.score }}</td>
                         <td></td>

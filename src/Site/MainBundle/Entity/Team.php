@@ -43,10 +43,22 @@ class Team
     private $games = 0;
 
     /**
+     * Игры в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $gamesM = 0;
+
+    /**
      * Победы
      * @ORM\Column(type="integer", nullable=true)
      */
     private $wins = 0;
+
+    /**
+     * Победы в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $winsM = 0;
 
     /**
      * Ничья
@@ -55,10 +67,22 @@ class Team
     private $standoff = 0;
 
     /**
+     * Ничья в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $standoffM = 0;
+
+    /**
      * Поражения
      * @ORM\Column(type="integer", nullable=true)
      */
     private $defeat = 0;
+
+    /**
+     * Поражения в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $defeatM = 0;
 
     /**
      * Мячи
@@ -67,10 +91,22 @@ class Team
     private $balls = 0;
 
     /**
+     * Мячи в молодёжной сборной
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $ballsM = 0;
+
+    /**
      * Очки
      * @ORM\Column(type="integer", nullable=true)
      */
     private $points = 0;
+
+    /**
+     * Очки в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $pointsM = 0;
 
     /**
      * @Gedmo\Slug(fields={"name"})
@@ -488,5 +524,143 @@ class Team
     public function getVisible()
     {
         return $this->visible;
+    }
+
+    /**
+     * Set gamesM
+     *
+     * @param integer $gamesM
+     * @return Team
+     */
+    public function setGamesM($gamesM)
+    {
+        $this->gamesM = $gamesM;
+
+        return $this;
+    }
+
+    /**
+     * Get gamesM
+     *
+     * @return integer 
+     */
+    public function getGamesM()
+    {
+        return $this->gamesM;
+    }
+
+    /**
+     * Set winsM
+     *
+     * @param integer $winsM
+     * @return Team
+     */
+    public function setWinsM($winsM)
+    {
+        $this->winsM = $winsM;
+
+        return $this;
+    }
+
+    /**
+     * Get winsM
+     *
+     * @return integer 
+     */
+    public function getWinsM()
+    {
+        return $this->winsM;
+    }
+
+    /**
+     * Set standoffM
+     *
+     * @param integer $standoffM
+     * @return Team
+     */
+    public function setStandoffM($standoffM)
+    {
+        $this->standoffM = $standoffM;
+
+        return $this;
+    }
+
+    /**
+     * Get standoffM
+     *
+     * @return integer 
+     */
+    public function getStandoffM()
+    {
+        return $this->standoffM;
+    }
+
+    /**
+     * Set defeatM
+     *
+     * @param integer $defeatM
+     * @return Team
+     */
+    public function setDefeatM($defeatM)
+    {
+        $this->defeatM = $defeatM;
+
+        return $this;
+    }
+
+    /**
+     * Get defeatM
+     *
+     * @return integer 
+     */
+    public function getDefeatM()
+    {
+        return $this->defeatM;
+    }
+
+    /**
+     * Set ballsM
+     *
+     * @param string $ballsM
+     * @return Team
+     */
+    public function setBallsM($ballsM)
+    {
+        $this->ballsM = $ballsM;
+
+        return $this;
+    }
+
+    /**
+     * Get ballsM
+     *
+     * @return string 
+     */
+    public function getBallsM()
+    {
+        return $this->ballsM;
+    }
+
+    /**
+     * Set pointsM
+     *
+     * @param integer $pointsM
+     * @return Team
+     */
+    public function setPointsM($pointsM)
+    {
+        $this->pointsM = $pointsM;
+
+        return $this;
+    }
+
+    /**
+     * Get pointsM
+     *
+     * @return integer 
+     */
+    public function getPointsM()
+    {
+        return $this->pointsM;
     }
 }

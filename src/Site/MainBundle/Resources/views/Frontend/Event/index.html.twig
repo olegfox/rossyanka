@@ -63,7 +63,7 @@
                     {% endif %}
                     {# Вывод календаря игр #}
                     {% if events is defined %}
-                        {{ calendarEvent(events) }}
+                        {{ calendarEvent(events, app.request.get('type')) }}
                     {% endif %}
                     {# Вывод результата матчей #}
                     {% if resultEvents is defined %}
@@ -71,7 +71,7 @@
                     {% endif %}
                     {# Вывод турнирной таблицы #}
                     {% if teams is defined %}
-                        {{ table(teams) }}
+                        {{ table(teams, app.request.get('type')) }}
                     {% endif %}
                     {# Вывод турнирной таблицы для кубка #}
                     {% if cub is defined %}

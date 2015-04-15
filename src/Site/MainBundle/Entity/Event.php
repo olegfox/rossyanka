@@ -776,6 +776,32 @@ class Event
         return $this->final;
     }
 
+    public function getFinalText()
+    {
+        switch($this->final){
+            case Event::FINAL_1:{
+                $text = 'финал';
+            }break;
+            case Event::FINAL_1_2:{
+                $text = '1/2 финала';
+            }break;
+            case Event::FINAL_1_4:{
+                $text = '1/4 финала';
+            }break;
+            case Event::FINAL_1_8:{
+                $text = '1/8 финала';
+            }break;
+            case Event::FINAL_1_16:{
+                $text = '1/16 финала';
+            }break;
+            default: {
+                $text = 'финал';
+            }break;
+        }
+
+        return $text;
+    }
+
     /**
      * Set metaTitle
      *

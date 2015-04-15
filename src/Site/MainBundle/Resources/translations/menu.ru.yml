@@ -149,12 +149,18 @@ backend:
         back_to_list: Назад к списку команд
         empty_list: Нет команд
         name: Название команды
-        games: Игры
-        wins: Победы
-        standoff: Ничья
-        defeat: Поряжения
-        balls: Мячи
-        points: Очки
+        games: Игры в чемпионате
+        wins: Победы в чемпионате
+        standoff: Ничья в чемпионате
+        defeat: Поражения в чемпионате
+        balls: Мячи в чемпионате
+        points: Очки в чемпионате
+        gamesM: Игры в молодёжке
+        winsM: Победы в молодёжке
+        standoffM: Ничья в молодёжке
+        defeatM: Поражения в молодёжке
+        ballsM: Мячи в молодёжке
+        pointsM: Очки в молодёжке
         img: Герб команды
         event: Команды
         players: Игроки

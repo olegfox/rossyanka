@@ -43,10 +43,22 @@ class Team
     private $games = 0;
 
     /**
+     * Игры в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $gamesM = 0;
+
+    /**
      * Победы
      * @ORM\Column(type="integer", nullable=true)
      */
     private $wins = 0;
+
+    /**
+     * Победы в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $winsM = 0;
 
     /**
      * Ничья
@@ -55,10 +67,22 @@ class Team
     private $standoff = 0;
 
     /**
+     * Ничья в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $standoffM = 0;
+
+    /**
      * Поражения
      * @ORM\Column(type="integer", nullable=true)
      */
     private $defeat = 0;
+
+    /**
+     * Поражения в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $defeatM = 0;
 
     /**
      * Мячи
@@ -67,10 +91,22 @@ class Team
     private $balls = 0;
 
     /**
+     * Мячи в молодёжной сборной
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $ballsM = 0;
+
+    /**
      * Очки
      * @ORM\Column(type="integer", nullable=true)
      */
     private $points = 0;
+
+    /**
+     * Очки в молодёжной сборной
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $pointsM = 0;
 
     /**
      * @Gedmo\Slug(fields={"name"})
@@ -466,4 +502,27 @@ class Team
         return $this->eventTeam;
     }
 
+
+    /**
+     * Set visible
+     *
+     * @param integer $visible
+     * @return Team
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+
+        return $this;
+    }
+
+    /**
+     * Get visible
+     *
+     * @return integer 
+     */
+    public function getVisible()
+    {
+        return $this->visible;
+    }
 }
