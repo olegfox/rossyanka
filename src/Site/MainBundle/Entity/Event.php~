@@ -147,6 +147,12 @@ class Event
     private $final;
 
     /**
+     * Место отображения (только в кубке или везде)
+     * @ORM\Column(type="smallint", nullable=false)
+     */
+    private $visible = 0;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -774,5 +780,74 @@ class Event
     public function getFinal()
     {
         return $this->final;
+    }
+
+    /**
+     * Set metaTitle
+     *
+     * @param string $metaTitle
+     * @return Event
+     */
+    public function setMetaTitle($metaTitle)
+    {
+        $this->metaTitle = $metaTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get metaTitle
+     *
+     * @return string 
+     */
+    public function getMetaTitle()
+    {
+        return $this->metaTitle;
+    }
+
+    /**
+     * Set metaDescription
+     *
+     * @param string $metaDescription
+     * @return Event
+     */
+    public function setMetaDescription($metaDescription)
+    {
+        $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get metaDescription
+     *
+     * @return string 
+     */
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    /**
+     * Set metaKeywords
+     *
+     * @param string $metaKeywords
+     * @return Event
+     */
+    public function setMetaKeywords($metaKeywords)
+    {
+        $this->metaKeywords = $metaKeywords;
+
+        return $this;
+    }
+
+    /**
+     * Get metaKeywords
+     *
+     * @return string 
+     */
+    public function getMetaKeywords()
+    {
+        return $this->metaKeywords;
     }
 }

@@ -103,6 +103,9 @@ backend:
         h1_create: Создание события
         back_to_list: Назад к списку событий
         empty_list: Нет событий
+        metatitle: Мета-заголовок
+        metadescription: Мета-описание
+        metakeywords: Ключевые слова
         name: Турнир
         tour: Тур
         datetime: Дата и время
@@ -156,6 +159,10 @@ backend:
         event: Команды
         players: Игроки
         not_found: Команды не существует
+        visible:
+            name: Место отображения
+            all: Везде
+            cuboc: Только кубок
         validation:
             name: Вы не выбрали название команды!
     event_team:
@@ -220,6 +227,9 @@ backend:
         h1_create: Создание игрока
         back_to_list: Назад к списку игроков
         empty_list: Нет игроков
+        metatitle: Мета-заголовок
+        metadescription: Мета-описание
+        metakeywords: Ключевые слова
         firstname: Имя
         secondname: Фамилия
         patronymic: Отчество

@@ -89,6 +89,12 @@ class Team
     private $file;
 
     /**
+     * Место отображения (только в кубке или везде)
+     * @ORM\Column(type="smallint", nullable=false)
+     */
+    private $visible = 0;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Player", inversedBy="teams")
      * @ORM\JoinTable(name="team_player",
      *       joinColumns={@ORM\JoinColumn(name="player_id", referencedColumnName="id")},
@@ -460,4 +466,27 @@ class Team
         return $this->eventTeam;
     }
 
+
+    /**
+     * Set visible
+     *
+     * @param integer $visible
+     * @return Team
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+
+        return $this;
+    }
+
+    /**
+     * Get visible
+     *
+     * @return integer 
+     */
+    public function getVisible()
+    {
+        return $this->visible;
+    }
 }

@@ -44,7 +44,7 @@ class Partners
     private $position = 0;
 
     /**
-     * @ORM\Column(type="text", nullable=false)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $link;
 

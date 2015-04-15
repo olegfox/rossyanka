@@ -625,7 +625,7 @@ ul li:focus, ul li a:focus {
     margin: 0px auto;
     height: 490px;
     background: url(../images/main-moment.jpg) top center no-repeat;
-    padding-bottom: 344px;
+    padding-bottom: 335px;
 }
 
 .main-moment iframe {
@@ -670,12 +670,14 @@ ul li:focus, ul li a:focus {
     line-height: 255px;
 }
 
-.partners-block ul li a {
+.partners-block ul li a,
+.partners-block ul li span {
     display: inline-block;
     vertical-align: middle;
 }
 
-.partners-block ul li a img {
+.partners-block ul li a img,
+.partners-block ul li span img{
     vertical-align: middle;
     border: 0;
     max-width: 100%;
@@ -1520,7 +1522,7 @@ img, a {
 }
 
 .wrap_content {
-    padding-bottom: 344px;
+    padding-bottom: 335px;
     background: #fff;
 }
 
@@ -1530,7 +1532,7 @@ img, a {
 
 .wrap_footer {
     position: relative;
-    margin-top: -344px;
+    margin-top: -335px;
     clear: both;
 }
 

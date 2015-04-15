@@ -58,8 +58,6 @@ Site\MainBundle\Entity\Partners:
             - Length:
                 max: 100
         link:
-            - NotBlank:
-                message: "backend.partners.validation.link"
             - Url:
                 message: "backend.partners.validation.link_not_valid"
 

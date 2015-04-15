@@ -2,9 +2,17 @@
     <div class="partners-block-title">{{ 'frontend.partners.title'|trans({}, 'menu') }}</div>
     <ul>
         {% for partner in partners %}<li>
+                {% if partner.link|length > 0 %}
                 <a href="{{ partner.link }}" target="_blank">
+                {% else %}
+                <span>
+                {% endif %}
                     <img src="{{ asset(partner.webPath) }}" alt="">
+                {% if partner.link|length > 0 %}
                 </a>
+                {% else %}
+                </span>
+                {% endif %}
             </li>{% endfor %}
     </ul>
 </div>

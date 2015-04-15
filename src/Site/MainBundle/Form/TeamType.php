@@ -23,6 +23,17 @@ class TeamType extends AbstractType
                 'required' => false,
                 'label' => 'backend.team.img'
             ))
+            ->add('visible', 'choice', array(
+                'required' => true,
+                'label' => 'backend.team.visible.name',
+                'choices' => array(
+                    0 => 'backend.team.visible.all',
+                    1 => 'backend.team.visible.cuboc'
+                ),
+                'expanded' => false,
+                'multiple' => false,
+                'translation_domain' => 'menu'
+            ))
             ->add('games', null, array(
                 'required' => false,
                 'label' => 'backend.team.games'

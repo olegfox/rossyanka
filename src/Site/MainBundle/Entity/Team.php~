@@ -84,19 +84,22 @@ class Team
     private $eventTeam;
 
     /**
-     * Состав команд
-     * @ORM\OneToMany(targetEntity="PlayerTeam", mappedBy="team", cascade={"persist", "remove"})
-     **/
-    private $playerTeam;
-
-    /**
      * @Assert\File()
      */
     private $file;
 
     /**
+     * Место отображения (только в кубке или везде)
+     * @ORM\Column(type="smallint", nullable=false)
+     */
+    private $visible = 0;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Player", inversedBy="teams")
-     **/
+     * @ORM\JoinTable(name="team_player",
+     *       joinColumns={@ORM\JoinColumn(name="player_id", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="team_id", referencedColumnName="id")})
+     */
     private $players;
 
     public function getAbsolutePath()
@@ -462,4 +465,5 @@ class Team
     {
         return $this->eventTeam;
     }
+
 }
