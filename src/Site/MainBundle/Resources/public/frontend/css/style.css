@@ -1643,9 +1643,27 @@ img, a {
     border: 0;
 }
 
-.table-event td img.right{
+.table-event td.team{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.table-event td.left{
+    padding-right: 0px;
+    text-align: right;
+}
+
+.table-event td.left img{
     margin-right: 0px;
-    margin-left: 20px;
+}
+
+.table-event td.right{
+    padding-left: 0px;
+    text-align: left;
+}
+
+.table-event td.right img{
+    margin-left: 0px;
 }
 
 .table-event td a{

@@ -202,7 +202,7 @@
                             </div>
                             {% for team in teamsChiemp %}
                                 <div class="chempionat-tr">
-                                    <div class="chempionat-td chempionat-td-1">{{ team.balls|default(0) }}</div>
+                                    <div class="chempionat-td chempionat-td-1">{{ loop.index }}</div>
                                     <div class="chempionat-td chempionat-td-2">{{ team.name }}</div>
                                     <div class="chempionat-td chempionat-td-3">{{ team.games|default(0) }}</div>
                                     <div class="chempionat-td chempionat-td-4">{{ team.points|default(0) }}</div>
@@ -222,10 +222,10 @@
                             </div>
                             {% for team in teamsMolodioz %}
                                 <div class="chempionat-tr">
-                                    <div class="chempionat-td chempionat-td-1">{{ team.balls|default(0) }}</div>
+                                    <div class="chempionat-td chempionat-td-1">{{ loop.index }}</div>
                                     <div class="chempionat-td chempionat-td-2">{{ team.name }}</div>
-                                    <div class="chempionat-td chempionat-td-3">{{ team.games|default(0) }}</div>
-                                    <div class="chempionat-td chempionat-td-4">{{ team.points|default(0) }}</div>
+                                    <div class="chempionat-td chempionat-td-3">{{ team.gamesM|default(0) }}</div>
+                                    <div class="chempionat-td chempionat-td-4">{{ team.pointsM|default(0) }}</div>
                                 </div>
                             {% endfor %}
                         {% endif %}

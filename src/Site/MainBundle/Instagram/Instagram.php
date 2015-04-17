@@ -8,7 +8,6 @@
 
 namespace Site\MainBundle\Instagram;
 
-use Site\MainBundle\Instagram\InstagramInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 

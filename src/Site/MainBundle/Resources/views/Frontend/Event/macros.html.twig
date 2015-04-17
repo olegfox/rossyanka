@@ -74,7 +74,9 @@
             <thead>
                 <th>{% if type == 'kubok' %}Этап{% else %}Тур{% endif %}</th>
                 <th>Дата, время</th>
+                <th></th>
                 <th>Команды</th>
+                <th></th>
                 <th>Счёт</th>
                 <th>Стадион</th>
             </thead>
@@ -87,10 +89,14 @@
                     <td>
                         {{ event.datetime|date('d.m.Y') }} {% if event.datetime|date('H') != '00' or event.datetime|date('i') != '00' %}в {{ event.datetime|date('H:i') }}{% endif %}
                     </td>
-                    <td>
-                        {% for eventTeam in event.eventTeam %}
-                            {% if loop.last == false %}<img src="{{ image(eventTeam.team.webPath).resize(50, 50) }}" alt=""/>{% endif %}{{ eventTeam.team.name }}{% if loop.last == false %}<span> - </span>{% endif %}{% if loop.last == true %}<img class="right" src="{{ image(eventTeam.team.webPath).resize(50, 50) }}" alt=""/>{% endif %}
-                        {% endfor %}
+                    <td class="left">
+                        <img src="{{ image(event.eventTeam[0].team.webPath).resize(50, 50) }}" alt=""/>
+                    </td>
+                    <td class="team">
+                        {{ event.eventTeam[0].team.name }}<span> - </span>{{ event.eventTeam[1].team.name }}
+                    </td>
+                    <td class="right">
+                        <img src="{{ image(event.eventTeam[1].team.webPath).resize(50, 50) }}" alt=""/>
                     </td>
                     <td>
                         {% if event.score %}
