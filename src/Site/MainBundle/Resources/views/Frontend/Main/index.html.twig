@@ -240,7 +240,7 @@
                 {% for column in instagram %}
                     <div class="page">
                         {% for item in column %}<a href="{{ item.getLink() }}" target="_blank">
-                                <img src="{{ item.getStandardImageUrl() }}" alt="{{ item.getStandardImageUrl() }}"/>
+                                <img data-lazy="{{ item.getStandardImageUrl() }}" alt=""/>
                             </a>{% endfor %}
                     </div>
                 {% endfor %}
@@ -279,6 +279,7 @@
                 auto: true
             });
             $('.instagram').slick({
+                lazyLoad: 'ondemand',
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 autoplay: true,

@@ -58,6 +58,20 @@ class Instagram
     private $captionText;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=true)
+     */
+    private $type = 0;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="created_time", type="datetime", nullable=true)
+     */
+    private $createdTime = 0;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -181,5 +195,51 @@ class Instagram
     public function getLink()
     {
         return $this->link;
+    }
+
+    /**
+     * Set type
+     *
+     * @param boolean $type
+     * @return Instagram
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return boolean 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set createdTime
+     *
+     * @param \DateTime $createdTime
+     * @return Instagram
+     */
+    public function setCreatedTime($createdTime)
+    {
+        $this->createdTime = $createdTime;
+
+        return $this;
+    }
+
+    /**
+     * Get createdTime
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedTime()
+    {
+        return $this->createdTime;
     }
 }

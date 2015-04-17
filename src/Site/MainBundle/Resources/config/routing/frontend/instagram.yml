@@ -1,0 +1,3 @@
+backend_instagram_scan:
+    path:     /scan
+    defaults: { _controller: "SiteMainBundle:Frontend/Instagram:scan" }

@@ -5,7 +5,7 @@ services:
                 - { name: twig.extension }
     instagram:
         class: Site\MainBundle\Instagram\Instagram
-        arguments: ['@service_container']
+        arguments: ['@service_container', '@doctrine.orm.entity_manager']
 
 #    site_main.example:
 #        class: Site\MainBundle\Example

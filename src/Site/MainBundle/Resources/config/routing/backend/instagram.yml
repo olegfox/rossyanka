@@ -1,10 +1,15 @@
+backend_instagram_index_change:
+    path:     /change
+    defaults: { _controller: "SiteMainBundle:Backend/Instagram:change" }
+    methods: [POST]
+
 backend_instagram_index:
-    path:     /
-    defaults: { _controller: "SiteMainBundle:Backend/Instagram:index" }
+    path:     /{tag}
+    defaults: { _controller: "SiteMainBundle:Backend/Instagram:index", tag: 'fcrossiyanka' }
 
 backend_instagram_index_ajax:
-    path:     /ajax/next
-    defaults: { _controller: "SiteMainBundle:Backend/Instagram:ajaxIndex" }
+    path:     /ajax/next/{tag}
+    defaults: { _controller: "SiteMainBundle:Backend/Instagram:ajaxIndex", tag: 'fcrossiyanka' }
     methods: [POST]
 
 backend_instagram_new:

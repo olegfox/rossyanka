@@ -30,6 +30,10 @@ frontend_baner:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/baner.yml"
     prefix: /baner
 
+frontend_instagram:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/instagram.yml"
+    prefix: /instagram
+
 SitePollBundle_frontend:
     resource: "@SitePollBundle/Resources/config/routing/frontend.yml"
     prefix: /poll

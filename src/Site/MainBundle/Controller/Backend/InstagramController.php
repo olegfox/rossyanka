@@ -19,16 +19,23 @@ class InstagramController extends Controller
      * Lists all Instagram entities.
      *
      */
-    public function indexAction()
+    public function indexAction($tag)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('SiteMainBundle:Instagram')->findAllArray();
 
-        $media = $this->get('instagram')->getMedia('fcrossiyanka', 0);
+        $media = $this->get('instagram')->getMedia($tag, 0);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $entities,
+            $this->get('request')->query->get('page', 1) /*page number*/,
+            20/*limit per page*/
+        );
 
         return $this->render('SiteMainBundle:Backend/Instagram:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $pagination,
             'media' => $media
         ));
     }
@@ -37,11 +44,11 @@ class InstagramController extends Controller
      * Подгрузка фотографий ajax.
      *
      */
-    public function ajaxIndexAction(Request $request){
+    public function ajaxIndexAction(Request $request, $tag){
         $max_id = $request->get('max_id');
 
         if($max_id){
-            $media = $this->get('instagram')->getMedia('fcrossiyanka', $max_id);
+            $media = $this->get('instagram')->getMedia($tag, $max_id);
 
             return $this->render('SiteMainBundle:Backend/Instagram:ajax_index.html.twig', array(
                 'media' => $media
@@ -65,10 +72,12 @@ class InstagramController extends Controller
             $instagram = new Instagram();
 
             $instagram->setLink($all_request['link']);
+            $instagram->setCreatedTime($all_request['created_time']);
             $instagram->setLowImageUrl($all_request['low_image_url']);
             $instagram->setStandardImageUrl($all_request['standard_image_url']);
             $instagram->setThumbnailUrl($all_request['thumbnail_url']);
             $instagram->setCaptionText($all_request['caption_text']);
+            $instagram->setType(0);
 
             $em->persist($instagram);
             $em->flush();
@@ -102,5 +111,15 @@ class InstagramController extends Controller
         }
 
         return new Response('', 500);
+    }
+
+    /**
+     * Change tag search for Instagram.
+     *
+     */
+    public function changeAction(Request $request){
+        $tag = $request->get('tag');
+
+        return $this->redirect($this->generateUrl('backend_instagram_index', array('tag' => $tag)), 301);
     }
 }
