@@ -743,6 +743,20 @@ ul li:focus, ul li a:focus {
 .chempionat {
     overflow: hidden;
 }
+.chempionat .full-view{
+    font-family: "Arial";
+    background: #e46464;
+    border: 0px;
+    color: #fff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 0px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
 
 .chempionat .chempionat-tr {
     overflow: hidden;
@@ -2061,6 +2075,7 @@ img, a {
     vertical-align: middle;
     text-align: center;
     padding: 0px 65px 30px 65px;
+    white-space: nowrap;
 }
 .game-table .lists{
     margin-bottom: 35px;
@@ -2093,16 +2108,19 @@ img, a {
     display: table-cell;
     width: 40%;
     padding-left: 55px;
+    white-space: nowrap;
 }
 .game-table .lists .list .team-1{
     display: table-cell;
     width: 40%;
     padding-left: 55px;
+    white-space: nowrap;
 }
 .game-table .lists .list .score{
     display: table-cell;
     width: 20%;
     text-align: center;
+    white-space: nowrap;
 }
 .game-table .lists .list .card{
     display: inline-block;
@@ -2294,6 +2312,45 @@ img, a {
 }
 .poll .results .fill_color_1{
     background-color: #e46464;
+}
+.poll .results .fill_color_8{
+    background-color: #1fe4af;
+}
+.poll .results .fill_color_9{
+    background-color: #5c2be4;
+}
+.poll .results .fill_color_10{
+    background-color: #e40fb1;
+}
+.poll .results .fill_color_11{
+    background-color: #cbe400;
+}
+.poll .results .fill_color_12{
+    background-color: #be00e4;
+}
+.poll .results .fill_color_13{
+    background-color: #00e4dc;
+}
+.poll .results .fill_color_14{
+    background-color: #76e400;
+}
+.poll .results .fill_color_15{
+    background-color: #e4a2d3;
+}
+.poll .results .fill_color_16{
+    background-color: #a11be4;
+}
+.poll .results .fill_color_17{
+    background-color: #e46500;
+}
+.poll .results .fill_color_18{
+    background-color: #a1e400;
+}
+.poll .results .fill_color_19{
+    background-color: #4be46f;
+}
+.poll .results .fill_color_20{
+    background-color: #00a1e4;
 }
 .poll .results .graph_bar{
     border: 0px;

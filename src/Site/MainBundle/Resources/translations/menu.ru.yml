@@ -128,6 +128,7 @@ backend:
           final_1_16: 1/16 финала
         not_found: Событие не существует
         name_choice:
+            any: все
             championship: чемпионат
             cup: кубок
             europa_league: лига европы
@@ -365,6 +366,7 @@ frontend:
       player_team: Составы команд
       bench_player_team: Запасные
       bench_coach: Тренеры
+      full_view: Полная таблица
     partners:
         title: Партнеры
     news:

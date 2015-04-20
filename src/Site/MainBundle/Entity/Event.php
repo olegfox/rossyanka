@@ -666,11 +666,32 @@ class Event
             'right' => array()
         );
 
+        $playerTeamArray = array();
+        $i = 0;
+
         foreach($this->playerTeam as $playerTeam){
-            if($playerTeam->getType() == false){
-                $playerTeams['left'][] = $playerTeam;
+            if(is_object($playerTeam->getPlayer()->getAmplua())){
+                $playerTeamArray[$i]['amplua'] = 0;
             }else{
-                $playerTeams['right'][] = $playerTeam;
+                $playerTeamArray[$i]['amplua'] = $playerTeam->getPlayer()->getAmplua()->getId();
+            }
+            $playerTeamArray[$i]['playerTeam'] = $playerTeam;
+            $i++;
+        }
+
+//      Упорядочивание по амплуа
+        usort($playerTeamArray, function($a, $b){
+            if ($a == $b) {
+                return 0;
+            }
+            return ($a < $b) ? -1 : 1;
+        });
+
+        foreach($playerTeamArray as $playerTeam){
+            if($playerTeam['playerTeam']->getType() == false){
+                $playerTeams['left'][] = $playerTeam['playerTeam'];
+            }else{
+                $playerTeams['right'][] = $playerTeam['playerTeam'];
             }
         }
 

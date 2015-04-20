@@ -25,6 +25,7 @@ class TeamRepository extends EntityRepository
             LEFT JOIN t.eventTeam et
             LEFT JOIN et.event e
             WHERE e.name = :typeNumber and e.datetime <= :now
+            ORDER BY t.points DESC
         ';
 
         switch($type){
@@ -35,6 +36,7 @@ class TeamRepository extends EntityRepository
                     LEFT JOIN t.eventTeam et
                     LEFT JOIN et.event e
                     WHERE e.name = :typeNumber and e.datetime > :now
+                    ORDER BY t.points DESC
                 ';
             }break;
             case 'kubok': {
@@ -50,6 +52,7 @@ class TeamRepository extends EntityRepository
                     LEFT JOIN t.eventTeam et
                     LEFT JOIN et.event e
                     WHERE e.name = :typeNumber and e.datetime > :now
+                    ORDER BY t.pointsM DESC
                 ';
             }break;
             default: {

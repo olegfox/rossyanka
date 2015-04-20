@@ -2,6 +2,21 @@
 
 {% block content -%}
     <h1>{{ 'backend.event.h1_list'|trans({}, 'menu') }}</h1>
+    <div class="row">
+        <h3>Фильтр</h3>
+        <form action="" method="get">
+            <div class="form-group">
+                <label for="name">{{ 'backend.event.name'|trans({}, 'menu') }}</label>
+                <select name="name" id="name" onchange="form.submit();">
+                    <option value="any" {% if app.request.get('name') == 'any' %}selected="selected"{% endif %}>{{ 'backend.event.name_choice.any'|trans({}, 'menu') }}</option>
+                    <option value="1" {% if app.request.get('name') == 1 %}selected="selected"{% endif %}>{{ 'backend.event.name_choice.championship'|trans({}, 'menu') }}</option>
+                    <option value="2" {% if app.request.get('name') == 2 %}selected="selected"{% endif %}>{{ 'backend.event.name_choice.cup'|trans({}, 'menu') }}</option>
+                    <option value="3" {% if app.request.get('name') == 3 %}selected="selected"{% endif %}>{{ 'backend.event.name_choice.europa_league'|trans({}, 'menu') }}</option>
+                    <option value="4" {% if app.request.get('name') == 4 %}selected="selected"{% endif %}>{{ 'backend.event.name_choice.youth_championship'|trans({}, 'menu') }}</option>
+                </select>
+            </div>
+        </form>
+    </div>
 
     {% if entities|length > 0 %}
         <table class="records_list table table-striped table-bordered">

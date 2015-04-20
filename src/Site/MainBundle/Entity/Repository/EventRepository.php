@@ -260,13 +260,13 @@ class EventRepository extends EntityRepository
 
         while ($date <= $date_end) {
             $calendar[$i]['date'] = (new \DateTime())->setTimestamp(strtotime($date));
-            foreach($events as $event){
-                if($calendar[$i]['date']->format('Y-m-d') == $event->getDatetime()->format('Y-m-d')){
+            foreach ($events as $event) {
+                if ($calendar[$i]['date']->format('Y-m-d') == $event->getDatetime()->format('Y-m-d')) {
                     $calendar[$i]['events'][] = $event;
                 }
             }
-            foreach($announcements as $announcement){
-                if($calendar[$i]['date']->format('Y-m-d') == $announcement->getDate()->format('Y-m-d')){
+            foreach ($announcements as $announcement) {
+                if ($calendar[$i]['date']->format('Y-m-d') == $announcement->getDate()->format('Y-m-d')) {
                     $calendar[$i]['events'][] = $announcement;
                 }
             }
@@ -278,7 +278,8 @@ class EventRepository extends EntityRepository
     }
 
 //  Турнирная таблица в Кубке
-    public function getCuboc(){
+    public function getCuboc()
+    {
         $em = $this->getEntityManager();
 
 //      Все матчи кубка, которые уже прошли
@@ -315,26 +316,47 @@ class EventRepository extends EntityRepository
             )
         );
 
-        foreach($events as $event){
-            switch($event->getFinal()){
-                case Event::FINAL_1: {
+        foreach ($events as $event) {
+            switch ($event->getFinal()) {
+                case Event::FINAL_1:
+                {
                     $cuboc[Event::FINAL_1]['events'][] = $event;
-                }break;
-                case Event::FINAL_1_2: {
+                }
+                    break;
+                case Event::FINAL_1_2:
+                {
                     $cuboc[Event::FINAL_1_2]['events'][] = $event;
-                }break;
-                case Event::FINAL_1_4: {
+                }
+                    break;
+                case Event::FINAL_1_4:
+                {
                     $cuboc[Event::FINAL_1_4]['events'][] = $event;
-                }break;
-                case Event::FINAL_1_8: {
+                }
+                    break;
+                case Event::FINAL_1_8:
+                {
                     $cuboc[Event::FINAL_1_8]['events'][] = $event;
-                }break;
-                case Event::FINAL_1_16: {
+                }
+                    break;
+                case Event::FINAL_1_16:
+                {
                     $cuboc[Event::FINAL_1_16]['events'][] = $event;
-                }break;
+                }
+                    break;
             }
         }
 
         return $cuboc;
+    }
+
+    public function findByFilter($request)
+    {
+        if ($request->get('name') && $request->get('name') != 'any') {
+            $events = $this->findBy(array('name' => (int)$request->get('name') - 1));
+        } else {
+            $events = $this->findAll();
+        }
+
+        return $events;
     }
 }

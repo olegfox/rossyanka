@@ -54,7 +54,7 @@
                     <div class="teams">
                         <div class="team-1">
                             {% if event.eventTeam[0].team.id is defined %}
-                                <img src="{{ image(event.eventTeam[0].team.webPath).resize(120, 120).jpeg(100) }}" alt="{{ event.eventTeam[0].team.name }}"/>
+                                <img src="{{ image(event.eventTeam[0].team.webPath).resize(120, 120).png(100) }}" alt="{{ event.eventTeam[0].team.name }}"/>
                                 <div class="name">{{ event.eventTeam[0].team.name }}</div>
                             {% endif %}
                         </div>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="team-2">
                             {% if event.eventTeam[1].team.id is defined %}
-                                <img src="{{ image(event.eventTeam[1].team.webPath).resize(120, 120).jpeg(100) }}" alt="{{ event.eventTeam[1].team.name }}"/>
+                                <img src="{{ image(event.eventTeam[1].team.webPath).resize(120, 120).png(100) }}" alt="{{ event.eventTeam[1].team.name }}"/>
                                 <div class="name">{{ event.eventTeam[1].team.name }}</div>
                             {% endif %}
                         </div>

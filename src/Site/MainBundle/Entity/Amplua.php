@@ -41,6 +41,7 @@ class Amplua
      * @ORM\OneToMany(targetEntity="Player", mappedBy="amplua")
      **/
     private $players;
+
     /**
      * Constructor
      */

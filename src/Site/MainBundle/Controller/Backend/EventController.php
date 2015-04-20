@@ -20,11 +20,11 @@ class EventController extends Controller
      * Lists all Event entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SiteMainBundle:Event')->findAll();
+        $entities = $em->getRepository('SiteMainBundle:Event')->findByFilter($request);
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
