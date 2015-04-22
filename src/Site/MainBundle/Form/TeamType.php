@@ -15,6 +15,14 @@ class TeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('position', null, array(
+                'required' => false,
+                'label' => 'backend.team.position'
+            ))
+            ->add('positionM', null, array(
+                'required' => false,
+                'label' => 'backend.team.positionM'
+            ))
             ->add('name', null, array(
                 'required' => true,
                 'label' => 'backend.team.name'

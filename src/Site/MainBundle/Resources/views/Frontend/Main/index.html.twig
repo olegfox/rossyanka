@@ -36,7 +36,7 @@
                 <div class="the-end-main">
                     {% if firstFutureEvent[0].id is defined %}
                         <div class="the-end">
-                            <div class="the-end-title">предстоящий матч {% if firstFutureEvent[0].name == 1 %}(кубок){% endif %}{% if firstFutureEvent[0].name == 3 %}(дубль){% endif %}</div>
+                            <div class="the-end-title">предстоящий матч {% if firstFutureEvent[0].name == 1 %}(К){% endif %}{% if firstFutureEvent[0].name == 3 %}(Д){% endif %}</div>
                             <div class="the-end-date">{{ firstFutureEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} {% if firstFutureEvent[0].datetime|date('H') != '00' or firstFutureEvent[0].datetime|date('i') != '00' %}в {{ firstFutureEvent[0].datetime|date('H:i') }}{% endif %}</div>
                             <div class="the-end-last-block">
                                 {% if firstFutureEvent[0].eventTeam[0].team.id is defined %}
@@ -60,7 +60,7 @@
                     {% if lastPastEvent[0].id is defined %}
                         <div class="the-end">
                             <a href="{{ path('frontend_event_game_index', {type: lastPastEvent[0].slug, id: lastPastEvent[0].id}) }}"></a>
-                            <div class="the-end-title">прошедший матч {% if lastPastEvent[0].name == 1 %}(кубок){% endif %}{% if lastPastEvent[0].name == 3 %}(дубль){% endif %}</div>
+                            <div class="the-end-title">прошедший матч {% if lastPastEvent[0].name == 1 %}(К){% endif %}{% if lastPastEvent[0].name == 3 %}(Д){% endif %}</div>
                             <div class="the-end-date">{{ lastPastEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} {% if lastPastEvent[0].datetime|date('H') != '00' or lastPastEvent[0].datetime|date('i') != '00' %}в {{ lastPastEvent[0].datetime|date('H:i') }}{% endif %}</div>
                             <div class="the-end-last-block">
                                 {% if lastPastEvent[0].eventTeam[0].team.id is defined %}
@@ -230,7 +230,7 @@
                                 </div>
                             {% endfor %}
                         {% endif %}
-                        <a href="{{ path('frontend_event_sub_index', {type: 'molodiozhnoie-piervienstvo', subtype: 'turnirnaia-tablitsa'}) }}" class="full-view">{{ 'frontend.event.full_view'|trans({}, 'menu') }}</a>
+                        <a href="{{ path('frontend_event_sub_index', {type: 'dubliruiushchii-sostav-1', subtype: 'turnirnaia-tablitsa'}) }}" class="full-view">{{ 'frontend.event.full_view'|trans({}, 'menu') }}</a>
                     </div>
                 </div>
             </div>
@@ -258,8 +258,8 @@
     </div>
     </div>
     <div class="main-moment">
-        <div class="main-moment-title">Футбольный клуб «Россиянка»</div>
-        <iframe width="595" height="355" src="https://www.youtube.com/embed/vikSJN2mRdc" frameborder="0" allowfullscreen></iframe>
+        <div class="main-moment-title">ФК Россиянка ФК Кубаночка Обзор матча</div>
+        <iframe width="595" height="355" src="https://www.youtube.com/embed/wdITYMUD4H4" frameborder="0" allowfullscreen></iframe>
     </div>
 {% endblock %}
 

@@ -165,6 +165,8 @@ backend:
         img: Герб команды
         event: Команды
         players: Игроки
+        position: Позиция в чемпионате
+        positionM: Позиция в молодёжке
         not_found: Команды не существует
         visible:
             name: Место отображения

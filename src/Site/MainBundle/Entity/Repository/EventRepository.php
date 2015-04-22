@@ -32,7 +32,7 @@ class EventRepository extends EntityRepository
                 $typeNumber = Event::NAME_EUROPA_LEAGUE;
             }
                 break;
-            case 'molodiozhnoie-piervienstvo':
+            case 'dubliruiushchii-sostav-1':
             {
                 $typeNumber = Event::NAME_YOUTH_CHAMPIONSHIP;
             }
@@ -96,7 +96,7 @@ class EventRepository extends EntityRepository
                 $typeNumber = Event::NAME_EUROPA_LEAGUE;
             }
                 break;
-            case 'molodiozhnoie-piervienstvo':
+            case 'dubliruiushchii-sostav-1':
             {
                 $typeNumber = Event::NAME_YOUTH_CHAMPIONSHIP;
             }

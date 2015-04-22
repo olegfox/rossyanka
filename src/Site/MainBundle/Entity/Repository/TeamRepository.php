@@ -25,7 +25,7 @@ class TeamRepository extends EntityRepository
             LEFT JOIN t.eventTeam et
             LEFT JOIN et.event e
             WHERE e.name = :typeNumber and e.datetime <= :now
-            ORDER BY t.points DESC
+            ORDER BY t.position ASC
         ';
 
         switch($type){
@@ -36,7 +36,7 @@ class TeamRepository extends EntityRepository
                     LEFT JOIN t.eventTeam et
                     LEFT JOIN et.event e
                     WHERE e.name = :typeNumber and e.datetime > :now
-                    ORDER BY t.points DESC
+                    ORDER BY t.position ASC
                 ';
             }break;
             case 'kubok': {
@@ -45,14 +45,14 @@ class TeamRepository extends EntityRepository
             case 'ligha-ievropy': {
                 $typeNumber = Event::NAME_EUROPA_LEAGUE;
             }break;
-            case 'molodiozhnoie-piervienstvo': {
+            case 'dubliruiushchii-sostav-1': {
                 $typeNumber = Event::NAME_YOUTH_CHAMPIONSHIP;
                 $query = '
                     SELECT t FROM Site\MainBundle\Entity\Team t
                     LEFT JOIN t.eventTeam et
                     LEFT JOIN et.event e
                     WHERE e.name = :typeNumber and e.datetime > :now
-                    ORDER BY t.pointsM DESC
+                    ORDER BY t.positionM ASC
                 ';
             }break;
             default: {

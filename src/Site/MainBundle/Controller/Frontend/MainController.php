@@ -24,7 +24,7 @@ class MainController extends Controller
         $firstFutureEvent = $repository_event->findFirstFutureEvent();
         $calendarEvent = $repository_event->getCalendar();
         $teamsChiemp = $repository_team->findByEventType('chiempionat');
-        $teamsMolodioz = $repository_team->findByEventType('molodiozhnoie-piervienstvo');
+        $teamsMolodioz = $repository_team->findByEventType('dubliruiushchii-sostav-1');
         $instagram = $repository_instagram->findAllColumn();
         $cuboc = $repository_cuboc->findAll();
 

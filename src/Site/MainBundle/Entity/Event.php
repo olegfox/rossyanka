@@ -192,7 +192,7 @@ class Event
                 return 'ligha-ievropy';
             }break;
             case 3: {
-                return 'molodiozhnoie-piervienstvo';
+                return 'dubliruiushchii-sostav-1';
             }break;
             default: {
                 return 'chiempionat';
@@ -670,21 +670,17 @@ class Event
         $i = 0;
 
         foreach($this->playerTeam as $playerTeam){
-            if(is_object($playerTeam->getPlayer()->getAmplua())){
-                $playerTeamArray[$i]['amplua'] = 0;
-            }else{
-                $playerTeamArray[$i]['amplua'] = $playerTeam->getPlayer()->getAmplua()->getId();
-            }
+            $playerTeamArray[$i]['amplua'] = $playerTeam->getPlayer()->getAmplua()->getId();
             $playerTeamArray[$i]['playerTeam'] = $playerTeam;
             $i++;
         }
 
 //      Упорядочивание по амплуа
-        usort($playerTeamArray, function($a, $b){
-            if ($a == $b) {
+        uasort($playerTeamArray, function($a, $b){
+            if ($a['amplua'] == $b['amplua']) {
                 return 0;
             }
-            return ($a < $b) ? -1 : 1;
+            return ($a['amplua'] < $b['amplua']) ? -1 : 1;
         });
 
         foreach($playerTeamArray as $playerTeam){

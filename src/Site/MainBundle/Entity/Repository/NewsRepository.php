@@ -8,9 +8,26 @@ use Site\MainBundle\Entity\Event;
 class NewsRepository extends EntityRepository
 {
 
+//  Упорядочивание новостей
+    protected function sort($news){
+        usort($news, function($a, $b){
+            if($a->getDate() == $b->getDate()){
+                return ($a->getId() > $b->getId()) ? -1 : 1;
+            }
+
+            return ($a->getDate() > $b->getDate()) ? -1 : 1;
+        });
+
+        return $news;
+    }
+
 //  Поиск всех новостей
     public function findAll(){
-        return $this->findBy(array(), array('date' => 'DESC'));
+        return $this->sort($this->createQueryBuilder('n')
+            ->orderBy('n.date', 'desc')
+            ->orderBy('n.id', 'desc')
+            ->getQuery()
+            ->getResult());
     }
 
 //  Поиск всех новостей + разбивание по типам
@@ -42,20 +59,36 @@ class NewsRepository extends EntityRepository
 
         switch($type){
             case 'events': {
-                $news = $this->findBy(array('type' => 0), array('date' => 'DESC'));
+                $news = $this->createQueryBuilder('n')
+                    ->where('n.type = :type')
+                    ->setParameter('type', 0)
+                    ->getQuery()
+                    ->getResult();
             }break;
             case 'interviews': {
-                $news = $this->findBy(array('type' => 1), array('date' => 'DESC'));
+                $news = $this->createQueryBuilder('n')
+                    ->where('n.type = :type')
+                    ->setParameter('type', 1)
+                    ->getQuery()
+                    ->getResult();
             }break;
             case 'opinion': {
-                $news = $this->findBy(array('type' => 2), array('date' => 'DESC'));
+                $news = $this->createQueryBuilder('n')
+                    ->where('n.type = :type')
+                    ->setParameter('type', 2)
+                    ->getQuery()
+                    ->getResult();
             }break;
             default: {
-                $news = $this->findBy(array('type' => 0), array('date' => 'DESC'));
+                $news = $this->createQueryBuilder('n')
+                    ->where('n.type = :type')
+                    ->setParameter('type', 0)
+                    ->getQuery()
+                    ->getResult();;
             }break;
         }
 
-        return $news;
+        return $this->sort($news);
 
     }
 
@@ -88,7 +121,7 @@ class NewsRepository extends EntityRepository
             case 'ligha-ievropy': {
                 $typeNumber = Event::NAME_EUROPA_LEAGUE;
             }break;
-            case 'molodiozhnoie-piervienstvo': {
+            case 'dubliruiushchii-sostav-1': {
                 $typeNumber = Event::NAME_YOUTH_CHAMPIONSHIP;
             }break;
             default: {

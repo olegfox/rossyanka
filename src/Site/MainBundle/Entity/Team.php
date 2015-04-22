@@ -109,6 +109,18 @@ class Team
     private $pointsM = 0;
 
     /**
+     * Позиция в турнирной таблице (чемпионат)
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position = 0;
+
+    /**
+     * Позиция в турнирной таблице (молодежка)
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $positionM = 0;
+
+    /**
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(length=128)
      */
@@ -662,5 +674,51 @@ class Team
     public function getPointsM()
     {
         return $this->pointsM;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Team
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set positionM
+     *
+     * @param integer $positionM
+     * @return Team
+     */
+    public function setPositionM($positionM)
+    {
+        $this->positionM = $positionM;
+
+        return $this;
+    }
+
+    /**
+     * Get positionM
+     *
+     * @return integer 
+     */
+    public function getPositionM()
+    {
+        return $this->positionM;
     }
 }

@@ -147,12 +147,6 @@ class Event
     private $final;
 
     /**
-     * Место отображения (только в кубке или везде)
-     * @ORM\Column(type="smallint", nullable=false)
-     */
-    private $visible = 0;
-
-    /**
      * Get id
      *
      * @return integer 
@@ -198,7 +192,7 @@ class Event
                 return 'ligha-ievropy';
             }break;
             case 3: {
-                return 'molodiozhnoie-piervienstvo';
+                return 'dubliruiushchii-sostav-1';
             }break;
             default: {
                 return 'chiempionat';
@@ -672,11 +666,28 @@ class Event
             'right' => array()
         );
 
+        $playerTeamArray = array();
+        $i = 0;
+
         foreach($this->playerTeam as $playerTeam){
-            if($playerTeam->getType() == false){
-                $playerTeams['left'][] = $playerTeam;
+            $playerTeamArray[$i]['amplua'] = $playerTeam->getPlayer()->getAmplua()->getId();
+            $playerTeamArray[$i]['playerTeam'] = $playerTeam;
+            $i++;
+        }
+
+//      Упорядочивание по амплуа
+        uasort($playerTeamArray, function($a, $b){
+            if ($a['amplua'] == $b['amplua']) {
+                return 0;
+            }
+            return ($a['amplua'] < $b['amplua']) ? -1 : 1;
+        });
+
+        foreach($playerTeamArray as $playerTeam){
+            if($playerTeam['playerTeam']->getType() == false){
+                $playerTeams['left'][] = $playerTeam['playerTeam'];
             }else{
-                $playerTeams['right'][] = $playerTeam;
+                $playerTeams['right'][] = $playerTeam['playerTeam'];
             }
         }
 
@@ -780,6 +791,32 @@ class Event
     public function getFinal()
     {
         return $this->final;
+    }
+
+    public function getFinalText()
+    {
+        switch($this->final){
+            case Event::FINAL_1:{
+                $text = 'финал';
+            }break;
+            case Event::FINAL_1_2:{
+                $text = '1/2 финала';
+            }break;
+            case Event::FINAL_1_4:{
+                $text = '1/4 финала';
+            }break;
+            case Event::FINAL_1_8:{
+                $text = '1/8 финала';
+            }break;
+            case Event::FINAL_1_16:{
+                $text = '1/16 финала';
+            }break;
+            default: {
+                $text = 'финал';
+            }break;
+        }
+
+        return $text;
     }
 
     /**
