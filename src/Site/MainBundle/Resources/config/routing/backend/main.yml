@@ -57,3 +57,7 @@ SitePollBundle_backend:
 backend_cuboc:
     resource: "@SiteMainBundle/Resources/config/routing/backend/cuboc.yml"
     prefix: /cuboc
+
+backend_video_main:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/videomain.yml"
+    prefix: /videomain

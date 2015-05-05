@@ -1,0 +1,47 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.videomain.h1_show'|trans({}, 'menu') }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.videomain.title'|trans({}, 'menu') }}</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.videomain.preview'|trans({}, 'menu') }}</th>
+            <td><a href="{{ asset(entity.link) }}" target="_blank"><img src="{{ image(entity.previewImageUrl).resize(150) }}" alt="{{ entity.title }}" width="150px"/></a></td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.videomain.preview_img'|trans({}, 'menu') }}</th>
+            <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ entity.title }}" width="150px"/></a></td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.videomain.main.label'|trans({}, 'menu') }}</th>
+            <td>{{ entity.main ? 'backend.videomain.main.no'|trans({}, 'menu') : 'backend.videomain.main.yes'|trans({}, 'menu') }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_videomain_index') }}">
+                {{ 'backend.videomain.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_videomain_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_videomain_new') }}">
+                {{ 'backend.create'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+

@@ -156,3 +156,9 @@ Site\MainBundle\Entity\GoalEvent:
         score:
             - NotBlank:
                 message: "backend.goal_event.validation.score"
+
+Site\MainBundle\Entity\VideoMain:
+    properties:
+        link:
+            - NotBlank:
+                message: "backend.videomain.validation.link"

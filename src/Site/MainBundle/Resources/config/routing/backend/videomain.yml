@@ -1,0 +1,30 @@
+backend_videomain_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/VideoMain:index" }
+
+backend_videomain_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/VideoMain:show" }
+
+backend_videomain_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/VideoMain:new" }
+
+backend_videomain_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/VideoMain:create" }
+    methods:  POST
+
+backend_videomain_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/VideoMain:edit" }
+
+backend_videomain_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/VideoMain:update" }
+    methods:  [POST, PUT]
+
+backend_videomain_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/VideoMain:delete" }
+    methods:  [POST, DELETE]

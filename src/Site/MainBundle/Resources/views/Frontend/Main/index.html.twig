@@ -257,10 +257,12 @@
     <div class="clear"></div>
     </div>
     </div>
-    <div class="main-moment">
-        <div class="main-moment-title">ФК Россиянка ФК Кубаночка Обзор матча</div>
-        <iframe width="595" height="355" src="https://www.youtube.com/embed/wdITYMUD4H4" frameborder="0" allowfullscreen></iframe>
-    </div>
+    {% if videoMain %}
+        <div class="main-moment" {% if videoMain.preview|length > 0 %}style="background: url({{ asset(videoMain.webPath) }}) top center no-repeat!important; background-size: cover;"{% endif %}>
+            <div class="main-moment-title">{{ videoMain.title }}</div>
+            {{ videoMain.html|raw }}
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

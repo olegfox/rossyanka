@@ -1,0 +1,52 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.videomain.h1_list'|trans({}, 'menu') }}</h1>
+
+    {% if entities|length > 0 %}
+        <table class="records_list table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>{{ 'backend.videomain.title'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.videomain.preview'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.videomain.preview_img'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.videomain.main.label'|trans({}, 'menu') }}</th>
+                <th>{{ 'backend.actions'|trans({}, 'menu') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('backend_videomain_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
+                    <td><a href="{{ asset(entity.link) }}" target="_blank"><img src="{{ image(entity.previewImageUrl).resize(150) }}" alt="{{ entity.title }}" width="150px"/></a></td>
+                    <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ entity.title }}" width="150px"/></a></td>
+                    <td>{{ entity.main ? 'backend.videomain.main.no'|trans({}, 'menu') : 'backend.videomain.main.yes'|trans({}, 'menu') }}</td>
+                    <td>
+                        <ul class="nav nav-pills">
+                            <li>
+                                <a href="{{ path('backend_videomain_show', { 'id': entity.id }) }}">{{ 'backend.show'|trans({}, 'menu') }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('backend_videomain_edit', { 'id': entity.id }) }}">{{ 'backend.edit'|trans({}, 'menu') }}</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ knp_pagination_render(entities) }}
+    {% else %}
+        <div class="alert alert-warning">
+            {{ 'backend.videomain.empty_list'|trans({}, 'menu') }}
+        </div>
+    {% endif %}
+
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="{{ path('backend_videomain_new') }}">
+                {{ 'backend.create'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

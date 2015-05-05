@@ -6,7 +6,7 @@ class VideoParser {
 
     static $defaultVideo;
 
-    private static function getYoutubeVideo($url) {
+    private static function getYoutubeVideo($url, $width, $height, $autoplay) {
         $url = "http://www.youtube.com/oembed?url=" . urlencode($url) . "&format=json";
 //        $r = file_get_contents($url);
         $ch = curl_init();
@@ -18,16 +18,16 @@ class VideoParser {
         $video = json_decode($r);
 
         if (isset($video->title)) {
-            $video->html = preg_replace('/height="\d+/', 'height="439', $video->html);
-            $video->html = preg_replace('/width=\"\d+/', 'width="720', $video->html);
-            $video->html = str_replace("feature=oembed", "feature=oembed&autoplay=1", $video->html);
+            $video->html = preg_replace('/height="\d+/', 'height="' . $height, $video->html);
+            $video->html = preg_replace('/width=\"\d+/', 'width="' . $width, $video->html);
+            $video->html = str_replace("feature=oembed", "feature=oembed&autoplay=" . $autoplay, $video->html);
             return $video;
         } else {
             return false;
         }
     }
 
-    private static function getVimeoVideo($url) {
+    private static function getVimeoVideo($url, $width, $height, $autoplay) {
         $url = "http://vimeo.com/api/oembed.json?url=" . urlencode($url) . "&width=720&height=439";
 //        $r = file_get_contents($url);
         $ch = curl_init();
@@ -40,16 +40,16 @@ class VideoParser {
         $video = json_decode($r);
 
         if (isset($video->title)) {
-            $video->html = preg_replace('/height="\d+/', 'height="439', $video->html);
-            $video->html = preg_replace('/width=\"\d+/', 'width="720', $video->html);
-            $video->html = str_replace("feature=oembed", "feature=oembed&autoplay=1", $video->html);
+            $video->html = preg_replace('/height="\d+/', 'height="' . $height, $video->html);
+            $video->html = preg_replace('/width=\"\d+/', 'width="' . $width, $video->html);
+            $video->html = str_replace("feature=oembed", "feature=oembed&autoplay=" . $autoplay, $video->html);
             return $video;
         } else {
             return false;
         }
     }
 
-    public static function getVideo($url) {
+    public static function getVideo($url, $width = 720, $height = 439, $autoplay = 1) {
         $video = array(
             "html" => "<a href=\".htmlspecialchars($url).\">" . $url . "</a>", // Значение по умолчанию, в случае если сервис не определен
             "title" => ""
@@ -58,11 +58,11 @@ class VideoParser {
         self::$defaultVideo = $video;
 
         if (strpos($url, "youtube.com") !== false) {
-            $video = self::getYoutubeVideo($url);
+            $video = self::getYoutubeVideo($url, $width, $height, $autoplay);
         }
 
         if (strpos($url, "vimeo.com") !== false) {
-            $video = self::getVimeoVideo($url);
+            $video = self::getVimeoVideo($url, $width, $height, $autoplay);
         }
 
         return $video;

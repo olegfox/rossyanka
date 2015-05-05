@@ -25,6 +25,7 @@ class BackendMenuBuilder extends ContainerAware
         $menu->addChild('Instagram', array('route' => 'backend_instagram_index'));
         $menu->addChild('Опросы', array('route' => 'PrismPollBundle_backend_poll_list'));
         $menu->addChild('Кубки', array('route' => 'backend_cuboc_index'));
+        $menu->addChild('Видео на главной', array('route' => 'backend_videomain_index'));
 
         $menu->setCurrent($this->container->get('request')->getRequestUri());
 

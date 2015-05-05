@@ -28,3 +28,8 @@ backend_player_delete:
     path:     /{id}/delete
     defaults: { _controller: "SiteMainBundle:Backend/Player:delete" }
     methods:  [POST, DELETE]
+
+backend_player_for_team:
+    path:     /team/{teamId}
+    defaults: { _controller: "SiteMainBundle:Backend/Player:getForTeam" }
+    methods:  [POST]

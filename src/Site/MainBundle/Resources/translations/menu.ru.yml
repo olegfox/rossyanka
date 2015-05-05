@@ -352,6 +352,24 @@ backend:
         img: Изображение кубка
         text: Текст при наведении на кубок
         not_found: Кубка не существует
+    videomain:
+        h1_show: Видео на главной
+        h1_list: Список видео
+        h1_edit: Редактирование видео
+        h1_create: Добавление видео
+        back_to_list: Назад к списку видео
+        empty_list: Нет видео
+        title: Заголовок
+        link: Ссылка на видео (Youtube, Vimeo)
+        preview: Превью видео
+        preview_img: Фоновое изображение
+        main:
+            label: Показать на главной?
+            yes: Да
+            no: Нет
+        not_found: Видео не существует
+        validation:
+            link: Введите ссылку на видео
     actions: Действия
     show: показать
     edit: редактировать

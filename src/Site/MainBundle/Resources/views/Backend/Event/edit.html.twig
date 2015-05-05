@@ -15,3 +15,8 @@
         </li>
     </ul>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/backend/js/teamPlayer.js') }}"></script>
+{% endblock %}

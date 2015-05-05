@@ -3,6 +3,7 @@
 namespace Site\MainBundle\Controller\Backend;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Site\MainBundle\Entity\Player;
@@ -233,5 +234,28 @@ class PlayerController extends Controller
             ))
             ->getForm()
         ;
+    }
+
+    /**
+     * Получение списка игроков для определённой команды
+     *
+     * @param $teamId
+     */
+    public function getForTeamAction($teamId){
+        $em = $this->getDoctrine()->getManager();
+        $team = $em->getRepository('SiteMainBundle:Team')->find($teamId);
+
+        if($team){
+            $players = $team->getPlayers();
+
+            $playersArray = array();
+            foreach($players as $player){
+                $playersArray[$player->getId()] = $player->fullName();
+            }
+
+            return new Response(json_encode($playersArray), 200);
+        }
+
+        return new Response('', 200);
     }
 }

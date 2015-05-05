@@ -15,6 +15,7 @@ class MainController extends Controller
         $repository_team = $this->getDoctrine()->getRepository('SiteMainBundle:Team');
         $repository_instagram = $this->getDoctrine()->getRepository('SiteMainBundle:Instagram');
         $repository_cuboc = $this->getDoctrine()->getRepository('SiteMainBundle:Cuboc');
+        $repository_video_main = $this->getDoctrine()->getRepository('SiteMainBundle:VideoMain');
 
         $page = $repository_page->findOneBySlug('glavnaia');
         $news = $repository_news->findAllForType();
@@ -27,6 +28,7 @@ class MainController extends Controller
         $teamsMolodioz = $repository_team->findByEventType('dubliruiushchii-sostav-1');
         $instagram = $repository_instagram->findAllColumn();
         $cuboc = $repository_cuboc->findAll();
+        $videoMain = $repository_video_main->findFirstVideo();
 
         return $this->render('SiteMainBundle:Frontend/Main:index.html.twig', array(
             'news' => $news,
@@ -39,7 +41,8 @@ class MainController extends Controller
             'teamsChiemp' => $teamsChiemp,
             'teamsMolodioz' => $teamsMolodioz,
             'instagram' => $instagram,
-            'cuboc' => $cuboc
+            'cuboc' => $cuboc,
+            'videoMain' => $videoMain
         ));
     }
 }
