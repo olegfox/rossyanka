@@ -17,7 +17,7 @@
             {% for entity in entities %}
                 <tr>
                     <td><a href="{{ path('backend_news_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-                    <td>{{ entity.date|date('d.m.Y') }}</td>
+                    <td>{{ entity.date|date('d.m.Y H:i') }}</td>
                     <td>{{ entity.getTypeText()|trans({}, 'menu') }}</td>
                     <td>
                         <ul class="nav nav-pills">

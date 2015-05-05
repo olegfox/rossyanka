@@ -37,7 +37,7 @@ class News
     private $slug;
 
     /**
-     * @ORM\Column(type="date", nullable=false)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     private $date;
 
@@ -219,29 +219,6 @@ class News
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return News
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
     }
 
     /**
@@ -462,5 +439,28 @@ class News
     public function getTypeEvent()
     {
         return $this->typeEvent;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return News
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

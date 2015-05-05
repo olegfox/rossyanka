@@ -16,11 +16,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class News
 {
 
-    const EVENT_CHAMPIONSHIP = 0;
-    const EVENT_CUP = 1;
-    const EVENT_EUROPA_LEAGUE = 2;
-    const EVENT_YOUTH_CHAMPIONSHIP = 3;
-
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -42,7 +37,7 @@ class News
     private $slug;
 
     /**
-     * @ORM\Column(type="date", nullable=false)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     private $date;
 
@@ -224,29 +219,6 @@ class News
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return News
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
     }
 
     /**
@@ -444,5 +416,28 @@ class News
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set typeEvent
+     *
+     * @param integer $typeEvent
+     * @return News
+     */
+    public function setTypeEvent($typeEvent)
+    {
+        $this->typeEvent = $typeEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get typeEvent
+     *
+     * @return integer 
+     */
+    public function getTypeEvent()
+    {
+        return $this->typeEvent;
     }
 }

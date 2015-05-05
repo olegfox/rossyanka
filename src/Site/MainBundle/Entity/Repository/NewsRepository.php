@@ -8,26 +8,12 @@ use Site\MainBundle\Entity\Event;
 class NewsRepository extends EntityRepository
 {
 
-//  Упорядочивание новостей
-    protected function sort($news){
-        usort($news, function($a, $b){
-            if($a->getDate() == $b->getDate()){
-                return ($a->getId() > $b->getId()) ? -1 : 1;
-            }
-
-            return ($a->getDate() > $b->getDate()) ? -1 : 1;
-        });
-
-        return $news;
-    }
-
 //  Поиск всех новостей
     public function findAll(){
-        return $this->sort($this->createQueryBuilder('n')
+        return $this->createQueryBuilder('n')
             ->orderBy('n.date', 'desc')
-            ->orderBy('n.id', 'desc')
             ->getQuery()
-            ->getResult());
+            ->getResult();
     }
 
 //  Поиск всех новостей + разбивание по типам
@@ -61,6 +47,7 @@ class NewsRepository extends EntityRepository
             case 'events': {
                 $news = $this->createQueryBuilder('n')
                     ->where('n.type = :type')
+                    ->orderBy('n.date', 'desc')
                     ->setParameter('type', 0)
                     ->getQuery()
                     ->getResult();
@@ -68,6 +55,7 @@ class NewsRepository extends EntityRepository
             case 'interviews': {
                 $news = $this->createQueryBuilder('n')
                     ->where('n.type = :type')
+                    ->orderBy('n.date', 'desc')
                     ->setParameter('type', 1)
                     ->getQuery()
                     ->getResult();
@@ -75,6 +63,7 @@ class NewsRepository extends EntityRepository
             case 'opinion': {
                 $news = $this->createQueryBuilder('n')
                     ->where('n.type = :type')
+                    ->orderBy('n.date', 'desc')
                     ->setParameter('type', 2)
                     ->getQuery()
                     ->getResult();
@@ -82,13 +71,14 @@ class NewsRepository extends EntityRepository
             default: {
                 $news = $this->createQueryBuilder('n')
                     ->where('n.type = :type')
+                    ->orderBy('n.date', 'desc')
                     ->setParameter('type', 0)
                     ->getQuery()
                     ->getResult();;
             }break;
         }
 
-        return $this->sort($news);
+        return $news;
 
     }
 
