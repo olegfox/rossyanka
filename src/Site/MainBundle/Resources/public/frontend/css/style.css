@@ -1254,6 +1254,10 @@ img, a {
     border-radius: 100%;
 }
 
+#daily-events-calendar > div.active2{
+    background: #e47a00;
+}
+
 #daily-events-calendar div:hover a,
 #daily-events-calendar div.active a{
     color: #fff;

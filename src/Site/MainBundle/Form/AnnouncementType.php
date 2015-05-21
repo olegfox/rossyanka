@@ -23,6 +23,15 @@ class AnnouncementType extends AbstractType
                 'required' => true,
                 'label' => 'backend.announcement.date'
             ))
+            ->add('birthDay', 'choice', array(
+                'required' => true,
+                'label' => 'backend.announcement.birthDay.label',
+                'choices' => array(
+                    false => 'backend.announcement.birthDay.no',
+                    true => 'backend.announcement.birthDay.yes'
+                ),
+                'translation_domain' => 'menu'
+            ))
             ->add('metaTitle', 'text', array(
                 'required' => false,
                 'label' => 'backend.announcement.metatitle'

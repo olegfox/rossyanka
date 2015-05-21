@@ -88,6 +88,10 @@ backend:
         metatitle: Мета-заголовок
         metadescription: Мета-описание
         metakeywords: Ключевые слова
+        birthDay:
+          label: День рождения
+          no: Нет
+          yes: Да
         date: Дата
         img: Изображение анонса
         description: Превью анонса

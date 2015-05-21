@@ -268,6 +268,9 @@ class EventRepository extends EntityRepository
             foreach ($announcements as $announcement) {
                 if ($calendar[$i]['date']->format('Y-m-d') == $announcement->getDate()->format('Y-m-d')) {
                     $calendar[$i]['events'][] = $announcement;
+                    if($announcement->getBirthDay()){
+                        $calendar[$i]['events']['birthDay'] = 1;
+                    }
                 }
             }
             $date = date('Y-m-d', strtotime($date . ' + 1 days'));

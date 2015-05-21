@@ -378,27 +378,4 @@ class Announcement
     {
         return $this->description;
     }
-
-    /**
-     * Set birthDay
-     *
-     * @param boolean $birthDay
-     * @return Announcement
-     */
-    public function setBirthDay($birthDay)
-    {
-        $this->birthDay = $birthDay;
-
-        return $this;
-    }
-
-    /**
-     * Get birthDay
-     *
-     * @return boolean 
-     */
-    public function getBirthDay()
-    {
-        return $this->birthDay;
-    }
 }

@@ -86,8 +86,6 @@ class Page
      */
     private $position = 0;
 
-
-
     /**
      * Get id
      *
