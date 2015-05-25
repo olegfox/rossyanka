@@ -1250,12 +1250,16 @@ img, a {
 }
 
 #daily-events-calendar > div.active{
-    background: #e46464;
+    background: #39548a;
     border-radius: 100%;
 }
 
 #daily-events-calendar > div.active2{
-    background: #e47a00;
+    background: #e46464;
+}
+
+#daily-events-calendar > div.active3{
+    background: #97a871;
 }
 
 #daily-events-calendar div:hover a,
@@ -1302,7 +1306,8 @@ img, a {
     border-bottom: solid 2px #707070;
 }
 
-#daily-events-calendar .list-events ul li.last{
+#daily-events-calendar .list-events ul li.last,
+#daily-events-calendar .list-events ul li:last-child{
     border: 0px;
 }
 #daily-events-calendar .list-events ul li.item-event{
@@ -1449,6 +1454,10 @@ img, a {
     text-transform: uppercase;
     padding: 9px;
     background: #e46464;
+}
+
+.the-end-title2{
+    background: #97a871;
 }
 
 .the-end-date {

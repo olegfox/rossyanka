@@ -36,7 +36,7 @@
                 <div class="the-end-main">
                     {% if firstFutureEvent[0].id is defined %}
                         <div class="the-end">
-                            <div class="the-end-title">предстоящий матч {% if firstFutureEvent[0].name == 1 %}(К){% endif %}{% if firstFutureEvent[0].name == 3 %}(Д){% endif %}</div>
+                            <div class="the-end-title{% if firstFutureEvent[0].name == 3 %} the-end-title2{% endif %}">предстоящий матч {% if firstFutureEvent[0].name == 1 %}(К){% endif %}{% if firstFutureEvent[0].name == 3 %}(Д){% endif %}</div>
                             <div class="the-end-date">{{ firstFutureEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} {% if firstFutureEvent[0].datetime|date('H') != '00' or firstFutureEvent[0].datetime|date('i') != '00' %}в {{ firstFutureEvent[0].datetime|date('H:i') }}{% endif %}</div>
                             <div class="the-end-last-block">
                                 {% if firstFutureEvent[0].eventTeam[0].team.id is defined %}
@@ -60,7 +60,7 @@
                     {% if lastPastEvent[0].id is defined %}
                         <div class="the-end">
                             <a href="{{ path('frontend_event_game_index', {type: lastPastEvent[0].slug, id: lastPastEvent[0].id}) }}"></a>
-                            <div class="the-end-title">прошедший матч {% if lastPastEvent[0].name == 1 %}(К){% endif %}{% if lastPastEvent[0].name == 3 %}(Д){% endif %}</div>
+                            <div class="the-end-title{% if lastPastEvent[0].name == 3 %} the-end-title2{% endif %}">прошедший матч {% if lastPastEvent[0].name == 1 %}(К){% endif %}{% if lastPastEvent[0].name == 3 %}(Д){% endif %}</div>
                             <div class="the-end-date">{{ lastPastEvent[0].datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} {% if lastPastEvent[0].datetime|date('H') != '00' or lastPastEvent[0].datetime|date('i') != '00' %}в {{ lastPastEvent[0].datetime|date('H:i') }}{% endif %}</div>
                             <div class="the-end-last-block">
                                 {% if lastPastEvent[0].eventTeam[0].team.id is defined %}

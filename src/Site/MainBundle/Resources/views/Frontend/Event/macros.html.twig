@@ -160,30 +160,28 @@
         <div class="right-block-title">календарь предстоящих событий</div>
         <div id="daily-events-calendar">
             {% for c in calendar %}
-                <div class="day day{{ loop.index }}{% if c['events'] is defined %}{% if c['events']|length > 0 %} active{% endif %}{% if c['events']['birthDay'] is defined %} active2{% endif %}{% endif %}">
+                <div class="day day{{ loop.index }}{% if c['events'] is defined %}{% if c['events']|length > 0 %} active{% endif %}{% if c['events']['birthDay'] is defined %} active2{% endif %}{% if c['events']['double'] is defined %} active3{% endif %}{% endif %}">
                     {% if c['events'] is defined %}{% if c['events']|length > 0 %}<a href="{{ path('frontend_announcement_index', {date: c['date']|date('d-m-Y')}) }}">{% endif %}{% endif %}{{ c['date']|date('j') }}{% if c['events'] is defined %}{% if c['events']|length > 0 %}</a>{% endif %}{% endif %}
                     {% if c['events'] is defined %}
                         {% if c['events']|length > 0 %}
                             <div class="wrap-list-events">
                                 <div class="list-events">
                                     <ul>
-                                        {% for key, event in c['events'] %}
-                                            {% if key != 'birthDay' %}
-                                                {# Если это матч #}
-                                                {% if event.datetime is defined %}
-                                                    <li class="no-wrap item-anons{% if loop.last %} last{% endif %}">
-                                                        {#<a href="{{ path('frontend_announcement_one', {date: event.datetime|date('d-m-Y'), slug: event.slug}) }}"></a>#}
-                                                        <div class="datetime">{{ event.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} {% if event.datetime|date('H') != '00' or event.datetime|date('i') != '00' %}в {{ event.datetime|date('H:i') }}{% endif %}</div>
-                                                        <div class="name">{{ event.getEventTeamString() }}{% if event.name == 3 %} (Д){% endif %}</div>
-                                                    </li>
-                                                    {# Если это анонс #}
-                                                {% else %}
-                                                    <li class="item-anons{% if loop.last %} last{% endif %}">
-                                                        <a href="{{ path('frontend_announcement_one', {date: event.date|date('d-m-Y'), slug: event.slug}) }}"></a>
-                                                            <div class="datetime">{{ event.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
-                                                            <div class="name">{{ event.title }}</div>
-                                                    </li>
-                                                {% endif %}
+                                        {% for event in c['events'] %}
+                                            {# Если это матч #}
+                                            {% if event.datetime is defined %}
+                                                <li class="no-wrap item-anons{% if loop.last %} last{% endif %}">
+                                                    {#<a href="{{ path('frontend_announcement_one', {date: event.datetime|date('d-m-Y'), slug: event.slug}) }}"></a>#}
+                                                    <div class="datetime">{{ event.datetime|localizeddate('long', 'none', null, null, 'd MMMM Y') }} {% if event.datetime|date('H') != '00' or event.datetime|date('i') != '00' %}в {{ event.datetime|date('H:i') }}{% endif %}</div>
+                                                    <div class="name">{{ event.getEventTeamString() }}{% if event.name == 3 %} (Д){% endif %}</div>
+                                                </li>
+                                                {# Если это анонс #}
+                                            {% elseif event.date is defined %}
+                                                <li class="item-anons{% if loop.last %} last{% endif %}">
+                                                    <a href="{{ path('frontend_announcement_one', {date: event.date|date('d-m-Y'), slug: event.slug}) }}"></a>
+                                                        <div class="datetime">{{ event.date|localizeddate('long', 'none', null, null, 'd MMMM Y') }}</div>
+                                                        <div class="name">{{ event.title }}</div>
+                                                </li>
                                             {% endif %}
                                         {% endfor %}
                                     </ul>
