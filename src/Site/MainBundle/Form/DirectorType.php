@@ -21,7 +21,8 @@ class DirectorType extends AbstractType
                 'choices' => array(
                     0 => 'backend.director.type.type_1',
                     1 => 'backend.director.type.type_2',
-                    2 => 'backend.director.type.type_3'
+                    2 => 'backend.director.type.type_3',
+                    3 => 'backend.director.type.type_4'
                 ),
                 'translation_domain' => 'menu'
             ))

@@ -188,6 +188,7 @@ class EventRepository extends EntityRepository
             LEFT JOIN et.team t
             WHERE e.datetime <= :now
             AND t.name LIKE :teamName
+            AND e.name != 3
             ORDER BY e.datetime DESC
         ')
             ->setParameters(array(
@@ -210,6 +211,7 @@ class EventRepository extends EntityRepository
             LEFT JOIN et.team t
             WHERE e.datetime > :now
             AND t.name LIKE :teamName
+            AND e.name != 3
             ORDER BY e.datetime ASC
         ')
             ->setParameters(array(

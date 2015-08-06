@@ -39,6 +39,7 @@ class MediaController extends Controller
             'entities' => $pagination,
         ));
     }
+
     /**
      * Creates a new Media entity.
      *

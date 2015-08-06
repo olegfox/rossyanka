@@ -355,6 +355,8 @@ input:focus {
     background: #fff;
     padding-top: 0.7em;
     padding-bottom: 0.7em;
+    padding-left: 28px;
+    padding-right: 28px;
 }
 
 .content-top {
@@ -1457,6 +1459,8 @@ img, a {
 }
 
 .the-end-title2{
+    border: #fff solid 1px;
+    border-bottom: 0px;
     background: #97a871;
 }
 
@@ -2301,6 +2305,7 @@ img, a {
     border: 0px;
     padding: 0px;
 }
+
 .poll #polls_list .content input[type="submit"]{
     background: #e46464;
     border: 0px;
