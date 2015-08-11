@@ -17,7 +17,7 @@ class FrontendMenuBuilder extends ContainerAware
 
         $repository = $em->getRepository('SiteMainBundle:Page');
 
-        $menus = $repository->findBy(array('parent' => null), array('position' => 'asc'));
+        $menus = $repository->findBy(array('parent' => null, 'hide' => false), array('position' => 'asc'));
 
         $menu = $factory->createItem('root');
 

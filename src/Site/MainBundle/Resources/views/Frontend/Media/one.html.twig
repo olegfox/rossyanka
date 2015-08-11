@@ -38,6 +38,13 @@
                 $(e).unbind('click').click(function () {
                     Code.photoSwipe('a', this);
                     Code.PhotoSwipe.Current.show(0);
+                    setTimeout(function(){
+                        $(".ps-slider-item").click(function(){
+                            console.log('click');
+                            $(".ps-toolbar-next .ps-toolbar-content").click();
+                        });
+                    }, 1000);
+
                     return false;
                 });
             });

@@ -117,10 +117,6 @@
             </div>
         </div>
     <div class="content-right-block">
-        <div class="right-block">
-            {{ calendarCircle(calendarEvent) }}
-            <a href="{{ path('frontend_event_sub_index', {type: 'chiempionat', subtype: 'kaliendar-ighr'}) }}" class="full-view">Календарь игр</a>
-        </div>
         <div class="right-block kybki">
             <div class="right-block-title">награды и кубки</div>
             <div class="kybki">
@@ -137,6 +133,10 @@
                     </div>
                     </div>{% endfor %}
             </div>
+        </div>
+        <div class="right-block">
+            {{ calendarCircle(calendarEvent) }}
+            <a href="{{ path('frontend_event_sub_index', {type: 'chiempionat', subtype: 'kaliendar-ighr'}) }}" class="full-view">Полный календарь игр</a>
         </div>
         {#<div class="right-block">#}
             {#<div id="tabs2" class="main-tab main-tab2">#}
@@ -259,7 +259,7 @@
     </div>
     </div>
     {% if videoMain %}
-        <div class="main-moment" {% if videoMain.preview|length > 0 %}style="background: url({{ asset(videoMain.webPath) }}) top center no-repeat!important; background-size: cover;"{% endif %}>
+        <div class="main-moment" {% if videoMain.preview|length > 0 %}style="background: url({{ asset(videoMain.webPath) }}) top center no-repeat; background-size: cover;"{% endif %}>
             <div class="main-moment-title">{{ videoMain.title }}</div>
             {{ videoMain.html|raw }}
         </div>

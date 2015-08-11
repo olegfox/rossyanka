@@ -50,6 +50,14 @@ class PageType extends AbstractType
                     "class" => "ckeditor"
                 )
             ))
+            ->add('hide', 'choice', array(
+                'required' => true,
+                'label' => 'backend.page.hide',
+                'choices' => array(
+                    false => 'Нет',
+                    true => 'Да'
+                )
+            ))
         ;
     }
     

@@ -9,7 +9,7 @@
 
 {% block content %}
     <div class="wrap_content">
-        <div class="content {% if page.parent.id is defined %}content-top{% endif %}">
+        <div class="content content-page {% if page.parent.id is defined %}content-top{% endif %}">
             {% if players is defined %}
                 {{  listPlayers(players) }}
             {% endif %}

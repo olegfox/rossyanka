@@ -355,12 +355,14 @@ input:focus {
     background: #fff;
     padding-top: 0.7em;
     padding-bottom: 0.7em;
-    padding-left: 28px;
-    padding-right: 28px;
 }
 
 .content-top {
     padding-top: 72px;
+}
+
+.content-page{
+    width: 1126px;
 }
 
 .content-top-event {
@@ -664,6 +666,7 @@ ul li:focus, ul li a:focus {
     font-size: 16px;
     font-weight: 400;
     text-transform: uppercase;
+    text-align: center;
     color: #fff;
     padding: 0px 10px;
     margin: 0px -18px 10px -17px;
@@ -745,7 +748,7 @@ ul li:focus, ul li a:focus {
 .chempionat {
     overflow: hidden;
 }
-.chempionat .full-view{
+.full-view{
     font-family: "Arial";
     background: #e46464;
     border: 0px;

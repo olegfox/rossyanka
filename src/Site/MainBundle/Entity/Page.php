@@ -87,6 +87,13 @@ class Page
     private $position = 0;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="birthDay", type="boolean", nullable=true)
+     */
+    private $hide = false;
+
+    /**
      * Get id
      *
      * @return integer 
