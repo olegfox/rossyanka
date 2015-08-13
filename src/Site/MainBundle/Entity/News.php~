@@ -87,6 +87,13 @@ class News
     private $text;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="main_text", type="text", nullable=true)
+     */
+    private $mainText;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $img;
@@ -95,6 +102,11 @@ class News
      * @Assert\File()
      */
     private $file;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MediaPhoto", mappedBy="news", cascade={"persist", "remove"})
+     **/
+    private $photos;
 
     public function getAbsolutePath()
     {
@@ -439,5 +451,28 @@ class News
     public function getTypeEvent()
     {
         return $this->typeEvent;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return News
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

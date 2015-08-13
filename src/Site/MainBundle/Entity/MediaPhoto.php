@@ -34,6 +34,11 @@ class MediaPhoto
      **/
     private $media;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="News", inversedBy="photos")
+     * @ORM\JoinColumn(name="news_id", referencedColumnName="id")
+     **/
+    private $news;
 
     /**
      * Get id
@@ -99,5 +104,28 @@ class MediaPhoto
         if(file_exists($this->getLink())){
             unlink($this->getLink());
         }
+    }
+
+    /**
+     * Set news
+     *
+     * @param \Site\MainBundle\Entity\News $news
+     * @return MediaPhoto
+     */
+    public function setNews(\Site\MainBundle\Entity\News $news = null)
+    {
+        $this->news = $news;
+
+        return $this;
+    }
+
+    /**
+     * Get news
+     *
+     * @return \Site\MainBundle\Entity\News 
+     */
+    public function getNews()
+    {
+        return $this->news;
     }
 }

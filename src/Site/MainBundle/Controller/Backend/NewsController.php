@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Site\MainBundle\Entity\News;
 use Site\MainBundle\Form\NewsType;
+use Site\MainBundle\Entity\MediaPhoto;
 
 /**
  * News controller.
@@ -48,6 +49,22 @@ class NewsController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+//          Добавляем фотки в фотогалерею
+            $imagesJson = $request->get('gallery');
+            if ($imagesJson) {
+
+                $images = json_decode($imagesJson);
+
+                foreach ($images as $image) {
+                    $mediaPhoto = new MediaPhoto();
+                    $mediaPhoto->setLink("uploads/media/" . $image);
+                    $mediaPhoto->setNews($entity);
+                    $em->persist($mediaPhoto);
+                }
+
+            }
+
             $em->persist($entity);
             $em->flush();
 
@@ -177,6 +194,36 @@ class NewsController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+//          Добавляем фотки в фотогалерею
+            $imagesJson = $request->get('gallery');
+            if ($imagesJson) {
+
+                $images = json_decode($imagesJson);
+
+                foreach ($images as $image) {
+                    $mediaPhoto = new MediaPhoto();
+                    $mediaPhoto->setLink("uploads/media/" . $image);
+                    $mediaPhoto->setNews($entity);
+                    $em->persist($mediaPhoto);
+                }
+
+            }
+
+//          Удаляем фотки из галареи, отмеченные на удаление
+            $photos = $request->get('photos');
+
+            if(is_array($photos)){
+                foreach($photos as $photo){
+                    $repository_media_photo = $this->getDoctrine()->getRepository('SiteMainBundle:MediaPhoto');
+                    $photoObject = $repository_media_photo->find($photo);
+
+                    if($photoObject){
+                        unlink($photoObject->getLink());
+                        $em->remove($photoObject);
+                    }
+                }
+            }
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('backend_news_edit', array('id' => $id)));
@@ -204,6 +251,8 @@ class NewsController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException($this->get('translator')->trans('backend.news.not_found'));
             }
+
+            $entity->deleteAllPhotos();
 
             $em->remove($entity);
             $em->flush();

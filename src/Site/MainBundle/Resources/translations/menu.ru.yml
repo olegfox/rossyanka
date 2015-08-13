@@ -69,6 +69,8 @@ backend:
         img: Изображение новости
         description: Превью новости
         text: Текст новости
+        mainText: Текст на подложке
+        photos: Дополнительные фото
         not_found: Новость не существует
         type_choice:
             events: событие

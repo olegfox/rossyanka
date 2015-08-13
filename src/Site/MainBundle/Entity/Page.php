@@ -89,7 +89,7 @@ class Page
     /**
      * @var boolean
      *
-     * @ORM\Column(name="birthDay", type="boolean", nullable=true)
+     * @ORM\Column(name="hide", type="boolean", nullable=true)
      */
     private $hide = false;
 
@@ -329,5 +329,28 @@ class Page
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * Set hide
+     *
+     * @param boolean $hide
+     * @return Page
+     */
+    public function setHide($hide)
+    {
+        $this->hide = $hide;
+
+        return $this;
+    }
+
+    /**
+     * Get hide
+     *
+     * @return boolean 
+     */
+    public function getHide()
+    {
+        return $this->hide;
     }
 }

@@ -62,6 +62,10 @@ class NewsType extends AbstractType
                 'required' => false,
                 'label' => 'backend.news.description'
             ))
+            ->add('mainText', 'textarea', array(
+                'required' => false,
+                'label' => 'backend.news.mainText'
+            ))
             ->add('text', 'textarea', array(
                 'required' => false,
                 'label' => 'backend.news.text',
@@ -72,6 +76,14 @@ class NewsType extends AbstractType
             ->add('file', 'file', array(
                 'required' => false,
                 'label' => 'backend.news.img'
+            ))
+            ->add('gallery', 'file', array(
+                'required' => false,
+                'label' => 'backend.news.photos',
+                'attr' => array(
+                    'class' => 'uploadify',
+                    'multiple' => true
+                )
             ))
         ;
     }

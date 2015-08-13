@@ -4,11 +4,63 @@
 {% block meta_description %}{{ news.metaDescription }}{% endblock %}
 {% block meta_keywords %}{{ news.metaKeywords }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/sitemain/frontend/js/photoswipe/photoswipe.css') }}">
+{% endblock %}
+
 {% block content %}
     <div class="wrap_content">
         <div class="content content-page">
-            <h1 class="h1_news">{{ news.title }}</h1>
-            {{ news.text|raw }}
+            <div class="news-gallery">
+                <a href="{{ asset(news.webPath) }}" rel="group{{ news.id }}">
+                    <img src="{{ image(news.webPath).cropResize(300) }}"/>
+                </a>
+                {% for p in news.photos %}
+                    {% if loop.index == 1 %}
+                        <a href="{{ asset(p.link) }}" rel="group{{ news.id }}">
+                            <img src="{{ image(p.link).cropResize(300) }}"/>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="info-news">
+                <h1 class="h1_news">{{ news.title }}</h1>
+                {% if news.mainText|length > 0 %}
+                    <div class="wrap-description">
+                        <div class="inner-description">
+                            <div class="description">
+                                {{ news.mainText }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {{ news.text|raw }}
+            </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/sitemain/frontend/js/photoswipe/lib/simple-inheritance.min.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/photoswipe/code-photoswipe-1.0.11.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".news-gallery").each(function (i, e) {
+                $(e).unbind('click').click(function () {
+                    Code.photoSwipe('a', this);
+                    Code.PhotoSwipe.Current.show(0);
+                    setTimeout(function(){
+                        $(".ps-slider-item").click(function(){
+                            console.log('click');
+                            $(".ps-toolbar-next .ps-toolbar-content").click();
+                        });
+                    }, 1000);
+
+                    return false;
+                });
+            });
+        });
+    </script>
 {% endblock %}

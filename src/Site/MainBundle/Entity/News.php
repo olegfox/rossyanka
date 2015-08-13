@@ -87,6 +87,13 @@ class News
     private $text;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="main_text", type="text", nullable=true)
+     */
+    private $mainText;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $img;
@@ -95,6 +102,16 @@ class News
      * @Assert\File()
      */
     private $file;
+
+    /**
+     * Список фото из формы
+     **/
+    private $gallery;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MediaPhoto", mappedBy="news", cascade={"persist", "remove"})
+     **/
+    private $photos;
 
     public function getAbsolutePath()
     {
@@ -462,5 +479,80 @@ class News
     public function getDate()
     {
         return $this->date;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->photos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set mainText
+     *
+     * @param string $mainText
+     * @return News
+     */
+    public function setMainText($mainText)
+    {
+        $this->mainText = $mainText;
+
+        return $this;
+    }
+
+    /**
+     * Get mainText
+     *
+     * @return string 
+     */
+    public function getMainText()
+    {
+        return $this->mainText;
+    }
+
+    /**
+     * Add photos
+     *
+     * @param \Site\MainBundle\Entity\MediaPhoto $photos
+     * @return News
+     */
+    public function addPhoto(\Site\MainBundle\Entity\MediaPhoto $photos)
+    {
+        $this->photos[] = $photos;
+
+        return $this;
+    }
+
+    /**
+     * Remove photos
+     *
+     * @param \Site\MainBundle\Entity\MediaPhoto $photos
+     */
+    public function removePhoto(\Site\MainBundle\Entity\MediaPhoto $photos)
+    {
+        $this->photos->removeElement($photos);
+    }
+
+    /**
+     * Get photos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
+    }
+
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
+
+        return $this;
     }
 }
