@@ -14,7 +14,7 @@
         <div class="content content-page">
             <div class="news-gallery">
                 <a href="{{ asset(news.webPath) }}" rel="group{{ news.id }}">
-                    <img src="{{ image(news.webPath).cropResize(300) }}"/>
+                    <img src="{{ image(news.webPath).zoomCrop(240, 200) }}"/>
                 </a>
                 {% for p in news.photos %}
                     {% if loop.index == 1 %}

@@ -22,7 +22,8 @@ class DirectorType extends AbstractType
                     0 => 'backend.director.type.type_1',
                     1 => 'backend.director.type.type_2',
                     2 => 'backend.director.type.type_3',
-                    3 => 'backend.director.type.type_4'
+                    3 => 'backend.director.type.type_4',
+                    4 => 'backend.director.type.type_5'
                 ),
                 'translation_domain' => 'menu'
             ))

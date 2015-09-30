@@ -26,6 +26,7 @@ class VideoMainRepository extends EntityRepository
                 WHERE v.main = 0
             ')
                 ->setFirstResult(0)
+                ->setMaxResults(1)
                 ->getSingleResult();
         }
 

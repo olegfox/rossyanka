@@ -23,7 +23,7 @@ class DirectorRepository extends EntityRepository
                 'directors' => array()
             ),
             1 => array(
-                'name' => 'Тренерский штаб',
+                'name' => 'Тренерский штаб (Основной состав)',
                 'directors' => array()
             ),
             2 => array(
@@ -32,6 +32,10 @@ class DirectorRepository extends EntityRepository
             ),
             3 => array(
                 'name' => 'Медицинский штаб',
+                'directors' => array()
+            ),
+            4 => array(
+                'name' => 'Тренерский штаб (Дублирующий состав)',
                 'directors' => array()
             )
         );
@@ -45,6 +49,8 @@ class DirectorRepository extends EntityRepository
                 $array[2]['directors'][] = $director;
             }elseif($director->getType() == 3){
                 $array[3]['directors'][] = $director;
+            }elseif($director->getType() == 4){
+                $array[4]['directors'][] = $director;
             }
         }
 

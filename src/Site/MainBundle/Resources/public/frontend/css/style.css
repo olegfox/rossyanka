@@ -413,6 +413,7 @@ input:focus {
     display: table;
     min-height: 200px;
     margin-bottom: 30px;
+    min-width: 100%;
 }
 .content .info-news .inner-description{
     padding: 0px 40px;
